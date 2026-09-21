@@ -1,0 +1,237 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+    container_name: thamanicraft-nginx
+    ports:
+      - "8090:80"
+      - "8445:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+    networks:
+      - thamanicraft-net
+    depends_on:
+      - rabbitmq
+      - postgres
+      - thamanicraft-client-ui
+    restart: unless-stopped
+
+  thamanicraft-client-ui:
+    build:
+      context: ./thamanicraft-client-ui
+      target: builder
+    command: npm run dev -- --host 0.0.0.0 --port 80
+    container_name: thamanicraft-client-ui
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+    volumes:
+      - ./thamanicraft-client-ui:/app
+      - /app/node_modules
+    ports:
+      - "3020:80"
+    networks:
+      - thamanicraft-net
+    restart: unless-stopped
+    depends_on:
+      - thamanicraft-gateway-1
+
+  thamanicraft-admin-ui:
+    build:
+      context: ./thamanicraft-admin-ui
+      target: builder
+    command: npm run dev -- --host 0.0.0.0 --port 80
+    container_name: thamanicraft-admin-ui
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+    volumes:
+      - ./thamanicraft-admin-ui:/app
+      - /app/node_modules
+    ports:
+      - "3021:80"
+    networks:
+      - thamanicraft-net
+    restart: unless-stopped
+    depends_on:
+      - thamanicraft-gateway-1
+
+  postgres:
+    build:
+      context: ./db
+    container_name: thamanicraft-postgres
+    environment:
+      TZ: Africa/Dar_es_Salaam
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-thamanicraft_db}
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5475:5432"
+    networks:
+      - thamanicraft-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d thamanicraft_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  rabbitmq:
+    build:
+      context: ./rabbitmq
+    container_name: thamanicraft-rabbitmq
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5675:5672"
+      - "15675:15672"
+    networks:
+      - thamanicraft-net
+    restart: unless-stopped
+
+  rabbitscout:
+    build:
+      context: ./rabbitscout
+    container_name: thamanicraft-rabbitscout
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=15672
+      - RABBITMQ_PROTOCOL=http
+    ports:
+      - "3035:3000"
+    networks:
+      - thamanicraft-net
+    depends_on:
+      - rabbitmq
+    restart: unless-stopped
+
+  thamanicraft-inventory-service:
+    build:
+      context: .
+      dockerfile: craft-inventory-service/Dockerfile
+    container_name: thamanicraft-inventory-service
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=${POSTGRES_DB:-thamanicraft_db}
+      - DB_USER=${POSTGRES_USER:-postgres}
+      - DB_PASS=${POSTGRES_PASSWORD:-postgres}
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=guest
+      - RABBITMQ_PASS=guest
+      - JWT_SECRET=${JWT_SECRET}
+    ports:
+      - "8080:8080"
+    networks:
+      - thamanicraft-net
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    restart: unless-stopped
+
+  thamanicraft-production-service:
+    build:
+      context: .
+      dockerfile: craft-production-service/Dockerfile
+    container_name: thamanicraft-production-service
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=${POSTGRES_DB:-thamanicraft_db}
+      - DB_USER=${POSTGRES_USER:-postgres}
+      - DB_PASS=${POSTGRES_PASSWORD:-postgres}
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=guest
+      - RABBITMQ_PASS=guest
+      - JWT_SECRET=${JWT_SECRET}
+    ports:
+      - "8081:8081"
+    networks:
+      - thamanicraft-net
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    restart: unless-stopped
+
+  thamanicraft-identity-service:
+    build: 
+      context: .
+      dockerfile: craft-identity-service/Dockerfile
+    container_name: thamanicraft-identity-service
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=${POSTGRES_DB:-thamanicraft_db}
+      - DB_USER=${POSTGRES_USER:-postgres}
+      - DB_PASS=${POSTGRES_PASSWORD:-postgres}
+      - JWT_SECRET=${JWT_SECRET}
+    ports:
+      - "8083:8080"
+    networks:
+      - thamanicraft-net
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  thamanicraft-gateway-1:
+    build:
+      context: ./craft-gateway-service
+    container_name: thamanicraft-gateway-1
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+      - IDENTITY_HOST=thamanicraft-identity-service
+      - IDENTITY_PORT=8080
+      - INVENTORY_HOST=thamanicraft-inventory-service
+      - INVENTORY_PORT=8080
+      - PRODUCTION_HOST=thamanicraft-production-service
+      - PRODUCTION_PORT=8081
+    networks:
+      - thamanicraft-net
+    depends_on:
+      - thamanicraft-identity-service
+      - thamanicraft-inventory-service
+      - thamanicraft-production-service
+    restart: unless-stopped
+
+  thamanicraft-gateway-2:
+    build:
+      context: ./craft-gateway-service
+    container_name: thamanicraft-gateway-2
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+      - IDENTITY_HOST=thamanicraft-identity-service
+      - IDENTITY_PORT=8080
+      - INVENTORY_HOST=thamanicraft-inventory-service
+      - INVENTORY_PORT=8080
+      - PRODUCTION_HOST=thamanicraft-production-service
+      - PRODUCTION_PORT=8081
+    networks:
+      - thamanicraft-net
+    depends_on:
+      - thamanicraft-identity-service
+      - thamanicraft-inventory-service
+      - thamanicraft-production-service
+    restart: unless-stopped
+
+networks:
+  thamanicraft-net:
+    driver: bridge

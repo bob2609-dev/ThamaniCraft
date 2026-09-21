@@ -1,0 +1,12 @@
+com/thamanicraft/identity/dto/AuthResponse.class
+com/thamanicraft/identity/entity/Role.class
+com/thamanicraft/identity/repository/UserRepository.class
+com/thamanicraft/identity/controller/AuthController.class
+com/thamanicraft/identity/entity/User.class
+com/thamanicraft/identity/entity/Permission.class
+com/thamanicraft/identity/config/IdentitySecurityConfig.class
+com/thamanicraft/identity/service/AuthService.class
+com/thamanicraft/identity/repository/RoleRepository.class
+com/thamanicraft/identity/service/AuthServiceImpl.class
+com/thamanicraft/identity/dto/AuthRequest.class
+com/thamanicraft/identity/IdentityApplication.class

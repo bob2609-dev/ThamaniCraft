@@ -1,0 +1,12 @@
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/IdentityApplication.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/service/AuthService.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/dto/AuthRequest.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/controller/AuthController.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/service/AuthServiceImpl.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/entity/Permission.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/repository/RoleRepository.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/dto/AuthResponse.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/repository/UserRepository.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/config/IdentitySecurityConfig.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/entity/User.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/entity/Role.java

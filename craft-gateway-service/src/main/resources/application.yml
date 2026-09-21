@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: craft-gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: identity-service
+          uri: http://${IDENTITY_HOST:localhost}:${IDENTITY_PORT:8083}
+          predicates:
+            - Path=/api/auth/**
+        - id: inventory-service
+          uri: http://${INVENTORY_HOST:localhost}:${INVENTORY_PORT:8080}
+          predicates:
+            - Path=/api/inventory/**
+          filters:
+            - StripPrefix=2
+        - id: production-service
+          uri: http://${PRODUCTION_HOST:localhost}:${PRODUCTION_PORT:8081}
+          predicates:
+            - Path=/api/production/**
+          filters:
+            - StripPrefix=2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

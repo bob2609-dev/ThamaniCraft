@@ -1,0 +1,9 @@
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/UnitOfMeasureService.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/entity/RawMaterial.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/UnitOfMeasureController.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/InventoryApplication.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/RawMaterialService.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/RawMaterialController.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/repository/RawMaterialRepository.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/repository/UnitOfMeasureRepository.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/entity/UnitOfMeasure.java

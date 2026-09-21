@@ -1,0 +1,1 @@
+{"nodes": [{"id": "agents_skills_red_team_tactics_mitre_attack", "label": "MITRE ATT&CK Framework", "file_type": "concept", "source_file": ".agents/skills/red-team-tactics/SKILL.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null, "rationale": null}], "edges": [], "hyperedges": []}

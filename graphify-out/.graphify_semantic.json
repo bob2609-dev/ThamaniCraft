@@ -1,0 +1,2265 @@
+{
+  "nodes": [
+    {
+      "id": "design",
+      "label": "DESIGN.md Specification",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "readme",
+      "label": "README.md Overview",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docker_compose",
+      "label": "Docker Compose Services",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_architecture",
+      "label": "AG Kit Architecture",
+      "file_type": "document",
+      "source_file": ".agents/ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_changelog",
+      "label": "AG Kit Changelog",
+      "file_type": "document",
+      "source_file": ".agents/CHANGELOG.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_dependency_graph",
+      "label": "AG Kit Dependency Graph Docs",
+      "file_type": "document",
+      "source_file": ".agents/DEPENDENCY_GRAPH.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_readme",
+      "label": "AG Kit Operator Guide",
+      "file_type": "document",
+      "source_file": ".agents/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_backend_specialist",
+      "label": "backend-specialist Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/backend-specialist.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_code_archaeologist",
+      "label": "code-archaeologist Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/code-archaeologist.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_database_architect",
+      "label": "database-architect Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/database-architect.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_debugger",
+      "label": "debugger Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/debugger.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_devops_engineer",
+      "label": "devops-engineer Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/devops-engineer.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_documentation_writer",
+      "label": "documentation-writer Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/documentation-writer.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_explorer_agent",
+      "label": "explorer-agent Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/explorer-agent.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_frontend_specialist",
+      "label": "frontend-specialist Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/frontend-specialist.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_game_developer",
+      "label": "game-developer Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/game-developer.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_mobile_developer",
+      "label": "mobile-developer Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/mobile-developer.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_orchestrator",
+      "label": "orchestrator Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_penetration_tester",
+      "label": "penetration-tester Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/penetration-tester.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_performance_optimizer",
+      "label": "performance-optimizer Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/performance-optimizer.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_product_manager",
+      "label": "product-manager Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/product-manager.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_product_owner",
+      "label": "product-owner Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/product-owner.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_project_planner",
+      "label": "project-planner Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/project-planner.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_qa_automation_engineer",
+      "label": "qa-automation-engineer Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/qa-automation-engineer.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_security_auditor",
+      "label": "security-auditor Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/security-auditor.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_seo_specialist",
+      "label": "seo-specialist Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/seo-specialist.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_agent_test_engineer",
+      "label": "test-engineer Agent",
+      "file_type": "code",
+      "source_file": ".agents/agent/test-engineer.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_hooks_readme",
+      "label": "Antigravity Native Integration Documentation",
+      "file_type": "document",
+      "source_file": ".agents/hooks/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_hooks_plugin_gemini",
+      "label": "Plugin Gemini Documentation",
+      "file_type": "document",
+      "source_file": ".agents/hooks/plugin/GEMINI.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_memory_memory",
+      "label": "ThamaniCraft Memory Index",
+      "file_type": "document",
+      "source_file": ".agents/memory/MEMORY.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_memory_project_conventions",
+      "label": "Project Conventions Memory",
+      "file_type": "document",
+      "source_file": ".agents/memory/project-conventions.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_memory_tech_decisions",
+      "label": "Technical Decisions Memory",
+      "file_type": "document",
+      "source_file": ".agents/memory/tech-decisions.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_rules_code_rules",
+      "label": "Code Rules Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/code-rules.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_rules_core_protocol",
+      "label": "Core Protocol Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/core-protocol.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_rules_design_rules",
+      "label": "Design Rules Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/design-rules.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_rules_quick_reference",
+      "label": "Quick Reference Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/quick-reference.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_rules_request_routing",
+      "label": "Request Routing Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/request-routing.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_rules_sudo",
+      "label": "Sudo Access Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/sudo.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_rules_timezon_rule",
+      "label": "Docker Timezone Enforcement Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/timezon-rule.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_rules_timezone",
+      "label": "Timezone Configuration Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/timezone.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_rules_universal_rules",
+      "label": "Universal Rules Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/universal-rules.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_api_patterns_skill",
+      "label": "api-patterns Skill",
+      "file_type": "code",
+      "source_file": ".agents/skills/api-patterns/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_app_builder_skill",
+      "label": "app-builder Skill",
+      "file_type": "code",
+      "source_file": ".agents/skills/app-builder/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_app_builder_agent_coordination",
+      "label": "App Builder Agent Coordination",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/agent-coordination.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_app_builder_feature_building",
+      "label": "App Builder Feature Building",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/feature-building.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_app_builder_project_detection",
+      "label": "App Builder Project Type Detection",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/project-detection.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_app_builder_scaffolding",
+      "label": "App Builder Project Scaffolding",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/scaffolding.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_app_builder_tech_stack",
+      "label": "App Builder Tech Stack Selection",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/tech-stack.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_app_builder_templates_skill",
+      "label": "App Builder Project Templates Skill",
+      "file_type": "code",
+      "source_file": ".agents/skills/app-builder/templates/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_app_builder_templates_astro_static_template",
+      "label": "Astro Static Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/astro-static/TEMPLATE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_app_builder_templates_chrome_extension_template",
+      "label": "Chrome Extension Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/chrome-extension/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_cli_tool_template",
+      "label": "CLI Tool Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/cli-tool/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_electron_desktop_template",
+      "label": "Electron Desktop App Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/electron-desktop/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_express_api_template",
+      "label": "Express.js API Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/express-api/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_flutter_app_template",
+      "label": "Flutter App Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/flutter-app/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_monorepo_turborepo_template",
+      "label": "Turborepo Monorepo Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/monorepo-turborepo/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_nextjs_fullstack_template",
+      "label": "Next.js Full-Stack Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/nextjs-fullstack/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_nextjs_saas_template",
+      "label": "Next.js SaaS Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/nextjs-saas/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_nextjs_static_template",
+      "label": "Next.js Static Site Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/nextjs-static/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_nuxt_app_template",
+      "label": "Nuxt 4 Full-Stack Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/nuxt-app/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_python_fastapi_template",
+      "label": "FastAPI API Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/python-fastapi/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_app_builder_templates_react_native_app_template",
+      "label": "React Native App Template",
+      "file_type": "document",
+      "source_file": ".agents/skills/app-builder/templates/react-native-app/TEMPLATE.md"
+    },
+    {
+      "id": "agents_skills_architecture_skill",
+      "label": "Architecture Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/architecture/SKILL.md"
+    },
+    {
+      "id": "agents_skills_architecture_context_discovery",
+      "label": "Context Discovery",
+      "file_type": "document",
+      "source_file": ".agents/skills/architecture/context-discovery.md"
+    },
+    {
+      "id": "agents_skills_architecture_trade_off_analysis",
+      "label": "Trade-off Analysis & ADR",
+      "file_type": "document",
+      "source_file": ".agents/skills/architecture/trade-off-analysis.md"
+    },
+    {
+      "id": "agents_skills_architecture_pattern_selection",
+      "label": "Pattern Selection Guidelines",
+      "file_type": "document",
+      "source_file": ".agents/skills/architecture/pattern-selection.md"
+    },
+    {
+      "id": "agents_skills_architecture_examples",
+      "label": "Architecture Examples",
+      "file_type": "document",
+      "source_file": ".agents/skills/architecture/examples.md"
+    },
+    {
+      "id": "agents_skills_architecture_patterns_reference",
+      "label": "Architecture Patterns Reference",
+      "file_type": "document",
+      "source_file": ".agents/skills/architecture/patterns-reference.md"
+    },
+    {
+      "id": "agents_skills_bash_linux_skill",
+      "label": "Bash Linux Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/bash-linux/SKILL.md"
+    },
+    {
+      "id": "agents_skills_batch_operations_skill",
+      "label": "Batch Operations Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/batch-operations/SKILL.md"
+    },
+    {
+      "id": "agents_skills_behavioral_modes_skill",
+      "label": "Behavioral Modes Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/behavioral-modes/SKILL.md"
+    },
+    {
+      "id": "agents_skills_brainstorming_skill",
+      "label": "Brainstorming Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/brainstorming/SKILL.md"
+    },
+    {
+      "id": "agents_skills_brainstorming_dynamic_questioning",
+      "label": "Dynamic Question Generation",
+      "file_type": "document",
+      "source_file": ".agents/skills/brainstorming/dynamic-questioning.md"
+    },
+    {
+      "id": "agents_skills_clean_code_skill",
+      "label": "Clean Code Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/clean-code/SKILL.md"
+    },
+    {
+      "id": "agents_skills_code_review_checklist_skill",
+      "label": "Code Review Checklist Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/code-review-checklist/SKILL.md"
+    },
+    {
+      "id": "agents_skills_code_review_graph_skill",
+      "label": "Code Review Graph Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/code-review-graph/SKILL.md"
+    },
+    {
+      "id": "agents_skills_context_compression_skill",
+      "label": "Context Compression Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/context-compression/SKILL.md"
+    },
+    {
+      "id": "agents_skills_coordinator_mode_skill",
+      "label": "Coordinator Mode Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/coordinator-mode/SKILL.md"
+    },
+    {
+      "id": "agents_skills_database_design_skill",
+      "label": "Database Design Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/database-design/SKILL.md"
+    },
+    {
+      "id": "agents_skills_database_design_database_selection",
+      "label": "Database Selection",
+      "file_type": "document",
+      "source_file": ".agents/skills/database-design/database-selection.md"
+    },
+    {
+      "id": "agents_skills_database_design_indexing",
+      "label": "Indexing Principles",
+      "file_type": "document",
+      "source_file": ".agents/skills/database-design/indexing.md"
+    },
+    {
+      "id": "agents_skills_database_design_migrations",
+      "label": "Migration Principles",
+      "file_type": "document",
+      "source_file": ".agents/skills/database-design/migrations.md"
+    },
+    {
+      "id": "agents_skills_database_design_optimization",
+      "label": "Query Optimization",
+      "file_type": "document",
+      "source_file": ".agents/skills/database-design/optimization.md"
+    },
+    {
+      "id": "agents_skills_database_design_orm_selection",
+      "label": "ORM Selection",
+      "file_type": "document",
+      "source_file": ".agents/skills/database-design/orm-selection.md"
+    },
+    {
+      "id": "agents_skills_database_design_schema_design",
+      "label": "Schema Design Principles",
+      "file_type": "document",
+      "source_file": ".agents/skills/database-design/schema-design.md"
+    },
+    {
+      "id": "agents_skills_deployment_procedures_skill",
+      "label": "Deployment Procedures Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/deployment-procedures/SKILL.md"
+    },
+    {
+      "id": "agents_skills_design_spec_skill",
+      "label": "Design Spec Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/design-spec/SKILL.md"
+    },
+    {
+      "id": "agents_skills_design_spec_collection",
+      "label": "Design Spec Collection",
+      "file_type": "document",
+      "source_file": ".agents/skills/design-spec/collection.md"
+    },
+    {
+      "id": "agents_skills_documentation_templates_skill",
+      "label": "Documentation Templates Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/documentation-templates/SKILL.md"
+    },
+    {
+      "id": "agents_skills_frontend_architecture_skill",
+      "label": "Frontend Architecture Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-architecture/SKILL.md"
+    },
+    {
+      "id": "agents_skills_frontend_design_skill",
+      "label": "Frontend Design Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md"
+    },
+    {
+      "id": "agents_skills_frontend_design_skill",
+      "label": "Frontend Design Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_frontend_design_redesign",
+      "label": "Frontend Design Redesign Variant",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/redesign.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_frontend_design_style_brutalist",
+      "label": "Industrial Brutalist Style Variant",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/style-brutalist.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_frontend_design_style_minimalist",
+      "label": "Minimalist Editorial Style Variant",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/style-minimalist.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_skill",
+      "label": "Game Development Orchestrator Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_2d_games_skill",
+      "label": "2D Games Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/2d-games/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_3d_games_skill",
+      "label": "3D Games Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/3d-games/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_game_art_skill",
+      "label": "Game Art Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/game-art/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_game_audio_skill",
+      "label": "Game Audio Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/game-audio/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_game_design_skill",
+      "label": "Game Design Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/game-design/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_mobile_games_skill",
+      "label": "Mobile Games Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/mobile-games/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_multiplayer_skill",
+      "label": "Multiplayer Games Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/multiplayer/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_pc_games_skill",
+      "label": "PC Games Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/pc-games/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_vr_ar_skill",
+      "label": "VR/AR Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/vr-ar/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_game_development_web_games_skill",
+      "label": "Web Games Sub-Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/game-development/web-games/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_geo_fundamentals_skill",
+      "label": "GEO Fundamentals Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/geo-fundamentals/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_i18n_localization_skill",
+      "label": "i18n & Localization Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/i18n-localization/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_intelligent_routing_skill",
+      "label": "Intelligent Agent Routing Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/intelligent-routing/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_lint_and_validate_skill",
+      "label": "Lint and Validate Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/lint-and-validate/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mcp_builder_skill",
+      "label": "MCP Builder Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/mcp-builder/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_memory_system_skill",
+      "label": "Memory System Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/memory-system/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_skill",
+      "label": "Mobile Design System Skill",
+      "file_type": "document",
+      "source_file": ".agents/skills/mobile-design/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_decision_trees",
+      "label": "Mobile Decision Trees",
+      "file_type": "document",
+      "source_file": ".agents/skills/mobile-design/decision-trees.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_mobile_backend",
+      "label": "Mobile Backend Patterns",
+      "file_type": "document",
+      "source_file": ".agents/skills/mobile-design/mobile-backend.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_mobile_color_system",
+      "label": "Mobile Color System Reference",
+      "file_type": "document",
+      "source_file": ".agents/skills/mobile-design/mobile-color-system.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_mobile_debugging",
+      "label": "Mobile Debugging Guide",
+      "file_type": "document",
+      "source_file": ".agents/skills/mobile-design/mobile-debugging.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_mobile_design_thinking",
+      "label": "Mobile Design Thinking",
+      "file_type": "document",
+      "source_file": ".agents/skills/mobile-design/mobile-design-thinking.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_mobile_navigation",
+      "label": "Mobile Navigation Reference",
+      "file_type": "document",
+      "source_file": ".agents/skills/mobile-design/mobile-navigation.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_mobile_performance",
+      "label": "Mobile Performance Reference",
+      "file_type": "document",
+      "source_file": ".agents/skills/mobile-design/mobile-performance.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_mobile_testing_mindset",
+      "label": "Mobile Testing Mindset",
+      "file_type": "concept",
+      "source_file": ".agents/skills/mobile-design/mobile-testing.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_mobile_testing_pyramid",
+      "label": "Mobile Testing Pyramid",
+      "file_type": "concept",
+      "source_file": ".agents/skills/mobile-design/mobile-testing.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_mobile_typography_dynamic_type",
+      "label": "Dynamic Type Sizing",
+      "file_type": "concept",
+      "source_file": ".agents/skills/mobile-design/mobile-typography.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_platform_android_material3",
+      "label": "Material Design 3",
+      "file_type": "concept",
+      "source_file": ".agents/skills/mobile-design/platform-android.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_platform_ios_hig",
+      "label": "Human Interface Guidelines",
+      "file_type": "concept",
+      "source_file": ".agents/skills/mobile-design/platform-ios.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_mobile_design_touch_psychology_fitts_law",
+      "label": "Fitts' Law for Touch",
+      "file_type": "concept",
+      "source_file": ".agents/skills/mobile-design/touch-psychology.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_nextjs_react_expert_1_async_eliminating_waterfalls_better_all",
+      "label": "better-all Parallelization",
+      "file_type": "concept",
+      "source_file": ".agents/skills/nextjs-react-expert/1-async-eliminating-waterfalls.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_nextjs_react_expert_2_bundle_bundle_size_optimization_barrel_imports",
+      "label": "Avoid Barrel File Imports",
+      "file_type": "concept",
+      "source_file": ".agents/skills/nextjs-react-expert/2-bundle-bundle-size-optimization.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_nextjs_react_expert_9_cache_components_use_cache",
+      "label": "use cache Directive",
+      "file_type": "concept",
+      "source_file": ".agents/skills/nextjs-react-expert/9-cache-components.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_nodejs_best_practices_framework_selection",
+      "label": "Node.js Framework Selection",
+      "file_type": "concept",
+      "source_file": ".agents/skills/nodejs-best-practices/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_parallel_agents_orchestration",
+      "label": "Parallel Agents Orchestration",
+      "file_type": "concept",
+      "source_file": ".agents/skills/parallel-agents/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_performance_profiling_web_vitals",
+      "label": "Core Web Vitals Profiling",
+      "file_type": "concept",
+      "source_file": ".agents/skills/performance-profiling/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_python_patterns_framework_selection",
+      "label": "Python Framework Selection",
+      "file_type": "concept",
+      "source_file": ".agents/skills/python-patterns/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_red_team_tactics_mitre_attack",
+      "label": "MITRE ATT&CK Framework",
+      "file_type": "concept",
+      "source_file": ".agents/skills/red-team-tactics/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_rust_pro_async_tokio",
+      "label": "Tokio Async Programming",
+      "file_type": "concept",
+      "source_file": ".agents/skills/rust-pro/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_tailwind_patterns_v4_architecture",
+      "label": "Tailwind v4 Architecture",
+      "file_type": "concept",
+      "source_file": ".agents/skills/tailwind-patterns/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "agents_skills_tdd_workflow_red_green_refactor",
+      "label": "RED-GREEN-REFACTOR Cycle",
+      "file_type": "concept",
+      "source_file": ".agents/skills/tdd-workflow/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "readme",
+      "target": "design",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_frontend_specialist",
+      "target": "design",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": ".agents/agent/frontend-specialist.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_rules_design_rules",
+      "target": "design",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/rules/design-rules.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_app_builder_agent_coordination",
+      "target": "design",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/agent-coordination.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_app_builder_scaffolding",
+      "target": "design",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/scaffolding.md",
+      "source_location": null,
+      "source_url": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_project_planner",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_explorer_agent",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_security_auditor",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_penetration_tester",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_backend_specialist",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_frontend_specialist",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_mobile_developer",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_database_architect",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_test_engineer",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_devops_engineer",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_debugger",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_performance_optimizer",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agent_orchestrator",
+      "target": "agents_agent_documentation_writer",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/agent/orchestrator.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_app_builder_skill",
+      "target": "agents_skills_app_builder_project_detection",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_app_builder_skill",
+      "target": "agents_skills_app_builder_tech_stack",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_app_builder_skill",
+      "target": "agents_skills_app_builder_agent_coordination",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_app_builder_skill",
+      "target": "agents_skills_app_builder_scaffolding",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_app_builder_skill",
+      "target": "agents_skills_app_builder_feature_building",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_app_builder_skill",
+      "target": "agents_skills_app_builder_templates_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_app_builder_templates_skill",
+      "target": "agents_skills_app_builder_templates_astro_static_template",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/templates/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_architecture_skill",
+      "target": "agents_skills_architecture_context_discovery",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/architecture/SKILL.md"
+    },
+    {
+      "source": "agents_skills_architecture_skill",
+      "target": "agents_skills_architecture_trade_off_analysis",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/architecture/SKILL.md"
+    },
+    {
+      "source": "agents_skills_architecture_skill",
+      "target": "agents_skills_architecture_pattern_selection",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/architecture/SKILL.md"
+    },
+    {
+      "source": "agents_skills_architecture_skill",
+      "target": "agents_skills_architecture_examples",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/architecture/SKILL.md"
+    },
+    {
+      "source": "agents_skills_architecture_skill",
+      "target": "agents_skills_architecture_patterns_reference",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/architecture/SKILL.md"
+    },
+    {
+      "source": "agents_skills_brainstorming_skill",
+      "target": "agents_skills_brainstorming_dynamic_questioning",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/brainstorming/SKILL.md"
+    },
+    {
+      "source": "agents_skills_database_design_skill",
+      "target": "agents_skills_database_design_database_selection",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/database-design/SKILL.md"
+    },
+    {
+      "source": "agents_skills_database_design_skill",
+      "target": "agents_skills_database_design_orm_selection",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/database-design/SKILL.md"
+    },
+    {
+      "source": "agents_skills_database_design_skill",
+      "target": "agents_skills_database_design_schema_design",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/database-design/SKILL.md"
+    },
+    {
+      "source": "agents_skills_database_design_skill",
+      "target": "agents_skills_database_design_indexing",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/database-design/SKILL.md"
+    },
+    {
+      "source": "agents_skills_database_design_skill",
+      "target": "agents_skills_database_design_optimization",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/database-design/SKILL.md"
+    },
+    {
+      "source": "agents_skills_database_design_skill",
+      "target": "agents_skills_database_design_migrations",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/database-design/SKILL.md"
+    },
+    {
+      "source": "agents_skills_design_spec_skill",
+      "target": "agents_skills_design_spec_collection",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/design-spec/SKILL.md"
+    },
+    {
+      "source": "agents_skills_code_review_graph_skill",
+      "target": "agents_skills_context_compression_skill",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/code-review-graph/SKILL.md"
+    },
+    {
+      "source": "agents_skills_code_review_graph_skill",
+      "target": "agents_skills_coordinator_mode_skill",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/code-review-graph/SKILL.md"
+    },
+    {
+      "source": "agents_skills_code_review_graph_skill",
+      "target": "agents_skills_batch_operations_skill",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/code-review-graph/SKILL.md"
+    },
+    {
+      "source": "agents_skills_frontend_architecture_skill",
+      "target": "agents_skills_frontend_design_skill",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/frontend-architecture/SKILL.md"
+    },
+    {
+      "source": "agents_skills_frontend_design_redesign",
+      "target": "agents_skills_frontend_design_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/frontend-design/redesign.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_frontend_design_style_brutalist",
+      "target": "agents_skills_frontend_design_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/frontend-design/style-brutalist.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_frontend_design_style_minimalist",
+      "target": "agents_skills_frontend_design_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/frontend-design/style-minimalist.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_web_games_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_mobile_games_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_pc_games_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_vr_ar_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_2d_games_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_3d_games_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_game_design_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_multiplayer_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_game_art_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_game_development_skill",
+      "target": "agents_skills_game_development_game_audio_skill",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_skill",
+      "target": "agents_skills_mobile_design_mobile_design_thinking",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_skill",
+      "target": "agents_skills_mobile_design_mobile_performance",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_skill",
+      "target": "agents_skills_mobile_design_mobile_backend",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_skill",
+      "target": "agents_skills_mobile_design_mobile_debugging",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_skill",
+      "target": "agents_skills_mobile_design_mobile_navigation",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_skill",
+      "target": "agents_skills_mobile_design_mobile_color_system",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_skill",
+      "target": "agents_skills_mobile_design_decision_trees",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_platform_android_material3",
+      "target": "agents_skills_mobile_design_mobile_typography_dynamic_type",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/platform-android.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_platform_ios_hig",
+      "target": "agents_skills_mobile_design_mobile_typography_dynamic_type",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/platform-ios.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_mobile_design_touch_psychology_fitts_law",
+      "target": "agents_skills_mobile_design_platform_android_material3",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": ".agents/skills/mobile-design/touch-psychology.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_nextjs_react_expert_1_async_eliminating_waterfalls_better_all",
+      "target": "agents_skills_nextjs_react_expert_9_cache_components_use_cache",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".agents/skills/nextjs-react-expert/1-async-eliminating-waterfalls.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_skills_performance_profiling_web_vitals",
+      "target": "agents_skills_nextjs_react_expert_2_bundle_bundle_size_optimization_barrel_imports",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".agents/skills/performance-profiling/SKILL.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "agent_orchestration_flow",
+      "label": "AG Kit Multi-Agent Orchestration Engine",
+      "nodes": [
+        "agents_agent_orchestrator",
+        "agents_agent_project_planner",
+        "agents_skills_app_builder_agent_coordination",
+        "agents_rules_request_routing"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": ".agents/agent/orchestrator.md"
+    },
+    {
+      "id": "design_spec_gate_flow",
+      "label": "DESIGN.md Gate Enforcement Flow",
+      "nodes": [
+        "design",
+        "agents_rules_design_rules",
+        "agents_skills_app_builder_agent_coordination",
+        "agents_agent_frontend_specialist"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": ".agents/rules/design-rules.md"
+    },
+    {
+      "id": "architecture_knowledge_group",
+      "label": "Architecture Decision Framework Documents",
+      "nodes": [
+        "agents_skills_architecture_skill",
+        "agents_skills_architecture_context_discovery",
+        "agents_skills_architecture_trade_off_analysis",
+        "agents_skills_architecture_pattern_selection",
+        "agents_skills_architecture_examples",
+        "agents_skills_architecture_patterns_reference"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/architecture/SKILL.md"
+    },
+    {
+      "id": "database_design_knowledge_group",
+      "label": "Database Design & Management Principles",
+      "nodes": [
+        "agents_skills_database_design_skill",
+        "agents_skills_database_design_database_selection",
+        "agents_skills_database_design_indexing",
+        "agents_skills_database_design_migrations",
+        "agents_skills_database_design_optimization",
+        "agents_skills_database_design_orm_selection",
+        "agents_skills_database_design_schema_design"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/database-design/SKILL.md"
+    },
+    {
+      "id": "app_builder_templates_group",
+      "label": "App Builder Project Templates",
+      "nodes": [
+        "agents_skills_app_builder_templates_chrome_extension_template",
+        "agents_skills_app_builder_templates_cli_tool_template",
+        "agents_skills_app_builder_templates_electron_desktop_template",
+        "agents_skills_app_builder_templates_express_api_template",
+        "agents_skills_app_builder_templates_flutter_app_template",
+        "agents_skills_app_builder_templates_monorepo_turborepo_template",
+        "agents_skills_app_builder_templates_nextjs_fullstack_template",
+        "agents_skills_app_builder_templates_nextjs_saas_template",
+        "agents_skills_app_builder_templates_nextjs_static_template",
+        "agents_skills_app_builder_templates_nuxt_app_template",
+        "agents_skills_app_builder_templates_python_fastapi_template",
+        "agents_skills_app_builder_templates_react_native_app_template"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/app-builder/templates/chrome-extension/TEMPLATE.md"
+    },
+    {
+      "id": "game_development_skill_suite",
+      "label": "Game Development Orchestrated Sub-Skills",
+      "nodes": [
+        "agents_skills_game_development_skill",
+        "agents_skills_game_development_2d_games_skill",
+        "agents_skills_game_development_3d_games_skill",
+        "agents_skills_game_development_game_art_skill",
+        "agents_skills_game_development_game_audio_skill",
+        "agents_skills_game_development_game_design_skill",
+        "agents_skills_game_development_mobile_games_skill",
+        "agents_skills_game_development_multiplayer_skill",
+        "agents_skills_game_development_pc_games_skill",
+        "agents_skills_game_development_vr_ar_skill",
+        "agents_skills_game_development_web_games_skill"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/game-development/SKILL.md"
+    },
+    {
+      "id": "mobile_design_knowledge_suite",
+      "label": "Mobile Design System Module Suite",
+      "nodes": [
+        "agents_skills_mobile_design_skill",
+        "agents_skills_mobile_design_decision_trees",
+        "agents_skills_mobile_design_mobile_backend",
+        "agents_skills_mobile_design_mobile_color_system",
+        "agents_skills_mobile_design_mobile_debugging",
+        "agents_skills_mobile_design_mobile_design_thinking",
+        "agents_skills_mobile_design_mobile_navigation",
+        "agents_skills_mobile_design_mobile_performance"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/mobile-design/SKILL.md"
+    },
+    {
+      "id": "frontend_design_variants",
+      "label": "Frontend Design Skill and Variants",
+      "nodes": [
+        "agents_skills_frontend_design_skill",
+        "agents_skills_frontend_design_redesign",
+        "agents_skills_frontend_design_style_brutalist",
+        "agents_skills_frontend_design_style_minimalist"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/frontend-design/SKILL.md"
+    },
+    {
+      "id": "mobile_ui_guidelines",
+      "label": "Mobile UI Principles",
+      "nodes": [
+        "agents_skills_mobile_design_mobile_typography_dynamic_type",
+        "agents_skills_mobile_design_platform_android_material3",
+        "agents_skills_mobile_design_platform_ios_hig",
+        "agents_skills_mobile_design_touch_psychology_fitts_law"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": ".agents/skills/mobile-design/mobile-typography.md"
+    }
+  ],
+  "input_tokens": 262381,
+  "output_tokens": 19747,
+  "failed_chunks": 1,
+  "out_of_scope_dropped": 0,
+  "uncovered_files": [
+    "/home/bob2609/Projects/ThamaniCraft/.agents/memory/feedback-history.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/memory/user-preferences.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/scripts/README.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/api-style.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/auth.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/documentation.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/graphql.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/rate-limiting.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/response.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/rest.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/security-testing.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/trpc.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/api-patterns/versioning.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/nextjs-react-expert/3-server-server-side-performance.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/nextjs-react-expert/4-client-client-side-data-fetching.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/nextjs-react-expert/5-rerender-re-render-optimization.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/nextjs-react-expert/6-rendering-rendering-performance.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/nextjs-react-expert/7-js-javascript-performance.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/nextjs-react-expert/8-advanced-advanced-patterns.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/nextjs-react-expert/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/plan-writing/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/powershell-windows/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/seo-fundamentals/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/server-management/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/simplify-code/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/skillify/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/systematic-debugging/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/testing-patterns/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/verify-changes/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/vulnerability-scanner/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/vulnerability-scanner/checklists.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/web-design-guidelines/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/skills/webapp-testing/SKILL.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/brainstorm.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/coordinate.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/create.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/debug.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/deploy.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/enhance.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/orchestrate.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/plan.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/preview.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/remember.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/status.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/test.md",
+    "/home/bob2609/Projects/ThamaniCraft/.agents/workflows/verify.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/PRD.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/PROGRESS.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/Responsive_UI_Skill.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-01-infrastructure.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-02-multitenancy-security.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-03-ingredients-inventory.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-04-recipe-bom-engine.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-05-production-batch-orders.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-06-b2b-wholesale-sales.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-07-manufacturing-accounting.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-08-ui-ux-design-system.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-09-capex-fixed-assets.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-10-thamanipoint-lessons.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-11-rbac-permissions-architecture.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-12-jwt-auth-filter-patterns.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-13-audit-logging-user-tracking.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/SKILL-14-frontend-rbac-patterns.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/ThamaniCraft_Responsive_UI_Master_Prompt.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/ThamaniCraft_Responsive_UI_Skill.md",
+    "/home/bob2609/Projects/ThamaniCraft/docs/ThamaniCraft_UI_Requirements.md"
+  ]
+}

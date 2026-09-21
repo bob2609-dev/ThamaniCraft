@@ -1,0 +1,11 @@
+tz/co/thamanicraft/inventory/entity/RawMaterial.class
+tz/co/thamanicraft/inventory/service/UnitOfMeasureService.class
+tz/co/thamanicraft/inventory/entity/UnitOfMeasure$UnitOfMeasureBuilder.class
+tz/co/thamanicraft/inventory/entity/UnitOfMeasure.class
+tz/co/thamanicraft/inventory/InventoryApplication.class
+tz/co/thamanicraft/inventory/service/RawMaterialService.class
+tz/co/thamanicraft/inventory/repository/UnitOfMeasureRepository.class
+tz/co/thamanicraft/inventory/controller/RawMaterialController.class
+tz/co/thamanicraft/inventory/repository/RawMaterialRepository.class
+tz/co/thamanicraft/inventory/entity/RawMaterial$RawMaterialBuilder.class
+tz/co/thamanicraft/inventory/controller/UnitOfMeasureController.class

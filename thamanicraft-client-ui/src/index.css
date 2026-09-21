@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Primary & Accents */
+    --color-primary: #D97706;         /* Artisan Amber / Warm Copper */
+    --color-primary-hover: #B45309;
+    --color-primary-active: #92400E;
+    
+    /* Sidebar & Navigation */
+    --sidebar-bg: #0F172A;            /* Deep Midnight Slate */
+    --sidebar-hover: #1E293B;
+    --sidebar-active: #D97706;
+    --sidebar-text: #94A3B8;
+    --sidebar-text-active: #FFFFFF;
+
+    /* Surfaces & Backgrounds */
+    --bg-app: #F8FAFC;                /* Crisp light slate canvas */
+    --bg-surface: #FFFFFF;            /* Pure white card surface */
+    --border-subtle: #E2E8F0;
+    --border-strong: #CBD5E1;
+
+    /* Typography */
+    --text-primary: #0F172A;
+    --text-secondary: #64748B;
+    --text-muted: #94A3B8;
+
+    /* Functional Status */
+    --status-success: #10B981;        /* In Stock / Batch Complete */
+    --status-warning: #F59E0B;        /* Low Stock / In Progress */
+    --status-danger: #EF4444;         /* Out of Stock / Scrap Alert */
+    --status-info: #0284C7;           /* Scheduled / Awaiting GRN */
+  }
+
+  .dark {
+    --color-primary: #F59E0B;
+    --color-primary-hover: #D97706;
+    --color-primary-active: #B45309;
+
+    --sidebar-bg: #020617;
+    --sidebar-hover: #0F172A;
+    --sidebar-active: #F59E0B;
+    --sidebar-text: #94A3B8;
+    --sidebar-text-active: #FFFFFF;
+
+    --bg-app: #0B1120;
+    --bg-surface: #1E293B;
+    --border-subtle: #334155;
+    --border-strong: #475569;
+
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+  }
+
+  html,
+  body,
+  #root {
+    @apply h-full w-full m-0 p-0;
+  }
+
+  body {
+    @apply bg-app-light dark:bg-app-dark text-slate-900 dark:text-slate-100 antialiased font-sans transition-colors duration-200;
+  }
+}

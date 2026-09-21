@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "runId": "20260920-222311-157",
+  "strategy": "merge",
+  "toolkitVersion": "2026.8.31",
+  "createdAt": "2026-09-20T22:23:11.237Z",
+  "backupDir": "/home/bob2609/Projects/ThamaniCraft/.ag-kit-backups/20260920-222311-157",
+  "summary": {
+    "actions": 0,
+    "conflicts": 0,
+    "preserved": 4,
+    "unchanged": 220
+  },
+  "actions": [],
+  "conflicts": [],
+  "preserved": [
+    {
+      "file": "memory/MEMORY.md",
+      "reason": "changed locally only"
+    },
+    {
+      "file": "rules/sudo.md",
+      "reason": "user-owned file"
+    },
+    {
+      "file": "rules/timezon-rule.md",
+      "reason": "user-owned file"
+    },
+    {
+      "file": "rules/timezone.md",
+      "reason": "user-owned file"
+    }
+  ]
+}

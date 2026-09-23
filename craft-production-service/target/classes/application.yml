@@ -19,6 +19,7 @@ spring:
   flyway:
     enabled: true
     baseline-on-migrate: true
+    table: flyway_production_history
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: ${RABBITMQ_PORT:5672}

@@ -10,9 +10,22 @@ const getHeaders = () => {
   };
 };
 
+const responseError = async (response, fallbackMessage) => {
+  const body = await response.json().catch(() => null);
+  throw new Error(body?.detail || body?.message || fallbackMessage);
+};
+
 export const fetchUnitsOfMeasure = async () => {
   const response = await fetch(`${API_BASE_URL}/uom`, { headers: getHeaders() });
   if (!response.ok) throw new Error('Failed to fetch Units of Measure');
+  return response.json();
+};
+
+export const correctMaterialCost = async (id, correction) => {
+  const response = await fetch(`${API_BASE_URL}/raw-materials/${id}/cost`, {
+    method: 'PATCH', headers: getHeaders(), body: JSON.stringify(correction),
+  });
+  if (!response.ok) return responseError(response, 'Could not correct material cost');
   return response.json();
 };
 
@@ -56,7 +69,7 @@ export const createRawMaterial = async (material) => {
     headers: getHeaders(),
     body: JSON.stringify(material)
   });
-  if (!response.ok) throw new Error('Failed to create Raw Material');
+  if (!response.ok) await responseError(response, 'Failed to create Raw Material');
   return response.json();
 };
 
@@ -109,4 +122,16 @@ export const deleteCategory = async (id) => {
     headers: getHeaders()
   });
   if (!response.ok) throw new Error('Failed to delete Category');
+};
+
+export const createGoodsReceipt = async (receipt) => {
+  const response = await fetch(`${API_BASE_URL}/goods-receipts`, { method: 'POST', headers: getHeaders(), body: JSON.stringify(receipt) });
+  if (!response.ok) throw new Error('Failed to receive goods');
+  return response.json();
+};
+
+export const fetchGoodsReceipts = async () => {
+  const response = await fetch(`${API_BASE_URL}/goods-receipts`, { headers: getHeaders() });
+  if (!response.ok) throw new Error('Failed to fetch goods receipts');
+  return response.json();
 };

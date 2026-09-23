@@ -21,6 +21,9 @@ public class UnitOfMeasureService {
 
     @Transactional
     public UnitOfMeasure createUnitOfMeasure(UnitOfMeasure uom) {
+        if (uom.getBaseUnit() != null && uom.getBaseUnit().getId() != null) {
+            uom.setBaseUnit(findTenantUom(uom.getBaseUnit().getId(), uom.getTenantId()));
+        }
         return uomRepository.save(uom);
     }
 
@@ -35,8 +38,12 @@ public class UnitOfMeasureService {
         existing.setCategory(updateRequest.getCategory());
         existing.setConversionFactor(updateRequest.getConversionFactor());
         
-        if (updateRequest.getBaseUnit() != null) {
-            existing.setBaseUnit(uomRepository.findById(updateRequest.getBaseUnit().getId()).orElse(null));
+        if (updateRequest.getBaseUnit() == null || updateRequest.getBaseUnit().getId() == null) {
+            existing.setBaseUnit(null);
+        } else if (id.equals(updateRequest.getBaseUnit().getId())) {
+            throw new IllegalArgumentException("A unit of measure cannot be its own base unit");
+        } else {
+            existing.setBaseUnit(findTenantUom(updateRequest.getBaseUnit().getId(), tenantId));
         }
 
         return uomRepository.save(existing);
@@ -48,5 +55,11 @@ public class UnitOfMeasureService {
                 .filter(u -> u.getTenantId().equals(tenantId))
                 .orElseThrow(() -> new RuntimeException("UOM not found"));
         uomRepository.delete(existing);
+    }
+
+    private UnitOfMeasure findTenantUom(UUID id, UUID tenantId) {
+        return uomRepository.findById(id)
+                .filter(uom -> uom.getTenantId().equals(tenantId))
+                .orElseThrow(() -> new RuntimeException("Base UOM not found"));
     }
 }

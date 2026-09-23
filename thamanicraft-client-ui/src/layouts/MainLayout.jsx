@@ -89,6 +89,12 @@ export default function MainLayout() {
       permission: 'VIEW_PURCHASES' // Assume VIEW_PURCHASES mapped for procurement
     },
     {
+      key: '/assets',
+      icon: <Factory size={18} />,
+      label: 'Assets & Overheads',
+      permission: 'VIEW_FINANCE'
+    },
+    {
       key: '/customers',
       icon: <Users size={18} />,
       label: 'Customers',
@@ -129,7 +135,7 @@ export default function MainLayout() {
         <Menu
           theme={isDarkMode ? 'dark' : 'light'}
           mode="inline"
-          selectedKeys={[location.pathname]}
+          selectedKeys={[location.pathname.startsWith('/recipes/') ? '/recipes' : location.pathname]}
           onClick={({ key }) => navigate(key)}
           items={menuItems}
         />

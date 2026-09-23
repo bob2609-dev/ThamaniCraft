@@ -1,0 +1,77 @@
+package tz.co.thamanicraft.sales;
+
+import com.thamanicraft.security.context.TenantContext;
+import org.junit.jupiter.api.*;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.server.ResponseStatusException;
+import java.util.*;
+import java.math.BigDecimal;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+class OrderLifecycleTest {
+    final JdbcTemplate jdbc=mock(JdbcTemplate.class);
+    final SalesService service=new SalesService(jdbc);
+    final UUID tenant=UUID.randomUUID(),id=UUID.randomUUID();
+    @BeforeEach void setup(){TenantContext.setCurrentTenant(tenant);TenantContext.setCurrentUserId(UUID.randomUUID());}
+    @AfterEach void cleanup(){TenantContext.clear();}
+    void existing(String status,int version) {
+        when(jdbc.queryForList(contains("FOR UPDATE"),eq(tenant),eq(id)))
+            .thenReturn(List.of(Map.of("status",status,"version",version,"discount_amount",BigDecimal.TEN)));
+    }
+    @Test void confirmAuditsAndIncrementsVersion() {
+        existing("NEW",0);
+        service.transition(id,"confirm",new SalesRequests.Transition(0,"Agreed with customer"));
+        verify(jdbc).update(contains("version=version+1"),eq("CONFIRMED"),eq(tenant),eq(id));
+        verify(jdbc).update(contains("INSERT INTO sales.order_history"),any(Object[].class));
+    }
+    @Test void staleTransitionDoesNotWrite() {
+        existing("NEW",1);
+        assertEquals(409,assertThrows(ResponseStatusException.class,()->service.transition(id,"confirm",new SalesRequests.Transition(0,"Confirm"))).getStatusCode().value());
+        verify(jdbc,never()).update(anyString(),any(Object[].class));
+    }
+    @Test void foreignOrderNotFound() {
+        assertEquals(404,assertThrows(ResponseStatusException.class,()->service.transition(id,"cancel",new SalesRequests.Transition(0,"Cancel"))).getStatusCode().value());
+        verify(jdbc,never()).update(anyString(),any(Object[].class));
+    }
+    @Test void productionOrderCannotCancel() {
+        existing("IN_PRODUCTION",0);
+        assertThrows(ResponseStatusException.class,()->service.transition(id,"cancel",new SalesRequests.Transition(0,"Cancel")));
+        verify(jdbc,never()).update(anyString(),any(Object[].class));
+    }
+    @Test void confirmedOrderCanCancelWithoutDeletingHistory() {
+        existing("CONFIRMED",2);
+        service.transition(id,"cancel",new SalesRequests.Transition(2,"Customer cancelled"));
+        verify(jdbc).update(contains("version=version+1"),eq("CANCELLED"),eq(tenant),eq(id));
+        verify(jdbc,never()).update(contains("DELETE"),any(Object[].class));
+    }
+    @Test void confirmedOrderCannotEdit() {
+        existing("CONFIRMED",0);
+        assertThrows(ResponseStatusException.class,()->service.editOrder(id,new SalesRequests.Edit(0,null,"Change")));
+        verify(jdbc,never()).update(anyString(),any(Object[].class));
+    }
+    SalesRequests.Order request(UUID customer) {
+        return new SalesRequests.Order(UUID.randomUUID(),customer,java.time.OffsetDateTime.parse("2026-10-01T10:00:00+03:00"),
+            "COLLECTION",null,"Updated notes",null,BigDecimal.ZERO,new BigDecimal("20"),BigDecimal.ZERO,
+            List.of(new SalesRequests.Item("Cake",BigDecimal.ONE,"piece",new BigDecimal("100"),null)));
+    }
+    @Test void editRecalculatesAndAuditsWithoutChangingContactSnapshot() {
+        UUID customer=UUID.randomUUID();
+        when(jdbc.queryForList(contains("FOR UPDATE"),eq(tenant),eq(id)))
+            .thenReturn(List.of(Map.of("status","NEW","version",0,"customer_id",customer,"discount_amount",BigDecimal.TEN)));
+        var order=request(customer);
+        service.editOrder(id,new SalesRequests.Edit(0,order,"Negotiated discount"));
+        verify(jdbc).update(contains("UPDATE sales.orders SET due_at"),eq(order.dueAt()),eq("COLLECTION"),isNull(),
+            eq("Updated notes"),isNull(),eq(new BigDecimal("100.00")),eq(BigDecimal.ZERO),eq(new BigDecimal("20")),
+            eq(new BigDecimal("80.00")),eq(BigDecimal.ZERO),eq(tenant),eq(id));
+        verify(jdbc).update(contains("INSERT INTO sales.order_history"),any(UUID.class),eq(id),eq("EDITED"),
+            eq("Negotiated discount"),eq(BigDecimal.TEN),eq(new BigDecimal("20")),any(UUID.class));
+        verify(jdbc,never()).update(contains("customer_name="),any(Object[].class));
+    }
+    @Test void editCannotReplaceBookedCustomer() {
+        when(jdbc.queryForList(contains("FOR UPDATE"),eq(tenant),eq(id)))
+            .thenReturn(List.of(Map.of("status","NEW","version",0,"customer_id",UUID.randomUUID())));
+        assertThrows(ResponseStatusException.class,()->service.editOrder(id,new SalesRequests.Edit(0,request(UUID.randomUUID()),"Change")));
+        verify(jdbc,never()).update(anyString(),any(Object[].class));
+    }
+}

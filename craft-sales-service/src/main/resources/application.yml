@@ -1,0 +1,15 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: craft-sales-service
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:thamanicraft_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:postgres}
+  flyway:
+    schemas: sales
+    default-schema: sales
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 86400000

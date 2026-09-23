@@ -40,12 +40,12 @@ public class RawMaterial {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "base_uom_id", nullable = false)
-    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "baseUnit"})
     private UnitOfMeasure baseUom;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "purchase_uom_id", nullable = false)
-    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "baseUnit"})
     private UnitOfMeasure purchaseUom;
 
     @Column(name = "current_stock_base_qty", nullable = false, precision = 14, scale = 4)

@@ -3,6 +3,8 @@ package tz.co.thamanicraft.inventory.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import tz.co.thamanicraft.inventory.entity.RawMaterial;
 import tz.co.thamanicraft.inventory.repository.RawMaterialRepository;
 import tz.co.thamanicraft.inventory.repository.UnitOfMeasureRepository;
@@ -26,6 +28,12 @@ public class RawMaterialService {
 
     @Transactional
     public RawMaterial createRawMaterial(RawMaterial material) {
+        String sku = normalizeSku(material.getSku());
+        material.setSku(sku);
+        if (sku != null && rawMaterialRepository.findByTenantIdAndSkuIgnoreCase(material.getTenantId(), sku).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "A material with this SKU already exists. Use Goods Receipts to add stock and recalculate its weighted cost.");
+        }
         if (material.getBaseUom() != null) {
             material.setBaseUom(uomRepository.findById(material.getBaseUom().getId()).orElseThrow(() -> new RuntimeException("Base UOM not found")));
         }
@@ -40,14 +48,20 @@ public class RawMaterialService {
 
     @Transactional
     public RawMaterial updateRawMaterial(UUID id, RawMaterial updateRequest, UUID tenantId) {
-        RawMaterial existing = rawMaterialRepository.findById(id)
-                .filter(m -> m.getTenantId().equals(tenantId))
+        RawMaterial existing = rawMaterialRepository.findForUpdate(id, tenantId)
                 .orElseThrow(() -> new RuntimeException("Raw Material not found"));
 
-        existing.setSku(updateRequest.getSku());
+        String sku = normalizeSku(updateRequest.getSku());
+        if (sku != null) {
+            rawMaterialRepository.findByTenantIdAndSkuIgnoreCase(tenantId, sku)
+                    .filter(material -> !material.getId().equals(id))
+                    .ifPresent(material -> {
+                        throw new ResponseStatusException(HttpStatus.CONFLICT, "A material with this SKU already exists.");
+                    });
+        }
+
+        existing.setSku(sku);
         existing.setName(updateRequest.getName());
-        existing.setCurrentStockBaseQty(updateRequest.getCurrentStockBaseQty());
-        existing.setCostPerBaseUnit(updateRequest.getCostPerBaseUnit());
         existing.setReorderLevelBaseQty(updateRequest.getReorderLevelBaseQty());
         existing.setStorageLocation(updateRequest.getStorageLocation());
 
@@ -58,7 +72,13 @@ public class RawMaterialService {
         }
 
         if (updateRequest.getBaseUom() != null) {
-            existing.setBaseUom(uomRepository.findById(updateRequest.getBaseUom().getId()).orElseThrow());
+            UUID requestedBaseUomId = updateRequest.getBaseUom().getId();
+            if (!existing.getBaseUom().getId().equals(requestedBaseUomId)
+                    && existing.getCurrentStockBaseQty().signum() != 0) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT,
+                        "The base UOM cannot change while stock exists. Adjust or migrate the stock first.");
+            }
+            existing.setBaseUom(uomRepository.findById(requestedBaseUomId).orElseThrow());
         }
         if (updateRequest.getPurchaseUom() != null) {
             existing.setPurchaseUom(uomRepository.findById(updateRequest.getPurchaseUom().getId()).orElseThrow());
@@ -73,5 +93,12 @@ public class RawMaterialService {
                 .filter(m -> m.getTenantId().equals(tenantId))
                 .orElseThrow(() -> new RuntimeException("Raw Material not found"));
         rawMaterialRepository.delete(existing);
+    }
+
+    private String normalizeSku(String sku) {
+        if (sku == null || sku.isBlank()) {
+            return null;
+        }
+        return sku.trim();
     }
 }

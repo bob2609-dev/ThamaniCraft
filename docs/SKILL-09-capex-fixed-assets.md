@@ -1,5 +1,7 @@
 # SKILL-09: Capital Investments, Machinery & Overhead Amortization
 
+> Historical specification: on 2026-09-22 the user replaced depreciation and forecast allocation with a manual equipment-purchase and expense register. Recipe overhead is entered explicitly; register entries do not automatically affect recipes. See [PROGRESS](PROGRESS.md) for current scope. The amortization requirements below are not active implementation requirements.
+
 **Scope:** `craft-finance-service` & `craft-production-service`  
 **License Tier:** Optional / Toggleable Module (*CapEx & Fixed Assets*)  
 

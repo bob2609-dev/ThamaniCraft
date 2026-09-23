@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Tabs, Table, Button, Modal, Form, Input, Select, InputNumber, message, Space, Popconfirm, Row, Col } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import * as api from '../services/inventoryApi';
+import usePermissions from '../hooks/usePermissions';
+import CostCorrectionModal from '../components/CostCorrectionModal';
 
 const { TabPane } = Tabs;
 
 export default function Inventory() {
+  const { hasPermission } = usePermissions();
+  const [costMaterial, setCostMaterial] = useState(null);
   const [activeTab, setActiveTab] = useState('rawMaterials');
   
   // State for Raw Materials
@@ -14,6 +18,7 @@ export default function Inventory() {
   const [isRawMaterialModalVisible, setIsRawMaterialModalVisible] = useState(false);
   const [editingRawMaterial, setEditingRawMaterial] = useState(null);
   const [rawMaterialForm] = Form.useForm();
+  const selectedBaseUomId = Form.useWatch('baseUomId', rawMaterialForm);
 
   // State for UOM
   const [uoms, setUoms] = useState([]);
@@ -98,7 +103,7 @@ export default function Inventory() {
       loadUoms();
     } catch (error) {
       console.error(error);
-      message.error('Operation failed');
+      message.error(error.message || 'Operation failed');
     }
   };
 
@@ -176,6 +181,16 @@ export default function Inventory() {
     setIsRawMaterialModalVisible(true);
   };
 
+  const selectedBaseUom = uoms.find((uom) => uom.id === selectedBaseUomId);
+  const baseUnitLabel = selectedBaseUom?.symbol || 'base UOM';
+  const formatBaseQuantity = (value, material) => {
+    const quantity = Number(value ?? 0);
+    const formatted = Number.isFinite(quantity)
+      ? quantity.toLocaleString(undefined, { maximumFractionDigits: 4 })
+      : '0';
+    return `${formatted} ${material.baseUom?.symbol || ''}`.trim();
+  };
+
   const handleEditRawMaterial = (record) => {
     setEditingRawMaterial(record);
     rawMaterialForm.setFieldsValue({
@@ -218,7 +233,7 @@ export default function Inventory() {
       loadRawMaterials();
     } catch (error) {
       console.error(error);
-      message.error('Operation failed');
+      message.error(error.message || 'Operation failed');
     }
   };
 
@@ -246,16 +261,30 @@ export default function Inventory() {
   const rawMaterialColumns = [
     { title: 'SKU', dataIndex: 'sku', key: 'sku', responsive: ['md'] },
     { title: 'Name', dataIndex: 'name', key: 'name' },
+    { title: 'Unit cost (TZS)', dataIndex: 'costPerBaseUnit', key: 'cost',
+      render: (value, record) => `${Number(value).toLocaleString(undefined, { maximumFractionDigits: 4 })} / ${record.baseUom?.symbol || 'unit'}` },
     { title: 'Category', dataIndex: ['category', 'name'], key: 'category', responsive: ['lg'] },
     { title: 'Base UOM', dataIndex: ['baseUom', 'name'], key: 'baseUom', responsive: ['md'] },
-    { title: 'Current Stock', dataIndex: 'currentStockBaseQty', key: 'currentStock' },
-    { title: 'Reorder Level', dataIndex: 'reorderLevelBaseQty', key: 'reorderLevel', responsive: ['lg'] },
+    {
+      title: 'Current Stock (Base UOM)',
+      dataIndex: 'currentStockBaseQty',
+      key: 'currentStock',
+      render: (value, record) => formatBaseQuantity(value, record),
+    },
+    {
+      title: 'Reorder Level (Base UOM)',
+      dataIndex: 'reorderLevelBaseQty',
+      key: 'reorderLevel',
+      responsive: ['lg'],
+      render: (value, record) => formatBaseQuantity(value, record),
+    },
     {
       title: 'Actions',
       key: 'actions',
       render: (_, record) => (
         <Space size="middle">
           <Button icon={<EditOutlined />} onClick={() => handleEditRawMaterial(record)} />
+          {hasPermission('ADJUST_INVENTORY') && <Button onClick={() => setCostMaterial(record)}>Edit cost</Button>}
           <Popconfirm title="Sure to delete?" onConfirm={() => handleDeleteRawMaterial(record.id)}>
             <Button danger icon={<DeleteOutlined />} />
           </Popconfirm>
@@ -395,9 +424,16 @@ export default function Inventory() {
       </Modal>
 
       {/* Raw Material Modal */}
+      {costMaterial && <CostCorrectionModal key={costMaterial.id} material={costMaterial} onClose={() => setCostMaterial(null)} onSaved={(updated) => {
+        if (editingRawMaterial?.id === updated.id) {
+          setEditingRawMaterial(updated);
+          rawMaterialForm.setFieldValue('costPerBaseUnit', updated.costPerBaseUnit);
+        }
+        loadRawMaterials();
+      }} />}
       <Modal
         title={editingRawMaterial ? 'Edit Raw Material' : 'Add Raw Material'}
-        open={isRawMaterialModalVisible}
+        open={isRawMaterialModalVisible && !costMaterial}
         onOk={handleRawMaterialModalOk}
         onCancel={() => setIsRawMaterialModalVisible(false)}
         width={900}
@@ -422,8 +458,15 @@ export default function Inventory() {
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
-              <Form.Item name="baseUomId" label="Base UOM" rules={[{ required: true }]}>
-                <Select>
+              <Form.Item
+                name="baseUomId"
+                label="Base UOM (consumption unit)"
+                rules={[{ required: true }]}
+                extra={selectedBaseUom?.baseUnit
+                  ? `Recipe quantities will be in ${selectedBaseUom.name}. To use individual ${selectedBaseUom.baseUnit.name} units, select ${selectedBaseUom.baseUnit.name} as the Base UOM and keep ${selectedBaseUom.name} as the Purchase UOM.`
+                  : 'Choose the unit used in recipes: Piece for eggs, Gram for flour. Trays and bags belong in Purchase UOM.'}
+              >
+                <Select disabled={Boolean(editingRawMaterial && Number(editingRawMaterial.currentStockBaseQty) > 0)}>
                   {uoms.map(u => <Option key={u.id} value={u.id}>{u.name}</Option>)}
                 </Select>
               </Form.Item>
@@ -441,17 +484,31 @@ export default function Inventory() {
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
-              <Form.Item name="currentStockBaseQty" label="Current Stock (Base Qty)" rules={[{ required: true }]}>
-                <InputNumber className="w-full" min={0} />
+              <Form.Item
+                name="currentStockBaseQty"
+                label={editingRawMaterial ? `Current Stock (${baseUnitLabel})` : `Opening Stock (${baseUnitLabel})`}
+                rules={[{ required: true }]}
+                extra={editingRawMaterial ? 'Use Goods Receipts or a stock adjustment to change this balance.' : 'Enter this quantity in the selected base UOM.'}
+              >
+                <InputNumber className="w-full" min={0} disabled={Boolean(editingRawMaterial)} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
-              <Form.Item name="costPerBaseUnit" label="Cost per Base Unit" rules={[{ required: true }]}>
-                <InputNumber className="w-full" min={0} />
+              <Form.Item
+                name="costPerBaseUnit"
+                label={`Cost per ${baseUnitLabel} (TZS)`}
+                rules={[{ required: true }]}
+                extra={editingRawMaterial
+                  ? hasPermission('ADJUST_INVENTORY')
+                    ? <Button type="link" style={{ padding: 0 }} onClick={() => setCostMaterial(editingRawMaterial)}>Edit cost — enter a correction</Button>
+                    : 'Inventory adjustment permission is required to correct this cost.'
+                  : 'Enter the opening valuation per base unit.'}
+              >
+                <InputNumber className="w-full" min={0} disabled={Boolean(editingRawMaterial)} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
-              <Form.Item name="reorderLevelBaseQty" label="Reorder Level" rules={[{ required: true }]}>
+              <Form.Item name="reorderLevelBaseQty" label={`Reorder Level (${baseUnitLabel})`} rules={[{ required: true }]}>
                 <InputNumber className="w-full" min={0} />
               </Form.Item>
             </Col>

@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "units_of_measure")
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,7 +33,7 @@ public class UnitOfMeasure {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "base_unit_id")
-    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "baseUnit"})
     private UnitOfMeasure baseUnit;
 
     @Column(name = "conversion_factor", precision = 12, scale = 6)

@@ -121,8 +121,8 @@ services:
     container_name: thamanicraft-inventory-service
     environment:
       - TZ=Africa/Dar_es_Salaam
-      - DB_HOST=postgres
-      - DB_PORT=5432
+      - DB_HOST=${DB_HOST:-postgres}
+      - DB_PORT=${DB_PORT:-5432}
       - DB_NAME=${POSTGRES_DB:-thamanicraft_db}
       - DB_USER=${POSTGRES_USER:-postgres}
       - DB_PASS=${POSTGRES_PASSWORD:-postgres}
@@ -149,8 +149,8 @@ services:
     container_name: thamanicraft-production-service
     environment:
       - TZ=Africa/Dar_es_Salaam
-      - DB_HOST=postgres
-      - DB_PORT=5432
+      - DB_HOST=${DB_HOST:-postgres}
+      - DB_PORT=${DB_PORT:-5432}
       - DB_NAME=${POSTGRES_DB:-thamanicraft_db}
       - DB_USER=${POSTGRES_USER:-postgres}
       - DB_PASS=${POSTGRES_PASSWORD:-postgres}
@@ -170,6 +170,46 @@ services:
         condition: service_started
     restart: unless-stopped
 
+  thamanicraft-sales-service:
+    build:
+      context: .
+      dockerfile: craft-sales-service/Dockerfile
+    container_name: thamanicraft-sales-service
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+      - DB_HOST=${DB_HOST:-postgres}
+      - DB_PORT=${DB_PORT:-5432}
+      - DB_NAME=${POSTGRES_DB:-thamanicraft_db}
+      - DB_USER=${POSTGRES_USER:-postgres}
+      - DB_PASS=${POSTGRES_PASSWORD:-postgres}
+      - JWT_SECRET=${JWT_SECRET}
+    networks:
+      - thamanicraft-net
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  thamanicraft-finance-service:
+    build:
+      context: .
+      dockerfile: craft-finance-service/Dockerfile
+    container_name: thamanicraft-finance-service
+    environment:
+      - TZ=Africa/Dar_es_Salaam
+      - DB_HOST=${DB_HOST:-postgres}
+      - DB_PORT=${DB_PORT:-5432}
+      - DB_NAME=${POSTGRES_DB:-thamanicraft_db}
+      - DB_USER=${POSTGRES_USER:-postgres}
+      - DB_PASS=${POSTGRES_PASSWORD:-postgres}
+      - JWT_SECRET=${JWT_SECRET}
+    networks:
+      - thamanicraft-net
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
   thamanicraft-identity-service:
     build: 
       context: .
@@ -177,8 +217,8 @@ services:
     container_name: thamanicraft-identity-service
     environment:
       - TZ=Africa/Dar_es_Salaam
-      - DB_HOST=postgres
-      - DB_PORT=5432
+      - DB_HOST=${DB_HOST:-postgres}
+      - DB_PORT=${DB_PORT:-5432}
       - DB_NAME=${POSTGRES_DB:-thamanicraft_db}
       - DB_USER=${POSTGRES_USER:-postgres}
       - DB_PASS=${POSTGRES_PASSWORD:-postgres}
@@ -197,6 +237,10 @@ services:
       context: ./craft-gateway-service
     container_name: thamanicraft-gateway-1
     environment:
+      - FINANCE_HOST=thamanicraft-finance-service
+      - SALES_HOST=thamanicraft-sales-service
+      - SALES_PORT=8085
+      - FINANCE_PORT=8084
       - TZ=Africa/Dar_es_Salaam
       - IDENTITY_HOST=thamanicraft-identity-service
       - IDENTITY_PORT=8080
@@ -210,6 +254,7 @@ services:
       - thamanicraft-identity-service
       - thamanicraft-inventory-service
       - thamanicraft-production-service
+      - thamanicraft-finance-service
     restart: unless-stopped
 
   thamanicraft-gateway-2:
@@ -217,6 +262,10 @@ services:
       context: ./craft-gateway-service
     container_name: thamanicraft-gateway-2
     environment:
+      - FINANCE_HOST=thamanicraft-finance-service
+      - SALES_HOST=thamanicraft-sales-service
+      - SALES_PORT=8085
+      - FINANCE_PORT=8084
       - TZ=Africa/Dar_es_Salaam
       - IDENTITY_HOST=thamanicraft-identity-service
       - IDENTITY_PORT=8080
@@ -230,6 +279,7 @@ services:
       - thamanicraft-identity-service
       - thamanicraft-inventory-service
       - thamanicraft-production-service
+      - thamanicraft-finance-service
     restart: unless-stopped
 
 networks:

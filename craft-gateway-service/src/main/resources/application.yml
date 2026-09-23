@@ -7,6 +7,18 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: sales-service
+          uri: http://${SALES_HOST:localhost}:${SALES_PORT:8085}
+          predicates:
+            - Path=/api/sales/**
+          filters:
+            - StripPrefix=2
+        - id: finance-service
+          uri: http://${FINANCE_HOST:localhost}:${FINANCE_PORT:8084}
+          predicates:
+            - Path=/api/finance/**
+          filters:
+            - StripPrefix=2
         - id: identity-service
           uri: http://${IDENTITY_HOST:localhost}:${IDENTITY_PORT:8083}
           predicates:

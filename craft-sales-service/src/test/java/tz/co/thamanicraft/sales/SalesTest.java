@@ -11,7 +11,8 @@ import static org.mockito.Mockito.*;
 
 class SalesTest {
     private final JdbcTemplate jdbc=mock(JdbcTemplate.class);
-    private final SalesService service=new SalesService(jdbc);
+    private final InventoryDispatchClient dispatchClient=mock(InventoryDispatchClient.class);
+    private final SalesService service=new SalesService(jdbc, dispatchClient);
     private final UUID tenant=UUID.randomUUID(),customer=UUID.randomUUID();
     private BigDecimal n(String s){return new BigDecimal(s);}
     @AfterEach void cleanup(){TenantContext.clear();}
@@ -24,7 +25,7 @@ class SalesTest {
         assertThrows(ResponseStatusException.class,()->OrderTotals.total(n("100"),n("0"),n("10"),n("100")));
     }
     @Test void lineAmountsRoundToTwoDecimals() {
-        assertEquals(n("10.01"),OrderTotals.line(new SalesRequests.Item("Cake",n("1.001"),"piece",n("10"),null)));
+        assertEquals(n("10.01"),OrderTotals.line(new SalesRequests.Item("Cake",n("1.001"),"piece",n("10"),null,null,null)));
     }
     @Test void quickCustomerOnlyNeedsNameAndPhone() {
         try(var factory=jakarta.validation.Validation.buildDefaultValidatorFactory()) {
@@ -47,7 +48,7 @@ class SalesTest {
     private SalesRequests.Order order() {
         return new SalesRequests.Order(UUID.randomUUID(),customer,OffsetDateTime.parse("2026-10-01T10:00:00+03:00"),
                 "COLLECTION",null,null,null,n("0"),n("10"),n("0"),
-                List.of(new SalesRequests.Item("Cake",n("1"),"piece",n("100"),null)));
+                List.of(new SalesRequests.Item("Cake",n("1"),"piece",n("100"),null,null,null)));
     }
     @Test void foreignCustomerCannotBeUsedInOrder() {
         TenantContext.setCurrentTenant(tenant);

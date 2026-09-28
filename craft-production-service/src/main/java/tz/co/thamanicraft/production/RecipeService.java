@@ -26,6 +26,7 @@ public class RecipeService {
     private Map<String, Object> header(UUID tenant, UUID id) {
         var rows = jdbc.queryForList("""
                 SELECT id, name, description, yield_quantity AS "yieldQuantity", yield_uom_id AS "yieldUomId",
+                       (SELECT u.symbol FROM units_of_measure u WHERE u.id=recipes.yield_uom_id AND u.tenant_id=recipes.tenant_id) AS "yieldUnit",
                        labor_cost_per_batch AS "laborCostPerBatch", energy_cost_per_batch AS "energyCostPerBatch",
                        additional_overhead_per_batch AS "additionalOverheadPerBatch"
                 FROM recipes WHERE tenant_id=? AND id=? AND is_active=true

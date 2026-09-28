@@ -11,10 +11,13 @@ import org.springframework.web.server.ResponseStatusException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
+import jakarta.validation.constraints.*;
 
 @Service
 @RequiredArgsConstructor
 public class WorkOrderService {
+    public record GenerateRequest(@NotNull UUID recipeId, @NotNull @DecimalMin("0.0001") BigDecimal plannedYield,
+        @NotNull UUID orderId, @NotNull UUID orderItemId, @NotBlank String generationKey, String reference) {}
     private final JdbcTemplate jdbc;
     private UUID tenant() {
         UUID tenant = TenantContext.getCurrentTenant();
@@ -59,7 +62,7 @@ public class WorkOrderService {
     private List<Map<String,Object>> ingredients(UUID id) {
         return jdbc.queryForList("""
             SELECT i.raw_material_id AS "materialId",i.material_name AS name,i.unit,
-                i.planned_quantity AS quantity,i.unit_cost AS "unitCost",i.line_cost AS "lineCost",i.instructions,
+                i.planned_quantity AS quantity,i.actual_quantity AS "actualQuantity",i.unit_cost AS "unitCost",i.line_cost AS "lineCost",i.instructions,
                 m.current_stock_base_qty AS available,
                 (m.id IS NOT NULL AND m.base_uom_id=i.base_uom_id) AS compatible
             FROM production_batch_ingredients i
@@ -91,6 +94,20 @@ public class WorkOrderService {
                 """,request.recipeId(),request.plannedYield(),request.reference(),request.notes(),request.scheduledDate(),tenant(),id);
             audit(id,"EDITED");
         }
+        snapshot(id,request.recipeId(),request.plannedYield());
+        return id;
+    }
+    @Transactional(isolation=Isolation.REPEATABLE_READ)
+    public UUID generate(GenerateRequest request) {
+        var existing = jdbc.queryForList("SELECT id FROM production_batches WHERE tenant_id=? AND generation_key=?",tenant(),request.generationKey());
+        if (!existing.isEmpty()) return (UUID) existing.get(0).get("id");
+        UUID id = UUID.randomUUID();
+        recipe(request.recipeId());
+        jdbc.update("""
+            INSERT INTO production_batches(id,tenant_id,recipe_id,planned_yield,reference,order_id,order_item_id,generation_key,created_by)
+            VALUES (?,?,?,?,?,?,?,?,?)
+            """,id,tenant(),request.recipeId(),request.plannedYield(),request.reference(),request.orderId(),request.orderItemId(),request.generationKey(),TenantContext.getCurrentUserId());
+        audit(id,"CREATED");
         snapshot(id,request.recipeId(),request.plannedYield());
         return id;
     }
@@ -173,11 +190,56 @@ public class WorkOrderService {
             """,next,next,tenant(),id);
         audit(id,next);
     }
+    
+    @Transactional(isolation=Isolation.REPEATABLE_READ)
+    public void complete(UUID id, WorkOrderRequest.Completion request) {
+        var current = header(id, true);
+        checkVersion(current, request.version());
+        if (!"IN_PROGRESS".equals(current.get("status")) && !"COMPLETION_FAILED".equals(current.get("status"))) {
+            conflict("Only an in-progress or failed work order can be completed");
+        }
+        var required = ingredients(id);
+        if (required.isEmpty()) conflict("This work order has no ingredient snapshot");
+        if (request.ingredients() == null || request.ingredients().isEmpty()) {
+            conflict("All ingredients must have actual quantities reported");
+        }
+        for (var act : request.ingredients()) {
+            int updated = jdbc.update("UPDATE production_batch_ingredients SET actual_quantity=? WHERE tenant_id=? AND batch_id=? AND raw_material_id=?", 
+               act.actualQuantity(), tenant(), id, act.materialId());
+            if (updated == 0) conflict("Ingredient " + act.materialId() + " is not part of this batch");
+        }
+        jdbc.update("UPDATE production_batches SET status='COMPLETION_PENDING', actual_yield=?, scrap_count=?, version=version+1, updated_at=CURRENT_TIMESTAMP, completed_at=CURRENT_TIMESTAMP WHERE tenant_id=? AND id=?", 
+            request.actualYield(), request.scrapCount(), tenant(), id);
+        audit(id, "COMPLETION_PENDING");
+        
+        var recipe = jdbc.queryForList("SELECT finished_product_id FROM recipes WHERE id=? AND tenant_id=?", current.get("recipeId"), tenant());
+        UUID finishedProductId = recipe.isEmpty() ? null : (UUID) recipe.get(0).get("finished_product_id");
+        
+        try {
+            var mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+            var payload = new java.util.HashMap<String, Object>();
+            payload.put("tenantId", tenant());
+            payload.put("batchId", id);
+            payload.put("finishedProductId", finishedProductId);
+            payload.put("actualYield", request.actualYield());
+            payload.put("scrapCount", request.scrapCount());
+            var ingrList = new java.util.ArrayList<Map<String,Object>>();
+            for (var act : request.ingredients()) {
+                ingrList.add(Map.of("materialId", act.materialId(), "quantity", act.actualQuantity()));
+            }
+            payload.put("ingredients", ingrList);
+            
+            jdbc.update("INSERT INTO production_outbox(tenant_id, aggregate_type, aggregate_id, event_type, payload) VALUES (?, ?, ?, ?, ?::jsonb)",
+                tenant(), "Batch", id, "BatchCompleted", mapper.writeValueAsString(payload));
+        } catch(Exception e) {
+            throw new RuntimeException("Failed to serialize outbox payload", e);
+        }
+    }
     private void checkVersion(Map<String,Object> row,int version) {
         if (((Number)row.get("version")).intValue()!=version) conflict("Work order changed. Reload before trying again.");
     }
     private void audit(UUID id,String action) {
-        jdbc.update("INSERT INTO production_batch_history(id,tenant_id,batch_id,action,actor_id) VALUES (?,?,?,?,?)",
+        jdbc.update("INSERT INTO production_batch_history(id,tenant_id,batch_id,action,actor_id) VALUES (?::uuid,?::uuid,?::uuid,?,?::uuid)",
                 UUID.randomUUID(),tenant(),id,action,TenantContext.getCurrentUserId());
     }
     private void conflict(String message) { throw new ResponseStatusException(HttpStatus.CONFLICT,message); }

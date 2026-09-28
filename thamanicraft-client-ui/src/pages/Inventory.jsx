@@ -5,7 +5,7 @@ import * as api from '../services/inventoryApi';
 import usePermissions from '../hooks/usePermissions';
 import CostCorrectionModal from '../components/CostCorrectionModal';
 
-const { TabPane } = Tabs;
+
 
 export default function Inventory() {
   const { hasPermission } = usePermissions();
@@ -19,6 +19,14 @@ export default function Inventory() {
   const [editingRawMaterial, setEditingRawMaterial] = useState(null);
   const [rawMaterialForm] = Form.useForm();
   const selectedBaseUomId = Form.useWatch('baseUomId', rawMaterialForm);
+
+  // State for Finished Products
+  const [finishedProducts, setFinishedProducts] = useState([]);
+  const [loadingFinishedProducts, setLoadingFinishedProducts] = useState(false);
+  const [isFinishedProductModalVisible, setIsFinishedProductModalVisible] = useState(false);
+  const [editingFinishedProduct, setEditingFinishedProduct] = useState(null);
+  const [finishedProductForm] = Form.useForm();
+  const selectedFpBaseUomId = Form.useWatch('baseUomId', finishedProductForm);
 
   // State for UOM
   const [uoms, setUoms] = useState([]);
@@ -43,6 +51,10 @@ export default function Inventory() {
       loadUoms();
     } else if (activeTab === 'categories') {
       loadCategories();
+    } else if (activeTab === 'finishedProducts') {
+      loadFinishedProducts();
+      loadUoms(); // Need UOMs for dropdowns
+      loadCategories(); // Need Categories for dropdown
     }
   }, [activeTab]);
 
@@ -237,6 +249,70 @@ export default function Inventory() {
     }
   };
 
+  // Finished Product Functions
+  const loadFinishedProducts = async () => {
+    setLoadingFinishedProducts(true);
+    try {
+      const data = await api.fetchFinishedProducts();
+      setFinishedProducts(data);
+    } catch (error) {
+      message.error('Failed to load Finished Products');
+    } finally {
+      setLoadingFinishedProducts(false);
+    }
+  };
+
+  const handleAddFinishedProduct = () => {
+    setEditingFinishedProduct(null);
+    finishedProductForm.resetFields();
+    setIsFinishedProductModalVisible(true);
+  };
+
+  const selectedFpBaseUom = uoms.find((uom) => uom.id === selectedFpBaseUomId);
+  const fpBaseUnitLabel = selectedFpBaseUom?.symbol || 'base UOM';
+
+  const handleEditFinishedProduct = (record) => {
+    setEditingFinishedProduct(record);
+    finishedProductForm.setFieldsValue({
+      ...record,
+      baseUomId: record.baseUom?.id,
+    });
+    setIsFinishedProductModalVisible(true);
+  };
+
+  const handleDeleteFinishedProduct = async (id) => {
+    try {
+      await api.deleteFinishedProduct(id);
+      message.success('Finished Product deleted');
+      loadFinishedProducts();
+    } catch (error) {
+      message.error('Failed to delete Finished Product');
+    }
+  };
+
+  const handleFinishedProductModalOk = async () => {
+    try {
+      const values = await finishedProductForm.validateFields();
+      const payload = {
+        ...values,
+        baseUom: { id: values.baseUomId }
+      };
+
+      if (editingFinishedProduct) {
+        await api.updateFinishedProduct(editingFinishedProduct.id, payload);
+        message.success('Finished Product updated');
+      } else {
+        await api.createFinishedProduct(payload);
+        message.success('Finished Product created');
+      }
+      setIsFinishedProductModalVisible(false);
+      loadFinishedProducts();
+    } catch (error) {
+      console.error(error);
+      message.error(error.message || 'Operation failed');
+    }
+  };
+
   // Table Columns
   const uomColumns = [
     { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -293,6 +369,33 @@ export default function Inventory() {
     },
   ];
 
+  const finishedProductColumns = [
+    { title: 'SKU', dataIndex: 'sku', key: 'sku', responsive: ['md'] },
+    { title: 'Name', dataIndex: 'name', key: 'name' },
+    { title: 'Category', dataIndex: 'category', key: 'category', responsive: ['lg'] },
+    { title: 'Base UOM', dataIndex: ['baseUom', 'name'], key: 'baseUom', responsive: ['md'] },
+    {
+      title: 'Current Stock (Base UOM)',
+      dataIndex: 'currentStockBaseQty',
+      key: 'currentStock',
+      render: (value, record) => formatBaseQuantity(value, record),
+    },
+    { title: 'Unit cost (TZS)', dataIndex: 'costPerBaseUnit', key: 'cost',
+      render: (value, record) => `${Number(value).toLocaleString(undefined, { maximumFractionDigits: 4 })} / ${record.baseUom?.symbol || 'unit'}` },
+    {
+      title: 'Actions',
+      key: 'actions',
+      render: (_, record) => (
+        <Space size="middle">
+          <Button icon={<EditOutlined />} onClick={() => handleEditFinishedProduct(record)} />
+          <Popconfirm title="Sure to delete?" onConfirm={() => handleDeleteFinishedProduct(record.id)}>
+            <Button danger icon={<DeleteOutlined />} />
+          </Popconfirm>
+        </Space>
+      ),
+    },
+  ];
+
   const categoryColumns = [
     { title: 'Name', dataIndex: 'name', key: 'name' },
     { title: 'Description', dataIndex: 'description', key: 'description', responsive: ['md'] },
@@ -317,41 +420,70 @@ export default function Inventory() {
         <Button 
           type="primary" 
           icon={<PlusOutlined />} 
-          onClick={activeTab === 'rawMaterials' ? handleAddRawMaterial : activeTab === 'uom' ? handleAddUom : handleAddCategory}
+          onClick={activeTab === 'rawMaterials' ? handleAddRawMaterial : activeTab === 'finishedProducts' ? handleAddFinishedProduct : activeTab === 'uom' ? handleAddUom : handleAddCategory}
         >
-          Add {activeTab === 'rawMaterials' ? 'Material' : activeTab === 'uom' ? 'Unit' : 'Category'}
+          Add {activeTab === 'rawMaterials' ? 'Material' : activeTab === 'finishedProducts' ? 'Finished Product' : activeTab === 'uom' ? 'Unit' : 'Category'}
         </Button>
       </div>
 
-      <Tabs activeKey={activeTab} onChange={setActiveTab}>
-        <TabPane tab="Raw Materials" key="rawMaterials">
-          <Table 
-            columns={rawMaterialColumns} 
-            dataSource={rawMaterials} 
-            rowKey="id" 
-            loading={loadingRawMaterials} 
-            scroll={{ x: 'max-content' }}
-          />
-        </TabPane>
-        <TabPane tab="Categories" key="categories">
-          <Table 
-            columns={categoryColumns} 
-            dataSource={categories} 
-            rowKey="id" 
-            loading={loadingCategories} 
-            scroll={{ x: 'max-content' }}
-          />
-        </TabPane>
-        <TabPane tab="Units of Measure" key="uom">
-          <Table 
-            columns={uomColumns} 
-            dataSource={uoms} 
-            rowKey="id" 
-            loading={loadingUoms} 
-            scroll={{ x: 'max-content' }}
-          />
-        </TabPane>
-      </Tabs>
+      <Tabs 
+        activeKey={activeTab} 
+        onChange={setActiveTab}
+        items={[
+          {
+            key: 'rawMaterials',
+            label: 'Raw Materials',
+            children: (
+              <Table 
+                columns={rawMaterialColumns} 
+                dataSource={rawMaterials} 
+                rowKey="id" 
+                loading={loadingRawMaterials} 
+                scroll={{ x: 'max-content' }}
+              />
+            ),
+          },
+          {
+            key: 'finishedProducts',
+            label: 'Finished Products',
+            children: (
+              <Table 
+                columns={finishedProductColumns} 
+                dataSource={finishedProducts} 
+                rowKey="id" 
+                loading={loadingFinishedProducts} 
+                scroll={{ x: 'max-content' }}
+              />
+            ),
+          },
+          {
+            key: 'categories',
+            label: 'Categories',
+            children: (
+              <Table 
+                columns={categoryColumns} 
+                dataSource={categories} 
+                rowKey="id" 
+                loading={loadingCategories} 
+                scroll={{ x: 'max-content' }}
+              />
+            ),
+          },
+          {
+            key: 'uom',
+            label: 'Units of Measure',
+            children: (
+              <Table 
+                columns={uomColumns} 
+                dataSource={uoms} 
+                rowKey="id" 
+                loading={loadingUoms} 
+                scroll={{ x: 'max-content' }}
+              />
+            ),
+          }
+        ]}
+      />
 
       {/* Category Modal */}
       <Modal
@@ -510,6 +642,67 @@ export default function Inventory() {
             <Col xs={24} md={8}>
               <Form.Item name="reorderLevelBaseQty" label={`Reorder Level (${baseUnitLabel})`} rules={[{ required: true }]}>
                 <InputNumber className="w-full" min={0} />
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
+      </Modal>
+
+      {/* Finished Product Modal */}
+      <Modal
+        title={editingFinishedProduct ? 'Edit Finished Product' : 'Add Finished Product'}
+        open={isFinishedProductModalVisible}
+        onOk={handleFinishedProductModalOk}
+        onCancel={() => setIsFinishedProductModalVisible(false)}
+        width={900}
+      >
+        <Form form={finishedProductForm} layout="vertical">
+          <Row gutter={16}>
+            <Col xs={24} md={8}>
+              <Form.Item name="sku" label="SKU">
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item name="name" label="Name" rules={[{ required: true }]}>
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item name="category" label="Category">
+                <Select allowClear showSearch placeholder="Select category" optionFilterProp="label"
+                  options={categories.map(c => ({ value: c.name, label: c.name }))} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                name="baseUomId"
+                label="Base UOM (inventory unit)"
+                rules={[{ required: true }]}
+              >
+                <Select disabled={Boolean(editingFinishedProduct && Number(editingFinishedProduct.currentStockBaseQty) > 0)}>
+                  {uoms.map(u => <Option key={u.id} value={u.id}>{u.name}</Option>)}
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                name="currentStockBaseQty"
+                label={editingFinishedProduct ? `Current Stock (${fpBaseUnitLabel})` : `Opening Stock (${fpBaseUnitLabel})`}
+                rules={[{ required: false }]}
+                extra={editingFinishedProduct ? 'Read-only here. Alter via production or adjustment.' : 'Enter starting stock if available.'}
+              >
+                <InputNumber className="w-full" min={0} disabled={Boolean(editingFinishedProduct)} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                name="costPerBaseUnit"
+                label={`Cost per ${fpBaseUnitLabel} (TZS)`}
+                rules={[{ required: false }]}
+                extra="Average cost per unit."
+              >
+                <InputNumber className="w-full" min={0} disabled={Boolean(editingFinishedProduct)} />
               </Form.Item>
             </Col>
           </Row>

@@ -16,3 +16,8 @@ export const getExpenses = () => request('/expenses');
 export const getAssets = () => request('/assets');
 export const getLeases = () => request('/leases');
 export const saveFinanceRecord = (kind, id, values) => request(`/${kind}${id ? `/${id}` : ''}`, id ? 'PUT' : 'POST', values);
+
+// Ledger Endpoints
+export const getTrialBalance = () => request('/ledger/trial-balance');
+export const getJournalEntries = () => request('/ledger/journal');
+export const postJournalEntry = (entry) => request('/ledger/journal', 'POST', entry);

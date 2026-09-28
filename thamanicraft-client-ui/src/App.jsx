@@ -13,6 +13,7 @@ import Procurement from './pages/Procurement';
 import Customers from './pages/Customers';
 import Reports from './pages/Reports';
 import Settings from './pages/Settings';
+import Profile from './pages/Profile';
 import Login from './pages/auth/Login';
 import usePermissions from './hooks/usePermissions';
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="customers" element={<Customers />} />
         <Route path="reports" element={<Reports />} />
         <Route path="settings" element={<Settings />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
     </Routes>
   );

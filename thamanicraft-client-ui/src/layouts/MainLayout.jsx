@@ -44,6 +44,15 @@ export default function MainLayout() {
 
   const userMenuItems = [
     {
+      key: 'profile',
+      icon: <User size={16} />,
+      label: 'Profile',
+      onClick: () => navigate('/profile')
+    },
+    {
+      type: 'divider',
+    },
+    {
       key: 'logout',
       icon: <LogOut size={16} />,
       label: 'Logout',

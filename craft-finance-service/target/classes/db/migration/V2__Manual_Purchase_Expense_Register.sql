@@ -5,7 +5,7 @@ ALTER TABLE fixed_assets
     ALTER COLUMN allocation_type DROP NOT NULL,
     ADD COLUMN reference VARCHAR(255),
     ADD COLUMN notes VARCHAR(4000);
-ALTER TABLE fixed_assets DROP CONSTRAINT fixed_assets_salvage_value_check;
+ALTER TABLE fixed_assets DROP CONSTRAINT fixed_assets_check;
 ALTER TABLE fixed_assets ADD CONSTRAINT fixed_assets_salvage_value_check CHECK (salvage_value >= 0);
 
 CREATE TABLE expenses (

@@ -44,6 +44,8 @@ Agent activated → Check frontmatter "skills:" → Read SKILL.md (INDEX) → Re
 
 ## 📁 File Dependency Awareness
 
+For project changes or new verification findings, follow [handover-progress](handover-progress.md): keep `docs/HANDOVER.md`, `docs/PROGRESS.md` and affected plans consistent before the final handoff.
+
 **Before modifying ANY file:**
 
 1. If `CODEBASE.md` exists, check its File Dependencies section.

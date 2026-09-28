@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Alert, App, Button, Card, Col, Descriptions, Form, Input, InputNumber, Popconfirm, Row, Select, Space, Spin, Table, Tag, Typography } from 'antd';
+import { Alert, App, Button, Card, Col, Descriptions, Form, Input, InputNumber, Popconfirm, Row, Select, Space, Spin, Table, Tag, Typography, Modal } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import * as api from '../services/productionApi';
 import usePermissions from '../hooks/usePermissions';
@@ -15,6 +15,8 @@ export default function WorkOrder() {
   const canView = hasPermission('VIEW_PRODUCTION');
   const canEdit = hasPermission('EXECUTE_PRODUCTION');
   const [form] = Form.useForm();
+  const [completeForm] = Form.useForm();
+  const [completeModal, setCompleteModal] = useState(false);
   const [order, setOrder] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -36,6 +38,19 @@ export default function WorkOrder() {
       .finally(() => { if (active) setLoaded(true); });
     return () => { active = false; };
   }, [id, canView, form, revision]);
+
+  useEffect(() => {
+    if (!order || order.status !== 'COMPLETION_PENDING') return;
+    const timer = setInterval(() => {
+      api.getWorkOrder(id).then(record => {
+        setOrder(record);
+        if (record.status !== 'COMPLETION_PENDING') {
+          setRevision(v => v + 1);
+        }
+      }).catch(err => console.error("Polling error", err));
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [order?.status, id]);
   async function save(values) {
     if (saving) return;
     setSaving(true);
@@ -55,6 +70,27 @@ export default function WorkOrder() {
     } catch (failure) { message.error(failure.message); }
     finally { setSaving(false); }
   }
+  
+  function openCompleteModal() {
+    completeForm.setFieldsValue({
+      actualYield: order.actualYield || order.plannedYield,
+      scrapCount: order.scrapCount || 0,
+      ingredients: order.ingredients.map(i => ({ materialId: i.materialId, name: i.name, unit: i.unit, actualQuantity: i.actualQuantity || i.quantity }))
+    });
+    setCompleteModal(true);
+  }
+  
+  async function completeBatch(values) {
+    if (saving) return;
+    setSaving(true);
+    try {
+      await api.completeWorkOrder(id, { ...values, version: order.version });
+      message.success('Work order completed');
+      setCompleteModal(false);
+      setRevision(v => v + 1);
+    } catch (failure) { message.error(failure.message); }
+    finally { setSaving(false); }
+  }
   if (!canView) return <Alert type="warning" title="Production viewing permission is required." />;
   const draft = !order || order.status === 'DRAFT';
   const hasShortage = order?.ingredients?.some(line => !line.compatible || Number(line.available) < Number(line.quantity));
@@ -64,8 +100,8 @@ export default function WorkOrder() {
   return <div className="p-6 bg-gray-100 dark:bg-gray-500 rounded-lg shadow">
     <Button icon={<ArrowLeftOutlined />} onClick={() => navigate('/production')} disabled={saving} style={{ marginBottom: 16 }}>Back to work orders</Button>
     <Typography.Title level={2}>{id ? 'Work order' : 'New work order'} {order && <Tag>{order.status.replaceAll('_', ' ')}</Tag>}</Typography.Title>
-    <Alert type="info" showIcon title="Development stage: completion and stock posting are not enabled."
-      description="Scheduling freezes recipe requirements and planned costs. Stock availability is advisory; no stock is reserved." style={{ marginBottom: 16 }} />
+    <Alert type="info" showIcon title="Development stage: completion uses a basic outbox pattern."
+      description="Scheduling freezes recipe requirements and planned costs. Stock availability is advisory. Completion sends outbox events." style={{ marginBottom: 16 }} />
     {!loaded ? <Spin /> : error ? <Alert type="error" title={error} action={<Button onClick={() => setRevision(v => v + 1)}>Reload</Button>} /> : <>
       <Card className="dark:bg-slate-800" title="Work order details" style={{ marginBottom: 24 }}>
         {draft ? <Form form={form} layout="vertical" onFinish={save} onValuesChange={() => setDirty(true)} disabled={!canEdit || saving} scrollToFirstError>
@@ -109,6 +145,8 @@ export default function WorkOrder() {
           {canEdit && <Space wrap>
             {order.status === 'DRAFT' && action('schedule', 'Schedule saved draft')}
             {order.status === 'SCHEDULED' && action('start', 'Start batch')}
+            {order.status === 'IN_PROGRESS' && <Button type="primary" onClick={openCompleteModal}>Complete batch...</Button>}
+            {order.status === 'COMPLETION_FAILED' && <Button type="primary" onClick={openCompleteModal}>Retry completion...</Button>}
             {['DRAFT', 'SCHEDULED'].includes(order.status) && action('cancel', 'Cancel work order', true)}
           </Space>}
         </Card>
@@ -120,5 +158,40 @@ export default function WorkOrder() {
         </Card>
       </>}
     </>}
+    <Modal title="Complete Production Batch" open={completeModal} onCancel={() => setCompleteModal(false)} onOk={completeForm.submit} confirmLoading={saving} width={800}>
+      <Alert type="info" message="Review and record actual usage and output before confirming completion." showIcon style={{marginBottom: 16}} />
+      <Form form={completeForm} layout="vertical" onFinish={completeBatch}>
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item name="actualYield" label={`Actual good output (${order?.outputUnit || ''})`} rules={[{required: true}]}>
+               <InputNumber min={0.01} precision={2} style={{width:'100%'}} />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item name="scrapCount" label={`Scrap/rejected (${order?.outputUnit || ''})`} rules={[{required: true}]}>
+               <InputNumber min={0} precision={2} style={{width:'100%'}} />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Typography.Title level={5}>Ingredient Actuals</Typography.Title>
+        <Form.List name="ingredients">
+          {(fields) => (
+            <Table size="small" pagination={false} dataSource={fields} rowKey="name" columns={[
+              { title: 'Material', render: (_, field) => completeForm.getFieldValue(['ingredients', field.name, 'name']) },
+              { title: 'Unit', render: (_, field) => completeForm.getFieldValue(['ingredients', field.name, 'unit']) },
+              { title: 'Actual Quantity', render: (_, field) => (
+                  <>
+                    <Form.Item name={[field.name, 'materialId']} noStyle><Input type="hidden" /></Form.Item>
+                    <Form.Item name={[field.name, 'actualQuantity']} rules={[{required:true}]} noStyle>
+                       <InputNumber min={0.0001} precision={4} />
+                    </Form.Item>
+                  </>
+                )
+              }
+            ]} />
+          )}
+        </Form.List>
+      </Form>
+    </Modal>
   </div>;
 }

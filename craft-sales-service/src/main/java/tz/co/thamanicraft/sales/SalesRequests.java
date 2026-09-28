@@ -26,5 +26,14 @@ public class SalesRequests {
         @NotNull @DecimalMin("0.0001") @Digits(integer=8,fraction=4) BigDecimal quantity,
         @NotBlank @Size(max=40) String unit,
         @NotNull @DecimalMin("0") @Digits(integer=10,fraction=2) BigDecimal unitPrice,
-        @Size(max=1000) String instructions) {}
+        @Size(max=1000) String instructions,
+        UUID finishedProductId,
+        @Size(max=255) String finishedProductName) {}
+    public record Fulfill(@NotNull @Min(0) Integer version,
+        @Size(max=255) String carrierOrCollector,
+        @Size(max=1000) String notes) {}
+    public record SettleCancellation(@NotNull @Min(0) Integer version,
+        @NotBlank @Size(max=1000) String reason,
+        @NotNull @DecimalMin("0") @Digits(integer=12,fraction=2) BigDecimal retainedDeposit,
+        @NotNull @Pattern(regexp="RETAIN_IN_STOCK|SCRAP|NONE") String inventoryDisposition) {}
 }

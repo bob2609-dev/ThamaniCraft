@@ -135,3 +135,37 @@ export const fetchGoodsReceipts = async () => {
   if (!response.ok) throw new Error('Failed to fetch goods receipts');
   return response.json();
 };
+
+export const fetchFinishedProducts = async () => {
+  const response = await fetch(`${API_BASE_URL}/finished-products`, { headers: getHeaders() });
+  if (!response.ok) throw new Error('Failed to fetch Finished Products');
+  return response.json();
+};
+
+export const createFinishedProduct = async (product) => {
+  const response = await fetch(`${API_BASE_URL}/finished-products`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify(product)
+  });
+  if (!response.ok) await responseError(response, 'Failed to create Finished Product');
+  return response.json();
+};
+
+export const updateFinishedProduct = async (id, product) => {
+  const response = await fetch(`${API_BASE_URL}/finished-products/${id}`, {
+    method: 'PUT',
+    headers: getHeaders(),
+    body: JSON.stringify(product)
+  });
+  if (!response.ok) throw new Error('Failed to update Finished Product');
+  return response.json();
+};
+
+export const deleteFinishedProduct = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/finished-products/${id}`, {
+    method: 'DELETE',
+    headers: getHeaders()
+  });
+  if (!response.ok) throw new Error('Failed to delete Finished Product');
+};

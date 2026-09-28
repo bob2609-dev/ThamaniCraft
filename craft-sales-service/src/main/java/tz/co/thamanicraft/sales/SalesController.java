@@ -33,7 +33,17 @@ public class SalesController {
     public Map<String,UUID> transition(@PathVariable UUID id,@PathVariable String action,@Valid @RequestBody SalesRequests.Transition request) {
         service.transition(id,action,request); return Map.of("id",id);
     }
+    @PostMapping("/orders/{id}/fulfill") @PreAuthorize("hasRole('OWNER') or hasAuthority('PROCESS_SALES')")
+    public Map<String,UUID> fulfill(@PathVariable UUID id, @Valid @RequestBody SalesRequests.Fulfill request, @RequestHeader("Authorization") String auth) {
+        service.fulfillOrder(id, request, auth);
+        return Map.of("id", id);
+    }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ProblemDetail validation(MethodArgumentNotValidException e) { return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
         e.getBindingResult().getFieldErrors().stream().map(f->f.getField()+": "+f.getDefaultMessage()).findFirst().orElse("Check form fields")); }
+    @PostMapping("/orders/{id}/settle-cancellation") @PreAuthorize("hasRole('OWNER') or hasAuthority('PROCESS_SALES')")
+    public Map<String,UUID> settleCancellation(@PathVariable UUID id, @Valid @RequestBody SalesRequests.SettleCancellation request, @RequestHeader("Authorization") String auth) {
+        service.settleCancellation(id, request, auth);
+        return Map.of("id", id);
+    }
 }

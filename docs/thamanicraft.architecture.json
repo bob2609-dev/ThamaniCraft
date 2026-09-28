@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "ThamaniCraft — Food & Craft Manufacturing ERP",
+    "output": "thamanicraft-architecture.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "request-flow",
+        "label": "Client request path",
+        "focus": ["tenants", "nginx", "gateway", "identity", "sales", "inventory", "production", "finance", "postgres"],
+        "note": "Tenant request enters Nginx, routes through Gateway cluster, JWT-authenticated, reaches the microservices."
+      },
+      {
+        "id": "event-driven",
+        "label": "Event-driven production",
+        "focus": ["sales", "production", "inventory", "rabbitmq"],
+        "note": "Order triggers work-order generation. Batch completion publishes events via RabbitMQ for inventory posting."
+      },
+      {
+        "id": "frontend-layer",
+        "label": "Frontend applications",
+        "focus": ["tenants", "nginx", "client-ui", "admin-ui", "gateway"],
+        "note": "Two Vite+React SPAs served behind Nginx with tenant-aware hostname routing to the gateway cluster."
+      }
+    ]
+  },
+  "components": [
+    { "id": "tenants", "type": "external", "label": "Tenants", "sublabel": "Browser clients", "pos": [40, 300], "size": [120, 60] },
+
+    { "id": "nginx", "type": "cloud", "label": "Nginx", "sublabel": "Reverse Proxy :8090", "pos": [260, 300], "size": [140, 60], "tag": "Tenant routing" },
+
+    { "id": "client-ui", "type": "frontend", "label": "Client UI", "sublabel": "Vite + React :3020", "pos": [260, 80], "size": [140, 60] },
+    { "id": "admin-ui", "type": "frontend", "label": "Admin UI", "sublabel": "Vite + React :3021", "pos": [260, 520], "size": [140, 60] },
+
+    { "id": "gateway", "type": "backend", "label": "API Gateway", "sublabel": "Spring Cloud ×2", "pos": [520, 300], "size": [140, 60], "tag": "HA cluster" },
+
+    { "id": "identity", "type": "security", "label": "Identity", "sublabel": "Auth + RBAC :8083", "pos": [800, 60], "size": [140, 60], "tag": "JWT" },
+    { "id": "sales", "type": "backend", "label": "Sales", "sublabel": "Orders + Payments :8085", "pos": [800, 210], "size": [140, 60] },
+    { "id": "inventory", "type": "backend", "label": "Inventory", "sublabel": "Materials + GRN :8080", "pos": [800, 360], "size": [140, 60] },
+    { "id": "production", "type": "backend", "label": "Production", "sublabel": "Work Orders :8081", "pos": [800, 510], "size": [140, 60] },
+    { "id": "finance", "type": "backend", "label": "Finance", "sublabel": "Assets + Expenses :8084", "pos": [800, 660], "size": [140, 60] },
+
+    { "id": "postgres", "type": "database", "label": "PostgreSQL 16", "sublabel": "Shared DB :5432", "pos": [1120, 300], "size": [150, 70], "tag": "Schema-per-service" },
+
+    { "id": "rabbitmq", "type": "messagebus", "label": "RabbitMQ", "sublabel": "Event Bus :5672", "pos": [1120, 540], "size": [150, 60] }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Docker Compose — TZ: Africa/Dar_es_Salaam",
+      "wraps": ["nginx", "client-ui", "admin-ui", "gateway", "identity", "sales", "inventory", "production", "finance", "rabbitmq", "postgres"]
+    },
+    {
+      "kind": "security-group",
+      "label": "Security & Auth",
+      "wraps": ["identity"]
+    },
+    {
+      "kind": "security-group",
+      "label": "Business Domain Services",
+      "wraps": ["sales", "inventory", "production", "finance"]
+    }
+  ],
+  "connections": [
+    { "id": "tenant-nginx", "from": "tenants", "to": "nginx", "label": "HTTPS", "variant": "emphasis" },
+
+    { "id": "nginx-client", "from": "nginx", "to": "client-ui", "label": "tenant host", "variant": "dashed", "fromSide": "top", "toSide": "bottom" },
+    { "id": "nginx-admin", "from": "nginx", "to": "admin-ui", "label": "admin host", "variant": "dashed", "fromSide": "bottom", "toSide": "top", "labelDy": 80 },
+
+    { "id": "nginx-gw", "from": "nginx", "to": "gateway", "label": "/api/*" },
+
+    { "id": "gw-identity", "from": "gateway", "to": "identity", "label": "auth", "variant": "security" },
+    { "id": "gw-sales", "from": "gateway", "to": "sales" },
+    { "id": "gw-inventory", "from": "gateway", "to": "inventory" },
+    { "id": "gw-production", "from": "gateway", "to": "production" },
+    { "id": "gw-finance", "from": "gateway", "to": "finance" },
+
+    { "id": "identity-db", "from": "identity", "to": "postgres", "via": [[1195, 90]], "fromSide": "right", "toSide": "top" },
+    { "id": "sales-db", "from": "sales", "to": "postgres", "fromSide": "right", "toSide": "left" },
+    { "id": "inventory-db", "from": "inventory", "to": "postgres", "label": "Flyway + SQL", "labelDx": 40, "fromSide": "right", "toSide": "left" },
+    { "id": "production-db", "from": "production", "to": "postgres", "via": [[870, 615], [1320, 615], [1320, 335]], "fromSide": "bottom", "toSide": "right" },
+    { "id": "finance-db", "from": "finance", "to": "postgres", "via": [[1350, 690], [1350, 335]], "fromSide": "right", "toSide": "right" },
+
+    { "id": "production-rabbit", "from": "production", "to": "rabbitmq", "label": "BatchCompleted", "labelDx": 40, "fromSide": "right", "toSide": "left" },
+    { "id": "inventory-rabbit", "from": "rabbitmq", "to": "inventory", "label": "StockPosted", "via": [[990, 570], [990, 390]], "fromSide": "left", "toSide": "right" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Edge Layer", "items": ["Nginx reverse proxy with tenant-aware hostname routing", "Two Vite+React SPAs: Tenant UI and Admin UI", "Spring Cloud Gateway HA cluster (2 instances, round-robin)"] },
+    { "dot": "emerald", "title": "Domain Services", "items": ["Identity: JWT auth, RBAC permissions, tenant context", "Sales: customer orders, payments, recipe mapping, finished products", "Inventory: raw materials, GRN, UOM, cost corrections, finished products", "Production: work orders, batch execution, completion events", "Finance: manual equipment purchases and expense register"] },
+    { "dot": "violet", "title": "Data Layer", "items": ["PostgreSQL 16: one database, isolated Flyway schemas per service", "RabbitMQ: BatchCompleted, StockPosted, StockPostFailed events", "Outbox pattern for reliable cross-service event delivery"] },
+    { "dot": "rose", "title": "Cross-Service Flows", "items": ["Sales calls Production REST API to generate work orders", "Batch completion publishes BatchCompleted to RabbitMQ", "Inventory listens, deducts materials, credits finished goods", "Inventory replies StockPosted or StockPostFailed via RabbitMQ"] }
+  ]
+}

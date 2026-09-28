@@ -11,7 +11,8 @@ import static org.mockito.Mockito.*;
 
 class OrderLifecycleTest {
     final JdbcTemplate jdbc=mock(JdbcTemplate.class);
-    final SalesService service=new SalesService(jdbc);
+    final InventoryDispatchClient dispatchClient=mock(InventoryDispatchClient.class);
+    final SalesService service=new SalesService(jdbc, dispatchClient);
     final UUID tenant=UUID.randomUUID(),id=UUID.randomUUID();
     @BeforeEach void setup(){TenantContext.setCurrentTenant(tenant);TenantContext.setCurrentUserId(UUID.randomUUID());}
     @AfterEach void cleanup(){TenantContext.clear();}
@@ -50,10 +51,22 @@ class OrderLifecycleTest {
         assertThrows(ResponseStatusException.class,()->service.editOrder(id,new SalesRequests.Edit(0,null,"Change")));
         verify(jdbc,never()).update(anyString(),any(Object[].class));
     }
+    @Test void fulfillConfirmedOrderDispatchesFinishedProducts() {
+        when(jdbc.queryForList(contains("FOR UPDATE"),eq(tenant),eq(id)))
+            .thenReturn(List.of(Map.of("status","CONFIRMED","version",1,"fulfillment_status","UNFULFILLED","discount_amount",BigDecimal.ZERO)));
+        UUID fpId = UUID.randomUUID();
+        when(jdbc.queryForList(contains("sales.order_items"),eq(id)))
+            .thenReturn(List.of(Map.of("finished_product_id",fpId,"quantity",new BigDecimal("5.0"),"description","Chocolate Cake")));
+        
+        service.fulfillOrder(id, new SalesRequests.Fulfill(1, "John Driver", "Delivered to shop"), "Bearer token");
+        
+        verify(dispatchClient).dispatch(eq(fpId), eq(new BigDecimal("5.0")), contains("Order ORD-"), eq("Delivered to shop"), eq("Bearer token"));
+        verify(jdbc).update(contains("fulfillment_status='FULFILLED'"), any(UUID.class), eq("John Driver"), eq("Delivered to shop"), eq(tenant), eq(id));
+    }
     SalesRequests.Order request(UUID customer) {
         return new SalesRequests.Order(UUID.randomUUID(),customer,java.time.OffsetDateTime.parse("2026-10-01T10:00:00+03:00"),
             "COLLECTION",null,"Updated notes",null,BigDecimal.ZERO,new BigDecimal("20"),BigDecimal.ZERO,
-            List.of(new SalesRequests.Item("Cake",BigDecimal.ONE,"piece",new BigDecimal("100"),null)));
+            List.of(new SalesRequests.Item("Cake",BigDecimal.ONE,"piece",new BigDecimal("100"),null,null,null)));
     }
     @Test void editRecalculatesAndAuditsWithoutChangingContactSnapshot() {
         UUID customer=UUID.randomUUID();

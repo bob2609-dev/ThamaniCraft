@@ -1,3 +1,6 @@
 /home/bob2609/Projects/ThamaniCraft/craft-sales-service/src/test/java/tz/co/thamanicraft/sales/SalesSecurityTest.java
+/home/bob2609/Projects/ThamaniCraft/craft-sales-service/src/test/java/tz/co/thamanicraft/sales/OrderRecipeMappingTest.java
 /home/bob2609/Projects/ThamaniCraft/craft-sales-service/src/test/java/tz/co/thamanicraft/sales/OrderLifecycleTest.java
+/home/bob2609/Projects/ThamaniCraft/craft-sales-service/src/test/java/tz/co/thamanicraft/sales/PaymentSecurityTest.java
 /home/bob2609/Projects/ThamaniCraft/craft-sales-service/src/test/java/tz/co/thamanicraft/sales/SalesTest.java
+/home/bob2609/Projects/ThamaniCraft/craft-sales-service/src/test/java/tz/co/thamanicraft/sales/PaymentTest.java

@@ -1,4 +1,8 @@
-tz/co/thamanicraft/sales/SalesTest.class
+tz/co/thamanicraft/sales/OrderRecipeMappingTest.class
+tz/co/thamanicraft/sales/PaymentSecurityTest$Security.class
 tz/co/thamanicraft/sales/SalesSecurityTest.class
-tz/co/thamanicraft/sales/OrderLifecycleTest.class
+tz/co/thamanicraft/sales/PaymentSecurityTest.class
 tz/co/thamanicraft/sales/SalesSecurityTest$Security.class
+tz/co/thamanicraft/sales/SalesTest.class
+tz/co/thamanicraft/sales/OrderLifecycleTest.class
+tz/co/thamanicraft/sales/PaymentTest.class

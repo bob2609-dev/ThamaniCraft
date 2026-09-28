@@ -31,14 +31,12 @@ export default function Production() {
       <Typography.Title level={2} style={{ margin: 0 }}>Production work orders</Typography.Title>
       {hasPermission('EXECUTE_PRODUCTION') && <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate('/production/new')}>New work order</Button>}
     </Space>
-    <Alert type="info" showIcon title="Planning and starting batches are available. Completion and stock posting are not enabled yet."
-      description="No inventory is reserved or deducted by these work orders." style={{ marginBottom: 16 }} />
     {error && <Alert type="error" title={error} action={<Button onClick={() => { setLoading(true); setRevision(v => v + 1); }}>Retry</Button>} style={{ marginBottom: 16 }} />}
     <Card className="dark:bg-slate-800">
       <Space wrap style={{ marginBottom: 16 }}>
         <Input aria-label="Search work orders" placeholder="Search reference or recipe" value={query} onChange={e => setQuery(e.target.value)} allowClear />
         <Select aria-label="Filter by status" placeholder="All statuses" value={status} onChange={setStatus} allowClear style={{ width: 200 }}
-          options={['DRAFT', 'SCHEDULED', 'IN_PROGRESS', 'CANCELLED'].map(value => ({ value, label: value.replaceAll('_', ' ') }))} />
+          options={['DRAFT', 'SCHEDULED', 'IN_PROGRESS', 'COMPLETION_PENDING', 'COMPLETED', 'COMPLETION_FAILED', 'CANCELLED'].map(value => ({ value, label: value.replaceAll('_', ' ') }))} />
       </Space>
       <Table rowKey="id" loading={loading} dataSource={filtered} scroll={{ x: 950 }} columns={[
         { title: 'Reference', dataIndex: 'reference', render: (value, row) => value || row.id.slice(0, 8) },

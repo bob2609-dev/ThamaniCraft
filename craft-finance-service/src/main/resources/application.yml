@@ -10,6 +10,10 @@ spring:
   flyway:
     schemas: finance
     default-schema: finance
+  jpa:
+    properties:
+      hibernate:
+        default_schema: finance
 jwt:
   secret: ${JWT_SECRET}
   expiration: 86400000

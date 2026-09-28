@@ -1,4 +1,5 @@
 com/thamanicraft/security/context/TenantContext.class
+com/thamanicraft/security/exception/GlobalExceptionHandler.class
 com/thamanicraft/security/config/CommonSecurityConfig.class
 com/thamanicraft/security/filter/JwtAuthFilter.class
 com/thamanicraft/security/util/JwtUtil.class

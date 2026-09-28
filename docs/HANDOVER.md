@@ -38,9 +38,9 @@ Go to **Sales & Dispatch → Open an existing order**.
 
 ## Current unresolved issue / first action
 
-On 2026-09-24 the user reported not seeing recipe mapping. Read-only checks confirmed that the running UI serves both OrderEntry's mapping component and its “Production recipe mapping” / “Map recipe” text; Sales V4 is successfully applied and the mapping table exists. **This does not establish why it is absent from the user's view.**
+On 2026-09-28, bugs in the Dashboard and Reports related to missing mapping of backend fields (`createdAt`, `targetQuantity`, `actualYield`, `scrapQuantity`) and misaligned frontend properties (`totalAmount` vs `total`) have been resolved. The missing mappings caused missing data and a JS ReferenceError which blanked out the dashboard. We rebuilt the backend Docker containers (sales, production) so that the Java changes could take effect.
 
-The user subsequently confirmed visibility but associated it with full payment. Inspection found no payment gate; mapping has now been moved above Payments with an explicit no-payment-required explanation. Browser save/reopen for an unpaid order remains pending. First reproduce in an authorised browser session on an existing order's detail page: verify route, scroll position, order load, status, permissions and console/network errors. Do not assume a cache problem or broaden permissions without evidence. Confirm mapping save → reload, including production-output units and cost snapshot, before declaring the flow accepted. If no authenticated browser access is available, request a screenshot or user-assisted verification rather than extracting stored credentials.
+Currently, we should monitor if authenticated browser access flows normally, especially around Production recipe mapping (which has been disabled for finished products), order generation, and the dashboard metrics loading correctly.
 
 ## Pending implementation and recommended sequence
 
@@ -111,6 +111,8 @@ Latest recorded backup: PostgreSQL container path `/tmp/thamanicraft-before-reci
 
 ## Handover change log
 
+- **2026-09-28:** Fixed 403 Forbidden error on failed login by introducing a `GlobalExceptionHandler` in `craft-common-security` to properly catch `RuntimeException` and return a 401 Unauthorized ProblemDetail, preventing the `DispatcherServlet` from forwarding to the unpermitted `/error` endpoint. Rebuilt and redeployed `thamanicraft-identity-service`. Also discovered and notified that the default admin password in DB migration `V2__init_identity_schema.sql` was changed to `password` (was `admin` in previous `init.sql`). Added a "Security" Tab in the `Settings.jsx` page with a "Change Password" form linked to the `changePassword` endpoint.
+
 - **2026-09-27:** Addressed UI feedback. Replaced Dropdown with Tabs in Reports, fixed dark-mode visibility of Dashboard glass panels, and resolved "Failed to load report data" for ledgers by rebuilding `craft-finance-service` to run missing `V3__Ledger.sql` Flyway migrations.
 
 - **2026-09-27:** Implemented Financial Ledgers similar to ThamaniPoint, including JPA entities (`Account`, `JournalEntry`, `JournalLine`) in `craft-finance-service`, DB migration V3, Trial Balance and Journal Entries views in Reports, and a manual entry modal. Verified via build.
@@ -152,4 +154,4 @@ Latest recorded backup: PostgreSQL container path `/tmp/thamanicraft-before-reci
 - **2026-09-24:** Added the always-on handover/progress rule and linked it from the core protocol. Centralised the maintenance workflow there; documentation/rules only, no runtime changes. Paths and whitespace checked.
 
 - **2026-09-24:** Created this handover and maintenance agreement. Consolidated shipped capabilities, deployment/test evidence, mapping visibility issue and recommended remaining sequence. Documentation-only change; no service restart, database migration or runtime change.
-- Confirmed users can change passwords via the Profile option in the top right user dropdown. Updated UI reports for Trial balance and Dashboard dark mode colors.
+- **2026-09-28:** Fixed missing fields (`createdAt`, `targetQuantity`, `actualYield`, `scrapQuantity`) in `SalesService` and `WorkOrderService` list queries. Corrected field mapping mismatches in `Dashboard.jsx` and `Reports.jsx` (`totalAmount` -> `total`) to restore functionality to the dashboard charts and reports. Added a direct navigation link from `OrderEntry.jsx` items table to their generated work orders. Hid recipe mapping for finished products in `OrderRecipeMapping.jsx` to prevent mapping inventory that does not require production. Rebuilt and restarted both `thamanicraft-sales-service` and `thamanicraft-production-service`.

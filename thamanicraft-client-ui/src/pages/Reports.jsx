@@ -54,11 +54,11 @@ export default function Reports() {
           { title: 'Date', dataIndex: 'createdAt', render: d => dayjs(d).format('YYYY-MM-DD') },
           { title: 'Customer', dataIndex: 'customerName' },
           { title: 'Status', dataIndex: 'status' },
-          { title: 'Total (TZS)', dataIndex: 'totalAmount', render: val => val?.toLocaleString() },
-          { title: 'Discount', dataIndex: 'discountAmount', render: val => val?.toLocaleString() },
+          { title: 'Total (TZS)', dataIndex: 'total', render: val => Number(val)?.toLocaleString() },
+          { title: 'Discount', dataIndex: 'discountAmount', render: val => Number(val)?.toLocaleString() },
           { title: 'Margin (%)', dataIndex: 'margin', render: (_, record) => {
             if (!record.costingSummary) return 'N/A';
-            const revenue = record.totalAmount;
+            const revenue = Number(record.total);
             const cost = record.costingSummary.actualCost || record.costingSummary.standardCost;
             if (!revenue) return '0%';
             const margin = ((revenue - cost) / revenue) * 100;
@@ -210,7 +210,7 @@ export default function Reports() {
         if (c.dataIndex === 'createdAt') val = dayjs(val).format('YYYY-MM-DD');
         if (c.dataIndex === 'uom') val = val?.abbreviation;
         if (c.dataIndex === 'margin' && record.costingSummary) {
-           const rev = record.totalAmount || 0;
+           const rev = Number(record.total) || 0;
            const cost = record.costingSummary.actualCost || record.costingSummary.standardCost;
            val = rev ? (((rev - cost) / rev) * 100).toFixed(2) + '%' : '0%';
         }

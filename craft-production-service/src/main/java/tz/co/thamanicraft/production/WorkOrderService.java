@@ -34,7 +34,9 @@ public class WorkOrderService {
     public List<Map<String,Object>> list() {
         return jdbc.queryForList("""
             SELECT id,reference,recipe_name AS "recipeName",status,planned_yield AS "plannedYield",
-                output_unit AS "outputUnit",scheduled_date AS "scheduledDate",planned_cost AS "plannedCost",version
+                planned_yield AS "targetQuantity",actual_yield AS "actualYield",scrap_count AS "scrapQuantity",
+                output_unit AS "outputUnit",scheduled_date AS "scheduledDate",planned_cost AS "plannedCost",
+                created_at AS "createdAt",version
             FROM production_batches WHERE tenant_id=? ORDER BY created_at DESC,id
             """,tenant());
     }

@@ -40,12 +40,15 @@ public class SalesService {
     }
     public List<Map<String,Object>> orders() {
         var result=jdbc.queryForList("""
-            SELECT id,customer_name AS "customerName",customer_phone AS "customerPhone",due_at AS "dueAt",
-                fulfilment,status,fulfillment_status AS "fulfillmentStatus",fulfilled_at AS "fulfilledAt",
-                carrier_or_collector AS "carrierOrCollector",total,deposit_required AS "depositRequired",
-                retained_deposit AS "retainedDeposit",
-                'ORD-' || order_number AS "orderNumber",version
-            FROM sales.orders WHERE tenant_id=? ORDER BY due_at,id
+            SELECT o.id,o.customer_name AS "customerName",o.customer_phone AS "customerPhone",o.due_at AS "dueAt",
+                o.fulfilment,o.status,o.fulfillment_status AS "fulfillmentStatus",o.fulfilled_at AS "fulfilledAt",
+                o.carrier_or_collector AS "carrierOrCollector",o.total,o.deposit_required AS "depositRequired",
+                o.retained_deposit AS "retainedDeposit",
+                o.created_at AS "createdAt",
+                'ORD-' || o.order_number AS "orderNumber",o.version,
+                (SELECT SUM(m.standard_cost) FROM sales.order_items i JOIN sales.order_recipe_mappings m ON m.order_item_id=i.id WHERE i.order_id=o.id) AS "standardCost",
+                (SELECT SUM(pb.total_batch_cost) FROM sales.order_items i JOIN public.production_batches pb ON pb.id=i.work_order_id WHERE i.order_id=o.id) AS "actualCost"
+            FROM sales.orders o WHERE o.tenant_id=? ORDER BY o.created_at DESC,o.id
             """,tenant());
         for(var order:result) paymentSummary(order);
         return result;

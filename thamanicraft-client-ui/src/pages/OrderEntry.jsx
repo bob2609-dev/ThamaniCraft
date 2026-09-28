@@ -1,5 +1,5 @@
 import { useEffect,useState } from 'react';
-import { useNavigate,useParams } from 'react-router-dom';
+import { useNavigate,useParams,Link } from 'react-router-dom';
 import { Alert,App,Button,Card,Checkbox,Col,Descriptions,Form,Input,InputNumber,Modal,Row,Select,Space,Table,Tag,Typography } from 'antd';
 import * as api from '../services/salesApi';
 import { fetchFinishedProducts } from '../services/inventoryApi';
@@ -155,10 +155,11 @@ export default function OrderEntry() {
         {title:'Recorded by',dataIndex:'actor'},
         {title:'Time',dataIndex:'createdAt',render:v=>new Date(v).toLocaleString(undefined,{timeZone:'Africa/Dar_es_Salaam'})},
       ]} />
-      <Table rowKey="id" dataSource={order.items} pagination={false} scroll={{x:750}} columns={[
+      <Table rowKey="id" dataSource={order.items} pagination={false} scroll={{x:850}} columns={[
         {title:'Item',dataIndex:'description',render:(v,r)=>r.finishedProductName?<>{v} <Tag color="green">Finished Product</Tag></>:v},
         {title:'Quantity',dataIndex:'quantity'},{title:'Unit',dataIndex:'unit'},
         {title:'Price (TZS)',dataIndex:'unitPrice'},{title:'Total (TZS)',dataIndex:'lineTotal'},{title:'Instructions',dataIndex:'instructions'},
+        {title:'Work Order',dataIndex:'workOrderId',render:(v,r)=>v?<Link to={`/production/${v}`} style={{color:'#1677ff'}}>View WO →</Link>:'—'},
       ]} />
     </Card> : <Form form={form} layout="vertical" onFinish={save} disabled={saving} scrollToFirstError
       initialValues={{fulfilment:'COLLECTION',deliveryCharge:0,discountAmount:0,depositRequired:0,items:[{quantity:1,unit:'piece',unitPrice:0,isFinishedProduct:false}]}}>

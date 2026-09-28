@@ -37,15 +37,22 @@ export default function OrderRecipeMapping({order,onChanged}) {
       message.success('Work order generated');await onChanged();
     } catch(e){setError(e.message);} finally{setGenerating(false);}
   }
+  const itemsNeedingProduction = (order.items || []).filter(i => !i.finishedProductId);
+  const finishedProductItems = (order.items || []).filter(i => !!i.finishedProductId);
   return <>
     <Typography.Title level={4}>Production recipe mapping</Typography.Title>
+    {finishedProductItems.length > 0 && <Alert type="success" style={{marginBottom:8}}
+      title={`${finishedProductItems.length} finished product item(s) will be fulfilled from existing inventory — no production required.`}/>}
+    {itemsNeedingProduction.length === 0 ? (
+      <Alert type="info" title="All items in this order are finished products. No production mapping needed — they will be dispatched from existing inventory when fulfilled."/>
+    ) : (<>
     <Alert type="info" title="No payment is required to map a recipe. Unpaid, partially paid and fully paid orders can be mapped."
       description="Available for New and Confirmed orders with Sales and Recipe permissions. Once mapped and the order is Confirmed, you can generate work orders."/>
     {!canMap&&<Alert type="warning" title={['NEW','CONFIRMED'].includes(order.status)
       ?'Mapping requires Sales processing and Recipe viewing permissions.'
       :'Recipe mapping is available only for New or Confirmed orders; payment is not the restriction.'}/>}
     {error&&!item&&<Alert type="error" title={error}/>}
-    <Table rowKey="id" dataSource={order.items||[]} pagination={false} scroll={{x:950}} columns={[
+    <Table rowKey="id" dataSource={itemsNeedingProduction} pagination={false} scroll={{x:950}} columns={[
       {title:'Order item',dataIndex:'description'},
       {title:'Ordered',render:(_,r)=>`${r.quantity} ${r.unit}`},
       {title:'Recipe',dataIndex:'recipeName',render:v=>v||'Not mapped'},
@@ -60,6 +67,7 @@ export default function OrderRecipeMapping({order,onChanged}) {
       },
     ]}/>
     <Typography.Paragraph>Standard cost is a saved estimate, not actual production cost. Editing order items clears their mappings so quantities must be checked again.</Typography.Paragraph>
+    </>)}
     <Modal open={Boolean(item)} title="Map order item to recipe" onOk={()=>form.submit()} onCancel={()=>setItem(null)}
       confirmLoading={busy} closable={!busy} maskClosable={!busy} cancelButtonProps={{disabled:busy}} okButtonProps={{disabled:!selected}}>
       {error&&<Alert type="error" title={error}/>}

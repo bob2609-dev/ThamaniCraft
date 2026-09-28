@@ -169,6 +169,40 @@ export default function Settings() {
           </Card>
         </TabPane>
         
+        <TabPane tab={<span><LockOutlined /> Security</span>} key="security">
+          <Card style={{ maxWidth: 600 }} title="Change Password">
+            <Form 
+              layout="vertical" 
+              onFinish={async (values) => {
+                if (values.newPassword !== values.confirmPassword) {
+                  message.error("New passwords do not match!");
+                  return;
+                }
+                try {
+                  const { changePassword } = await import('../services/identityApi');
+                  await changePassword({ oldPassword: values.oldPassword, newPassword: values.newPassword });
+                  message.success("Password changed successfully!");
+                } catch (error) {
+                  message.error(error.message || "Failed to change password");
+                }
+              }}
+            >
+              <Form.Item name="oldPassword" label="Current Password" rules={[{ required: true }]}>
+                <Input.Password />
+              </Form.Item>
+              <Form.Item name="newPassword" label="New Password" rules={[{ required: true, min: 6 }]}>
+                <Input.Password />
+              </Form.Item>
+              <Form.Item name="confirmPassword" label="Confirm New Password" rules={[{ required: true }]}>
+                <Input.Password />
+              </Form.Item>
+              <Form.Item>
+                <Button type="primary" htmlType="submit">Change Password</Button>
+              </Form.Item>
+            </Form>
+          </Card>
+        </TabPane>
+
         <TabPane tab={<span><UserOutlined /> User Management</span>} key="3">
           <Card>
             <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'flex-end' }}>

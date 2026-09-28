@@ -1,8 +1,13 @@
+com/thamanicraft/identity/dto/ChangePasswordRequest.class
+com/thamanicraft/identity/dto/RoleDto.class
 com/thamanicraft/identity/dto/AuthResponse.class
+com/thamanicraft/identity/repository/PermissionRepository.class
+com/thamanicraft/identity/dto/CreateRoleRequest.class
 com/thamanicraft/identity/entity/Role.class
 com/thamanicraft/identity/repository/UserRepository.class
 com/thamanicraft/identity/controller/AuthController.class
 com/thamanicraft/identity/entity/User.class
+com/thamanicraft/identity/dto/UserDto.class
 com/thamanicraft/identity/entity/Permission.class
 com/thamanicraft/identity/config/IdentitySecurityConfig.class
 com/thamanicraft/identity/service/AuthService.class
@@ -10,3 +15,6 @@ com/thamanicraft/identity/repository/RoleRepository.class
 com/thamanicraft/identity/service/AuthServiceImpl.class
 com/thamanicraft/identity/dto/AuthRequest.class
 com/thamanicraft/identity/IdentityApplication.class
+com/thamanicraft/identity/dto/CreateUserRequest.class
+com/thamanicraft/identity/dto/PermissionDto.class
+com/thamanicraft/identity/controller/UserController.class

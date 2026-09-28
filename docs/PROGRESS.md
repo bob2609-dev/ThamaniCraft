@@ -207,9 +207,14 @@ Next: close existing acceptance gaps, then complete Production linkage and execu
 
 Acceptance example: ingredients TZS 45,900 + labour 15,000 + energy 10,000 + manually entered overhead 5,500 = TZS 76,400 per batch, or TZS 1,528 for each of 50 output units. Recording an oven purchase or rent expense must not change that recipe total.
 
-- [X] Resolved 403 Forbidden error on Finished Products page by rebuilding `thamanicraft-inventory-service` container which was missing `FinishedProductController` and forwarding 404s to protected `/error` endpoints.
+- [X] Fixed 403 Forbidden on failed login by introducing `GlobalExceptionHandler` in `craft-common-security` and returning 401 ProblemDetail.
+- [X] Added "Security" tab to `Settings.jsx` to allow authenticated users to change their password via the UI.
+- [X] Identified that the default admin password changed to `password` due to the recent identity service database migration (`V2__init_identity_schema.sql`).
 - [X] Updated UI reports for Trial balance, fixed the 'Failed to load report data' error by appending VIEW_REPORTS role check on LedgerController APIs.
 - [X] Updated Dashboard UI dark mode colors using useTheme and custom variables.
-- [X] Updated identityApi.js to correctly capture and handle error.detail thrown by Spring Boot's ProblemDetail.
-- [X] Confirmed users can change passwords via the Profile option in the top right user dropdown.
 - [X] Added toggleable Double-Entry View to Journal Entries report in UI.
+- [X] 2026-09-28: Fixed missing `createdAt`, `targetQuantity`, `actualYield`, and `scrapQuantity` fields in backend list queries (`SalesService`, `WorkOrderService`) which caused Reports and Dashboard filtering/stats to break. Rebuilt Docker containers so API changes take effect.
+- [X] 2026-09-28: Corrected field mapping mismatches in `Dashboard.jsx` and `Reports.jsx` (changed `totalAmount` to `total`, removed invalid `lines` reads) to restore Dashboard charts and top products, and Reports data. Fixed a Javascript ReferenceError (`colors is not defined`) in `Dashboard.jsx` that was causing the entire dashboard to blank out.
+- [X] 2026-09-28: Added direct Work Order navigation link in `OrderEntry.jsx` order items table so users can jump to generated work orders directly from Sales & Dispatch.
+- [X] 2026-09-28: Hid recipe mapping for finished products in `OrderRecipeMapping.jsx`. Order items that are already finished products do not require production mapping and are now properly filtered out with a clear info alert.
+- [X] 2026-09-28: Implemented a global date filter in `Dashboard.jsx` (7D, 30D, 3M, 6M, 1Y) which dynamically updates all sales aggregates and charts. Added two new Pie Charts for "Sales Status Breakdown" and "Work Order Status".

@@ -52,6 +52,13 @@ public class WorkOrderController {
         return Map.of("id", service.generate(request));
     }
 
+    @PostMapping("/quick-make")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('OWNER') or hasAuthority('EXECUTE_PRODUCTION')")
+    public Map<String, UUID> quickMake(@Valid @RequestBody WorkOrderRequest request) {
+        return Map.of("id", service.quickMake(request));
+    }
+
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('OWNER') or hasAuthority('EXECUTE_PRODUCTION')")
     public Map<String, UUID> edit(@PathVariable UUID id, @Valid @RequestBody WorkOrderRequest request) {

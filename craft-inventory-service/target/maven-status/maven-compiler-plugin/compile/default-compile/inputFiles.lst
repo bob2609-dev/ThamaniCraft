@@ -7,6 +7,7 @@
 /home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/RawMaterialController.java
 /home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/repository/UnitOfMeasureRepository.java
 /home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/FinishedProductController.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/SmartUOMConverter.java
 /home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/dto/CostCorrectionRequest.java
 /home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/entity/ItemCategory.java
 /home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/CostCorrectionService.java
@@ -24,3 +25,4 @@
 /home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/repository/ItemCategoryRepository.java
 /home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/FinishedProductService.java
 /home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/amqp/ProductionEventListener.java
+/home/bob2609/Projects/ThamaniCraft/craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/FinanceClient.java

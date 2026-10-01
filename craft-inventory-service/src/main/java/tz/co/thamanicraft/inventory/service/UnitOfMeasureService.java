@@ -16,7 +16,7 @@ public class UnitOfMeasureService {
     private final UnitOfMeasureRepository uomRepository;
 
     public List<UnitOfMeasure> getAllByTenantId(UUID tenantId) {
-        return uomRepository.findByTenantId(tenantId);
+        return uomRepository.findByTenantIdOrTenantIdIsNull(tenantId);
     }
 
     @Transactional
@@ -30,8 +30,8 @@ public class UnitOfMeasureService {
     @Transactional
     public UnitOfMeasure updateUnitOfMeasure(UUID id, UnitOfMeasure updateRequest, UUID tenantId) {
         UnitOfMeasure existing = uomRepository.findById(id)
-                .filter(u -> u.getTenantId().equals(tenantId))
-                .orElseThrow(() -> new RuntimeException("UOM not found"));
+                .filter(u -> tenantId.equals(u.getTenantId()))
+                .orElseThrow(() -> new RuntimeException("UOM not found or you don't have permission to edit a global unit"));
 
         existing.setName(updateRequest.getName());
         existing.setSymbol(updateRequest.getSymbol());
@@ -52,14 +52,14 @@ public class UnitOfMeasureService {
     @Transactional
     public void deleteUnitOfMeasure(UUID id, UUID tenantId) {
         UnitOfMeasure existing = uomRepository.findById(id)
-                .filter(u -> u.getTenantId().equals(tenantId))
-                .orElseThrow(() -> new RuntimeException("UOM not found"));
+                .filter(u -> tenantId.equals(u.getTenantId()))
+                .orElseThrow(() -> new RuntimeException("UOM not found or you don't have permission to delete a global unit"));
         uomRepository.delete(existing);
     }
 
     private UnitOfMeasure findTenantUom(UUID id, UUID tenantId) {
         return uomRepository.findById(id)
-                .filter(uom -> uom.getTenantId().equals(tenantId))
+                .filter(uom -> uom.getTenantId() == null || tenantId.equals(uom.getTenantId()))
                 .orElseThrow(() -> new RuntimeException("Base UOM not found"));
     }
 }

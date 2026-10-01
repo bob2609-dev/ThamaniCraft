@@ -10,6 +10,7 @@ export const saveCustomer=(id,data)=>request(`/customers${id?`/${id}`:''}`,id?'P
 export const listOrders=()=>request('/orders');
 export const getOrder=id=>request(`/orders/${id}`);
 export const createOrder=data=>request('/orders','POST',data);
+export const posCheckout=data=>request('/pos/checkout','POST',data);
 export const mapOrderRecipe=(order,item,data)=>request(`/orders/${order}/items/${item}/recipe`,'PUT',data);
 export const generateWorkOrder=async (order,item,version)=>{
   const token=Cookies.get('tenant_token') || localStorage.getItem('tenant_token');

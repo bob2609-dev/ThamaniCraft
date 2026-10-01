@@ -71,6 +71,9 @@ public class FinishedProductService {
         if (product.getCostPerBaseUnit() == null) {
             product.setCostPerBaseUnit(java.math.BigDecimal.ZERO);
         }
+        if (product.getSellingPrice() == null) {
+            product.setSellingPrice(java.math.BigDecimal.ZERO);
+        }
         return finishedProductRepository.save(product);
     }
 
@@ -100,6 +103,13 @@ public class FinishedProductService {
                         "The base UOM cannot change while stock exists. Adjust or migrate the stock first.");
             }
             existing.setBaseUom(uomRepository.findById(requestedBaseUomId).orElseThrow());
+        }
+
+        if (updateRequest.getSellingPrice() != null) {
+            existing.setSellingPrice(updateRequest.getSellingPrice());
+        }
+        if (updateRequest.getCostPerBaseUnit() != null) {
+            existing.setCostPerBaseUnit(updateRequest.getCostPerBaseUnit());
         }
 
         return finishedProductRepository.save(existing);

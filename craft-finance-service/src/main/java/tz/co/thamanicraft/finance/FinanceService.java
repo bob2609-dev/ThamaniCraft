@@ -12,7 +12,11 @@ import java.util.*;
 @Service
 public class FinanceService {
     private final JdbcTemplate jdbc;
-    public FinanceService(JdbcTemplate jdbc) { this.jdbc = jdbc; }
+    private final tz.co.thamanicraft.finance.ledger.LedgerService ledgerService;
+    public FinanceService(JdbcTemplate jdbc, tz.co.thamanicraft.finance.ledger.LedgerService ledgerService) { 
+        this.jdbc = jdbc; 
+        this.ledgerService = ledgerService;
+    }
     private UUID tenant() {
         UUID id = TenantContext.getCurrentTenant();
         if (id == null) throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tenant context required");
@@ -77,6 +81,29 @@ public class FinanceService {
                   updated_by=?,updated_at=CURRENT_TIMESTAMP WHERE id=? AND tenant_id=?
                 """,e.title().trim(),e.category(),Date.valueOf(e.expenseDate()),e.amount(),e.reference(),e.notes(),user,id,tenant));
         }
+        return id;
+    }
+
+    @Transactional
+    public UUID quickExpense(FinanceRequests.Expense e) {
+        UUID id = saveExpense(null, e);
+        
+        tz.co.thamanicraft.finance.ledger.Account expenseAccount = new tz.co.thamanicraft.finance.ledger.Account();
+        expenseAccount.setCode("5100"); // Operating Expenses
+        tz.co.thamanicraft.finance.ledger.Account cashAccount = new tz.co.thamanicraft.finance.ledger.Account();
+        cashAccount.setCode("1000"); // Cash
+        
+        tz.co.thamanicraft.finance.ledger.JournalLine debitLine = new tz.co.thamanicraft.finance.ledger.JournalLine();
+        debitLine.setAccount(expenseAccount);
+        debitLine.setDebitAmount(e.amount());
+        
+        tz.co.thamanicraft.finance.ledger.JournalLine creditLine = new tz.co.thamanicraft.finance.ledger.JournalLine();
+        creditLine.setAccount(cashAccount);
+        creditLine.setCreditAmount(e.amount());
+        
+        List<tz.co.thamanicraft.finance.ledger.JournalLine> lines = List.of(debitLine, creditLine);
+        
+        ledgerService.postJournalEntry(tenant(), "EXP-" + id.toString().substring(0,8), "Quick Expense - " + e.title(), e.expenseDate().atStartOfDay(), lines);
         return id;
     }
 

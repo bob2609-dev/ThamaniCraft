@@ -4,7 +4,7 @@ import Dashboard from './pages/Dashboard';
 import Inventory from './pages/Inventory';
 import Recipes from './pages/Recipes';
 import RecipeEditor from './pages/RecipeEditor';
-import Assets from './pages/Assets';
+import Expenses from './pages/Expenses';
 import Production from './pages/Production';
 import WorkOrder from './pages/WorkOrder';
 import Sales from './pages/Sales';
@@ -34,7 +34,7 @@ function App() {
         <Route path="production" element={<Production />} />
         <Route path="production/new" element={<WorkOrder key="new" />} />
         <Route path="production/:id" element={<WorkOrder />} />
-        <Route path="assets" element={<Assets />} />
+        <Route path="expenses" element={<Expenses />} />
         <Route path="sales" element={<Sales />} />
         <Route path="sales/new" element={<OrderEntry key="new" />} />
         <Route path="sales/:id" element={<OrderEntry />} />

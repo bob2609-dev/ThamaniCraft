@@ -46,7 +46,7 @@ export default function CostCorrectionModal({ material, onClose, onSaved }) {
       okText="Save correction"
       confirmLoading={saving}
       closable={!saving}
-      maskClosable={!saving}
+      mask={{ closable: !saving }}
       keyboard={!saving}
       cancelButtonProps={{ disabled: saving }}
     >

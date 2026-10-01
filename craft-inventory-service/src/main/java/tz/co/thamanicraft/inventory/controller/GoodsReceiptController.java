@@ -3,5 +3,6 @@ import jakarta.validation.Valid; import lombok.RequiredArgsConstructor; import o
 @RestController @RequestMapping("/goods-receipts") @RequiredArgsConstructor
 public class GoodsReceiptController { private final GoodsReceiptService service;
  @PostMapping @PreAuthorize("hasAuthority('ADJUST_INVENTORY') or hasRole('OWNER')") public ResponseEntity<Map<String,UUID>> receive(@Valid @RequestBody GoodsReceiptRequest request) { UUID id=service.receive(request); return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("id",id)); }
+ @PostMapping("/quick-refill") @PreAuthorize("hasAuthority('ADJUST_INVENTORY') or hasRole('OWNER')") public ResponseEntity<Map<String,UUID>> quickRefill(@Valid @RequestBody GoodsReceiptRequest request, @RequestHeader(value = "Authorization", required = false) String auth) { UUID id=service.quickRefill(request, auth); return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("id",id)); }
  @GetMapping @PreAuthorize("hasAuthority('VIEW_INVENTORY') or hasRole('OWNER')") public List<Map<String,Object>> list() { return service.list(); }
 }

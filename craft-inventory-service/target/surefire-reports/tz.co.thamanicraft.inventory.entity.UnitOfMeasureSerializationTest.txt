@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: tz.co.thamanicraft.inventory.entity.UnitOfMeasureSerializationTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.422 s -- in tz.co.thamanicraft.inventory.entity.UnitOfMeasureSerializationTest

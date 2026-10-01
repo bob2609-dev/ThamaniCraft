@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface UnitOfMeasureRepository extends JpaRepository<UnitOfMeasure, UUID> {
-    List<UnitOfMeasure> findByTenantId(UUID tenantId);
+    List<UnitOfMeasure> findByTenantIdOrTenantIdIsNull(UUID tenantId);
 }

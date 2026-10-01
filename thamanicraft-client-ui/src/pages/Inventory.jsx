@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Tabs, Table, Button, Modal, Form, Input, Select, InputNumber, message, Space, Popconfirm, Row, Col } from 'antd';
-import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, PlusOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import * as api from '../services/inventoryApi';
 import usePermissions from '../hooks/usePermissions';
 import CostCorrectionModal from '../components/CostCorrectionModal';
+import QuickRefillModal from '../components/QuickRefillModal';
 
 
 
@@ -11,6 +12,7 @@ export default function Inventory() {
   const { hasPermission } = usePermissions();
   const [costMaterial, setCostMaterial] = useState(null);
   const [activeTab, setActiveTab] = useState('rawMaterials');
+  const [refillVisible, setRefillVisible] = useState(false);
   
   // State for Raw Materials
   const [rawMaterials, setRawMaterials] = useState([]);
@@ -208,7 +210,6 @@ export default function Inventory() {
     rawMaterialForm.setFieldsValue({
       ...record,
       baseUomId: record.baseUom?.id,
-      purchaseUomId: record.purchaseUom?.id,
       categoryId: record.category?.id,
     });
     setIsRawMaterialModalVisible(true);
@@ -230,7 +231,6 @@ export default function Inventory() {
       const payload = {
         ...values,
         baseUom: { id: values.baseUomId },
-        purchaseUom: { id: values.purchaseUomId },
         category: values.categoryId ? { id: values.categoryId } : null,
       };
 
@@ -323,14 +323,21 @@ export default function Inventory() {
     {
       title: 'Actions',
       key: 'actions',
-      render: (_, record) => (
-        <Space size="middle">
-          <Button icon={<EditOutlined />} onClick={() => handleEditUom(record)} />
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDeleteUom(record.id)}>
-            <Button danger icon={<DeleteOutlined />} />
-          </Popconfirm>
-        </Space>
-      ),
+      render: (_, record) => {
+        const isGlobal = !record.tenantId;
+        return (
+          <Space size="middle">
+            <Button icon={<EditOutlined />} onClick={() => handleEditUom(record)} disabled={isGlobal} title={isGlobal ? "Global units cannot be edited" : ""} />
+            {isGlobal ? (
+              <Button danger icon={<DeleteOutlined />} disabled title="Global units cannot be deleted" />
+            ) : (
+              <Popconfirm title="Sure to delete?" onConfirm={() => handleDeleteUom(record.id)}>
+                <Button danger icon={<DeleteOutlined />} />
+              </Popconfirm>
+            )}
+          </Space>
+        );
+      },
     },
   ];
 
@@ -382,6 +389,8 @@ export default function Inventory() {
     },
     { title: 'Unit cost (TZS)', dataIndex: 'costPerBaseUnit', key: 'cost',
       render: (value, record) => `${Number(value).toLocaleString(undefined, { maximumFractionDigits: 4 })} / ${record.baseUom?.symbol || 'unit'}` },
+    { title: 'Selling Price (TZS)', dataIndex: 'sellingPrice', key: 'sellingPrice',
+      render: (value, record) => `${Number(value).toLocaleString(undefined, { maximumFractionDigits: 2 })} / ${record.baseUom?.symbol || 'unit'}` },
     {
       title: 'Actions',
       key: 'actions',
@@ -434,13 +443,25 @@ export default function Inventory() {
             key: 'rawMaterials',
             label: 'Raw Materials',
             children: (
-              <Table 
-                columns={rawMaterialColumns} 
-                dataSource={rawMaterials} 
-                rowKey="id" 
-                loading={loadingRawMaterials} 
-                scroll={{ x: 'max-content' }}
-              />
+              <div>
+                <div style={{ marginBottom: 16 }}>
+                  <Button 
+                    type="primary" 
+                    icon={<ThunderboltOutlined />} 
+                    onClick={() => setRefillVisible(true)}
+                    style={{ background: '#10B981', borderColor: '#10B981' }}
+                  >
+                    Quick Refill
+                  </Button>
+                </div>
+                <Table 
+                  columns={rawMaterialColumns} 
+                  dataSource={rawMaterials} 
+                  rowKey="id" 
+                  loading={loadingRawMaterials} 
+                  scroll={{ x: 'max-content' }}
+                />
+              </div>
             ),
           },
           {
@@ -541,7 +562,12 @@ export default function Inventory() {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item name="baseUnitId" label="Base Unit (Optional)">
-                <Select allowClear>
+                <Select 
+                  allowClear
+                  showSearch
+                  optionFilterProp="children"
+                  filterOption={(input, option) => (option?.children ?? '').toLowerCase().includes(input.toLowerCase())}
+                >
                   {uoms.map(u => <Option key={u.id} value={u.id}>{u.name}</Option>)}
                 </Select>
               </Form.Item>
@@ -598,18 +624,17 @@ export default function Inventory() {
                   ? `Recipe quantities will be in ${selectedBaseUom.name}. To use individual ${selectedBaseUom.baseUnit.name} units, select ${selectedBaseUom.baseUnit.name} as the Base UOM and keep ${selectedBaseUom.name} as the Purchase UOM.`
                   : 'Choose the unit used in recipes: Piece for eggs, Gram for flour. Trays and bags belong in Purchase UOM.'}
               >
-                <Select disabled={Boolean(editingRawMaterial && Number(editingRawMaterial.currentStockBaseQty) > 0)}>
+                <Select 
+                  disabled={Boolean(editingRawMaterial && Number(editingRawMaterial.currentStockBaseQty) > 0)}
+                  showSearch
+                  optionFilterProp="children"
+                  filterOption={(input, option) => (option?.children ?? '').toLowerCase().includes(input.toLowerCase())}
+                >
                   {uoms.map(u => <Option key={u.id} value={u.id}>{u.name}</Option>)}
                 </Select>
               </Form.Item>
             </Col>
-            <Col xs={24} md={8}>
-              <Form.Item name="purchaseUomId" label="Purchase UOM" rules={[{ required: true }]}>
-                <Select>
-                  {uoms.map(u => <Option key={u.id} value={u.id}>{u.name}</Option>)}
-                </Select>
-              </Form.Item>
-            </Col>
+
             <Col xs={24} md={8}>
               <Form.Item name="storageLocation" label="Storage Location">
                 <Input />
@@ -680,7 +705,12 @@ export default function Inventory() {
                 label="Base UOM (inventory unit)"
                 rules={[{ required: true }]}
               >
-                <Select disabled={Boolean(editingFinishedProduct && Number(editingFinishedProduct.currentStockBaseQty) > 0)}>
+                <Select 
+                  disabled={Boolean(editingFinishedProduct && Number(editingFinishedProduct.currentStockBaseQty) > 0)}
+                  showSearch
+                  optionFilterProp="children"
+                  filterOption={(input, option) => (option?.children ?? '').toLowerCase().includes(input.toLowerCase())}
+                >
                   {uoms.map(u => <Option key={u.id} value={u.id}>{u.name}</Option>)}
                 </Select>
               </Form.Item>
@@ -702,12 +732,28 @@ export default function Inventory() {
                 rules={[{ required: false }]}
                 extra="Average cost per unit."
               >
-                <InputNumber className="w-full" min={0} disabled={Boolean(editingFinishedProduct)} />
+                <InputNumber className="w-full" min={0} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                name="sellingPrice"
+                label={`Selling Price (TZS)`}
+                rules={[{ required: true }]}
+                extra="Default price applied in sales."
+              >
+                <InputNumber className="w-full" min={0} />
               </Form.Item>
             </Col>
           </Row>
         </Form>
       </Modal>
+
+      <QuickRefillModal 
+        open={refillVisible} 
+        onCancel={() => setRefillVisible(false)} 
+        onSuccess={loadRawMaterials} 
+      />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/test/java/tz/co/thamanicraft/production/RecipeCostingTest.java
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/test/java/tz/co/thamanicraft/production/RecipeServiceTest.java
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/test/java/tz/co/thamanicraft/production/WorkOrderServiceTest.java
+/home/bob2609/Projects/ThamaniCraft/craft-production-service/src/test/java/tz/co/thamanicraft/production/SmartUOMConverterTest.java
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/test/java/tz/co/thamanicraft/production/WorkOrderMathTest.java
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/test/java/tz/co/thamanicraft/production/WorkOrderSecurityTest.java

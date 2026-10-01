@@ -18,3 +18,4 @@ export const getWorkOrder = id => request(`/${id}`);
 export const saveWorkOrder = (id, values) => request(id ? `/${id}` : '', id ? 'PUT' : 'POST', values);
 export const transitionWorkOrder = (id, action, version) => request(`/${id}/${action}`, 'POST', { version });
 export const completeWorkOrder = (id, payload) => request(`/${id}/complete`, 'POST', payload);
+export const quickMake = (payload) => request('/quick-make', 'POST', payload);

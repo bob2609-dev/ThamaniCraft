@@ -5,6 +5,7 @@
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/main/java/tz/co/thamanicraft/production/RecipeService.java
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/main/java/tz/co/thamanicraft/production/RecipeController.java
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/main/java/tz/co/thamanicraft/production/WorkOrderController.java
+/home/bob2609/Projects/ThamaniCraft/craft-production-service/src/main/java/tz/co/thamanicraft/production/SmartUOMConverter.java
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/main/java/tz/co/thamanicraft/production/RecipeRequest.java
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/main/java/tz/co/thamanicraft/production/RecipeErrors.java
 /home/bob2609/Projects/ThamaniCraft/craft-production-service/src/main/java/tz/co/thamanicraft/production/amqp/InventoryEventListener.java

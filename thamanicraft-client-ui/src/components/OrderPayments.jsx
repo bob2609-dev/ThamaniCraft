@@ -53,7 +53,7 @@ export default function OrderPayments({order,onChanged}) {
       {title:'Reversed at',dataIndex:'reversedAt',render:v=>v?new Date(v).toLocaleString(undefined,{timeZone:'Africa/Dar_es_Salaam'}):'—'},
       {title:'Actions',render:(_,p)=>!p.reversedAt&&hasPermission('REVERSE_PAYMENTS')&&<Button danger disabled={busy} onClick={()=>{setCorrection(p);setReason('');setError('');}}>Correct receipt</Button>},
     ]}/>
-    <Modal open={open} title="Record payment received" onCancel={()=>setOpen(false)} closable={!busy} maskClosable={!busy}
+    <Modal open={open} title="Record payment received" onCancel={()=>setOpen(false)} closable={!busy} mask={{ closable: !busy }}
       cancelButtonProps={{disabled:busy}} confirmLoading={busy} onOk={()=>form.submit()}>
       {error && <Alert type="error" title={error}/>}
       <Form form={form} layout="vertical" onFinish={save} disabled={busy}>
@@ -64,7 +64,7 @@ export default function OrderPayments({order,onChanged}) {
       </Form>
       <Typography.Paragraph>If a request fails, retry here without changing its details. Check history before creating a new receipt.</Typography.Paragraph>
     </Modal>
-    <Modal open={Boolean(correction)} title="Reverse an erroneous receipt?" onCancel={()=>setCorrection(null)} closable={!busy} maskClosable={!busy}
+    <Modal open={Boolean(correction)} title="Reverse an erroneous receipt?" onCancel={()=>setCorrection(null)} closable={!busy} mask={{ closable: !busy }}
       cancelButtonProps={{disabled:busy}} confirmLoading={busy} okButtonProps={{danger:true,disabled:!reason.trim()}} onOk={reverse}>
       <Alert type="warning" title="This reverses the full receipt for a recording error. It does not record a real refund. The original receipt stays in history."/>
       {error && <Alert type="error" title={error}/>}

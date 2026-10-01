@@ -20,7 +20,8 @@ public class PaymentService {
         @Size(max=255) String reference) {}
     public record Reversal(@NotBlank @Size(max=1000) String reason) {}
     private final JdbcTemplate jdbc;
-    public PaymentService(JdbcTemplate jdbc) { this.jdbc=jdbc; }
+    private final FinanceClient financeClient;
+    public PaymentService(JdbcTemplate jdbc, FinanceClient financeClient) { this.jdbc=jdbc; this.financeClient=financeClient; }
     private Map<String,Object> lock(UUID order) {
         UUID tenant=TenantContext.getCurrentTenant();
         if(tenant==null) throw new ResponseStatusException(HttpStatus.FORBIDDEN,"Tenant required");
@@ -36,7 +37,7 @@ public class PaymentService {
         return result==null?BigDecimal.ZERO:result;
     }
     @Transactional
-    public UUID record(UUID order,Receipt receipt) {
+    public UUID record(UUID order,Receipt receipt, String token) {
         var header=lock(order);
         var previous=jdbc.queryForList("SELECT id,amount,received_at,method,reference FROM sales.order_payments WHERE order_id=? AND request_id=?",order,receipt.requestId());
         if(!previous.isEmpty()) {
@@ -56,16 +57,43 @@ public class PaymentService {
         jdbc.update("INSERT INTO sales.order_payments(id,order_id,request_id,amount,received_at,method,reference,actor) VALUES (?,?,?,?,?,?,?,?)",
             id,order,receipt.requestId(),receipt.amount(),receipt.receivedAt(),receipt.method(),receipt.reference(),TenantContext.getCurrentUserId());
         touch(order);
+        
+        try {
+            if (token != null) {
+                financeClient.postJournalEntry("PAY-" + id.toString().substring(0,8), 
+                    "Payment Receipt - " + receipt.method(), 
+                    List.of(
+                        Map.of("account", Map.of("code", "1000"), "debitAmount", receipt.amount()),
+                        Map.of("account", Map.of("code", "1100"), "creditAmount", receipt.amount())
+                    ), 
+                    token);
+            }
+        } catch (Exception e) {}
+        
         return id;
     }
     @Transactional
-    public void reverse(UUID order,UUID payment,Reversal request) {
+    public void reverse(UUID order,UUID payment,Reversal request, String token) {
         lock(order);
-        var rows=jdbc.queryForList("SELECT id FROM sales.order_payments WHERE order_id=? AND id=?",order,payment);
+        var rows=jdbc.queryForList("SELECT id, amount FROM sales.order_payments WHERE order_id=? AND id=?",order,payment);
         if(rows.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Payment not found");
         int added=jdbc.update("INSERT INTO sales.payment_reversals(payment_id,reason,actor) VALUES (?,?,?) ON CONFLICT(payment_id) DO NOTHING",
             payment,request.reason().trim(),TenantContext.getCurrentUserId());
-        if(added>0) touch(order);
+        if(added>0) {
+            touch(order);
+            try {
+                if (token != null) {
+                    BigDecimal amount = (BigDecimal) rows.get(0).get("amount");
+                    financeClient.postJournalEntry("REVP-" + payment.toString().substring(0,8), 
+                        "Payment Reversal - " + request.reason(), 
+                        List.of(
+                            Map.of("account", Map.of("code", "1100"), "debitAmount", amount),
+                            Map.of("account", Map.of("code", "1000"), "creditAmount", amount)
+                        ), 
+                        token);
+                }
+            } catch (Exception e) {}
+        }
     }
     private void touch(UUID order) {
         jdbc.update("UPDATE sales.orders SET version=version+1,updated_at=CURRENT_TIMESTAMP WHERE id=?",order);

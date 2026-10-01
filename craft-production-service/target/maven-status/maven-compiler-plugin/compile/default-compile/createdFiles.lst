@@ -9,6 +9,7 @@ tz/co/thamanicraft/production/WorkOrderRequest$Transition.class
 tz/co/thamanicraft/production/RecipeRequest.class
 tz/co/thamanicraft/production/amqp/ProductionAmqpConfig.class
 tz/co/thamanicraft/production/RecipeController.class
+tz/co/thamanicraft/production/SmartUOMConverter.class
 tz/co/thamanicraft/production/amqp/InventoryEventListener.class
 tz/co/thamanicraft/production/RecipeErrors.class
 tz/co/thamanicraft/production/RecipeCosting.class

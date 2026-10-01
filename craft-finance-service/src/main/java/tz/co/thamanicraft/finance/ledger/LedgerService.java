@@ -77,8 +77,18 @@ public class LedgerService {
         for (JournalLine line : lines) {
             line.setJournalEntry(entry);
             
-            Account account = accountRepository.findById(line.getAccount().getId())
-                    .orElseThrow(() -> new RuntimeException("Account not found: " + line.getAccount().getId()));
+            Account account = null;
+            if (line.getAccount().getId() != null) {
+                account = accountRepository.findById(line.getAccount().getId())
+                        .orElseThrow(() -> new RuntimeException("Account not found: " + line.getAccount().getId()));
+            } else if (line.getAccount().getCode() != null) {
+                account = accountRepository.findByTenantId(tenantId).stream()
+                        .filter(a -> a.getCode().equals(line.getAccount().getCode()))
+                        .findFirst()
+                        .orElseThrow(() -> new RuntimeException("Account not found by code: " + line.getAccount().getCode()));
+            } else {
+                throw new RuntimeException("Account id or code must be provided");
+            }
             
             if (!account.getTenantId().equals(tenantId)) {
                 throw new RuntimeException("Account does not belong to current tenant");

@@ -47,6 +47,9 @@ public class FinishedProduct {
     @Column(name = "cost_per_base_unit", nullable = false, precision = 14, scale = 4)
     private BigDecimal costPerBaseUnit;
 
+    @Column(name = "selling_price", nullable = false, precision = 14, scale = 2)
+    private BigDecimal sellingPrice;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

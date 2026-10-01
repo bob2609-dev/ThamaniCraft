@@ -109,7 +109,6 @@ export default function WorkOrder() {
             <Col xs={24} md={12}><Form.Item name="recipeId" label="Recipe" rules={[{ required: true }]}><Select showSearch optionFilterProp="label" options={recipes.map(r => ({ value: r.id, label: r.name }))} /></Form.Item></Col>
             <Col xs={24} md={12}><Form.Item name="plannedYield" label={`Planned output (${recipe?.outputUnit || 'recipe output unit'})`} rules={[{ required: true }]}
               extra={recipe ? `Recipe produces ${recipe.yieldQuantity} ${recipe.outputUnit} per batch.` : 'Select a recipe.'}><InputNumber min={0.01} max={99999999.99} precision={2} style={{ width: '100%' }} /></Form.Item></Col>
-            <Col xs={24} md={12}><Form.Item name="reference" label="Reference"><Input maxLength={255} /></Form.Item></Col>
             <Col xs={24} md={12}><Form.Item name="scheduledDate" label="Scheduled date" extra="Required before scheduling."><Input type="date" /></Form.Item></Col>
             <Col span={24}><Form.Item name="notes" label="Notes"><Input.TextArea rows={3} maxLength={4000} /></Form.Item></Col>
           </Row>
@@ -118,7 +117,6 @@ export default function WorkOrder() {
         </Form> : <Descriptions column={{ xs: 1, md: 2 }} items={[
           { key: 'recipe', label: 'Recipe', children: order.recipeName },
           { key: 'quantity', label: 'Planned output', children: `${order.plannedYield} ${order.outputUnit}` },
-          { key: 'reference', label: 'Reference', children: order.reference || '—' },
           { key: 'date', label: 'Scheduled date', children: order.scheduledDate || '—' },
           { key: 'notes', label: 'Notes', children: order.notes || '—', span: 2 },
         ]} />}

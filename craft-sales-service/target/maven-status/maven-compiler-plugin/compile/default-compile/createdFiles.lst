@@ -1,5 +1,6 @@
 tz/co/thamanicraft/sales/OrderRecipeMappingService$Request.class
 tz/co/thamanicraft/sales/SalesRequests.class
+tz/co/thamanicraft/sales/amqp/SalesEventPublisher.class
 tz/co/thamanicraft/sales/SalesController.class
 tz/co/thamanicraft/sales/PaymentController.class
 tz/co/thamanicraft/sales/SalesRequests$Fulfill.class
@@ -8,11 +9,14 @@ tz/co/thamanicraft/sales/SalesRequests$Customer.class
 tz/co/thamanicraft/sales/PaymentService.class
 tz/co/thamanicraft/sales/ProductionRecipeClient$Costing.class
 tz/co/thamanicraft/sales/SalesApplication.class
+tz/co/thamanicraft/sales/SalesRequests$POSCheckout.class
 tz/co/thamanicraft/sales/ProductionRecipeClient.class
+tz/co/thamanicraft/sales/SalesRequests$POSItem.class
 tz/co/thamanicraft/sales/ProductionWorkOrderClient$GenerateRequest.class
 tz/co/thamanicraft/sales/ProductionRecipeClient$Recipe.class
 tz/co/thamanicraft/sales/PaymentService$Reversal.class
 tz/co/thamanicraft/sales/SalesService.class
+tz/co/thamanicraft/sales/FinanceClient.class
 tz/co/thamanicraft/sales/SalesRequests$Item.class
 tz/co/thamanicraft/sales/InventoryDispatchClient$DispatchPayload.class
 tz/co/thamanicraft/sales/OrderRecipeMappingController.class
@@ -23,4 +27,5 @@ tz/co/thamanicraft/sales/SalesRequests$Order.class
 tz/co/thamanicraft/sales/SalesRequests$SettleCancellation.class
 tz/co/thamanicraft/sales/ProductionWorkOrderClient.class
 tz/co/thamanicraft/sales/OrderTotals.class
+tz/co/thamanicraft/sales/amqp/ProductionEventListener.class
 tz/co/thamanicraft/sales/PaymentService$Receipt.class

@@ -44,6 +44,22 @@ export default function Recipes() {
     <Table rowKey="id" loading={loading} dataSource={recipes} scroll={{ x: 700 }} columns={[
       { title: 'Recipe', dataIndex: 'name' },
       { title: 'Batch yield', render: (_, recipe) => `${recipe.yieldQuantity} ${recipe.yieldUnit}` },
+      { title: 'Est. Batch Cost', render: (_, recipe) => `TZS ${Number(recipe.costing?.batchCost || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` },
+      { title: 'Est. Unit Cost', render: (_, recipe) => `TZS ${Number(recipe.costing?.unitCost || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` },
+      { title: 'Suggested Price (TZS)', render: (_, recipe) => {
+          const suggestedPrice = recipe.suggestedPrice || 0;
+          return Number(suggestedPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }},
+      { title: 'Auto-Calculated Margin', render: (_, recipe) => {
+          const unitCost = recipe.costing?.unitCost || 0;
+          const suggestedPrice = recipe.suggestedPrice || 0;
+          const margin = (suggestedPrice > 0 && unitCost >= 0) ? ((suggestedPrice - unitCost) / suggestedPrice) * 100 : 0;
+          return (
+            <Typography.Text style={{ color: margin > 30 ? '#3f8600' : margin > 0 ? '#faad14' : '#cf1322' }}>
+              {Number(margin).toFixed(2)} %
+            </Typography.Text>
+          );
+      }},
       { title: 'Created', dataIndex: 'createdAt', render: (date) => date ? new Date(date).toLocaleDateString() : '—' },
       { title: 'Actions', render: (_, recipe) => <Space>
         <Button onClick={() => navigate(`/recipes/${recipe.id}/edit`)}>{canEdit ? 'Edit / Costing' : 'View'}</Button>

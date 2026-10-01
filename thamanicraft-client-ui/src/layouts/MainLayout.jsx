@@ -98,9 +98,9 @@ export default function MainLayout() {
       permission: 'VIEW_PURCHASES' // Assume VIEW_PURCHASES mapped for procurement
     },
     {
-      key: '/assets',
+      key: '/expenses',
       icon: <Factory size={18} />,
-      label: 'Assets & Overheads',
+      label: 'Expenses',
       permission: 'VIEW_FINANCE'
     },
     {

@@ -38,7 +38,7 @@ export default function CustomerEditor({
       okText="Save customer"
       cancelButtonProps={{ disabled: saving }}
       closable={!saving}
-      maskClosable={!saving}
+      mask={{ closable: !saving }}
     >
       {error && (
         <Alert type="error" title={error} style={{ marginBottom: 16 }} />

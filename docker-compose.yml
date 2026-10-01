@@ -180,12 +180,18 @@ services:
       - DB_NAME=${POSTGRES_DB:-thamanicraft_db}
       - DB_USER=${POSTGRES_USER:-postgres}
       - DB_PASS=${POSTGRES_PASSWORD:-postgres}
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=guest
+      - RABBITMQ_PASS=guest
       - JWT_SECRET=${JWT_SECRET}
     networks:
       - thamanicraft-net
     depends_on:
       postgres:
         condition: service_healthy
+      rabbitmq:
+        condition: service_started
     restart: unless-stopped
 
   thamanicraft-finance-service:

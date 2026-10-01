@@ -27,7 +27,7 @@ public class WorkOrderService {
     public List<Map<String,Object>> recipes() {
         return jdbc.queryForList("""
             SELECT r.id,r.name,r.yield_quantity AS "yieldQuantity",u.symbol AS "outputUnit"
-            FROM recipes r JOIN units_of_measure u ON u.id=r.yield_uom_id AND u.tenant_id=r.tenant_id
+            FROM recipes r JOIN units_of_measure u ON u.id=r.yield_uom_id AND (u.tenant_id=r.tenant_id OR u.tenant_id IS NULL)
             WHERE r.tenant_id=? AND r.is_active=true ORDER BY r.name
             """,tenant());
     }
@@ -117,7 +117,7 @@ public class WorkOrderService {
         var rows = jdbc.queryForList("""
             SELECT r.name,r.yield_quantity AS yield,r.yield_uom_id AS unit,u.symbol,
                 r.labor_cost_per_batch AS labor,r.energy_cost_per_batch AS energy,r.additional_overhead_per_batch AS overhead
-            FROM recipes r JOIN units_of_measure u ON u.id=r.yield_uom_id AND u.tenant_id=r.tenant_id
+            FROM recipes r JOIN units_of_measure u ON u.id=r.yield_uom_id AND (u.tenant_id=r.tenant_id OR u.tenant_id IS NULL)
             WHERE r.tenant_id=? AND r.id=? AND r.is_active=true
             """,tenant(),id);
         if (rows.isEmpty()) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Active recipe not found");
@@ -131,7 +131,7 @@ public class WorkOrderService {
                 m.name,m.base_uom_id AS unit,u.symbol,m.cost_per_base_unit AS cost
             FROM recipe_items i
             LEFT JOIN raw_materials m ON m.id=i.raw_material_id AND m.tenant_id=i.tenant_id
-            LEFT JOIN units_of_measure u ON u.id=m.base_uom_id AND u.tenant_id=m.tenant_id
+            LEFT JOIN units_of_measure u ON u.id=m.base_uom_id AND (u.tenant_id=m.tenant_id OR u.tenant_id IS NULL)
             WHERE i.tenant_id=? AND i.recipe_id=? ORDER BY i.raw_material_id
             """,tenant(),recipeId);
         if (lines.isEmpty()) conflict("The recipe needs at least one ingredient");
@@ -210,8 +210,11 @@ public class WorkOrderService {
                act.actualQuantity(), tenant(), id, act.materialId());
             if (updated == 0) conflict("Ingredient " + act.materialId() + " is not part of this batch");
         }
-        jdbc.update("UPDATE production_batches SET status='COMPLETION_PENDING', actual_yield=?, scrap_count=?, version=version+1, updated_at=CURRENT_TIMESTAMP, completed_at=CURRENT_TIMESTAMP WHERE tenant_id=? AND id=?", 
-            request.actualYield(), request.scrapCount(), tenant(), id);
+        jdbc.update("UPDATE production_batches SET status='COMPLETION_PENDING', actual_yield=?, scrap_count=?, " +
+            "total_batch_cost = (SELECT COALESCE(SUM(actual_quantity * unit_cost), 0) FROM production_batch_ingredients WHERE batch_id=? AND tenant_id=?) " +
+            "+ COALESCE(planned_labor, 0) + COALESCE(planned_energy, 0) + COALESCE(planned_overhead, 0), " +
+            "version=version+1, updated_at=CURRENT_TIMESTAMP, completed_at=CURRENT_TIMESTAMP WHERE tenant_id=? AND id=?", 
+            request.actualYield(), request.scrapCount(), id, tenant(), tenant(), id);
         audit(id, "COMPLETION_PENDING");
         
         var recipe = jdbc.queryForList("SELECT finished_product_id FROM recipes WHERE id=? AND tenant_id=?", current.get("recipeId"), tenant());
@@ -245,4 +248,27 @@ public class WorkOrderService {
                 UUID.randomUUID(),tenant(),id,action,TenantContext.getCurrentUserId());
     }
     private void conflict(String message) { throw new ResponseStatusException(HttpStatus.CONFLICT,message); }
+
+    @Transactional(isolation=Isolation.REPEATABLE_READ)
+    public UUID quickMake(WorkOrderRequest request) {
+        // 1. Create Draft
+        WorkOrderRequest scheduleReq = new WorkOrderRequest(request.recipeId(), request.plannedYield(), request.reference(), request.notes(), java.time.LocalDate.now(), 0);
+        UUID id = save(null, scheduleReq);
+        
+        // 2. Schedule
+        transition(id, "schedule", 0);
+        
+        // 3. Start
+        transition(id, "start", 1);
+        
+        // 4. Complete
+        var required = ingredients(id);
+        List<WorkOrderRequest.IngredientActual> actIngredients = new ArrayList<>();
+        for (var line : required) {
+            actIngredients.add(new WorkOrderRequest.IngredientActual((UUID)line.get("materialId"), (BigDecimal)line.get("quantity")));
+        }
+        
+        complete(id, new WorkOrderRequest.Completion(2, request.plannedYield(), BigDecimal.ZERO, actIngredients));
+        return id;
+    }
 }

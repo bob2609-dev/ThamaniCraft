@@ -37,9 +37,6 @@ public class RawMaterialService {
         if (material.getBaseUom() != null) {
             material.setBaseUom(uomRepository.findById(material.getBaseUom().getId()).orElseThrow(() -> new RuntimeException("Base UOM not found")));
         }
-        if (material.getPurchaseUom() != null) {
-            material.setPurchaseUom(uomRepository.findById(material.getPurchaseUom().getId()).orElseThrow(() -> new RuntimeException("Purchase UOM not found")));
-        }
         if (material.getCategory() != null && material.getCategory().getId() != null) {
             material.setCategory(categoryRepository.findById(material.getCategory().getId()).orElse(null));
         }
@@ -80,10 +77,6 @@ public class RawMaterialService {
             }
             existing.setBaseUom(uomRepository.findById(requestedBaseUomId).orElseThrow());
         }
-        if (updateRequest.getPurchaseUom() != null) {
-            existing.setPurchaseUom(uomRepository.findById(updateRequest.getPurchaseUom().getId()).orElseThrow());
-        }
-
         return rawMaterialRepository.save(existing);
     }
 

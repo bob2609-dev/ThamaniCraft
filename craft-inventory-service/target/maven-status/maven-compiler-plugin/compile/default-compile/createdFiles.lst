@@ -1,8 +1,10 @@
 tz/co/thamanicraft/inventory/service/FinishedProductService.class
+tz/co/thamanicraft/inventory/service/SmartUOMConverter.class
 tz/co/thamanicraft/inventory/amqp/ProductionEventListener.class
 tz/co/thamanicraft/inventory/service/ItemCategoryService.class
 tz/co/thamanicraft/inventory/entity/UnitOfMeasure$UnitOfMeasureBuilder.class
 tz/co/thamanicraft/inventory/service/FinishedProductService$DispatchRequest.class
+tz/co/thamanicraft/inventory/FinanceClient.class
 tz/co/thamanicraft/inventory/entity/UnitOfMeasure.class
 tz/co/thamanicraft/inventory/entity/ItemCategory.class
 tz/co/thamanicraft/inventory/entity/FinishedProduct.class

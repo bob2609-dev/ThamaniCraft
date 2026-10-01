@@ -3,6 +3,7 @@ import { Typography, Card, Select, DatePicker, Table, Button, Space, Spin, messa
 import { DownloadOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import { listOrders } from '../services/salesApi';
+import { getExpenses } from '../services/financeApi';
 import { listWorkOrders } from '../services/productionApi';
 import { fetchRawMaterials, fetchFinishedProducts } from '../services/inventoryApi';
 import { getTrialBalance, getJournalEntries, postJournalEntry } from '../services/financeApi';
@@ -51,15 +52,22 @@ export default function Reports() {
         // Setup columns
         setColumns([
           { title: 'Order ID', dataIndex: 'id', render: id => id.substring(0, 8) },
-          { title: 'Date', dataIndex: 'createdAt', render: d => dayjs(d).format('YYYY-MM-DD') },
-          { title: 'Customer', dataIndex: 'customerName' },
-          { title: 'Status', dataIndex: 'status' },
-          { title: 'Total (TZS)', dataIndex: 'total', render: val => Number(val)?.toLocaleString() },
-          { title: 'Discount', dataIndex: 'discountAmount', render: val => Number(val)?.toLocaleString() },
-          { title: 'Margin (%)', dataIndex: 'margin', render: (_, record) => {
-            if (!record.costingSummary) return 'N/A';
+          { title: 'Date', dataIndex: 'createdAt', render: d => dayjs(d).format('YYYY-MM-DD'), sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt) },
+          { title: 'Customer', dataIndex: 'customerName', sorter: (a, b) => a.customerName?.localeCompare(b.customerName) },
+          { title: 'Status', dataIndex: 'status', sorter: (a, b) => a.status.localeCompare(b.status) },
+          { title: 'Total (TZS)', dataIndex: 'total', render: val => Number(val)?.toLocaleString(), sorter: (a, b) => Number(a.total) - Number(b.total) },
+          { title: 'Discount', dataIndex: 'discountAmount', render: val => Number(val)?.toLocaleString(), sorter: (a, b) => Number(a.discountAmount) - Number(b.discountAmount) },
+          { title: 'Margin (%)', dataIndex: 'margin', sorter: (a, b) => {
+            const costA = a.actualCost || a.standardCost || 0;
+            const marginA = revA ? ((revA - costA) / revA) : 0;
+            const revB = Number(b.total) || 0;
+            const costB = b.actualCost || b.standardCost || 0;
+            const marginB = revB ? ((revB - costB) / revB) : 0;
+            return marginA - marginB;
+          }, render: (_, record) => {
+            if (record.actualCost == null && record.standardCost == null) return 'N/A';
             const revenue = Number(record.total);
-            const cost = record.costingSummary.actualCost || record.costingSummary.standardCost;
+            const cost = record.actualCost || record.standardCost;
             if (!revenue) return '0%';
             const margin = ((revenue - cost) / revenue) * 100;
             return (
@@ -79,19 +87,51 @@ export default function Reports() {
         
         setColumns([
           { title: 'Batch ID', dataIndex: 'id', render: id => id.substring(0, 8) },
-          { title: 'Date', dataIndex: 'createdAt', render: d => dayjs(d).format('YYYY-MM-DD') },
-          { title: 'Recipe', dataIndex: 'recipeName' },
-          { title: 'Status', dataIndex: 'status' },
-          { title: 'Target Qty', dataIndex: 'targetQuantity' },
-          { title: 'Actual Qty', dataIndex: 'actualYield' },
-          { title: 'Scrap Qty', dataIndex: 'scrapQuantity' },
-          { title: 'Yield (%)', dataIndex: 'yieldPercent', render: (_, record) => {
+          { title: 'Date', dataIndex: 'createdAt', render: d => dayjs(d).format('YYYY-MM-DD'), sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt) },
+          { title: 'Recipe', dataIndex: 'recipeName', sorter: (a, b) => a.recipeName?.localeCompare(b.recipeName) },
+          { title: 'Status', dataIndex: 'status', sorter: (a, b) => a.status?.localeCompare(b.status) },
+          { title: 'Target Qty', dataIndex: 'targetQuantity', sorter: (a, b) => Number(a.targetQuantity) - Number(b.targetQuantity) },
+          { title: 'Actual Qty', dataIndex: 'actualYield', sorter: (a, b) => Number(a.actualYield) - Number(b.actualYield) },
+          { title: 'Scrap Qty', dataIndex: 'scrapQuantity', sorter: (a, b) => Number(a.scrapQuantity) - Number(b.scrapQuantity) },
+          { title: 'Yield (%)', dataIndex: 'yieldPercent', sorter: (a, b) => {
+            const yieldA = a.actualYield && a.targetQuantity ? a.actualYield / a.targetQuantity : 0;
+            const yieldB = b.actualYield && b.targetQuantity ? b.actualYield / b.targetQuantity : 0;
+            return yieldA - yieldB;
+          }, render: (_, record) => {
             if (!record.actualYield || !record.targetQuantity) return 'N/A';
             const yieldPct = (record.actualYield / record.targetQuantity) * 100;
-            return `${yieldPct.toFixed(1)}%`;
+            return `${yieldPct.toFixed(2)}%`;
           }}
         ]);
         setData(filtered);
+      } else if (reportType === 'PROFIT_LOSS') {
+        // Build Money In / Money Out
+        const [orders, expenses] = await Promise.all([listOrders(), getExpenses()]);
+        const filteredOrders = orders.filter(o => {
+          const date = dayjs(o.createdAt);
+          return date.isAfter(dateRange[0]) && date.isBefore(dateRange[1]);
+        });
+        const filteredExpenses = expenses.filter(e => {
+          const date = dayjs(e.expenseDate);
+          return date.isAfter(dateRange[0]) && date.isBefore(dateRange[1]);
+        });
+        
+        const totalRevenue = filteredOrders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
+        const cogs = filteredOrders.reduce((sum, o) => sum + (Number(o.actualCost || o.standardCost) || 0), 0);
+        const totalExpenses = filteredExpenses.reduce((sum, e) => sum + (Number(e.amount) || 0), 0);
+        const netProfit = totalRevenue - cogs - totalExpenses;
+
+        setColumns([
+          { title: 'Category', dataIndex: 'category' },
+          { title: 'Amount (TZS)', dataIndex: 'amount', render: val => Number(val).toLocaleString(), align: 'right' }
+        ]);
+        
+        setData([
+          { key: 'rev', category: 'Sales Revenue (Money In)', amount: totalRevenue },
+          { key: 'cogs', category: 'Ingredient Costs', amount: -cogs },
+          { key: 'exp', category: 'Operational Expenses (Money Out)', amount: -totalExpenses },
+          { key: 'net', category: 'Net Profit', amount: netProfit }
+        ]);
       } else if (reportType === 'INVENTORY_VALUATION') {
         const [raw, finished] = await Promise.all([fetchRawMaterials(), fetchFinishedProducts()]);
         
@@ -101,71 +141,21 @@ export default function Reports() {
         ];
         
         setColumns([
-          { title: 'Item Name', dataIndex: 'name' },
-          { title: 'Type', dataIndex: 'type' },
-          { title: 'Stock Qty', dataIndex: 'stockQuantity' },
-          { title: 'UOM', dataIndex: 'uom', render: u => u?.abbreviation || '' },
-          { title: 'Unit Cost (TZS)', dataIndex: 'basePrice', render: val => val?.toLocaleString() },
-          { title: 'Total Value (TZS)', dataIndex: 'totalValue', render: (_, record) => {
-            const val = (record.stockQuantity || 0) * (record.basePrice || 0);
+          { title: 'Item Name', dataIndex: 'name', sorter: (a, b) => a.name?.localeCompare(b.name) },
+          { title: 'Type', dataIndex: 'type', sorter: (a, b) => a.type?.localeCompare(b.type) },
+          { title: 'Stock Qty', dataIndex: 'currentStockBaseQty', sorter: (a, b) => Number(a.currentStockBaseQty) - Number(b.currentStockBaseQty) },
+          { title: 'UOM', dataIndex: ['baseUom', 'symbol'] },
+          { title: 'Unit Cost (TZS)', dataIndex: 'costPerBaseUnit', render: val => val?.toLocaleString(), sorter: (a, b) => Number(a.costPerBaseUnit) - Number(b.costPerBaseUnit) },
+          { title: 'Total Value (TZS)', dataIndex: 'totalValue', sorter: (a, b) => {
+            const valA = (a.currentStockBaseQty || 0) * (a.costPerBaseUnit || 0);
+            const valB = (b.currentStockBaseQty || 0) * (b.costPerBaseUnit || 0);
+            return valA - valB;
+          }, render: (_, record) => {
+            const val = (record.currentStockBaseQty || 0) * (record.costPerBaseUnit || 0);
             return val.toLocaleString();
           }}
         ]);
         setData(inventoryData);
-      } else if (reportType === 'TRIAL_BALANCE') {
-        const accounts = await getTrialBalance();
-        setColumns([
-          { title: 'Account Code', dataIndex: 'code' },
-          { title: 'Account Name', dataIndex: 'name' },
-          { title: 'Type', dataIndex: 'type' },
-          { title: 'Balance', dataIndex: 'balance', render: val => val?.toLocaleString() },
-        ]);
-        setData(accounts);
-      } else if (reportType === 'JOURNAL_ENTRIES') {
-        const journals = await getJournalEntries();
-        if (isDoubleEntryView) {
-          const flattened = [];
-          journals.forEach(j => {
-            j.lines.forEach((l, index) => {
-              flattened.push({
-                key: `${j.id}-${l.id}`,
-                isFirstLine: index === 0,
-                entryDate: j.entryDate,
-                reference: j.reference,
-                description: index === 0 ? j.description : '',
-                accountName: `${l.account?.name} (${l.account?.code})`,
-                debitAmount: l.debitAmount,
-                creditAmount: l.creditAmount
-              });
-            });
-          });
-          setColumns([
-            { title: 'Date', dataIndex: 'entryDate', render: (d, record) => record.isFirstLine ? dayjs(d).format('YYYY-MM-DD HH:mm') : '' },
-            { title: 'Reference', dataIndex: 'reference', render: (ref, record) => record.isFirstLine ? ref : '' },
-            { title: 'Description', dataIndex: 'description' },
-            { title: 'Account', dataIndex: 'accountName', render: (name, record) => record.creditAmount ? <span style={{ marginLeft: 20 }}>{name}</span> : name },
-            { title: 'Debit (TZS)', dataIndex: 'debitAmount', align: 'right', render: val => val ? val.toLocaleString() : '' },
-            { title: 'Credit (TZS)', dataIndex: 'creditAmount', align: 'right', render: val => val ? val.toLocaleString() : '' },
-          ]);
-          setData(flattened);
-        } else {
-          setColumns([
-            { title: 'Date', dataIndex: 'entryDate', render: d => dayjs(d).format('YYYY-MM-DD HH:mm') },
-            { title: 'Reference', dataIndex: 'reference' },
-            { title: 'Description', dataIndex: 'description' },
-            { title: 'Details', dataIndex: 'lines', render: lines => (
-               <ul style={{ paddingLeft: 16, margin: 0 }}>
-                 {lines?.map(l => (
-                   <li key={l.id}>
-                     {l.account?.name} ({l.account?.code}): 
-                     {l.debitAmount ? ` DR ${l.debitAmount.toLocaleString()}` : ` CR ${l.creditAmount.toLocaleString()}`}
-                   </li>
-                 ))}
-               </ul>
-            )},
-          ]);
-          setData(journals);
-        }
       }
     } catch (e) {
       console.error(e);
@@ -209,16 +199,16 @@ export default function Reports() {
         let val = record[c.dataIndex];
         if (c.dataIndex === 'createdAt') val = dayjs(val).format('YYYY-MM-DD');
         if (c.dataIndex === 'uom') val = val?.abbreviation;
-        if (c.dataIndex === 'margin' && record.costingSummary) {
+        if (c.dataIndex === 'margin' && (record.actualCost != null || record.standardCost != null)) {
            const rev = Number(record.total) || 0;
-           const cost = record.costingSummary.actualCost || record.costingSummary.standardCost;
+           const cost = record.actualCost || record.standardCost;
            val = rev ? (((rev - cost) / rev) * 100).toFixed(2) + '%' : '0%';
         }
         if (c.dataIndex === 'yieldPercent' && record.actualYield) {
-           val = ((record.actualYield / record.targetQuantity) * 100).toFixed(1) + '%';
+           val = ((record.actualYield / record.targetQuantity) * 100).toFixed(2) + '%';
         }
         if (c.dataIndex === 'totalValue') {
-           val = (record.stockQuantity || 0) * (record.basePrice || 0);
+           val = (record.currentStockBaseQty || 0) * (record.costPerBaseUnit || 0);
         }
         // Escape quotes and wrap in quotes to handle commas
         const strVal = String(val ?? '').replace(/"/g, '""');
@@ -260,10 +250,9 @@ export default function Reports() {
         style={{ marginBottom: 16 }}
         items={[
           { key: 'SALES_MARGIN', label: 'Sales & Gross Margin' },
+          { key: 'PROFIT_LOSS', label: 'Money In / Money Out (P&L)' },
           { key: 'PRODUCTION_YIELD', label: 'Production Yield & Scrap' },
-          { key: 'INVENTORY_VALUATION', label: 'Inventory Valuation' },
-          { key: 'TRIAL_BALANCE', label: 'Trial Balance' },
-          { key: 'JOURNAL_ENTRIES', label: 'Journal Entries' },
+          { key: 'INVENTORY_VALUATION', label: 'Stock Valuation' },
         ]}
       />
 
@@ -320,50 +309,6 @@ export default function Reports() {
         />
       </Card>
 
-      <Modal
-        title="Post Manual Journal Entry"
-        open={isModalVisible}
-        onCancel={() => {
-          setIsModalVisible(false);
-          form.resetFields();
-        }}
-        onOk={() => form.submit()}
-      >
-        <Form form={form} layout="vertical" onFinish={handlePostEntry}>
-          <Form.Item name="reference" label="Reference" rules={[{ required: true }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item name="description" label="Description" rules={[{ required: true }]}>
-            <Input.TextArea />
-          </Form.Item>
-          <Form.Item name="entryDate" label="Entry Date" rules={[{ required: true }]}>
-            <DatePicker showTime style={{ width: '100%' }} />
-          </Form.Item>
-          <Form.Item name="amount" label="Amount" rules={[{ required: true }]}>
-            <InputNumber style={{ width: '100%' }} />
-          </Form.Item>
-          <Row gutter={16}>
-            <Col span={12}>
-              <Form.Item name="debitAccountId" label="Debit Account" rules={[{ required: true, message: 'Please select an account' }]}>
-                <Select showSearch optionFilterProp="children" placeholder="Select Account">
-                  {accounts.map(acc => (
-                    <Option key={acc.id} value={acc.id}>{acc.code} - {acc.name}</Option>
-                  ))}
-                </Select>
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item name="creditAccountId" label="Credit Account" rules={[{ required: true, message: 'Please select an account' }]}>
-                <Select showSearch optionFilterProp="children" placeholder="Select Account">
-                  {accounts.map(acc => (
-                    <Option key={acc.id} value={acc.id}>{acc.code} - {acc.name}</Option>
-                  ))}
-                </Select>
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
-      </Modal>
     </div>
   );
 }

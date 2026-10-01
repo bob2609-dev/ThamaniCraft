@@ -21,3 +21,4 @@ export const saveFinanceRecord = (kind, id, values) => request(`/${kind}${id ? `
 export const getTrialBalance = () => request('/ledger/trial-balance');
 export const getJournalEntries = () => request('/ledger/journal');
 export const postJournalEntry = (entry) => request('/ledger/journal', 'POST', entry);
+export const quickExpense = (payload) => request('/quick-expense', 'POST', payload);

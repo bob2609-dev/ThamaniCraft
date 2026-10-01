@@ -26,6 +26,8 @@ public class FinanceController {
     public Map<String,UUID> createExpense(@Valid @RequestBody FinanceRequests.Expense request) { return Map.of("id",service.saveExpense(null,request)); }
     @PutMapping("/expenses/{id}") @PreAuthorize("hasRole('OWNER') or hasAuthority('MANAGE_FINANCE')")
     public Map<String,UUID> updateExpense(@PathVariable UUID id,@Valid @RequestBody FinanceRequests.Expense request) { return Map.of("id",service.saveExpense(id,request)); }
+    @PostMapping("/quick-expense") @ResponseStatus(HttpStatus.CREATED) @PreAuthorize("hasRole('OWNER') or hasAuthority('MANAGE_FINANCE')")
+    public Map<String,UUID> createQuickExpense(@Valid @RequestBody FinanceRequests.Expense request) { return Map.of("id",service.quickExpense(request)); }
     @ExceptionHandler(ResponseStatusException.class)
     public ProblemDetail status(ResponseStatusException error) { return ProblemDetail.forStatusAndDetail(error.getStatusCode(),error.getReason()); }
     @ExceptionHandler(MethodArgumentNotValidException.class)

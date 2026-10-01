@@ -28,7 +28,9 @@ public class SalesRequests {
         @NotNull @DecimalMin("0") @Digits(integer=10,fraction=2) BigDecimal unitPrice,
         @Size(max=1000) String instructions,
         UUID finishedProductId,
-        @Size(max=255) String finishedProductName) {}
+        @Size(max=255) String finishedProductName,
+        UUID recipeId,
+        @DecimalMin("0.0001") @Digits(integer=8,fraction=4) BigDecimal outputPerItem) {}
     public record Fulfill(@NotNull @Min(0) Integer version,
         @Size(max=255) String carrierOrCollector,
         @Size(max=1000) String notes) {}
@@ -36,4 +38,17 @@ public class SalesRequests {
         @NotBlank @Size(max=1000) String reason,
         @NotNull @DecimalMin("0") @Digits(integer=12,fraction=2) BigDecimal retainedDeposit,
         @NotNull @Pattern(regexp="RETAIN_IN_STOCK|SCRAP|NONE") String inventoryDisposition) {}
+        
+    public record POSCheckout(
+        UUID customerId,
+        @NotEmpty @Size(max=100) List<@NotNull @Valid POSItem> items,
+        @NotNull @DecimalMin("0") @Digits(integer=12,fraction=2) BigDecimal paymentAmount,
+        @NotBlank String paymentMethod) {}
+        
+    public record POSItem(
+        UUID productId,
+        @NotBlank String productName,
+        @NotNull @DecimalMin("0.0001") @Digits(integer=8,fraction=4) BigDecimal quantity,
+        @NotNull @DecimalMin("0") @Digits(integer=10,fraction=2) BigDecimal unitPrice,
+        UUID recipeId) {}
 }

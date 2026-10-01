@@ -22,7 +22,7 @@ public class UnitOfMeasure {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "tenant_id", nullable = false)
+    @Column(name = "tenant_id")
     private UUID tenantId;
 
     @Column(nullable = false, length = 64)

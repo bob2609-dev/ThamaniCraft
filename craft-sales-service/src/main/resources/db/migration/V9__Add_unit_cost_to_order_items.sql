@@ -1,0 +1,1 @@
+ALTER TABLE sales.order_items ADD COLUMN unit_cost NUMERIC(12,2) NOT NULL DEFAULT 0.00;

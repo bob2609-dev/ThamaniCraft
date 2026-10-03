@@ -4,6 +4,8 @@ import { getRecipe, listRecipes } from '../services/recipeApi';
 import { generateWorkOrder, mapOrderRecipe } from '../services/salesApi';
 import usePermissions from '../hooks/usePermissions';
 import { Form, InputNumber, Modal, Select } from 'antd';
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from './SearchableTable';
 
 function RecipeDetails({ recipeId }) {
   const [recipe, setRecipe] = useState(null);
@@ -23,7 +25,7 @@ function RecipeDetails({ recipeId }) {
   return (
     <div style={{ padding: '8px 16px', backgroundColor: 'rgba(0,0,0,0.02)', borderRadius: 4 }} className="dark:bg-slate-700">
       <Typography.Text strong>Base Recipe: {recipe.name}</Typography.Text>
-      <Table 
+      <SearchableTable 
         size="small"
         dataSource={recipe.costing?.lines || []}
         pagination={false}
@@ -196,7 +198,7 @@ export default function OrderCostingSummary({ order, onChanged }) {
       </Row>
 
       <Typography.Title level={5}>Itemized Cost Breakdown</Typography.Title>
-      <Table
+      <SearchableTable
         rowKey="id"
         dataSource={order.items}
         pagination={false}

@@ -4,6 +4,8 @@ import { PlusOutlined } from '@ant-design/icons';
 import * as api from '../services/financeApi';
 import usePermissions from '../hooks/usePermissions';
 import dayjs from 'dayjs';
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from '../components/SearchableTable';
 
 const money = (v) => Number(v || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const options = (items) => items.map(value => ({ value, label: value.replaceAll('_', ' ') }));
@@ -154,11 +156,11 @@ export default function Expenses() {
       {error && <Alert type="error" showIcon title={error} action={<Button onClick={reload}>Retry</Button>} style={{ marginBottom: 16 }} />}
       
       <Card className="glass-panel dark:bg-slate-800" style={{ borderRadius: 12 }}>
-        <Table 
+        <SearchableTable 
           rowKey="id" 
           loading={loading} 
           dataSource={expenses} 
-          columns={expenseColumns} 
+          columns={withSorters(expenseColumns)} 
           expandable={notesExpandable} 
           scroll={{ x: 850 }} 
           pagination={{ pageSize: 20 }}

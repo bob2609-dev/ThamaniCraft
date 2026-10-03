@@ -5,6 +5,9 @@ import { ArrowLeftOutlined, PlusOutlined, EditOutlined, DeleteOutlined } from '@
 import * as api from '../services/recipeApi';
 import { fetchRawMaterials, fetchUnitsOfMeasure } from '../services/inventoryApi';
 import usePermissions from '../hooks/usePermissions';
+import { withSorters } from '../utils/tableUtils';
+import ImageUpload from '../components/ImageUpload';
+import SearchableTable from '../components/SearchableTable';
 
 const money = (value) => Number(value || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -259,6 +262,10 @@ export default function RecipeEditor() {
                   <Input.TextArea rows={2} maxLength={4000} />
                 </Form.Item>
 
+                <Form.Item name="imageUrl" label="Product Image (Optional)">
+                  <ImageUpload />
+                </Form.Item>
+
                 <div style={{ marginTop: 24, paddingTop: 16, borderTop: '1px solid var(--border-subtle)' }}>
                   <Typography.Title level={5}>Pricing Details</Typography.Title>
                   <Row gutter={12} style={{ marginBottom: 16 }}>
@@ -301,8 +308,8 @@ export default function RecipeEditor() {
                 title="Ingredients"
                 extra={canEdit && <Button type="primary" icon={<PlusOutlined />} onClick={() => openIngredientModal(-1)}>Add Ingredient</Button>}
               >
-                <Table 
-                  columns={columns}
+                <SearchableTable 
+                  columns={withSorters(columns)}
                   dataSource={items}
                   rowKey={(record, i) => i}
                   pagination={false}

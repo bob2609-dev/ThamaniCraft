@@ -1,0 +1,13 @@
+{
+  "supplierName": "Test Supplier",
+  "supplierReference": "123",
+  "notes": "Test notes",
+  "lines": [
+    {
+      "rawMaterialId": "00000000-0000-0000-0000-000000000001",
+      "receivedUomId": "00000000-0000-0000-0000-000000000001",
+      "purchaseQuantity": 10,
+      "purchaseUnitCost": 5.0
+    }
+  ]
+}

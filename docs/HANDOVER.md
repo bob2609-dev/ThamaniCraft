@@ -38,7 +38,9 @@ Go to **Sales & Dispatch → Open an existing order**.
 
 ## Current unresolved issue / first action
 
-On 2026-09-28, bugs in the Dashboard and Reports related to missing mapping of backend fields (`createdAt`, `targetQuantity`, `actualYield`, `scrapQuantity`) and misaligned frontend properties (`totalAmount` vs `total`) have been resolved. The missing mappings caused missing data and a JS ReferenceError which blanked out the dashboard. We rebuilt the backend Docker containers (sales, production) so that the Java changes could take effect.
+On 2026-10-02, we implemented the automatic "Just-In-Time" (JIT) inventory deduction for Point-of-Sale (POS) made-to-order items. For standard sales, inventory is deducted during the explicit Work Order production phases. However, for POS sales where items are sold instantly, we introduced an asynchronous `SalesEventListener` in the `craft-production-service`. It listens for `OrderFulfillment` events of type `JUST_IN_TIME`, instantly snapshots a silent Work Order, and marks it `COMPLETION_PENDING` while sending a payload with `finishedProductId: null`. This correctly deducts raw materials in the `craft-inventory-service` without falsely inflating finished goods.
+
+Earlier, bugs in the Dashboard and Reports related to missing mapping of backend fields (`createdAt`, `targetQuantity`, `actualYield`, `scrapQuantity`) and misaligned frontend properties (`totalAmount` vs `total`) have been resolved. The missing mappings caused missing data and a JS ReferenceError which blanked out the dashboard.
 
 In a later session, we corrected the Flyway migration conflict in the `craft-inventory-service` (V3 vs V9 duplication) which was causing a 500 server error, and verified that both Revenue and Gross Profit render cleanly on the Dashboard charts. The unit cost logic for sales items dynamically computes from the Inventory, enabling actual profit calculation. Finally, we stripped out deprecated `hibernate.dialect` settings from backend configuration files.
 

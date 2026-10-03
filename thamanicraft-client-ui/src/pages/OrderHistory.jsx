@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Alert, Button, Card, Input, Select, Space, Table, Tag, Typography } from 'antd';
 import { listOrders } from '../services/salesApi';
 import usePermissions from '../hooks/usePermissions';
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from '../components/SearchableTable';
 
 export default function OrderHistory() {
   const navigate = useNavigate();
@@ -62,7 +64,7 @@ export default function OrderHistory() {
           options={['ALL', 'UNPAID', 'PARTIAL', 'PAID', 'REFUND_DUE'].map(value => ({ value, label: value === 'ALL' ? 'All payment statuses' : value }))}
         />
         
-        <Table 
+        <SearchableTable 
           rowKey="id" 
           dataSource={rows
             .filter(r => `${r.orderNumber} ${r.id} ${r.customerName} ${r.customerPhone}`.toLowerCase().includes(search.toLowerCase()))

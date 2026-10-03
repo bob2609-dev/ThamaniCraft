@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { PlusOutlined } from '@ant-design/icons';
 import * as api from '../services/recipeApi';
 import usePermissions from '../hooks/usePermissions';
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from '../components/SearchableTable';
 
 export default function Recipes() {
   const { message } = App.useApp();
@@ -41,7 +43,7 @@ export default function Recipes() {
       <Col>{canEdit && <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate('/recipes/new')} loading={loading}>Add recipe</Button>}</Col>
     </Row>
     <Card className="dark:bg-slate-800">
-    <Table rowKey="id" loading={loading} dataSource={recipes} scroll={{ x: 700 }} columns={[
+    <SearchableTable rowKey="id" loading={loading} dataSource={recipes} scroll={{ x: 700 }} columns={withSorters([
       { title: 'Recipe', dataIndex: 'name' },
       { title: 'Batch yield', render: (_, recipe) => `${recipe.yieldQuantity} ${recipe.yieldUnit}` },
       { title: 'Est. Batch Cost', render: (_, recipe) => `TZS ${Number(recipe.costing?.batchCost || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` },
@@ -65,7 +67,7 @@ export default function Recipes() {
         <Button onClick={() => navigate(`/recipes/${recipe.id}/edit`)}>{canEdit ? 'Edit / Costing' : 'View'}</Button>
         {canEdit && <Popconfirm title="Archive this recipe?" onConfirm={() => archive(recipe.id)}><Button danger>Archive</Button></Popconfirm>}
       </Space> },
-    ]} />
+    ])} />
     </Card>
   </div>;
 }

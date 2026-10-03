@@ -16,7 +16,8 @@ public record RecipeRequest(
         @DecimalMin("0") @Digits(integer = 10, fraction = 2) BigDecimal additionalOverheadPerBatch,
         @Digits(integer = 10, fraction = 2) BigDecimal suggestedPrice,
         @NotEmpty @Size(max = 100) List<@NotNull @Valid Item> items,
-        String productionMode) {
+        String productionMode,
+        String imageUrl) {
     public RecipeRequest {
         if (additionalOverheadPerBatch == null)
             additionalOverheadPerBatch = BigDecimal.ZERO;

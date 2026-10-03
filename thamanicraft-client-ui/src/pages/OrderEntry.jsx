@@ -26,6 +26,8 @@ import CustomerEditor from "../components/CustomerEditor";
 import OrderPayments from "../components/OrderPayments";
 import OrderCostingSummary from "../components/OrderCostingSummary";
 import usePermissions from "../hooks/usePermissions";
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from '../components/SearchableTable';
 
 export default function OrderEntry() {
   const { id } = useParams(),
@@ -445,12 +447,12 @@ export default function OrderEntry() {
               onChanged={async () => setOrder(await api.getOrder(id))}
             />
             <Typography.Title level={4}>Order history</Typography.Title>
-            <Table
+            <SearchableTable
               rowKey="id"
               dataSource={order.history || []}
               pagination={false}
               scroll={{ x: 700 }}
-              columns={[
+              columns={withSorters([
                 { title: "Action", dataIndex: "action" },
                 { title: "Reason", dataIndex: "reason" },
                 { title: "Previous discount", dataIndex: "oldDiscount" },
@@ -464,14 +466,14 @@ export default function OrderEntry() {
                       timeZone: "Africa/Dar_es_Salaam",
                     }),
                 },
-              ]}
+              ])}
             />
-            <Table
+            <SearchableTable
               rowKey="id"
               dataSource={order.items}
               pagination={false}
               scroll={{ x: 850 }}
-              columns={[
+              columns={withSorters([
                 {
                   title: "Item",
                   dataIndex: "description",
@@ -504,7 +506,7 @@ export default function OrderEntry() {
                       "—"
                     ),
                 },
-              ]}
+              ])}
             />
           </Card>
         )

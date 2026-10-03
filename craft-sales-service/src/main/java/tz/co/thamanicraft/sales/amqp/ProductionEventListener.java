@@ -47,11 +47,26 @@ public class ProductionEventListener {
             }
             UUID batchId = UUID.fromString(batchIdStr);
             
-            // Sync status to sales.order_items
-            int updated = jdbc.update(
-                "UPDATE sales.order_items SET work_order_status = 'COMPLETED' WHERE work_order_id = ?",
-                batchId
-            );
+            Object orderItemObj = data.get("orderItemId");
+            UUID orderItemId = null;
+            if (orderItemObj != null && !orderItemObj.toString().isBlank()) {
+                orderItemId = UUID.fromString(orderItemObj.toString());
+            }
+            
+            int updated = 0;
+            if (orderItemId != null) {
+                // Link the generated JIT batch to the specific order item
+                updated = jdbc.update(
+                    "UPDATE sales.order_items SET work_order_status = 'COMPLETED', work_order_id = ? WHERE id = ?",
+                    batchId, orderItemId
+                );
+            } else {
+                // Sync status for existing linked order items
+                updated = jdbc.update(
+                    "UPDATE sales.order_items SET work_order_status = 'COMPLETED' WHERE work_order_id = ?",
+                    batchId
+                );
+            }
             
             log.info("Successfully processed BatchCompleted event: {}. Updated {} items.", messageId, updated);
         } catch (Exception e) {

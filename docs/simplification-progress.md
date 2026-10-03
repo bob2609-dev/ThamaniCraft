@@ -18,7 +18,8 @@
 ## Phase 3: Frontend UI Redesign - Dashboard & Sales (POS)
 - [x] **UI (Dashboard)**: Replace complex charts with 4 primary Quick Action buttons.
 - [x] **UI (Dashboard)**: Implement simple top banner metrics (Today's Sales, Profit, Low Stock Alerts).
-- [x] **UI (Sales)**: Build the `PointOfSale.jsx` visual grid of products.
+- [x] **UI (Sales)**: Build the `PointOfSale.jsx` visual grid of products (now properly includes both Finished Products and Made-to-Order Recipes).
+- [x] **UI (Sales)**: Fix POS display to accurately reflect prices (`suggestedPrice` for recipes, `sellingPrice` for finished products, avoiding 0.00 margins).
 - [x] **UI (Sales)**: Build the Cart pane and Checkout modal.
 - [x] **Integration**: Wire Checkout modal to the `POST /api/sales/pos/checkout` facade.
 

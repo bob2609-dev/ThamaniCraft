@@ -8,5 +8,7 @@ RUN apk add --no-cache tzdata && \
 COPY entrypoint.sh /docker-entrypoint-custom.sh
 RUN chmod +x /docker-entrypoint-custom.sh
 
+RUN rabbitmq-plugins enable --offline rabbitmq_tracing
+
 ENTRYPOINT ["/docker-entrypoint-custom.sh"]
 CMD ["rabbitmq-server"]

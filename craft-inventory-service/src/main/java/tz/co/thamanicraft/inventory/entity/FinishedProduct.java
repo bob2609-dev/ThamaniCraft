@@ -50,6 +50,9 @@ public class FinishedProduct {
     @Column(name = "selling_price", nullable = false, precision = 14, scale = 2)
     private BigDecimal sellingPrice;
 
+    @Column(name = "image_url", columnDefinition = "TEXT")
+    private String imageUrl;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

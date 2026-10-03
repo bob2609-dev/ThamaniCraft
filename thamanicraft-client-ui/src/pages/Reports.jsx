@@ -7,6 +7,8 @@ import { getExpenses } from '../services/financeApi';
 import { listWorkOrders } from '../services/productionApi';
 import { fetchRawMaterials, fetchFinishedProducts } from '../services/inventoryApi';
 import { getTrialBalance, getJournalEntries, postJournalEntry } from '../services/financeApi';
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from '../components/SearchableTable';
 
 const { Title } = Typography;
 const { RangePicker } = DatePicker;
@@ -299,10 +301,10 @@ export default function Reports() {
       </Card>
       
       <Card className="glass-panel" style={{ borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
-        <Table 
+        <SearchableTable 
           loading={loading}
           dataSource={data} 
-          columns={columns} 
+          columns={withSorters(columns)} 
           rowKey={record => record.key || record.id}
           size="middle"
           pagination={{ pageSize: 15 }}

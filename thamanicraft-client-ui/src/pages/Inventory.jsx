@@ -5,6 +5,9 @@ import * as api from '../services/inventoryApi';
 import usePermissions from '../hooks/usePermissions';
 import CostCorrectionModal from '../components/CostCorrectionModal';
 import QuickRefillModal from '../components/QuickRefillModal';
+import { withSorters } from '../utils/tableUtils';
+import ImageUpload from '../components/ImageUpload';
+import SearchableTable from '../components/SearchableTable';
 
 
 
@@ -352,7 +355,16 @@ export default function Inventory() {
       title: 'Current Stock (Base UOM)',
       dataIndex: 'currentStockBaseQty',
       key: 'currentStock',
-      render: (value, record) => formatBaseQuantity(value, record),
+      render: (value, record) => {
+        const qty = Number(value ?? 0);
+        const reorderLevel = Number(record.reorderLevelBaseQty ?? 0);
+        const formatted = formatBaseQuantity(value, record);
+        
+        if (qty <= reorderLevel) {
+          return <span className="text-red-500 font-bold">{formatted} (Low)</span>;
+        }
+        return formatted;
+      },
     },
     {
       title: 'Reorder Level (Base UOM)',
@@ -454,8 +466,8 @@ export default function Inventory() {
                     Quick Refill
                   </Button>
                 </div>
-                <Table 
-                  columns={rawMaterialColumns} 
+                <SearchableTable 
+                  columns={withSorters(rawMaterialColumns)} 
                   dataSource={rawMaterials} 
                   rowKey="id" 
                   loading={loadingRawMaterials} 
@@ -468,8 +480,8 @@ export default function Inventory() {
             key: 'finishedProducts',
             label: 'Finished Products',
             children: (
-              <Table 
-                columns={finishedProductColumns} 
+              <SearchableTable 
+                columns={withSorters(finishedProductColumns)} 
                 dataSource={finishedProducts} 
                 rowKey="id" 
                 loading={loadingFinishedProducts} 
@@ -481,8 +493,8 @@ export default function Inventory() {
             key: 'categories',
             label: 'Categories',
             children: (
-              <Table 
-                columns={categoryColumns} 
+              <SearchableTable 
+                columns={withSorters(categoryColumns)} 
                 dataSource={categories} 
                 rowKey="id" 
                 loading={loadingCategories} 
@@ -494,8 +506,8 @@ export default function Inventory() {
             key: 'uom',
             label: 'Units of Measure',
             children: (
-              <Table 
-                columns={uomColumns} 
+              <SearchableTable 
+                columns={withSorters(uomColumns)} 
                 dataSource={uoms} 
                 rowKey="id" 
                 loading={loadingUoms} 
@@ -743,6 +755,18 @@ export default function Inventory() {
                 extra="Default price applied in sales."
               >
                 <InputNumber className="w-full" min={0} />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col xs={24}>
+              <Form.Item
+                name="imageUrl"
+                label="Product Image"
+                rules={[{ required: false }]}
+                extra="Upload an image for the point of sale."
+              >
+                <ImageUpload />
               </Form.Item>
             </Col>
           </Row>

@@ -244,8 +244,12 @@ public class WorkOrderService {
         if (((Number)row.get("version")).intValue()!=version) conflict("Work order changed. Reload before trying again.");
     }
     private void audit(UUID id,String action) {
+        UUID actorId = TenantContext.getCurrentUserId();
+        if (actorId == null) {
+            actorId = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        }
         jdbc.update("INSERT INTO production_batch_history(id,tenant_id,batch_id,action,actor_id) VALUES (?::uuid,?::uuid,?::uuid,?,?::uuid)",
-                UUID.randomUUID(),tenant(),id,action,TenantContext.getCurrentUserId());
+                UUID.randomUUID(),tenant(),id,action,actorId);
     }
     private void conflict(String message) { throw new ResponseStatusException(HttpStatus.CONFLICT,message); }
 
@@ -270,5 +274,55 @@ public class WorkOrderService {
         
         complete(id, new WorkOrderRequest.Completion(2, request.plannedYield(), BigDecimal.ZERO, actIngredients));
         return id;
+    }
+
+    @Transactional(isolation=Isolation.REPEATABLE_READ)
+    public void executeJustInTime(UUID tenantId, UUID orderId, UUID orderItemId, UUID recipeId, BigDecimal quantity) {
+        TenantContext.setCurrentTenant(tenantId);
+        try {
+            UUID batchId = UUID.randomUUID();
+            jdbc.update("""
+                INSERT INTO production_batches(id,tenant_id,recipe_id,planned_yield,reference,order_id,order_item_id,generation_key,created_by,status,scheduled_date,started_at)
+                VALUES (?,?,?,?,?,?,?,?,?,'IN_PROGRESS',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)
+                """, batchId, tenantId, recipeId, quantity, "POS JIT ORD-" + orderId.toString().substring(0,8), orderId, orderItemId, "JIT-"+orderId+"-"+recipeId, UUID.fromString("00000000-0000-0000-0000-000000000000"));
+            audit(batchId,"CREATED");
+            audit(batchId,"IN_PROGRESS");
+            
+            snapshot(batchId, recipeId, quantity);
+            
+            jdbc.update("UPDATE production_batch_ingredients SET actual_quantity = planned_quantity WHERE tenant_id=? AND batch_id=?", tenantId, batchId);
+            
+            jdbc.update("UPDATE production_batches SET status='COMPLETION_PENDING', actual_yield=planned_yield, scrap_count=0, " +
+                "total_batch_cost = (SELECT COALESCE(SUM(actual_quantity * unit_cost), 0) FROM production_batch_ingredients WHERE batch_id=? AND tenant_id=?) " +
+                "+ COALESCE(planned_labor, 0) + COALESCE(planned_energy, 0) + COALESCE(planned_overhead, 0), " +
+                "version=version+1, updated_at=CURRENT_TIMESTAMP, completed_at=CURRENT_TIMESTAMP WHERE tenant_id=? AND id=?", 
+                batchId, tenantId, tenantId, batchId);
+            audit(batchId, "COMPLETION_PENDING");
+            
+            var ingredients = ingredients(batchId);
+            
+            var mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+            var payload = new java.util.HashMap<String, Object>();
+            payload.put("tenantId", tenantId);
+            payload.put("batchId", batchId);
+            payload.put("orderItemId", orderItemId);
+            payload.put("finishedProductId", null); // NO finished product addition for POS sales
+            payload.put("actualYield", quantity);
+            payload.put("scrapCount", 0);
+            
+            var ingrList = new java.util.ArrayList<Map<String,Object>>();
+            for (var act : ingredients) {
+                ingrList.add(Map.of("materialId", act.get("materialId"), "quantity", act.get("quantity")));
+            }
+            payload.put("ingredients", ingrList);
+            
+            jdbc.update("INSERT INTO production_outbox(tenant_id, aggregate_type, aggregate_id, event_type, payload) VALUES (?, ?, ?, ?, ?::jsonb)",
+                tenantId, "Batch", batchId, "BatchCompleted", mapper.writeValueAsString(payload));
+            
+        } catch(Exception e) {
+            throw new RuntimeException("Failed to execute JIT Work Order", e);
+        } finally {
+            TenantContext.clear();
+        }
     }
 }

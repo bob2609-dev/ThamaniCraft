@@ -41,6 +41,9 @@ The next phase involves:
 1. Monitoring production usage for any edge-case UOM conversion failures.
 2. Tenant Auto-seeding logic (Admin Module deferred to later).
 
+### Changelog
+- **2026-10-01**: Fixed POS to correctly list both Finished Products and Recipes (Made to Order), preventing 0 margin/price errors by ensuring proper `suggestedPrice` mapping and removing the strict `productId` validation for JUST_IN_TIME recipes.
+
 See `simplification-plan.md` for the original roadmap and `simplification-progress.md` for the checklist.
 
 ## Design Guidelines (Frontend)

@@ -124,7 +124,7 @@ export default function MainLayout() {
   ].filter(item => !item.permission || hasPermission(item.permission));
 
   return (
-    <Layout className="min-h-screen">
+    <Layout className="min-h-screen" hasSider>
       <Sider 
         trigger={null} 
         collapsible 
@@ -135,6 +135,7 @@ export default function MainLayout() {
         }}
         theme={isDarkMode ? 'dark' : 'light'}
         className="border-r border-slate-200 dark:border-slate-800"
+        style={{ overflow: 'auto', height: '100vh', position: 'sticky', top: 0, left: 0, zIndex: 20 }}
       >
         <div className="flex items-center justify-center h-16 m-4">
           <Title level={4} className="!m-0 whitespace-nowrap overflow-hidden transition-all duration-300">
@@ -151,8 +152,8 @@ export default function MainLayout() {
       </Sider>
       <Layout>
         <Header 
-          className="flex items-center justify-between px-4"
-          style={{ background: colorBgContainer }}
+          className="flex items-center justify-between px-4 shadow-sm"
+          style={{ position: 'sticky', top: 0, zIndex: 10, background: colorBgContainer }}
         >
           <Button
             type="text"

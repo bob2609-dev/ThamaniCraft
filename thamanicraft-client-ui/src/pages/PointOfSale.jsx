@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { 
   Row, Col, Card, Typography, Spin, Alert, 
-  Button, Input, Modal, message, Badge, 
+  Button, Input, Modal, message, Badge, InputNumber, 
   Divider, Space, Select
 } from "antd";
 import { ShoppingCartOutlined, PlusOutlined, MinusOutlined, CheckCircleOutlined, DeleteOutlined } from "@ant-design/icons";
 import { fetchFinishedProducts } from "../services/inventoryApi";
-import { posCheckout } from "../services/salesApi";
+import { posCheckout, listCustomers } from "../services/salesApi";
 import { listRecipes } from "../services/recipeApi";
 
 const { Title, Text } = Typography;
 
 export default function PointOfSale() {
   const [products, setProducts] = useState([]);
+  const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [cart, setCart] = useState([]); // Array of { product, quantity }
   const [checkoutVisible, setCheckoutVisible] = useState(false);
+  const [customerId, setCustomerId] = useState(null);
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -25,14 +27,19 @@ export default function PointOfSale() {
     let active = true;
     Promise.allSettled([
       fetchFinishedProducts(),
-      listRecipes()
-    ]).then(([finishedRes, recipesRes]) => {
+      listRecipes(),
+      listCustomers()
+    ]).then(([finishedRes, recipesRes, customersRes]) => {
       if (active) {
         const fp = finishedRes.status === 'fulfilled' ? finishedRes.value : [];
         const rec = recipesRes.status === 'fulfilled' ? recipesRes.value : [];
+        const custs = customersRes.status === 'fulfilled' ? customersRes.value : [];
         
         if (finishedRes.status === 'rejected') message.error("Failed to load products: " + finishedRes.reason.message);
         if (recipesRes.status === 'rejected') message.error("Failed to load recipes: " + recipesRes.reason.message);
+        if (customersRes.status === 'rejected') message.error("Failed to load customers: " + customersRes.reason.message);
+
+        setCustomers(custs);
 
         const formattedFp = fp.map(p => ({
           ...p,
@@ -67,7 +74,7 @@ export default function PointOfSale() {
           : item
         );
       }
-      return [...prev, { product, quantity: 1 }];
+      return [...prev, { product, quantity: 1, unitPrice: product.displayPrice || 0 }];
     });
     message.success({ content: `Added ${product.name} to cart`, key: 'addCart', duration: 1 });
   };
@@ -82,6 +89,15 @@ export default function PointOfSale() {
     }).filter(item => item.quantity > 0));
   };
 
+  const updatePrice = (posId, price) => {
+    setCart(prev => prev.map(item => {
+      if (item.product.posId === posId) {
+        return { ...item, unitPrice: price || 0 };
+      }
+      return item;
+    }));
+  };
+
   const clearCart = () => setCart([]);
 
   const handleCheckout = async () => {
@@ -93,13 +109,16 @@ export default function PointOfSale() {
         recipeId: item.product.isRecipe ? item.product.recipeId : null,
         productName: item.product.isRecipe ? item.product.name : item.product.name,
         quantity: item.quantity,
-        unitPrice: item.product.displayPrice || 0
+        unitPrice: item.unitPrice
       }));
       
       const payload = {
-        customerName: customerName || "Walk-in Customer",
-        customerPhone: customerPhone || "N/A",
-        items
+        customerId: customerId,
+        customerName: customerName,
+        customerPhone: customerPhone,
+        items,
+        paymentAmount: cartTotal,
+        paymentMethod: "CASH"
       };
 
       await posCheckout(payload);
@@ -107,6 +126,7 @@ export default function PointOfSale() {
       message.success("Checkout successful!");
       clearCart();
       setCheckoutVisible(false);
+      setCustomerId(null);
       setCustomerName("");
       setCustomerPhone("");
       // optionally refresh products if stock was displayed
@@ -118,7 +138,7 @@ export default function PointOfSale() {
   };
 
   const filteredProducts = products.filter(p => p.displayName.toLowerCase().includes(search.toLowerCase()));
-  const cartTotal = cart.reduce((sum, item) => sum + (item.product.displayPrice || 0) * item.quantity, 0);
+  const cartTotal = cart.reduce((sum, item) => sum + (item.unitPrice * item.quantity), 0);
 
   if (loading) return <Spin size="large" style={{ display: 'block', margin: '100px auto' }} />;
 
@@ -161,7 +181,13 @@ export default function PointOfSale() {
                     }}
                     bodyStyle={{ padding: '24px 12px' }}
                   >
-                    <div style={{ fontSize: 32, marginBottom: 12 }}>🏷️</div>
+                    <div style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
+                      {p.imageUrl ? (
+                        <img src={p.imageUrl} alt={p.displayName} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', borderRadius: 8 }} />
+                      ) : (
+                        <div style={{ fontSize: 32 }}>🏷️</div>
+                      )}
+                    </div>
                     <Text strong style={{ display: 'block', marginBottom: 4, height: 40, overflow: 'hidden' }}>{p.displayName}</Text>
                     <Text type="success" strong>TZS {(p.displayPrice || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</Text>
                   </Card>
@@ -195,10 +221,21 @@ export default function PointOfSale() {
               ) : (
                 cart.map(item => (
                   <div key={item.product.posId} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                    <div style={{ flex: 1 }}>
+                    <div style={{ flex: 1, paddingRight: 8 }}>
                       <Text strong>{item.product.displayName}</Text>
                       <br/>
-                      <Text type="secondary">TZS {(item.product.displayPrice || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / {item.product.baseUom?.abbreviation || item.product.yieldUnit || 'unit'}</Text>
+                      <div style={{ display: 'flex', alignItems: 'center', marginTop: 4 }}>
+                        <Text type="secondary" style={{ marginRight: 8 }}>TZS</Text>
+                        <InputNumber 
+                          size="small" 
+                          value={item.unitPrice} 
+                          min={0}
+                          step={100}
+                          onChange={(val) => updatePrice(item.product.posId, val)}
+                          style={{ width: 100 }}
+                        />
+                        <Text type="secondary" style={{ marginLeft: 8 }}>/ {item.product.baseUom?.abbreviation || item.product.yieldUnit || 'unit'}</Text>
+                      </div>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', background: 'var(--bg-secondary)', borderRadius: 8, padding: '4px' }}>
                       <Button type="text" size="small" icon={<MinusOutlined />} onClick={() => updateQuantity(item.product.posId, -1)} />
@@ -206,7 +243,7 @@ export default function PointOfSale() {
                       <Button type="text" size="small" icon={<PlusOutlined />} onClick={() => updateQuantity(item.product.posId, 1)} />
                     </div>
                     <div style={{ width: 80, textAlign: 'right' }}>
-                      <Text strong>TZS {((item.product.displayPrice || 0) * item.quantity).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</Text>
+                      <Text strong>TZS {(item.unitPrice * item.quantity).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</Text>
                     </div>
                   </div>
                 ))
@@ -253,23 +290,48 @@ export default function PointOfSale() {
         okButtonProps={{ style: { background: '#10B981', borderColor: '#10B981' } }}
       >
         <div style={{ marginBottom: 16 }}>
-          <Text type="secondary">Customer Name (Optional)</Text>
-          <Input 
-            value={customerName} 
-            onChange={e => setCustomerName(e.target.value)} 
-            placeholder="Walk-in Customer" 
+          <Text type="secondary">Customer</Text>
+          <Select
+            allowClear
+            showSearch
+            placeholder="Select a customer (Optional)"
+            style={{ width: '100%' }}
             size="large"
-          />
+            value={customerId}
+            onChange={val => setCustomerId(val)}
+            optionFilterProp="children"
+            filterOption={(input, option) => (option?.children ?? '').toLowerCase().includes(input.toLowerCase())}
+          >
+            {customers.map(c => (
+              <Select.Option key={c.id} value={c.id}>
+                {c.name} {c.phone ? `(${c.phone})` : ''}
+              </Select.Option>
+            ))}
+          </Select>
         </div>
-        <div style={{ marginBottom: 24 }}>
-          <Text type="secondary">Customer Phone (Optional)</Text>
-          <Input 
-            value={customerPhone} 
-            onChange={e => setCustomerPhone(e.target.value)} 
-            placeholder="+255..." 
-            size="large"
-          />
-        </div>
+        
+        {!customerId && (
+          <>
+            <div style={{ marginBottom: 16 }}>
+              <Text type="secondary">New Customer Name (Optional)</Text>
+              <Input 
+                value={customerName} 
+                onChange={e => setCustomerName(e.target.value)} 
+                placeholder="Walk-in Customer" 
+                size="large"
+              />
+            </div>
+            <div style={{ marginBottom: 24 }}>
+              <Text type="secondary">New Customer Phone (Optional)</Text>
+              <Input 
+                value={customerPhone} 
+                onChange={e => setCustomerPhone(e.target.value)} 
+                placeholder="+255..." 
+                size="large"
+              />
+            </div>
+          </>
+        )}
         
         <Divider />
         

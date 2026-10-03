@@ -20,7 +20,7 @@ class RecipeServiceTest {
         return new RecipeRequest("Bread", null, new BigDecimal("50"), unit,
                 new BigDecimal("15000"), new BigDecimal("10000"), new BigDecimal("5500"), new BigDecimal("40"), List.of(
                         new RecipeRequest.Item(material, new BigDecimal("25000"), null, new BigDecimal("0.02"), null)),
-                "BATCH_PRE_MADE");
+                "BATCH_PRE_MADE", null);
     }
 
     @Test
@@ -58,7 +58,7 @@ class RecipeServiceTest {
         UUID id = service.save(tenant, null, request());
         verify(jdbc).update(contains("additional_overhead_per_batch"), eq(id), eq(tenant), eq("Bread"), isNull(),
                 eq(new BigDecimal("50")), eq(unit), eq(new BigDecimal("15000")), eq(new BigDecimal("10000")),
-                eq(new BigDecimal("5500")), eq(new BigDecimal("40")), eq("BATCH_PRE_MADE"));
+                eq(new BigDecimal("5500")), eq(new BigDecimal("40")), eq("BATCH_PRE_MADE"), isNull());
     }
 
     @Test
@@ -66,7 +66,7 @@ class RecipeServiceTest {
         var original = request();
         var request = new RecipeRequest(original.name(), null, original.yieldQuantity(), unit,
                 original.laborCostPerBatch(), original.energyCostPerBatch(), null, original.suggestedPrice(),
-                original.items(), "BATCH_PRE_MADE");
+                original.items(), "BATCH_PRE_MADE", null);
         assertEquals(BigDecimal.ZERO, request.additionalOverheadPerBatch());
         when(jdbc.queryForObject(anyString(), eq(Integer.class), eq(tenant), eq(unit))).thenReturn(1);
         when(jdbc.queryForList(anyString(), eq(tenant), eq(material)))
@@ -80,7 +80,7 @@ class RecipeServiceTest {
         var original = request();
         var request = new RecipeRequest(original.name(), null, original.yieldQuantity(), unit,
                 original.laborCostPerBatch(), original.energyCostPerBatch(), new BigDecimal("-1"),
-                original.suggestedPrice(), original.items(), "BATCH_PRE_MADE");
+                original.suggestedPrice(), original.items(), "BATCH_PRE_MADE", null);
         try (var factory = jakarta.validation.Validation.buildDefaultValidatorFactory()) {
             assertTrue(factory.getValidator().validate(request).stream()
                     .anyMatch(v -> v.getPropertyPath().toString().equals("additionalOverheadPerBatch")));
@@ -119,11 +119,11 @@ class RecipeServiceTest {
                 Map.of("name", "Flour", "cost", BigDecimal.ONE, "unit", "g")));
         when(jdbc.update(contains("UPDATE recipes SET"), eq("Bread"), isNull(), eq(new BigDecimal("50")), eq(unit),
                 eq(new BigDecimal("15000")), eq(new BigDecimal("10000")), eq(new BigDecimal("5500")),
-                eq(new BigDecimal("40")), eq("BATCH_PRE_MADE"), eq(id), eq(tenant))).thenReturn(1);
+                eq(new BigDecimal("40")), eq("BATCH_PRE_MADE"), isNull(), eq(id), eq(tenant))).thenReturn(1);
         assertEquals(id, service.save(tenant, id, request()));
-        verify(jdbc).update(contains("production_mode=CAST(? AS production_mode)"), eq("Bread"), isNull(),
+        verify(jdbc).update(contains("production_mode=CAST(? AS production_mode), image_url=?"), eq("Bread"), isNull(),
                 eq(new BigDecimal("50")), eq(unit),
                 eq(new BigDecimal("15000")), eq(new BigDecimal("10000")), eq(new BigDecimal("5500")),
-                eq(new BigDecimal("40")), eq("BATCH_PRE_MADE"), eq(id), eq(tenant));
+                eq(new BigDecimal("40")), eq("BATCH_PRE_MADE"), isNull(), eq(id), eq(tenant));
     }
 }

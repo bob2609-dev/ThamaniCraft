@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Alert,App,Button,Descriptions,Form,Input,InputNumber,Modal,Select,Table,Typography } from 'antd';
 import { newRequestId,recordPayment,reversePayment } from '../services/salesApi';
 import usePermissions from '../hooks/usePermissions';
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from './SearchableTable';
 
 export default function OrderPayments({order,onChanged}) {
   const {message}=App.useApp(),{hasPermission}=usePermissions();
@@ -43,7 +45,7 @@ export default function OrderPayments({order,onChanged}) {
         setOpen(true);
       }}>Record payment</Button>}
     {error && !open && !correction && <Alert type="error" title={error}/>}
-    <Table rowKey="id" dataSource={order.payments||[]} pagination={false} scroll={{x:1000}} columns={[
+    <SearchableTable rowKey="id" dataSource={order.payments||[]} pagination={false} scroll={{x:1000}} columns={withSorters([
       {title:'Received (Dar es Salaam)',dataIndex:'receivedAt',render:v=>new Date(v).toLocaleString(undefined,{timeZone:'Africa/Dar_es_Salaam'})},
       {title:'Amount (TZS)',dataIndex:'amount',render:money},{title:'Method',dataIndex:'method'},
       {title:'Reference',dataIndex:'reference'},{title:'Recorded by',dataIndex:'actor'},
@@ -52,7 +54,7 @@ export default function OrderPayments({order,onChanged}) {
       {title:'Reversed by',dataIndex:'reversedBy'},
       {title:'Reversed at',dataIndex:'reversedAt',render:v=>v?new Date(v).toLocaleString(undefined,{timeZone:'Africa/Dar_es_Salaam'}):'—'},
       {title:'Actions',render:(_,p)=>!p.reversedAt&&hasPermission('REVERSE_PAYMENTS')&&<Button danger disabled={busy} onClick={()=>{setCorrection(p);setReason('');setError('');}}>Correct receipt</Button>},
-    ]}/>
+    ])}/>
     <Modal open={open} title="Record payment received" onCancel={()=>setOpen(false)} closable={!busy} mask={{ closable: !busy }}
       cancelButtonProps={{disabled:busy}} confirmLoading={busy} onOk={()=>form.submit()}>
       {error && <Alert type="error" title={error}/>}

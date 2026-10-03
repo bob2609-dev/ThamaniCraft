@@ -31,7 +31,7 @@ public class RecipeService {
                        (SELECT u.symbol FROM units_of_measure u WHERE u.id=recipes.yield_uom_id AND (u.tenant_id=recipes.tenant_id OR u.tenant_id IS NULL)) AS "yieldUnit",
                        labor_cost_per_batch AS "laborCostPerBatch", energy_cost_per_batch AS "energyCostPerBatch",
                        additional_overhead_per_batch AS "additionalOverheadPerBatch", suggested_price AS "suggestedPrice",
-                       production_mode AS "productionMode", created_at AS "createdAt"
+                       production_mode AS "productionMode", image_url AS "imageUrl", created_at AS "createdAt"
                 FROM recipes WHERE tenant_id=? AND id=? AND is_active=true
                 """, tenant, id);
         if (rows.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Recipe not found");
@@ -53,7 +53,7 @@ public class RecipeService {
                 items.stream().map(i -> new RecipeRequest.Item((UUID) i.get("rawMaterialId"),
                         (BigDecimal) i.get("quantityRequired"), (UUID) i.get("uomId"), (BigDecimal) i.get("wasteFactor"),
                         (String) i.get("instructions"))).toList(),
-                (String) recipe.get("productionMode"));
+                (String) recipe.get("productionMode"), (String) recipe.get("imageUrl"));
         recipe.put("items", items);
         recipe.put("costing", preview(tenant, request));
         return recipe;
@@ -108,18 +108,18 @@ public class RecipeService {
             id = UUID.randomUUID();
             jdbc.update("""
                     INSERT INTO recipes(id, tenant_id, name, description, yield_quantity, yield_uom_id,
-                                        labor_cost_per_batch, energy_cost_per_batch, additional_overhead_per_batch, suggested_price, production_mode)
-                    VALUES (?,?,?,?,?,?,?,?,?,?,CAST(? AS production_mode))
+                                        labor_cost_per_batch, energy_cost_per_batch, additional_overhead_per_batch, suggested_price, production_mode, image_url)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,CAST(? AS production_mode),?)
                     """, id, tenant, request.name().trim(), request.description(), request.yieldQuantity(),
-                    request.yieldUomId(), request.laborCostPerBatch(), request.energyCostPerBatch(), request.additionalOverheadPerBatch(), request.suggestedPrice(), request.productionMode());
+                    request.yieldUomId(), request.laborCostPerBatch(), request.energyCostPerBatch(), request.additionalOverheadPerBatch(), request.suggestedPrice(), request.productionMode(), request.imageUrl());
         } else {
             int updated = jdbc.update("""
                     UPDATE recipes SET name=?, description=?, yield_quantity=?, yield_uom_id=?,
                                        labor_cost_per_batch=?, energy_cost_per_batch=?, additional_overhead_per_batch=?, suggested_price=?,
-                                       production_mode=CAST(? AS production_mode)
+                                       production_mode=CAST(? AS production_mode), image_url=?
                     WHERE id=? AND tenant_id=? AND is_active=true
                     """, request.name().trim(), request.description(), request.yieldQuantity(), request.yieldUomId(),
-                    request.laborCostPerBatch(), request.energyCostPerBatch(), request.additionalOverheadPerBatch(), request.suggestedPrice(), request.productionMode(), id, tenant);
+                    request.laborCostPerBatch(), request.energyCostPerBatch(), request.additionalOverheadPerBatch(), request.suggestedPrice(), request.productionMode(), request.imageUrl(), id, tenant);
             if (updated == 0) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Recipe not found");
             jdbc.update("DELETE FROM recipe_items WHERE recipe_id=? AND tenant_id=?", id, tenant);
         }

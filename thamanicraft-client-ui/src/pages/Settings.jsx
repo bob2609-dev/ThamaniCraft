@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Typography, Tabs, Card, Form, Input, Button, Table, Modal, Select, message, Space, Tag, Row, Col, Checkbox } from 'antd';
 import { UserOutlined, SettingOutlined, LockOutlined } from '@ant-design/icons';
 import { fetchUsers, fetchRoles, fetchPermissions, createUser, createRole, toggleUserStatus } from '../services/identityApi';
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from '../components/SearchableTable';
 
 const { Title, Text } = Typography;
 const { TabPane } = Tabs;
@@ -211,9 +213,9 @@ export default function Settings() {
               </Button>
             </div>
             
-            <Table 
+            <SearchableTable 
               dataSource={users} 
-              columns={columns} 
+              columns={withSorters(columns)} 
               rowKey="id" 
               loading={loading} 
               pagination={false}
@@ -229,9 +231,9 @@ export default function Settings() {
               </Button>
             </div>
             
-            <Table 
+            <SearchableTable 
               dataSource={roles} 
-              columns={roleColumns} 
+              columns={withSorters(roleColumns)} 
               rowKey="id" 
               loading={loading} 
               pagination={false}

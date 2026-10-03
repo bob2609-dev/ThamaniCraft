@@ -5,6 +5,8 @@ import { PlusOutlined, ExperimentOutlined } from '@ant-design/icons';
 import { listWorkOrders } from '../services/productionApi';
 import usePermissions from '../hooks/usePermissions';
 import QuickMakeModal from '../components/QuickMakeModal';
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from '../components/SearchableTable';
 
 export default function Production() {
   const navigate = useNavigate();
@@ -58,7 +60,7 @@ export default function Production() {
         <Select aria-label="Filter by status" placeholder="All statuses" value={status} onChange={setStatus} allowClear style={{ width: 200 }}
           options={['DRAFT', 'SCHEDULED', 'IN_PROGRESS', 'COMPLETION_PENDING', 'COMPLETED', 'COMPLETION_FAILED', 'CANCELLED'].map(value => ({ value, label: value.replaceAll('_', ' ') }))} />
       </Space>
-      <Table rowKey="id" loading={loading} dataSource={filtered} scroll={{ x: 950 }} columns={[
+      <SearchableTable rowKey="id" loading={loading} dataSource={filtered} scroll={{ x: 950 }} columns={withSorters([
         { title: 'Reference', dataIndex: 'reference', render: (value, row) => value || row.id.slice(0, 8) },
         { title: 'Recipe', dataIndex: 'recipeName' },
         { title: 'Status', dataIndex: 'status', render: value => <Tag>{value.replaceAll('_', ' ')}</Tag> },
@@ -66,7 +68,7 @@ export default function Production() {
         { title: 'Scheduled date', dataIndex: 'scheduledDate' },
         { title: 'Planned cost (TZS)', dataIndex: 'plannedCost', align: 'right', render: value => Number(value || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) },
         { title: 'Actions', key: 'actions', render: (_, row) => <Button onClick={() => navigate(`/production/${row.id}`)}>Open</Button> },
-      ]} />
+      ])} />
     </Card>
     
     <QuickMakeModal

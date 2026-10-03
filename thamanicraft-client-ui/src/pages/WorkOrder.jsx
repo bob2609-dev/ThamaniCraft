@@ -4,6 +4,8 @@ import { Alert, App, Button, Card, Col, Descriptions, Form, Input, InputNumber, 
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import * as api from '../services/productionApi';
 import usePermissions from '../hooks/usePermissions';
+import { withSorters } from '../utils/tableUtils';
+import SearchableTable from '../components/SearchableTable';
 
 const money = value => Number(value || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -124,13 +126,13 @@ export default function WorkOrder() {
       {order && <>
         <Card className="dark:bg-slate-800" title="Saved material requirements" style={{ marginBottom: 24 }}>
           {hasShortage && <Alert type="warning" title="Some materials have insufficient stock or changed units." style={{ marginBottom: 16 }} />}
-          <Table rowKey="materialId" pagination={false} dataSource={order.ingredients} scroll={{ x: 850 }} columns={[
+          <SearchableTable rowKey="materialId" pagination={false} dataSource={order.ingredients} scroll={{ x: 850 }} columns={withSorters([
             { title: 'Material', dataIndex: 'name' }, { title: 'Unit', dataIndex: 'unit' },
             { title: 'Required (incl. allowance)', dataIndex: 'quantity' },
             { title: 'Available now', dataIndex: 'available' },
             { title: 'Availability', key: 'availability', render: (_, line) => !line.compatible ? 'Unavailable / unit changed' : Number(line.available) < Number(line.quantity) ? 'Shortage' : 'Available' },
             { title: 'Planned cost (TZS)', dataIndex: 'lineCost', render: money, align: 'right' },
-          ]} expandable={{ rowExpandable: line => Boolean(line.instructions), expandedRowRender: line => <Typography.Paragraph>{line.instructions}</Typography.Paragraph> }} />
+          ])} expandable={{ rowExpandable: line => Boolean(line.instructions), expandedRowRender: line => <Typography.Paragraph>{line.instructions}</Typography.Paragraph> }} />
         </Card>
         <Card className="dark:bg-slate-800" title="Saved planned costs" style={{ marginBottom: 24 }}>
           <Descriptions items={[
@@ -149,10 +151,10 @@ export default function WorkOrder() {
           </Space>}
         </Card>
         <Card className="dark:bg-slate-800" title="History">
-          <Table rowKey="id" dataSource={order.history} pagination={false} columns={[
+          <SearchableTable rowKey="id" dataSource={order.history} pagination={false} columns={withSorters([
             { title: 'Action', dataIndex: 'action' },
             { title: 'When', dataIndex: 'recordedAt', render: value => new Date(value).toLocaleString() },
-          ]} />
+          ])} />
         </Card>
       </>}
     </>}
@@ -174,7 +176,7 @@ export default function WorkOrder() {
         <Typography.Title level={5}>Ingredient Actuals</Typography.Title>
         <Form.List name="ingredients">
           {(fields) => (
-            <Table size="small" pagination={false} dataSource={fields} rowKey="name" columns={[
+            <SearchableTable size="small" pagination={false} dataSource={fields} rowKey="name" columns={withSorters([
               { title: 'Material', render: (_, field) => completeForm.getFieldValue(['ingredients', field.name, 'name']) },
               { title: 'Unit', render: (_, field) => completeForm.getFieldValue(['ingredients', field.name, 'unit']) },
               { title: 'Actual Quantity', render: (_, field) => (
@@ -186,7 +188,7 @@ export default function WorkOrder() {
                   </>
                 )
               }
-            ]} />
+            ])} />
           )}
         </Form.List>
       </Form>

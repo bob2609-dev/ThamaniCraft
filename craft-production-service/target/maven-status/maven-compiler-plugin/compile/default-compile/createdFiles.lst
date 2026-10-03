@@ -16,5 +16,6 @@ tz/co/thamanicraft/production/RecipeCosting.class
 tz/co/thamanicraft/production/WorkOrderRequest$Completion.class
 tz/co/thamanicraft/production/WorkOrderRequest.class
 tz/co/thamanicraft/production/WorkOrderService$GenerateRequest.class
+tz/co/thamanicraft/production/amqp/SalesEventListener.class
 tz/co/thamanicraft/production/ProductionApplication.class
 tz/co/thamanicraft/production/RecipeService.class

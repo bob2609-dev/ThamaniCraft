@@ -14,12 +14,13 @@ public class SalesEventPublisher {
         this.rabbit = rabbit;
     }
 
-    public void publishFulfillment(UUID orderId, UUID productId, String type, java.math.BigDecimal quantity, UUID recipeId) {
+    public void publishFulfillment(UUID orderId, UUID orderItemId, UUID productId, String type, java.math.BigDecimal quantity, UUID recipeId) {
         UUID tenantId = TenantContext.getCurrentTenant();
         Map<String, Object> payload = Map.of(
             "tenantId", tenantId.toString(),
             "orderId", orderId.toString(),
-            "productId", productId.toString(),
+            "orderItemId", orderItemId != null ? orderItemId.toString() : "",
+            "productId", productId != null ? productId.toString() : "",
             "type", type,
             "quantity", quantity,
             "recipeId", recipeId != null ? recipeId.toString() : ""

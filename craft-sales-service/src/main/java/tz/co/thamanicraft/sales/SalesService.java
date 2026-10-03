@@ -382,11 +382,19 @@ public class SalesService {
     public UUID posCheckout(SalesRequests.POSCheckout req, String authorization) {
         UUID customerId = req.customerId();
         if (customerId == null) {
-            var customers = customers();
-            if (!customers.isEmpty()) {
-                customerId = (UUID) customers.get(0).get("id");
-            } else {
-                customerId = saveCustomer(null, new SalesRequests.Customer("Walk-in Customer", "0000000000", null, null, null, 0));
+            String cName = (req.customerName() != null && !req.customerName().isBlank()) ? req.customerName() : "Walk-in Customer";
+            String cPhone = (req.customerPhone() != null && !req.customerPhone().isBlank()) ? req.customerPhone() : "0000000000";
+            
+            // Try to find if Walk-in Customer exists by name if it's the default
+            if ("Walk-in Customer".equals(cName)) {
+                var customers = jdbc.queryForList("SELECT id FROM sales.customers WHERE name = ? AND tenant_id = ? LIMIT 1", cName, tenant());
+                if (!customers.isEmpty()) {
+                    customerId = (UUID) customers.get(0).get("id");
+                }
+            }
+            
+            if (customerId == null) {
+                customerId = saveCustomer(null, new SalesRequests.Customer(cName, cPhone, null, null, null, 0));
             }
         }
         
@@ -430,12 +438,24 @@ public class SalesService {
             } catch (Exception e) {}
         }
         
-        for (var pi : req.items()) {
-            String type = pi.recipeId() != null ? "JUST_IN_TIME" : "BATCH_PRE_MADE";
-            eventPublisher.publishFulfillment(orderId, pi.productId(), type, pi.quantity(), pi.recipeId());
+        var savedItems = jdbc.queryForList("""
+            SELECT i.id, i.finished_product_id, i.quantity, m.recipe_id 
+            FROM sales.order_items i
+            LEFT JOIN sales.order_recipe_mappings m ON m.order_item_id = i.id
+            WHERE i.order_id = ?
+        """, orderId);
+        
+        for (var pi : savedItems) {
+            UUID itemId = (UUID) pi.get("id");
+            UUID productId = (UUID) pi.get("finished_product_id");
+            UUID recipeId = (UUID) pi.get("recipe_id");
+            BigDecimal qty = (BigDecimal) pi.get("quantity");
+            
+            String type = recipeId != null ? "JUST_IN_TIME" : "BATCH_PRE_MADE";
+            eventPublisher.publishFulfillment(orderId, itemId, productId, type, qty, recipeId);
             if ("BATCH_PRE_MADE".equals(type)) {
                 try {
-                    inventoryDispatchClient.dispatch(pi.productId(), pi.quantity(), "POS ORD-" + orderId.toString().substring(0,8), "POS Dispatch", authorization);
+                    inventoryDispatchClient.dispatch(productId, qty, "POS ORD-" + orderId.toString().substring(0,8), "POS Dispatch", authorization);
                 } catch (Exception e) {}
             }
         }

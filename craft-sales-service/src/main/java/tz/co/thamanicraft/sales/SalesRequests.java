@@ -41,6 +41,8 @@ public class SalesRequests {
         
     public record POSCheckout(
         UUID customerId,
+        String customerName,
+        String customerPhone,
         @NotEmpty @Size(max=100) List<@NotNull @Valid POSItem> items,
         @NotNull @DecimalMin("0") @Digits(integer=12,fraction=2) BigDecimal paymentAmount,
         @NotBlank String paymentMethod) {}

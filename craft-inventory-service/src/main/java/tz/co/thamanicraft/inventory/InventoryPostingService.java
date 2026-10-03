@@ -39,11 +39,11 @@ public class InventoryPostingService {
                     BigDecimal quantity = new BigDecimal(ingr.get("quantity").toString());
                     
                     int updated = jdbc.update(
-                        "UPDATE raw_materials SET current_stock_base_qty = current_stock_base_qty - ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND tenant_id = ? AND current_stock_base_qty >= ?", 
-                        quantity, materialId, tenantId, quantity);
+                        "UPDATE raw_materials SET current_stock_base_qty = current_stock_base_qty - ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND tenant_id = ?", 
+                        quantity, materialId, tenantId);
                         
                     if (updated == 0) {
-                        throw new RuntimeException("Insufficient stock or material not found for: " + materialId);
+                        throw new RuntimeException("Material not found for: " + materialId);
                     }
                     
                     var materialRows = jdbc.queryForList("SELECT cost_per_base_unit FROM raw_materials WHERE id = ? AND tenant_id = ?", materialId, tenantId);
@@ -100,9 +100,8 @@ public class InventoryPostingService {
                 jdbc.update("INSERT INTO inventory_outbox(tenant_id, aggregate_type, aggregate_id, event_type, payload) VALUES (?, ?, ?, ?, ?::jsonb)",
                     tenantId, "Batch", batchId, "StockPostFailed", mapper.writeValueAsString(responsePayload));
             } catch (Exception ex) {
-                throw new RuntimeException("Failed to serialize error response", ex);
+                throw new RuntimeException("Failed to serialize or save error response", ex);
             }
-            throw new RuntimeException("Failed to process batch completed event", e);
         }
     }
 }

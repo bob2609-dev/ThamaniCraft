@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Form, Select, InputNumber, Input, message } from 'antd';
-import { fetchRawMaterials } from '../services/inventoryApi';
+import { fetchRawMaterials, fetchUnitsOfMeasure } from '../services/inventoryApi';
+import Cookies from 'js-cookie';
 
 const { Option } = Select;
 
@@ -17,10 +18,8 @@ export default function QuickRefillModal({ open, onCancel, onSuccess }) {
     if (open) {
       setFetchingMaterials(true);
       Promise.all([
-        fetchRawMaterials().then(data => setMaterials(data)),
-        fetch('/api/inventory/uom', { headers: { 'Authorization': `Bearer ${require('js-cookie').get('tenant_token') || localStorage.getItem('tenant_token')}` }})
-          .then(res => res.json())
-          .then(data => setUoms(data))
+        fetchRawMaterials().then(setMaterials),
+        fetchUnitsOfMeasure().then(setUoms)
       ]).catch(err => message.error('Failed to load data: ' + err.message))
         .finally(() => setFetchingMaterials(false));
     } else {
@@ -61,7 +60,7 @@ export default function QuickRefillModal({ open, onCancel, onSuccess }) {
       };
 
       // Call facade API directly
-      const token = require('js-cookie').get('tenant_token') || localStorage.getItem('tenant_token');
+      const token = Cookies.get('tenant_token') || localStorage.getItem('tenant_token');
       const res = await fetch('/api/inventory/goods-receipts/quick-refill', {
         method: 'POST',
         headers: {

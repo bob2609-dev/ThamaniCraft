@@ -111,6 +111,9 @@ public class FinishedProductService {
         if (updateRequest.getCostPerBaseUnit() != null) {
             existing.setCostPerBaseUnit(updateRequest.getCostPerBaseUnit());
         }
+        if (updateRequest.getImageUrl() != null) {
+            existing.setImageUrl(updateRequest.getImageUrl());
+        }
 
         return finishedProductRepository.save(existing);
     }

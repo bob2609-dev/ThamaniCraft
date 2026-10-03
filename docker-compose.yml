@@ -129,6 +129,7 @@ services:
       - RABBITMQ_USER=guest
       - RABBITMQ_PASS=guest
       - JWT_SECRET=${JWT_SECRET}
+      - SPRING_AMQP_DESERIALIZATION_TRUST_ALL=true
     ports:
       - "8080:8080"
     networks:
@@ -157,6 +158,7 @@ services:
       - RABBITMQ_USER=guest
       - RABBITMQ_PASS=guest
       - JWT_SECRET=${JWT_SECRET}
+      - SPRING_AMQP_DESERIALIZATION_TRUST_ALL=true
     ports:
       - "8081:8081"
     networks:
@@ -185,6 +187,7 @@ services:
       - RABBITMQ_USER=guest
       - RABBITMQ_PASS=guest
       - JWT_SECRET=${JWT_SECRET}
+      - SPRING_AMQP_DESERIALIZATION_TRUST_ALL=true
     networks:
       - thamanicraft-net
     depends_on:

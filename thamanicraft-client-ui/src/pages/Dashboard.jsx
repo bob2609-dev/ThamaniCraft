@@ -20,6 +20,15 @@ import QuickMakeModal from "../components/QuickMakeModal";
 
 const { Title, Text } = Typography;
 
+const formatCompactNumber = (value) => {
+  if (!value) return "0";
+  return new Intl.NumberFormat('en-US', {
+    notation: "compact",
+    compactDisplay: "short",
+    maximumFractionDigits: 2
+  }).format(value);
+};
+
 export default function Dashboard() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -93,7 +102,7 @@ export default function Dashboard() {
   }, 0);
 
   const lowStockCount = data.rawMaterials.filter(
-    (m) => m.stockQuantity <= (m.reorderLevel || 10)
+    (m) => m.currentStockBaseQty <= (m.reorderLevelBaseQty || 0)
   ).length;
 
   const chartDataMap = {};
@@ -194,6 +203,7 @@ export default function Dashboard() {
             <Statistic 
               title={`${periodLabel} Sales Revenue`}
               value={periodRevenue} 
+              precision={2}
               prefix="TZS"
               valueStyle={{ color: colors.blue, fontWeight: "bold" }} 
             />
@@ -204,6 +214,7 @@ export default function Dashboard() {
             <Statistic 
               title={`${periodLabel} Gross Profit`}
               value={periodProfit} 
+              precision={2}
               prefix="TZS"
               valueStyle={{ color: periodProfit >= 0 ? colors.green : colors.red, fontWeight: "bold" }}
               suffix={periodProfit >= 0 ? <ArrowUpOutlined style={{ fontSize: 16 }} /> : null}
@@ -260,10 +271,10 @@ export default function Dashboard() {
                   <XAxis dataKey="date" stroke={isDark ? "#9ca3af" : "#6b7280"} />
                   <YAxis 
                     stroke={isDark ? "#9ca3af" : "#6b7280"} 
-                    tickFormatter={(value) => 'TZS ' + Number(value).toLocaleString()}
+                    tickFormatter={(value) => 'TZS ' + formatCompactNumber(Number(value))}
                   />
                   <Tooltip 
-                    formatter={(value) => 'TZS ' + Number(value).toLocaleString()}
+                    formatter={(value) => 'TZS ' + Number(value).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
                     contentStyle={{ backgroundColor: isDark ? '#1f2937' : '#fff', borderRadius: 8, border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
                   />
                   <Legend />
@@ -276,7 +287,7 @@ export default function Dashboard() {
         </Col>
         
         <Col xs={24} lg={12}>
-          <Card className="glass-panel" title={`${periodLabel} Gross Profit Trend`} style={{ borderRadius: 12 }}>
+          <Card className="glass-panel" title={`${periodLabel} Revenue & Profit Trend`} style={{ borderRadius: 12 }}>
             <div style={{ width: '100%', height: 300 }}>
               <ResponsiveContainer>
                 <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
@@ -284,15 +295,16 @@ export default function Dashboard() {
                   <XAxis dataKey="date" stroke={isDark ? "#9ca3af" : "#6b7280"} />
                   <YAxis 
                     stroke={isDark ? "#9ca3af" : "#6b7280"} 
-                    tickFormatter={(value) => 'TZS ' + Number(value).toLocaleString()}
+                    tickFormatter={(value) => 'TZS ' + formatCompactNumber(Number(value))}
                   />
                   <Tooltip 
-                    formatter={(value) => 'TZS ' + Number(value).toLocaleString()}
+                    formatter={(value) => 'TZS ' + Number(value).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
                     contentStyle={{ backgroundColor: isDark ? '#1f2937' : '#fff', borderRadius: 8, border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
                   />
                   <Legend />
+                  <Line type="monotone" dataKey="revenue" name="Revenue" stroke={colors.blue} strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
                   <Line type="monotone" dataKey="profit" name="Gross Profit" stroke={colors.green} strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-                  <Line type="monotone" dataKey="netProfit" name="Actual Profit (Net)" stroke={colors.blue} strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
+                  <Line type="monotone" dataKey="netProfit" name="Actual Profit (Net)" stroke={colors.orange} strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>

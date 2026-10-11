@@ -63,10 +63,11 @@ This document provides the detailed technical roadmap for pivoting the ThamaniCr
 *   **Metrics**: Keep a thin top banner with "Today's Sales", "Profit Today", and a "Low Stock Alerts" ticker.
 
 ### 3.2. POS Interface (Replaces OrderEntry)
-*   **Component**: `OrderEntry.jsx` -> `PointOfSale.jsx`
+*   **Component**: `PointOfSale.jsx`
 *   **Changes**: Implement a classic POS view.
     *   *Left Pane*: Visual grid of finished goods/menu items.
     *   *Right Pane*: The Cart, showing running total.
+    *   *POS Confirmation*: If a selected product's recipe contains items flagged with `confirm_at_pos`, prompt the cashier to verify the quantity (e.g., "How many Cake Boxes for this order?").
     *   *Checkout Modal*: Click Checkout, type cash received, calculates change, and hits the new `POST /pos/checkout` facade API.
 
 ---
@@ -81,6 +82,7 @@ This document provides the detailed technical roadmap for pivoting the ThamaniCr
 ### 4.2. Recipe Builder Simplification
 *   **Component**: `RecipeEditor.jsx`
 *   **Changes**: Remove inputs for Labor, Energy, Manual Overheads, and Waste %. Add a toggle for "Pre-Made" vs "Made-on-Demand". Simplify the ingredient picker to utilize the Smart UOM dropdowns (Cups, Liters, etc.).
+*   **New Feature**: Add a `confirmAtPos` toggle per raw material line item. When enabled, this prevents the item from strictly scaling at checkout and prompts the cashier to confirm the exact quantity needed (e.g., for Cake Boxes or custom decorations).
 
 ### 4.3. "Make Product" Flow
 *   **Component**: `WorkOrder.jsx` (Deprecated) -> `QuickMakeModal.jsx`

@@ -141,6 +141,7 @@ export default function RecipeEditor() {
       ingredientForm.setFieldsValue(items[index]);
     } else {
       ingredientForm.resetFields();
+      ingredientForm.setFieldsValue({ confirmAtPos: false });
     }
     setIsModalVisible(true);
   };
@@ -195,6 +196,11 @@ export default function RecipeEditor() {
       title: 'Instructions',
       dataIndex: 'instructions',
       ellipsis: true
+    },
+    {
+      title: 'Confirm @ POS',
+      dataIndex: 'confirmAtPos',
+      render: (val) => val ? 'Yes' : 'No'
     },
     {
       title: 'Actions',
@@ -366,6 +372,10 @@ export default function RecipeEditor() {
 
             <Form.Item name="instructions" label="Preparation Instructions (Optional)">
               <Input.TextArea rows={2} maxLength={255} />
+            </Form.Item>
+
+            <Form.Item name="confirmAtPos" valuePropName="checked" label="Ask for exact quantity at POS (e.g. for Packaging/Decorations)">
+              <Switch checkedChildren="Yes" unCheckedChildren="No" />
             </Form.Item>
           </Form>
         </Modal>

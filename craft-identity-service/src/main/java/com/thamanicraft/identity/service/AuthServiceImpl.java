@@ -22,6 +22,7 @@ public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final com.thamanicraft.identity.repository.TenantRepository tenantRepository;
     
     @Value("${jwt.secret:defaultSecretKeyWithAtLeast256BitsOfSecurityIfUsedInProd1234567890}")
     private String secret;
@@ -29,22 +30,34 @@ public class AuthServiceImpl implements AuthService {
     @Value("${jwt.expiration:86400000}")
     private Long expiration;
 
-    public AuthServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public AuthServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, com.thamanicraft.identity.repository.TenantRepository tenantRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.tenantRepository = tenantRepository;
     }
 
     @Override
     public AuthResponse login(AuthRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Invalid credentials"));
+                .orElseThrow(() -> new org.springframework.security.authentication.BadCredentialsException("Invalid credentials"));
+
+        com.thamanicraft.identity.entity.Tenant tenantObj = null;
+        if (request.getTenant() != null && !request.getTenant().equals("localhost")) {
+            tenantObj = tenantRepository.findByName(request.getTenant())
+                .orElseThrow(() -> new org.springframework.security.authentication.BadCredentialsException("Invalid credentials"));
+            if (!tenantObj.getId().equals(user.getTenantId())) {
+                throw new org.springframework.security.authentication.BadCredentialsException("Invalid credentials");
+            }
+        } else if (user.getTenantId() != null) {
+            tenantObj = tenantRepository.findById(user.getTenantId()).orElse(null);
+        }
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid credentials");
+            throw new org.springframework.security.authentication.BadCredentialsException("Invalid credentials");
         }
 
         if (!user.isActive()) {
-            throw new RuntimeException("User account is disabled");
+            throw new org.springframework.security.authentication.DisabledException("User account is disabled");
         }
 
         List<String> permissions = user.getRole().getPermissions().stream()
@@ -53,11 +66,14 @@ public class AuthServiceImpl implements AuthService {
 
         Key key = Keys.hmacShaKeyFor(secret.getBytes());
 
+        boolean tenantActive = tenantObj != null ? tenantObj.isActive() : true;
+
         String token = Jwts.builder()
                 .setSubject(user.getEmail())
                 .claim("user_id", user.getId().toString())
                 .claim("user_name", user.getName())
                 .claim("tenant_id", user.getTenantId() != null ? user.getTenantId().toString() : null)
+                .claim("tenant_active", tenantActive)
                 .claim("role", user.getRole().getName())
                 .claim("permissions", permissions)
                 // Defaulting subscription claims for now

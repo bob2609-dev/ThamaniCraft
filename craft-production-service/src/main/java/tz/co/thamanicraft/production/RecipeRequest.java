@@ -32,6 +32,11 @@ public record RecipeRequest(
             @NotNull @DecimalMin("0.0001") @Digits(integer = 10, fraction = 4) BigDecimal quantityRequired,
             UUID uomId,
             @NotNull @DecimalMin("0") @DecimalMax("1") @Digits(integer = 1, fraction = 4) BigDecimal wasteFactor,
-            @Size(max = 255) String instructions) {
+            @Size(max = 255) String instructions,
+            Boolean confirmAtPos) {
+        public Item {
+            if (confirmAtPos == null)
+                confirmAtPos = false;
+        }
     }
 }

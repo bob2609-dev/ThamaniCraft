@@ -1,10 +1,10 @@
 # ThamaniCraft — Development Handover
 
-Last updated: 2026-09-24 (Africa/Dar_es_Salaam).
+Last updated: 2026-10-11 (Africa/Dar_es_Salaam).
 
 ## Start here
 
-The application has inventory/receiving, recipes, manual expenses, customer orders, manual payments and order-to-recipe mapping. Production currently supports planning and work-order generation from confirmed sales orders. **Production does not yet deduct raw materials, and delivery/collection completion is not implemented.**
+The application has inventory/receiving, recipes, manual expenses, customer orders, manual payments and order-to-recipe mapping. Platform administration supports multitenancy, role management, subscription billing/plans, and tenant invoice inspection & payment verification. Production currently supports planning and work-order generation from confirmed sales orders. **Production does not yet deduct raw materials, and delivery/collection completion is not implemented.**
 
 This is the current-state handover. [PROGRESS.md](PROGRESS.md) holds detailed implementation and verification evidence; feature plans hold remaining tasks. A feature being deployed does not mean its authenticated browser workflow is verified.
 
@@ -45,6 +45,8 @@ Earlier, bugs in the Dashboard and Reports related to missing mapping of backend
 In a later session, we corrected the Flyway migration conflict in the `craft-inventory-service` (V3 vs V9 duplication) which was causing a 500 server error, and verified that both Revenue and Gross Profit render cleanly on the Dashboard charts. The unit cost logic for sales items dynamically computes from the Inventory, enabling actual profit calculation. Finally, we stripped out deprecated `hibernate.dialect` settings from backend configuration files.
 
 Currently, we should monitor if authenticated browser access flows normally, especially around Production recipe mapping (which has been disabled for finished products), order generation, and the dashboard metrics loading correctly.
+
+As of 2026-10-11, subscription plans and module configurations were upgraded across both Admin and Tenant UIs. The raw JSON string representation of `includedModules` was replaced with structured Ant Design multiple-selection dropdowns in the Admin plan editor, styled badges in the Admin plans and tenant details tables, and clean human-readable checkmarked feature lists on the Tenant Billing pricing cards. Tenant invoice history and verification workflows were also implemented.
 
 ## Pending implementation and recommended sequence
 
@@ -166,3 +168,5 @@ Latest recorded backup: PostgreSQL container path `/tmp/thamanicraft-before-reci
 
 - **2026-09-30:** Replaced the sandbox "Target margin" in the Recipe Editor with a real, persisted database field (`target_margin`). Added a V9 migration to `craft-production-service` to store it, and updated the frontend `RecipeEditor.jsx` to feature a bi-directional calculator: typing a margin percentage instantly computes the suggested selling price, and typing a flat selling price reverse-calculates the margin percentage. In `OrderEntry.jsx`, selecting a base recipe for a custom item now automatically sets the order line's `unitPrice` to this exact suggested price instead of the raw batch cost. Rebuilt and restarted both production and sales services, as well as the UI.
 - **2026-09-30:** Fixed Flyway migration failure (`V9__Recipe_Target_Margin.sql`) in `craft-production-service` by removing the incorrect `production.` schema prefix. Replaced deprecated `maskClosable` occurrences across React UI files with `mask={{ closable: ... }}`. Rebuilt `craft-production-service` and reloaded the Nginx gateway to resolve the 502 Bad Gateway and React warnings.
+- **2026-10-05:** Added `GlobalExceptionHandler` to map `BadCredentialsException` to a `401 Unauthorized` response. Rebuilt `thamanicraft-identity-service`. Corrected the user's login instructions regarding the actual superadmin password (it is `password`, not `superadmin`).
+- **2026-10-05:** Implemented Phase 4 (Audit & System Monitoring). Added `platform_audit_logs` in identity service and exposed `/api/admin/metrics/health` and `/audit-logs`. Updated Admin Portal `PlatformLogs.jsx` to render this data. Updated Admin UI to correctly hit `/api/auth/` vs `/api/admin/` endpoints by utilizing `identityApi.js`. Migrated standard UOMs from bpcakes.

@@ -51,6 +51,7 @@ const SearchableTable = ({ dataSource, columns, searchPlaceholder = "Search...",
       <Table 
         dataSource={filteredData} 
         columns={sortedColumns} 
+        sticky={{ offsetHeader: 64 }}
         {...props} 
       />
     </Space>

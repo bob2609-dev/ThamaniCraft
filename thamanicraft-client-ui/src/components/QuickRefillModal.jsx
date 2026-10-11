@@ -36,6 +36,21 @@ export default function QuickRefillModal({ open, onCancel, onSuccess }) {
     }
   };
 
+  const receivedUomId = Form.useWatch('receivedUomId', form);
+
+  const getDefaultUnitCost = () => {
+    if (!selectedMaterial) return 0;
+    const baseCost = Math.max(0, selectedMaterial.costPerBaseUnit || 0);
+    const activeUomId = receivedUomId || selectedMaterial.baseUom?.id;
+    if (activeUomId) {
+      const selectedUom = uoms.find(u => u.id === activeUomId);
+      if (selectedUom && selectedUom.conversionFactor) {
+        return baseCost * selectedUom.conversionFactor;
+      }
+    }
+    return baseCost;
+  };
+
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
@@ -51,7 +66,9 @@ export default function QuickRefillModal({ open, onCancel, onSuccess }) {
             rawMaterialId: selectedMaterial.id,
             receivedUomId: values.receivedUomId || selectedMaterial.baseUom.id,
             purchaseQuantity: values.quantity,
-            purchaseUnitCost: values.unitCost || (selectedMaterial.costPerBaseUnit || 0)
+            purchaseUnitCost: values.unitCost !== undefined && values.unitCost !== null
+              ? values.unitCost
+              : getDefaultUnitCost()
           }
         ],
         supplierName: values.supplierName || 'Walk-in Supplier',
@@ -59,21 +76,8 @@ export default function QuickRefillModal({ open, onCancel, onSuccess }) {
         notes: values.notes || ''
       };
 
-      // Call facade API directly
-      const token = Cookies.get('tenant_token') || localStorage.getItem('tenant_token');
-      const res = await fetch('/api/inventory/goods-receipts/quick-refill', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(payload)
-      });
-      
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.detail || 'Refill failed');
-      }
+      const { createGoodsReceiptQuickRefill } = await import('../services/inventoryApi');
+      const res = await createGoodsReceiptQuickRefill(payload);
 
       message.success('Stock refilled successfully!');
       if (onSuccess) onSuccess();
@@ -138,7 +142,7 @@ export default function QuickRefillModal({ open, onCancel, onSuccess }) {
             }
           >
             {uoms.map(u => (
-              <Option key={u.id} value={u.id}>{u.name} {u.symbol ? `(${u.symbol})` : ''}</Option>
+              <Option key={u.id} value={u.id}>{`${u.name} ${u.symbol ? `(${u.symbol})` : ''}`}</Option>
             ))}
           </Select>
         </Form.Item>
@@ -146,7 +150,7 @@ export default function QuickRefillModal({ open, onCancel, onSuccess }) {
         <Form.Item 
           name="unitCost" 
           label="Unit Cost (TZS) - Optional"
-          extra={`Leave blank to use default cost (TZS ${selectedMaterial?.costPerBaseUnit || 0})`}
+          extra={`Leave blank to use default cost (TZS ${getDefaultUnitCost()})`}
         >
           <InputNumber style={{ width: '100%' }} min={0} step={100} />
         </Form.Item>

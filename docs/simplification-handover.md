@@ -42,6 +42,7 @@ The next phase involves:
 2. Tenant Auto-seeding logic (Admin Module deferred to later).
 
 ### Changelog
+- **2026-10-03**: Implemented POS Confirmation (`confirm_at_pos`). The backend `WorkOrderService` now correctly intercepts material overrides for `JUST_IN_TIME` production via `OrderFulfillment` events, updating `planned_quantity` and `line_cost` dynamically. The frontend `PointOfSale.jsx` intercepts the checkout process and prompts the cashier for quantities of flagged items.
 - **2026-10-01**: Fixed POS to correctly list both Finished Products and Recipes (Made to Order), preventing 0 margin/price errors by ensuring proper `suggestedPrice` mapping and removing the strict `productId` validation for JUST_IN_TIME recipes.
 
 See `simplification-plan.md` for the original roadmap and `simplification-progress.md` for the checklist.

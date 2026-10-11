@@ -12,6 +12,7 @@ export default function usePermissions() {
             permissions: payload.permissions || [],
             role: payload.role || null,
             userName: payload.user_name || 'User',
+            tenantActive: payload.tenant_active !== false,
             isAuthenticated: true
           };
         } else {
@@ -26,6 +27,7 @@ export default function usePermissions() {
       permissions: [],
       role: null,
       userName: 'User',
+      tenantActive: false,
       isAuthenticated: false
     };
   });

@@ -443,16 +443,26 @@ public class SalesService {
             FROM sales.order_items i
             LEFT JOIN sales.order_recipe_mappings m ON m.order_item_id = i.id
             WHERE i.order_id = ?
+            ORDER BY i.position
         """, orderId);
         
-        for (var pi : savedItems) {
+        // Rows are inserted in request order (position), so index i maps back to req.items().get(i).
+        for (int idx = 0; idx < savedItems.size(); idx++) {
+            var pi = savedItems.get(idx);
             UUID itemId = (UUID) pi.get("id");
             UUID productId = (UUID) pi.get("finished_product_id");
             UUID recipeId = (UUID) pi.get("recipe_id");
             BigDecimal qty = (BigDecimal) pi.get("quantity");
             
             String type = recipeId != null ? "JUST_IN_TIME" : "BATCH_PRE_MADE";
-            eventPublisher.publishFulfillment(orderId, itemId, productId, type, qty, recipeId);
+            List<Map<String, Object>> overrides = new ArrayList<>();
+            var confirmed = idx < req.items().size() ? req.items().get(idx).confirmedMaterials() : null;
+            if (recipeId != null && confirmed != null) {
+                for (var c : confirmed) {
+                    overrides.add(Map.of("rawMaterialId", c.rawMaterialId().toString(), "quantity", c.quantity()));
+                }
+            }
+            eventPublisher.publishFulfillment(orderId, itemId, productId, type, qty, recipeId, overrides);
             if ("BATCH_PRE_MADE".equals(type)) {
                 try {
                     inventoryDispatchClient.dispatch(productId, qty, "POS ORD-" + orderId.toString().substring(0,8), "POS Dispatch", authorization);

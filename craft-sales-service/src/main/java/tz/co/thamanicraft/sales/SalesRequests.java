@@ -52,5 +52,11 @@ public class SalesRequests {
         @NotBlank String productName,
         @NotNull @DecimalMin("0.0001") @Digits(integer=8,fraction=4) BigDecimal quantity,
         @NotNull @DecimalMin("0") @Digits(integer=10,fraction=2) BigDecimal unitPrice,
-        UUID recipeId) {}
+        UUID recipeId,
+        @Size(max=50) List<@NotNull @Valid ConfirmedMaterial> confirmedMaterials) {}
+
+    /** Cashier-confirmed quantity (material base unit) replacing linear recipe scaling for one cart line. */
+    public record ConfirmedMaterial(
+        @NotNull UUID rawMaterialId,
+        @NotNull @DecimalMin("0") @Digits(integer=10,fraction=4) BigDecimal quantity) {}
 }

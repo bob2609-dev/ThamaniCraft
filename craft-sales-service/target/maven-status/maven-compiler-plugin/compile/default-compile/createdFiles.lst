@@ -22,6 +22,7 @@ tz/co/thamanicraft/sales/InventoryDispatchClient$DispatchPayload.class
 tz/co/thamanicraft/sales/OrderRecipeMappingController.class
 tz/co/thamanicraft/sales/SalesRequests$Edit.class
 tz/co/thamanicraft/sales/InventoryDispatchClient.class
+tz/co/thamanicraft/sales/SalesRequests$ConfirmedMaterial.class
 tz/co/thamanicraft/sales/OrderRecipeMappingService.class
 tz/co/thamanicraft/sales/SalesRequests$Order.class
 tz/co/thamanicraft/sales/SalesRequests$SettleCancellation.class

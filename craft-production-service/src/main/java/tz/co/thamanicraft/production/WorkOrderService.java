@@ -277,7 +277,7 @@ public class WorkOrderService {
     }
 
     @Transactional(isolation=Isolation.REPEATABLE_READ)
-    public void executeJustInTime(UUID tenantId, UUID orderId, UUID orderItemId, UUID recipeId, BigDecimal quantity) {
+    public void executeJustInTime(UUID tenantId, UUID orderId, UUID orderItemId, UUID recipeId, BigDecimal quantity, List<Map<String, Object>> materialOverrides) {
         TenantContext.setCurrentTenant(tenantId);
         try {
             UUID batchId = UUID.randomUUID();
@@ -289,6 +289,22 @@ public class WorkOrderService {
             audit(batchId,"IN_PROGRESS");
             
             snapshot(batchId, recipeId, quantity);
+            
+            if (materialOverrides != null) {
+                for (var override : materialOverrides) {
+                    UUID overrideMaterialId = UUID.fromString(override.get("rawMaterialId").toString());
+                    BigDecimal overrideQuantity = new BigDecimal(override.get("quantity").toString());
+                    
+                    jdbc.update("UPDATE production_batch_ingredients SET planned_quantity=?, line_cost=unit_cost * ? WHERE tenant_id=? AND batch_id=? AND raw_material_id=?",
+                        overrideQuantity, overrideQuantity, tenantId, batchId, overrideMaterialId);
+                }
+                
+                // Update the planned cost in batch header since we changed ingredients
+                jdbc.update("UPDATE production_batches SET planned_cost = " +
+                    "(SELECT COALESCE(SUM(line_cost), 0) FROM production_batch_ingredients WHERE batch_id=? AND tenant_id=?) " +
+                    "+ COALESCE(planned_labor, 0) + COALESCE(planned_energy, 0) + COALESCE(planned_overhead, 0) " +
+                    "WHERE tenant_id=? AND id=?", batchId, tenantId, tenantId, batchId);
+            }
             
             jdbc.update("UPDATE production_batch_ingredients SET actual_quantity = planned_quantity WHERE tenant_id=? AND batch_id=?", tenantId, batchId);
             

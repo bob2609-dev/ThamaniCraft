@@ -1,10 +1,16 @@
 
 # ThamaniCraft Implementation Progress
 
-Last updated: 2026-09-24. Checked items indicate implemented functionality; verification gaps are listed separately below.
+Last updated: 2026-10-11. Checked items indicate implemented functionality; verification gaps are listed separately below.
 
 Start with [HANDOVER.md](HANDOVER.md) for current capabilities, known issues and next steps. Update HANDOVER, this file and the affected feature plan with every project change, distinguishing source implementation, deployment and verified behaviour.
 
+- [X] 2026-10-11: Formatted module display across Admin and Tenant UIs. Replaced raw JSON string input in Admin Plan editor (`Subscriptions.jsx`) with Ant Design multi-select dropdown with preconfigured modules. Updated `Subscriptions.jsx` table and tenant details `SubscriptionTab.jsx` to display modules as styled Tag components. Updated Tenant `Billing.jsx` to parse JSON module strings and format them with clean names and checkmarks on pricing plan cards. Both frontend builds verified.
+- [X] 2026-10-11: Implemented past payment and invoice history management on Admin Tenant Subscription page (`thamanicraft-admin-ui`). Added Payment & Invoice History table to `SubscriptionTab.jsx` with receipt proof image inspection, manual mark-as-paid for offline/unpaid invoices, and review/approval/rejection modals for `PENDING_VERIFICATION` payments. Verified via successful production build.
+
+- [X] 2026-10-04: Implemented Phase 1 of the Admin Portal plan. Configured React Router in `thamanicraft-admin-ui`, integrated a zustand `authStore.js` and an Axios interceptor for JWT-based auth pointing to `craft-identity-service`. Created the `Login.jsx` page and updated `MainLayout.jsx` with a logout functionality tied to the authenticated user's email.
+- [X] 2026-10-05: Implemented Phase 2 (User & Role Management) in the Admin Portal. Migrated the `Settings.jsx` component and `SearchableTable` from the client UI to `thamanicraft-admin-ui`. Adapted the `identityApi` configuration to leverage the admin portal's Axios instance with the `admin_token`, granting Platform Admins the ability to manage system users and global platform roles via the `00000000-0000-0000-0000-000000000000` system tenant context. Tested successful build.
+- [X] 2026-10-04: Created implementation plan `docs/admin-portal-plan.md` outlining the structured roadmap for `thamanicraft-admin-ui`, including Authentication, RBAC, System Configurations, and Audit Monitoring.
 - [X] 2026-10-02: Implemented automatic inventory deduction for POS "Made-to-Order" sales. Created `SalesEventListener` in `craft-production-service` to listen for `OrderFulfillment` events of type `JUST_IN_TIME`. When triggered, it creates a silent Work Order that instantly snapshots and marks it as `COMPLETION_PENDING` while publishing a `BatchCompleted` event with a null finished product ID. This safely triggers `InventoryPostingService` to deduct raw materials without erroneously crediting finished goods inventory.
 - [X] 2026-10-01: Updated the `craft-production-service` to include pricing/costing details in the recipe list endpoint, and added columns for `Est. Batch Cost`, `Est. Unit Cost`, `Suggested Price (TZS)`, and `Auto-Calculated Margin` directly to the `Recipes.jsx` table UI.
 - [X] 2026-09-30: Replaced the sandbox "Target margin" in the Recipe Editor with a real, persisted database field (`target_margin`). Added a V9 migration to `craft-production-service` to store it, and updated the frontend `RecipeEditor.jsx` to feature a bi-directional calculator: typing a margin percentage instantly computes the suggested selling price, and typing a flat selling price reverse-calculates the margin percentage. In `OrderEntry.jsx`, selecting a base recipe for a custom item now automatically sets the order line's `unitPrice` to this exact suggested price instead of the raw batch cost. Rebuilt and restarted both production and sales services, as well as the UI.
@@ -229,3 +235,9 @@ Acceptance example: ingredients TZS 45,900 + labour 15,000 + energy 10,000 + man
 - [X] 2026-09-28: Hid recipe mapping for finished products in `OrderRecipeMapping.jsx`. Order items that are already finished products do not require production mapping and are now properly filtered out with a clear info alert.
 - [X] 2026-09-28: Implemented a global date filter in `Dashboard.jsx` (7D, 30D, 3M, 6M, 1Y) which dynamically updates all sales aggregates and charts. Added two new Pie Charts for "Sales Status Breakdown" and "Work Order Status".
 - [X] 2026-09-30: Fixed Flyway migration failure (V9) causing 502 Bad Gateway errors by removing incorrect schema prefix. Fixed frontend React deprecation warnings for `maskClosable`.
+- [X] 2026-10-05: Added GlobalExceptionHandler to craft-identity-service to map BadCredentialsException to 401 Unauthorized instead of 500.
+- [X] 2026-10-05: Rebuilt thamanicraft-identity-service and verified it starts successfully with the correct platform admin APIs.
+- [X] 2026-10-05: Updated Settings UI in thamanicraft-admin-ui to correctly display and manage platform-specific data (Platform Admins and Platform Roles) instead of tenant data. Corrected API endpoints and terminology.
+
+- [X] 2026-10-05: Implemented Phase 4 (Audit & System Monitoring). Added `platform_audit_logs` and exposed `/api/admin/metrics/health` and `/audit-logs` from the identity service. Updated Admin Portal's `PlatformLogs.jsx` to render this data.
+- [X] 2026-10-05: Updated `PlatformLogs.jsx` to correctly utilize `identityApi.js` instead of `adminApi.js`.

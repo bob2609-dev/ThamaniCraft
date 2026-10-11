@@ -2,3 +2,9 @@ dbdata/*
 *.log
 *.jar
 *.lock
+rabbitmq-data/
+.agenttrail/
+node_modules/
+target/
+dist/
+.env

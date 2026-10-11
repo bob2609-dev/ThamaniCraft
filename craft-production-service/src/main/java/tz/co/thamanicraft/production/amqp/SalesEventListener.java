@@ -53,7 +53,15 @@ public class SalesEventListener {
             UUID recipeId = UUID.fromString(data.get("recipeId").toString());
             BigDecimal quantity = new BigDecimal(data.get("quantity").toString());
 
-            workOrderService.executeJustInTime(tenantId, orderId, orderItemId, recipeId, quantity);
+            Object overridesObj = data.get("materialOverrides");
+            java.util.List<Map<String, Object>> materialOverrides = null;
+            if (overridesObj instanceof java.util.List<?> list) {
+                materialOverrides = (java.util.List<Map<String, Object>>) list;
+            } else {
+                materialOverrides = java.util.List.of();
+            }
+
+            workOrderService.executeJustInTime(tenantId, orderId, orderItemId, recipeId, quantity, materialOverrides);
             
             log.info("Successfully executed JIT production for order {}", orderId);
         } catch (Exception e) {

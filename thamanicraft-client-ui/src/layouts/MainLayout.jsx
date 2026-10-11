@@ -16,7 +16,8 @@ import {
   Truck,
   Users,
   LogOut,
-  User
+  User,
+  CreditCard
 } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
 import usePermissions from '../hooks/usePermissions';
@@ -30,7 +31,7 @@ export default function MainLayout() {
   const isDarkMode = theme === 'dark';
   const navigate = useNavigate();
   const location = useLocation();
-  const { permissions, role, userName, hasPermission } = usePermissions();
+  const { permissions, role, userName, hasPermission, tenantActive } = usePermissions();
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -116,12 +117,21 @@ export default function MainLayout() {
       permission: 'VIEW_REPORTS'
     },
     {
+      key: '/billing',
+      icon: <CreditCard size={18} />,
+      label: 'Billing',
+      permission: 'MANAGE_USERS'
+    },
+    {
       key: '/settings',
       icon: <Settings size={18} />,
       label: 'Settings',
       permission: 'MANAGE_USERS'
     },
-  ].filter(item => !item.permission || hasPermission(item.permission));
+  ].filter(item => {
+    if (!tenantActive && item.key !== '/billing') return false;
+    return !item.permission || hasPermission(item.permission);
+  });
 
   return (
     <Layout className="min-h-screen" hasSider>
@@ -137,10 +147,19 @@ export default function MainLayout() {
         className="border-r border-slate-200 dark:border-slate-800"
         style={{ overflow: 'auto', height: '100vh', position: 'sticky', top: 0, left: 0, zIndex: 20 }}
       >
-        <div className="flex items-center justify-center h-16 m-4">
-          <Title level={4} className="!m-0 whitespace-nowrap overflow-hidden transition-all duration-300">
-            {collapsed ? 'TC' : 'ThamaniCraft'}
-          </Title>
+        <div className={`flex flex-col items-center justify-center border-b border-slate-200 dark:border-slate-800 transition-all duration-300 ${collapsed ? 'h-16' : 'py-6'}`}>
+          <img src="/assets/logo.png" alt="Logo" className={`transition-all duration-300 ${collapsed ? 'h-8' : 'h-10 mb-2'}`} />
+          {!collapsed && (
+            <div className="text-center">
+              <div className="text-lg leading-none whitespace-nowrap">
+                <span className="text-slate-800 dark:text-slate-100" style={{ fontWeight: 400 }}>Thamani</span>
+                <span style={{ color: '#c99e5e', fontWeight: 800 }}>Craft</span>
+              </div>
+              <div className="text-sm font-semibold mt-1 text-slate-800 dark:text-slate-100 capitalize">
+                {window.location.hostname === 'localhost' ? 'localhost' : window.location.hostname.split('.')[0]}
+              </div>
+            </div>
+          )}
         </div>
         <Menu
           theme={isDarkMode ? 'dark' : 'light'}
@@ -155,12 +174,17 @@ export default function MainLayout() {
           className="flex items-center justify-between px-4 shadow-sm"
           style={{ position: 'sticky', top: 0, zIndex: 10, background: colorBgContainer }}
         >
-          <Button
-            type="text"
-            icon={collapsed ? <MenuIcon /> : <X />}
-            onClick={() => setCollapsed(!collapsed)}
-            className="text-lg w-16 h-16"
-          />
+          <div className="flex items-center gap-4">
+            <Button
+              type="text"
+              icon={collapsed ? <MenuIcon /> : <X />}
+              onClick={() => setCollapsed(!collapsed)}
+              className="text-lg w-12 h-12"
+            />
+            <Title level={5} style={{ margin: 0, textTransform: 'capitalize' }}>
+              {window.location.hostname === 'localhost' ? 'Local Tenant' : window.location.hostname.split('.')[0]}
+            </Title>
+          </div>
           <div className="flex items-center gap-4">
             <Button 
               type="text" 
@@ -177,7 +201,14 @@ export default function MainLayout() {
           </div>
         </Header>
         <Content className="m-6 p-6 min-h-[280px]" style={{ background: colorBgContainer, borderRadius: borderRadiusLG }}>
-          <Outlet />
+          {!tenantActive && location.pathname !== '/billing' ? (
+            <div className="text-center mt-12">
+              <Title level={3} type="danger">Account Suspended</Title>
+              <Text>Your tenant account has been suspended. Please navigate to the Billing section or contact support.</Text>
+            </div>
+          ) : (
+            <Outlet />
+          )}
         </Content>
       </Layout>
     </Layout>

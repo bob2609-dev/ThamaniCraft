@@ -19,7 +19,7 @@ class RecipeServiceTest {
     private RecipeRequest request() {
         return new RecipeRequest("Bread", null, new BigDecimal("50"), unit,
                 new BigDecimal("15000"), new BigDecimal("10000"), new BigDecimal("5500"), new BigDecimal("40"), List.of(
-                        new RecipeRequest.Item(material, new BigDecimal("25000"), null, new BigDecimal("0.02"), null)),
+                        new RecipeRequest.Item(material, new BigDecimal("25000"), null, new BigDecimal("0.02"), null, null)),
                 "BATCH_PRE_MADE", null);
     }
 

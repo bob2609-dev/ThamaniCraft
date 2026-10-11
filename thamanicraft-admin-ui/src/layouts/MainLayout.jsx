@@ -10,9 +10,12 @@ import {
   Menu as MenuIcon,
   X,
   Sun,
-  Moon
+  Moon,
+  LogOut,
+  User
 } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
+import useAuthStore from '../store/authStore';
 
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
@@ -23,6 +26,8 @@ export default function MainLayout() {
   const isDarkMode = theme === 'dark';
   const navigate = useNavigate();
   const location = useLocation();
+  const logout = useAuthStore(state => state.logout);
+  const user = useAuthStore(state => state.user);
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -54,6 +59,11 @@ export default function MainLayout() {
       icon: <Settings size={18} />,
       label: 'Global Settings',
     },
+    {
+      key: '/profile',
+      icon: <User size={18} />,
+      label: 'My Profile',
+    },
   ];
 
   return (
@@ -69,10 +79,19 @@ export default function MainLayout() {
         theme={isDarkMode ? 'dark' : 'light'}
         className="border-r border-slate-200 dark:border-slate-800"
       >
-        <div className="flex items-center justify-center h-16 m-4">
-          <Title level={4} className="!m-0 whitespace-nowrap overflow-hidden transition-all duration-300">
-            {collapsed ? 'TC' : 'ThamaniCraft Admin'}
-          </Title>
+        <div className={`flex flex-col items-center justify-center border-b border-slate-200 dark:border-slate-800 transition-all duration-300 ${collapsed ? 'h-16' : 'py-6'}`}>
+          <img src="/assets/logo.png" alt="Logo" className={`transition-all duration-300 ${collapsed ? 'h-8' : 'h-10 mb-2'}`} />
+          {!collapsed && (
+            <div className="text-center">
+              <div className="text-lg leading-none whitespace-nowrap">
+                <span className="text-slate-800 dark:text-slate-100" style={{ fontWeight: 400 }}>Thamani</span>
+                <span style={{ color: '#c99e5e', fontWeight: 800 }}>Craft</span>
+              </div>
+              <div className="text-sm font-semibold mt-1 text-slate-800 dark:text-slate-100">
+                Admin
+              </div>
+            </div>
+          )}
         </div>
         <Menu
           theme={isDarkMode ? 'dark' : 'light'}
@@ -100,8 +119,15 @@ export default function MainLayout() {
               className="flex items-center justify-center"
               icon={isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             />
-            {/* Future: User Profile Dropdown */}
-            <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+            {/* User Profile Dropdown */}
+            <Button
+              type="text"
+              className="flex items-center gap-2"
+              onClick={logout}
+              icon={<LogOut size={16} />}
+            >
+              <span className="hidden sm:inline">{user?.email || 'Admin'}</span>
+            </Button>
           </div>
         </Header>
         <Content className="m-6 p-6 min-h-[280px]" style={{ background: colorBgContainer, borderRadius: borderRadiusLG }}>

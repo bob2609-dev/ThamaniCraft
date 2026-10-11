@@ -12,6 +12,16 @@ import org.springframework.validation.FieldError;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(org.springframework.security.authentication.BadCredentialsException.class)
+    public ProblemDetail handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, ex.getMessage());
+    }
+
+    @ExceptionHandler(org.springframework.security.authentication.DisabledException.class)
+    public ProblemDetail handleDisabledException(org.springframework.security.authentication.DisabledException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.FORBIDDEN, ex.getMessage());
+    }
+
     @ExceptionHandler(RuntimeException.class)
     public ProblemDetail handleRuntimeException(RuntimeException ex) {
         if ("Invalid credentials".equals(ex.getMessage())) {

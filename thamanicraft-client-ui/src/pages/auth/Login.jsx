@@ -8,19 +8,23 @@ const { Title, Text } = Typography;
 export default function Login() {
   const [loading, setLoading] = useState(false);
 
+  const tenantName = window.location.hostname === 'localhost' ? 'localhost' : window.location.hostname.split('.')[0];
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
+      const payload = {
+        ...values,
+        tenant: tenantName
+      };
+
       // In production, point to the actual gateway auth endpoint
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Note: Subdomain is usually passed automatically by browser/Nginx,
-          // but we can pass it if we were doing custom subdomain logic via headers
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
@@ -38,8 +42,19 @@ export default function Login() {
           window.location.href = '/';
         }, 1000);
       } else {
-        const err = await response.text();
-        message.error(`Login failed: ${err || response.statusText}`);
+        const errText = await response.text();
+        let errorMsg = 'The email or password is not correct.';
+        try {
+          const parsed = JSON.parse(errText);
+          if (parsed.detail) {
+            errorMsg = parsed.detail === 'Invalid credentials' 
+              ? 'The email or password is not correct.' 
+              : parsed.detail;
+          }
+        } catch (e) {
+          if (errText) errorMsg = errText;
+        }
+        message.error(`Login failed. ${errorMsg}`);
       }
     } catch (error) {
       console.error(error);
@@ -53,8 +68,13 @@ export default function Login() {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#f0f2f5' }}>
       <Card style={{ width: 400, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
-          <Title level={3} style={{ margin: 0 }}>ThamaniCraft</Title>
-          <Text type="secondary">Sign in to your account</Text>
+          <img src="/assets/logo.png" alt="ThamaniCraft Logo" style={{ display: 'block', margin: '0 auto 16px', height: 64 }} />
+          <Title level={3} style={{ margin: 0 }}>
+            <span style={{ color: '#323639', fontWeight: 400 }}>Thamani</span>
+            <span style={{ color: '#c99e5e', fontWeight: 800 }}>Craft</span>
+          </Title>
+          <Title level={4} style={{ margin: 0, marginTop: 4, color: '#323639' }}>{tenantName}</Title>
+          <Text type="secondary" style={{ display: 'block', marginTop: 12 }}>Sign in to your account</Text>
         </div>
         
         <Form

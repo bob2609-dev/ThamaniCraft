@@ -1,0 +1,16 @@
+# Dependencies & builds
+node_modules/
+dist/
+build/
+target/
+.idea/
+
+
+# Large binaries & data
+*.log
+*.sqlite
+*.sql
+*.csv
+docker_volumes/
+vendor/
+

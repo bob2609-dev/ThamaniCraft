@@ -169,3 +169,13 @@ export const deleteFinishedProduct = async (id) => {
   });
   if (!response.ok) throw new Error('Failed to delete Finished Product');
 };
+
+export const createGoodsReceiptQuickRefill = async (receipt) => {
+  const response = await fetch(`${API_BASE_URL}/goods-receipts/quick-refill`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify(receipt)
+  });
+  if (!response.ok) throw new Error('Failed to quick refill goods');
+  return response.json();
+};

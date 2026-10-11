@@ -29,6 +29,8 @@
 - [x] **UI (Recipes)**: Remove Labor/Energy/Waste inputs from `RecipeEditor.jsx`.
 - [x] **UI (Recipes)**: Add "Pre-Made" vs "Made-on-Demand" toggle.
 - [x] **UI (Recipes)**: Update ingredient picker to use Smart UOM dropdowns.
+- [x] **UI/Backend (Recipes)**: Implement `confirm_at_pos` boolean toggle per raw material line item.
+- [x] **UI/Backend (POS)**: Intercept POS checkout to prompt for quantities of `confirm_at_pos` items.
 - [x] **UI (Recipes)**: Simplify the Recipe page (list/table with a modal for add/edit/remove ingredient).
 - [x] **Backend (Inventory)**: Seed global standard measurements and enforce tenant edits isolation.
 - [x] **UI (Production)**: Deprecate `WorkOrder.jsx` lifecycle screens.

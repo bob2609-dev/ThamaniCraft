@@ -12,6 +12,7 @@ import OrderEntry from './pages/OrderEntry';
 import Procurement from './pages/Procurement';
 import Customers from './pages/Customers';
 import Reports from './pages/Reports';
+import Billing from './pages/Billing';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile';
 import Login from './pages/auth/Login';
@@ -41,6 +42,7 @@ function App() {
         <Route path="procurement" element={<Procurement />} />
         <Route path="customers" element={<Customers />} />
         <Route path="reports" element={<Reports />} />
+        <Route path="billing" element={<Billing />} />
         <Route path="settings" element={<Settings />} />
         <Route path="profile" element={<Profile />} />
       </Route>

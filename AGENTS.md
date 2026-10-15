@@ -1,7 +1,9 @@
-
 <!-- agenttrail -->
+
 ## agenttrail plan convention
+
 Maintain PLAN.md as the living plan. It is read by the project OWNER, not by you — write it for them.
+
 - nodes are COMPONENTS of the system being built (`## Plain-language name {#id}`), not phases or sprints; keep the map at 5-9 components regardless of repo size — grow tasks, not cards, and split a component only when one agent could no longer own it for a session
 - naming rule: titles are verb-led, plain-language, and CONCRETE — the owner can tell when it is done ("Read alerts out loud", "Watch the repo"). Never engineer-speak ("fs watcher + activity signal") and never vague vibes ("Decide what matters"); put the engineer phrasing on a `tech:` line under the heading
 - tasks inside a component: `- [ ] Plain outcome {#id}`, optional indented `tech:` line beneath; mark a task `[~]` BEFORE you start it and save PLAN.md immediately — this drives the live in-progress view; flip it to `[x]` the moment it completes, `[!]` if stuck (clear once unblocked). Never batch plan updates for the end of the session
@@ -13,3 +15,14 @@ Maintain PLAN.md as the living plan. It is read by the project OWNER, not by you
 - new work NEVER creates a component by default: it lands as your session todos plus tasks under the component whose files it touches. Add a NEW component only when the system grows a durable new part. Durable is not a prediction — test it NOW: something else already depends on it (load-bearing), deleting it would change what the product does, you can name a plausible second task for it, and it owns files no component claims. Record the addition under `## decisions`. Time corrects mistakes cheaply: merge a card back into its neighbor if no second change ever comes; promote a task to a card when work keeps clustering in files its siblings never touch. Remove a component only when that part is deleted from the product
 - before ending a session, graduate your plan-worthy completed todos into PLAN.md as `[x]` tasks (with `by:`) — housekeeping todos stay out of the plan
 - record any plan-affecting decision under `## decisions` BEFORE implementing it
+-
+
+## Agenttrail Integration
+
+- Always maintain and update `workspace/PLAN.md` (or root `PLAN.md`).
+- For each component, specify explicit metadata:
+  - `{#component-id}`
+  - `files:` pointing to tracked subdirectories or files.
+  - `needs:` for upstream dependencies.
+  - Granular task checklists with statuses: `[x]` (done), `[~]` (in progress), and `[!]` (blocked).
+- When beginning a subtask, set it to `[~]` before executing code edits, and update evidence upon completion.

@@ -11,4 +11,5 @@ import java.util.UUID;
 public interface SubscriptionInvoiceRepository extends JpaRepository<SubscriptionInvoice, UUID> {
     List<SubscriptionInvoice> findByTenantIdOrderByCreatedAtDesc(UUID tenantId);
     List<SubscriptionInvoice> findByStatusOrderByCreatedAtDesc(String status);
+    long countByStatus(String status);
 }

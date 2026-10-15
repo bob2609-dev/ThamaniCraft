@@ -74,8 +74,29 @@ public class TenantController {
     public ResponseEntity<?> toggleTenantStatus(@PathVariable UUID tenantId) {
         Tenant tenant = tenantRepo.findById(tenantId)
                 .orElseThrow(() -> new RuntimeException("Tenant not found"));
+        if ("admin".equalsIgnoreCase(tenant.getName()) || 
+            UUID.fromString("00000000-0000-0000-0000-000000000000").equals(tenant.getId())) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Admin tenant cannot be suspended"));
+        }
         tenant.setActive(!tenant.isActive());
         tenantRepo.save(tenant);
         return ResponseEntity.ok(Map.of("message", "Tenant status updated"));
+    }
+
+    @GetMapping("/{tenantId}/modules")
+    @PreAuthorize("hasAuthority('MANAGE_TENANTS') or hasRole('SUPER_ADMIN')")
+    public ResponseEntity<?> getTenantModules(@PathVariable UUID tenantId) {
+        return ResponseEntity.ok(tenantService.getTenantModuleDetails(tenantId));
+    }
+
+    @PutMapping("/{tenantId}/modules")
+    @PreAuthorize("hasAuthority('MANAGE_TENANTS') or hasRole('SUPER_ADMIN')")
+    public ResponseEntity<?> updateTenantModules(@PathVariable UUID tenantId, @RequestBody Map<String, Object> payload) {
+        Object customModulesObj = payload.get("customModules");
+        List<String> modules = null;
+        if (customModulesObj instanceof List<?>) {
+            modules = ((List<?>) customModulesObj).stream().map(Object::toString).toList();
+        }
+        return ResponseEntity.ok(tenantService.updateTenantModules(tenantId, modules));
     }
 }

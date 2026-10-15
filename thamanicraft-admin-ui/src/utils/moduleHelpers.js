@@ -3,6 +3,7 @@ export const MODULE_NAMES = {
   recipes: 'Recipes & BOM',
   production: 'Production',
   sales: 'Sales & Dispatch',
+  pos: 'Point of Sale (POS)',
   procurement: 'Procurement',
   expenses: 'Expenses',
   finance: 'Finance & Ledgers',
@@ -11,15 +12,56 @@ export const MODULE_NAMES = {
 };
 
 export const AVAILABLE_MODULES = [
-  { label: 'Inventory', value: 'inventory' },
-  { label: 'Recipes & BOM', value: 'recipes' },
-  { label: 'Production', value: 'production' },
-  { label: 'Sales & Dispatch', value: 'sales' },
-  { label: 'Procurement', value: 'procurement' },
-  { label: 'Expenses', value: 'expenses' },
-  { label: 'Finance & Ledgers', value: 'finance' },
-  { label: 'Customers', value: 'customers' },
-  { label: 'Reports', value: 'reports' },
+  { 
+    label: 'Inventory', 
+    value: 'inventory',
+    description: 'Raw materials, stock balances, Goods Receipts (GRN), and valuation.'
+  },
+  { 
+    label: 'Recipes & BOM', 
+    value: 'recipes',
+    description: 'Bill of Materials, ingredient cost simulation, preparation notes, and target margins.'
+  },
+  { 
+    label: 'Production', 
+    value: 'production',
+    description: 'Manufacturing work orders, batch execution, and stage tracking.'
+  },
+  { 
+    label: 'Sales & Dispatch', 
+    value: 'sales',
+    description: 'Customer wholesale orders, delivery tracking, and finished goods dispatch.'
+  },
+  { 
+    label: 'Point of Sale (POS)', 
+    value: 'pos',
+    description: 'Fast cashier checkout, counter retail sales, and made-to-order fulfillment.'
+  },
+  { 
+    label: 'Procurement', 
+    value: 'procurement',
+    description: 'Vendor purchasing, supplier order management, and receiving stock.'
+  },
+  { 
+    label: 'Expenses', 
+    value: 'expenses',
+    description: 'Operational expense entries, bills, machinery CapEx, and overhead amortization.'
+  },
+  { 
+    label: 'Finance & Ledgers', 
+    value: 'finance',
+    description: 'Double-entry accounting, General Ledger, accounts, and financial journals.'
+  },
+  { 
+    label: 'Customers', 
+    value: 'customers',
+    description: 'Customer directory, contact profiles, delivery preferences, and order history.'
+  },
+  { 
+    label: 'Reports', 
+    value: 'reports',
+    description: 'Sales margins, production yields, inventory valuation, and accounting ledgers.'
+  },
 ];
 
 export const parseModules = (rawModules) => {

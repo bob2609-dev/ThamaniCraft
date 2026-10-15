@@ -23,6 +23,7 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final com.thamanicraft.identity.repository.TenantRepository tenantRepository;
+    private final com.thamanicraft.identity.repository.TenantSubscriptionRepository tenantSubRepository;
     
     @Value("${jwt.secret:defaultSecretKeyWithAtLeast256BitsOfSecurityIfUsedInProd1234567890}")
     private String secret;
@@ -30,10 +31,15 @@ public class AuthServiceImpl implements AuthService {
     @Value("${jwt.expiration:86400000}")
     private Long expiration;
 
-    public AuthServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, com.thamanicraft.identity.repository.TenantRepository tenantRepository) {
+    public AuthServiceImpl(
+            UserRepository userRepository, 
+            PasswordEncoder passwordEncoder, 
+            com.thamanicraft.identity.repository.TenantRepository tenantRepository,
+            com.thamanicraft.identity.repository.TenantSubscriptionRepository tenantSubRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.tenantRepository = tenantRepository;
+        this.tenantSubRepository = tenantSubRepository;
     }
 
     @Override
@@ -68,6 +74,48 @@ public class AuthServiceImpl implements AuthService {
 
         boolean tenantActive = tenantObj != null ? tenantObj.isActive() : true;
 
+        List<String> modules = new java.util.ArrayList<>();
+        String planCode = "FREE";
+        int maxInventoryItems = 50;
+
+        if (user.getTenantId() != null) {
+            com.thamanicraft.identity.entity.TenantSubscription sub = 
+                tenantSubRepository.findByTenantIdAndStatus(user.getTenantId(), "ACTIVE").orElse(null);
+            
+            if (sub != null && sub.getPlan() != null) {
+                planCode = sub.getPlan().getCode();
+            }
+
+            if (tenantObj != null && tenantObj.getCustomModules() != null && !tenantObj.getCustomModules().isBlank()) {
+                String raw = tenantObj.getCustomModules();
+                String clean = raw.replaceAll("[\\[\\]\" ]", "");
+                for (String m : clean.split(",")) {
+                    if (!m.isBlank()) {
+                        modules.add(m.trim().toLowerCase());
+                    }
+                }
+            } else if (sub != null && sub.getPlan() != null) {
+                String raw = sub.getPlan().getIncludedModules();
+                if (raw != null) {
+                    String clean = raw.replaceAll("[\\[\\]\" ]", "");
+                    for (String m : clean.split(",")) {
+                        if (!m.isBlank()) {
+                            modules.add(m.trim().toLowerCase());
+                        }
+                    }
+                }
+            } else {
+                // Default free tier modules if no active subscription found
+                modules.add("inventory");
+                modules.add("recipes");
+            }
+        } else {
+            // Platform / super admin users have full module access
+            modules.addAll(List.of("inventory", "recipes", "production", "sales", "finance", "reports", "procurement", "expenses", "customers"));
+        }
+
+        boolean hasPos = modules.contains("sales") || modules.contains("pos");
+
         String token = Jwts.builder()
                 .setSubject(user.getEmail())
                 .claim("user_id", user.getId().toString())
@@ -76,9 +124,10 @@ public class AuthServiceImpl implements AuthService {
                 .claim("tenant_active", tenantActive)
                 .claim("role", user.getRole().getName())
                 .claim("permissions", permissions)
-                // Defaulting subscription claims for now
-                .claim("has_pos", true)
-                .claim("max_inventory_items", 1000)
+                .claim("plan_code", planCode)
+                .claim("modules", modules)
+                .claim("has_pos", hasPos)
+                .claim("max_inventory_items", maxInventoryItems)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(key, SignatureAlgorithm.HS256)

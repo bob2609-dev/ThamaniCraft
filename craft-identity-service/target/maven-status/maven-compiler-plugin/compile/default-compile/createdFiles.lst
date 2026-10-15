@@ -1,5 +1,6 @@
 com/thamanicraft/identity/dto/ChangePasswordRequest.class
 com/thamanicraft/identity/entity/TenantSubscription.class
+com/thamanicraft/identity/dto/AdminDashboardStatsDto$PlanDistributionItem$PlanDistributionItemBuilder.class
 com/thamanicraft/identity/entity/User.class
 com/thamanicraft/identity/entity/PlatformConfiguration.class
 com/thamanicraft/identity/entity/SubscriptionInvoice.class
@@ -7,12 +8,16 @@ com/thamanicraft/identity/repository/PlatformAuditLogRepository.class
 com/thamanicraft/identity/repository/PlatformPermissionRepository.class
 com/thamanicraft/identity/exception/ResourceNotFoundException.class
 com/thamanicraft/identity/repository/RoleRepository.class
+com/thamanicraft/identity/dto/AdminDashboardStatsDto$AdminDashboardStatsDtoBuilder.class
 com/thamanicraft/identity/controller/SubscriptionController.class
 com/thamanicraft/identity/entity/SubscriptionPlan.class
 com/thamanicraft/identity/repository/SubscriptionPlanRepository.class
 com/thamanicraft/identity/repository/PlatformAdminRepository.class
+com/thamanicraft/identity/dto/AdminDashboardStatsDto$RecentTenantItem.class
 com/thamanicraft/identity/controller/TenantController.class
+com/thamanicraft/identity/dto/AdminDashboardStatsDto$PlanDistributionItem.class
 com/thamanicraft/identity/controller/AuthController.class
+com/thamanicraft/identity/dto/AdminDashboardStatsDto$RecentTenantItem$RecentTenantItemBuilder.class
 com/thamanicraft/identity/repository/PlatformRoleRepository.class
 com/thamanicraft/identity/config/IdentitySecurityConfig.class
 com/thamanicraft/identity/service/AuthService.class
@@ -22,6 +27,7 @@ com/thamanicraft/identity/dto/CreateUserRequest.class
 com/thamanicraft/identity/service/SubscriptionService.class
 com/thamanicraft/identity/controller/UserController.class
 com/thamanicraft/identity/entity/PlatformAdmin.class
+com/thamanicraft/identity/dto/AdminDashboardStatsDto.class
 com/thamanicraft/identity/dto/TenantSubscriptionDto.class
 com/thamanicraft/identity/dto/RoleDto.class
 com/thamanicraft/identity/repository/UserRepository.class
@@ -41,12 +47,14 @@ com/thamanicraft/identity/repository/PlatformConfigurationRepository.class
 com/thamanicraft/identity/repository/PermissionRepository.class
 com/thamanicraft/identity/repository/TenantRepository.class
 com/thamanicraft/identity/service/AdminAuthService.class
+com/thamanicraft/identity/service/AdminDashboardService$ServiceTarget.class
 com/thamanicraft/identity/service/TenantService.class
 com/thamanicraft/identity/controller/AdminAuthController.class
 com/thamanicraft/identity/dto/CreateRoleRequest.class
 com/thamanicraft/identity/entity/Role.class
 com/thamanicraft/identity/dto/SubscriptionPlanDto.class
 com/thamanicraft/identity/service/SubscriptionServiceImpl.class
+com/thamanicraft/identity/service/AdminDashboardService.class
 com/thamanicraft/identity/controller/SystemMonitoringController.class
 com/thamanicraft/identity/IdentityApplication.class
 com/thamanicraft/identity/entity/PlatformRole.class

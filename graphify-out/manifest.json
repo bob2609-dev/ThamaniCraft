@@ -1,8 +1,8 @@
 {
   ".agents/.ag-kit/manifest.json": {
-    "mtime": 1789239783.9213557,
-    "seen": 1789934336.8474061,
-    "ast_hash": "8b91115f1eec99eb85eec2c2e150201b",
+    "mtime": 1789942991.2371368,
+    "seen": 1791922526.9813762,
+    "ast_hash": "6a78ad5f91817f074a6ee34021dade1b",
     "semantic_hash": ""
   },
   ".agents/antigravity.json": {
@@ -486,15 +486,15 @@
     "semantic_hash": ""
   },
   ".agents/rules/core-protocol.md": {
-    "mtime": 1789240157.2237422,
-    "seen": 1789934336.8474953,
-    "ast_hash": "e27b9706e475f51d1e96afa8862e2b5d",
+    "mtime": 1790246980.8699243,
+    "seen": 1791922526.9819512,
+    "ast_hash": "8dbfedf261a29fb1584f571cc58c2bd7",
     "semantic_hash": ""
   },
   ".agents/rules/design-rules.md": {
-    "mtime": 1789240157.223837,
-    "seen": 1789934336.8474963,
-    "ast_hash": "dc443176c693dfca0afe3e1bab2524b8",
+    "mtime": 1789945509.563667,
+    "seen": 1791922526.981952,
+    "ast_hash": "eebf87abed1ef9bf4d496eecaacf0d3c",
     "semantic_hash": ""
   },
   ".agents/rules/quick-reference.md": {
@@ -1374,15 +1374,15 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1789240437.3618214,
-    "seen": 1789934336.847642,
-    "ast_hash": "5b132a0a7e684779fbad3efef320f406",
+    "mtime": 1790003246.6580465,
+    "seen": 1791922526.9821212,
+    "ast_hash": "50721fa52ed84d6e58bcf48c4bdd8b72",
     "semantic_hash": ""
   },
   "docker-compose.yml": {
-    "mtime": 1789939916.486688,
-    "seen": 1789940044.7379029,
-    "ast_hash": "191f6b88b2f1bb890194a9c336a7e77b",
+    "mtime": 1791202097.9913518,
+    "seen": 1791922526.9821272,
+    "ast_hash": "3544050f79b4aefbecdabbd59dc4ed80",
     "semantic_hash": ""
   },
   "docs/PRD.md": {
@@ -1392,9 +1392,9 @@
     "semantic_hash": ""
   },
   "docs/PROGRESS.md": {
-    "mtime": 1789939957.4655824,
-    "seen": 1789940044.737916,
-    "ast_hash": "4b9bcdbbb3b65fe3c788c763663c5d23",
+    "mtime": 1791922451.2296154,
+    "seen": 1791922526.9821293,
+    "ast_hash": "b1fd05b2e29b47840982d31c296550bf",
     "semantic_hash": ""
   },
   "docs/Responsive_UI_Skill.md": {
@@ -1452,9 +1452,9 @@
     "semantic_hash": ""
   },
   "docs/SKILL-09-capex-fixed-assets.md": {
-    "mtime": 1789240416.5620277,
-    "seen": 1789934336.8476534,
-    "ast_hash": "680812fca7ce87838a120a85474e9cca",
+    "mtime": 1790104300.1790323,
+    "seen": 1791922526.9821386,
+    "ast_hash": "1a983c4a166d5c4cf236e9984979746f",
     "semantic_hash": ""
   },
   "docs/SKILL-10-thamanipoint-lessons.md": {
@@ -1518,26 +1518,26 @@
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/AntdProvider.jsx": {
-    "mtime": 1789934678.9073427,
-    "seen": 1789934744.3234005,
+    "mtime": 1790952663.113053,
+    "seen": 1791922526.9817488,
     "ast_hash": "7aff5b96d1ca09499af10b086ae030fb",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/App.jsx": {
-    "mtime": 1789939841.974881,
-    "seen": 1789940044.7367804,
-    "ast_hash": "45fd0ffdc53d600b325223e4e95fde49",
+    "mtime": 1791627810.0091152,
+    "seen": 1791922526.9817498,
+    "ast_hash": "46379582c709819f7f4c19bb636f6af5",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/ThemeContext.jsx": {
-    "mtime": 1789934676.8773196,
-    "seen": 1789934744.3234093,
+    "mtime": 1790952663.1142862,
+    "seen": 1791922526.9817507,
     "ast_hash": "91a280f4f8337e8be206fb2bc9f834af",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/main.jsx": {
-    "mtime": 1789936805.3541734,
-    "seen": 1789940044.7367985,
+    "mtime": 1790952663.1145854,
+    "seen": 1791922526.9817598,
     "ast_hash": "23cdc3a0f57fd435682dfaedb479d63e",
     "semantic_hash": ""
   },
@@ -1548,9 +1548,9 @@
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/vite.config.js": {
-    "mtime": 1789939882.7487752,
-    "seen": 1789940044.7368488,
-    "ast_hash": "7601db1d87739d69b0252675624ea25d",
+    "mtime": 1789978232.6795747,
+    "seen": 1791922526.9817863,
+    "ast_hash": "9025a239f629769fd9f362be572df354",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/README.md": {
@@ -1560,15 +1560,9 @@
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/index.html": {
-    "mtime": 1789934655.6533334,
-    "seen": 1789934744.3243327,
-    "ast_hash": "7fe90af84b688fb8d6aa7551c78684bd",
-    "semantic_hash": ""
-  },
-  "thamanicraft-client-ui/public/favicon.svg": {
-    "mtime": 1789934655.6538002,
-    "seen": 1789934744.324337,
-    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "mtime": 1791576102.7078178,
+    "seen": 1791922526.982165,
+    "ast_hash": "5bac367dbe601ebbd2356ba01a461dde",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/public/icons.svg": {
@@ -1620,21 +1614,15 @@
     "semantic_hash": ""
   },
   "craft-inventory-service/pom.xml": {
-    "mtime": 1789935770.808552,
-    "seen": 1789936067.4313135,
-    "ast_hash": "b740824dd48120294b15bdbb744b1507",
+    "mtime": 1789943671.0125005,
+    "seen": 1791922526.9815695,
+    "ast_hash": "249514df0ce47460c7e1ca38ffbec70a",
     "semantic_hash": ""
   },
   "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/InventoryApplication.java": {
-    "mtime": 1789935449.2228155,
-    "seen": 1789936067.431317,
-    "ast_hash": "8321bd0ad88a5f6d1b5634d8b3d3b589",
-    "semantic_hash": ""
-  },
-  "craft-inventory-service/src/main/resources/db/migration/V1__Init_Inventory_Schema.sql": {
-    "mtime": 1789935469.5299919,
-    "seen": 1789936067.431321,
-    "ast_hash": "c1aa7f13ed7af240351fa3a3d513f6f9",
+    "mtime": 1790256448.2023063,
+    "seen": 1791922526.9815717,
+    "ast_hash": "f21889589a52a5b25b8c4dd47c000775",
     "semantic_hash": ""
   },
   "craft-production-service/entrypoint.sh": {
@@ -1644,15 +1632,15 @@
     "semantic_hash": ""
   },
   "craft-production-service/pom.xml": {
-    "mtime": 1789935772.9915702,
-    "seen": 1789936067.4313288,
-    "ast_hash": "c652ab59fd630c71dee2d3f622c79584",
+    "mtime": 1790011129.4335942,
+    "seen": 1791922526.9816086,
+    "ast_hash": "b0207a8bf4ae2b7af147d5620f977c7a",
     "semantic_hash": ""
   },
   "craft-production-service/src/main/java/tz/co/thamanicraft/production/ProductionApplication.java": {
-    "mtime": 1789935519.7004254,
-    "seen": 1789936067.4313328,
-    "ast_hash": "d961c6c08c74727a0abbd0e55267515c",
+    "mtime": 1790256376.040957,
+    "seen": 1791922526.9816096,
+    "ast_hash": "e355d40aebf9c5765f4bc354d7937118",
     "semantic_hash": ""
   },
   "craft-production-service/src/main/resources/db/migration/V1__Init_Production_Schema.sql": {
@@ -1674,9 +1662,9 @@
     "semantic_hash": ""
   },
   "rabbitmq/entrypoint.sh": {
-    "mtime": 1789935063.2093132,
-    "seen": 1789936067.4313552,
-    "ast_hash": "06c9f45a3eed71965fb8c993a958cb5a",
+    "mtime": 1791043813.053963,
+    "seen": 1791922526.9816835,
+    "ast_hash": "f6c1169779b60cfd56343f1388aadc58",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/entrypoint.sh": {
@@ -1692,21 +1680,21 @@
     "semantic_hash": ""
   },
   "craft-gateway-service/src/main/resources/application.yml": {
-    "mtime": 1789939788.0650218,
-    "seen": 1789940044.7378747,
-    "ast_hash": "1047662934591acc70d0a26d56c8bc72",
+    "mtime": 1791628215.526695,
+    "seen": 1791922526.9821234,
+    "ast_hash": "6c8c2b40aec758c3f127d633b6327e90",
     "semantic_hash": ""
   },
   "craft-inventory-service/src/main/resources/application.yml": {
-    "mtime": 1789935458.1798933,
-    "seen": 1789936067.4322288,
-    "ast_hash": "4b529d53ce8b7214f6bc6046ef7834ba",
+    "mtime": 1790669489.3369439,
+    "seen": 1791922526.982125,
+    "ast_hash": "2633e5fcfbfc697739aae7e59878406a",
     "semantic_hash": ""
   },
   "craft-production-service/src/main/resources/application.yml": {
-    "mtime": 1789935522.1714466,
-    "seen": 1789936067.4322329,
-    "ast_hash": "79b85beca9083a1f8647fb96946ff430",
+    "mtime": 1790011130.013588,
+    "seen": 1791922526.9821255,
+    "ast_hash": "14007d2233565af89e5f5e7913584cbd",
     "semantic_hash": ""
   },
   "craft-common-security/pom.xml": {
@@ -1716,9 +1704,9 @@
     "semantic_hash": ""
   },
   "craft-common-security/src/main/java/com/thamanicraft/security/config/CommonSecurityConfig.java": {
-    "mtime": 1789939378.66713,
-    "seen": 1789940044.7364957,
-    "ast_hash": "37a0b5af26d94b656369fd7b43d8f787",
+    "mtime": 1791201609.9732854,
+    "seen": 1791922526.9814856,
+    "ast_hash": "7c8720a00c5ee406269ac889b31a3245",
     "semantic_hash": ""
   },
   "craft-common-security/src/main/java/com/thamanicraft/security/context/TenantContext.java": {
@@ -1734,14 +1722,14 @@
     "semantic_hash": ""
   },
   "craft-common-security/src/main/java/com/thamanicraft/security/filter/JwtAuthFilter.java": {
-    "mtime": 1789939366.676164,
-    "seen": 1789940044.7365084,
-    "ast_hash": "301a2ece251edd4f532301de39ad736f",
+    "mtime": 1789978336.390245,
+    "seen": 1791922526.9814897,
+    "ast_hash": "e756635b16e0c129ac41a7d2da886659",
     "semantic_hash": ""
   },
   "craft-common-security/src/main/java/com/thamanicraft/security/util/JwtUtil.java": {
-    "mtime": 1789939353.3432016,
-    "seen": 1789940044.736512,
+    "mtime": 1790003764.6268532,
+    "seen": 1791922526.9814906,
     "ast_hash": "060193bc4c2e011520dde3ed8216a7f5",
     "semantic_hash": ""
   },
@@ -1758,9 +1746,9 @@
     "semantic_hash": ""
   },
   "craft-identity-service/src/main/java/com/thamanicraft/identity/IdentityApplication.java": {
-    "mtime": 1789939461.312899,
-    "seen": 1789940044.7365627,
-    "ast_hash": "c0ac7e883c2e4166805ac37c78a39fc4",
+    "mtime": 1789941388.6949856,
+    "seen": 1791922526.9815145,
+    "ast_hash": "3f807d7367411d87198ad17c5e996452",
     "semantic_hash": ""
   },
   "craft-identity-service/src/main/java/com/thamanicraft/identity/config/IdentitySecurityConfig.java": {
@@ -1776,9 +1764,9 @@
     "semantic_hash": ""
   },
   "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/AuthRequest.java": {
-    "mtime": 1789939519.7437384,
-    "seen": 1789940044.7365746,
-    "ast_hash": "45b8a78ee1ad308901a900ea65d003b1",
+    "mtime": 1791571880.7131383,
+    "seen": 1791922526.9815242,
+    "ast_hash": "a643ee2b8a39d9841873e388d431324b",
     "semantic_hash": ""
   },
   "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/AuthResponse.java": {
@@ -1806,15 +1794,15 @@
     "semantic_hash": ""
   },
   "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/RoleRepository.java": {
-    "mtime": 1789939510.4397638,
-    "seen": 1789940044.7365952,
-    "ast_hash": "63eefe57d6b73adac725a6893fd0192c",
+    "mtime": 1790449696.0021555,
+    "seen": 1791922526.981548,
+    "ast_hash": "c599e00243ff34bd4e08f26c8c3bfc65",
     "semantic_hash": ""
   },
   "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/UserRepository.java": {
-    "mtime": 1789939501.618788,
-    "seen": 1789940044.7365994,
-    "ast_hash": "3916776627ec5cb247c6e05467ae0e96",
+    "mtime": 1790450889.3608475,
+    "seen": 1791922526.981552,
+    "ast_hash": "b1c6ce985bd5130ebc633e2bb9aa9ccc",
     "semantic_hash": ""
   },
   "craft-identity-service/src/main/java/com/thamanicraft/identity/service/AuthService.java": {
@@ -1824,15 +1812,9 @@
     "semantic_hash": ""
   },
   "craft-identity-service/src/main/java/com/thamanicraft/identity/service/AuthServiceImpl.java": {
-    "mtime": 1789939548.3576605,
-    "seen": 1789940044.7366083,
-    "ast_hash": "5f808017119f88d70e9ea90c313342a5",
-    "semantic_hash": ""
-  },
-  "craft-identity-service/src/main/resources/db/migration/V1__init_identity_schema.sql": {
-    "mtime": 1789939593.3655386,
-    "seen": 1789940044.736612,
-    "ast_hash": "71f7e098dc47645fb7b240f654c93d16",
+    "mtime": 1791919014.1049812,
+    "seen": 1791922526.9815557,
+    "ast_hash": "8b032f1532afb86d562f88eb242389d0",
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/.oxlintrc.json": {
@@ -1866,9 +1848,9 @@
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/src/App.jsx": {
-    "mtime": 1789937207.1104527,
-    "seen": 1789940044.7367072,
-    "ast_hash": "f66a14682f9776a19818eac7a9740eb0",
+    "mtime": 1791492126.5882452,
+    "seen": 1791922526.981722,
+    "ast_hash": "d968b80eddba6891e28c8f80bb94e309",
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/src/ThemeContext.jsx": {
@@ -1878,9 +1860,9 @@
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/src/layouts/MainLayout.jsx": {
-    "mtime": 1789937352.3868363,
-    "seen": 1789940044.736716,
-    "ast_hash": "406ec867797c95e3c84e0fac25249105",
+    "mtime": 1791576377.6476269,
+    "seen": 1791922526.9817266,
+    "ast_hash": "4f05facb92f4d1013e2abd65ad357238",
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/src/main.jsx": {
@@ -1890,33 +1872,33 @@
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/src/pages/Dashboard.jsx": {
-    "mtime": 1789937179.5952487,
-    "seen": 1789940044.736725,
-    "ast_hash": "1b11f6e6936b57c2ec320012a05dd402",
+    "mtime": 1791922415.314769,
+    "seen": 1791922526.9817288,
+    "ast_hash": "f4fe42a3f3dd20e908b6ace940417695",
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/src/pages/PlatformLogs.jsx": {
-    "mtime": 1789937186.4310472,
-    "seen": 1789940044.7367291,
-    "ast_hash": "9413a449ae3bb467f22ae457c8b2bb76",
+    "mtime": 1791922388.014893,
+    "seen": 1791922526.9817307,
+    "ast_hash": "cc8c9573df720c1dbb93782f411091b8",
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/src/pages/Settings.jsx": {
-    "mtime": 1789937188.628983,
-    "seen": 1789940044.736733,
-    "ast_hash": "aae74e657cefd630bbdb25360c01c182",
+    "mtime": 1791922364.7350035,
+    "seen": 1791922526.9817321,
+    "ast_hash": "103ee115c956c40f22486443872cd47f",
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/src/pages/Subscriptions.jsx": {
-    "mtime": 1789937184.1721137,
-    "seen": 1789940044.7367368,
-    "ast_hash": "bc1ae3aa6c97fa84ed8453177a68e4ba",
+    "mtime": 1791922328.5771852,
+    "seen": 1791922526.981733,
+    "ast_hash": "e82822095e91f598726d2db4389983ba",
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/src/pages/Tenants.jsx": {
-    "mtime": 1789937181.9241798,
-    "seen": 1789940044.7367406,
-    "ast_hash": "d748b27d03733920270681466095832c",
+    "mtime": 1791919379.0125465,
+    "seen": 1791922526.9817348,
+    "ast_hash": "b78cbcfeff6e26eaa6915d1bd45d2347",
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/tailwind.config.js": {
@@ -1926,87 +1908,87 @@
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/vite.config.js": {
-    "mtime": 1789937132.4109204,
-    "seen": 1789940044.7367485,
-    "ast_hash": "5d54447744c19ccd28638a5c668d15ea",
+    "mtime": 1791145996.7127843,
+    "seen": 1791922526.9817421,
+    "ast_hash": "68aaa3be73fe04dc0f1b1e651caf0328",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/hooks/usePermissions.js": {
-    "mtime": 1789939819.37094,
-    "seen": 1789940044.7367892,
-    "ast_hash": "ee7f2dafcbd81561fdcd4671a934ac65",
+    "mtime": 1791747612.2806208,
+    "seen": 1791922526.9817579,
+    "ast_hash": "73a7402f03c35ee7fba06f85ab69e952",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/layouts/MainLayout.jsx": {
-    "mtime": 1789939868.198813,
-    "seen": 1789940044.7367938,
-    "ast_hash": "7f1166b474c25b01c3536ea7b716c86d",
+    "mtime": 1791747504.6441092,
+    "seen": 1791922526.9817588,
+    "ast_hash": "cfddf5dc0ffb74596e53d7df8521b0c0",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/Customers.jsx": {
-    "mtime": 1789936780.784657,
-    "seen": 1789940044.736803,
-    "ast_hash": "c7db55ec8d57c65227311beed0f48897",
+    "mtime": 1790956685.8962848,
+    "seen": 1791922526.9817612,
+    "ast_hash": "9fff2d023a7a30bdee1facfc33a36205",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/Dashboard.jsx": {
-    "mtime": 1789936780.7716577,
-    "seen": 1789940044.7368078,
-    "ast_hash": "8c72bc0730f645e7f02b29c6c4777b2c",
+    "mtime": 1791747877.7928047,
+    "seen": 1791922526.9817624,
+    "ast_hash": "83e3ad3d6b7c59d7468c53ee0e47d517",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/Inventory.jsx": {
-    "mtime": 1789936780.7736576,
-    "seen": 1789940044.7368124,
-    "ast_hash": "235db861a2c0978a820793254c723b9b",
+    "mtime": 1790956685.8958855,
+    "seen": 1791922526.9817643,
+    "ast_hash": "32a6e11578663a0c985c96abfc37afb8",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/Procurement.jsx": {
-    "mtime": 1789936780.782657,
-    "seen": 1789940044.7368164,
-    "ast_hash": "5cc5eba98cae2f9614d83ac4e4e3b27f",
+    "mtime": 1790956685.8961923,
+    "seen": 1791922526.9817677,
+    "ast_hash": "b0bf3f8ad1e9c0a60a7189e96485924f",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/Production.jsx": {
-    "mtime": 1789936780.7786572,
-    "seen": 1789940044.7368205,
-    "ast_hash": "aa0fb03b154a2673cff803fef8f2a356",
+    "mtime": 1790956685.8963752,
+    "seen": 1791922526.9817681,
+    "ast_hash": "d5f407079241bca322ec2a722b0de0b1",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/Recipes.jsx": {
-    "mtime": 1789936780.7766573,
-    "seen": 1789940044.7368243,
-    "ast_hash": "e18489a051a044cd67021b01ab32d1cc",
+    "mtime": 1790956685.8948987,
+    "seen": 1791922526.981771,
+    "ast_hash": "0804517e0cb939f5fd110aec6aa1c186",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/Reports.jsx": {
-    "mtime": 1789936780.7866569,
-    "seen": 1789940044.736828,
-    "ast_hash": "67c6a31daf6ca23966d759ba3e580a6c",
+    "mtime": 1790956685.894239,
+    "seen": 1791922526.9817717,
+    "ast_hash": "89751005bb76e870bf9248e128f230dd",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/Sales.jsx": {
-    "mtime": 1789936780.780657,
-    "seen": 1789940044.736832,
-    "ast_hash": "d593da1dbfd9b8d5ee703e10f6798e79",
+    "mtime": 1790952663.1104133,
+    "seen": 1791922526.9817722,
+    "ast_hash": "2e67b71f5e9f0fa44984777ce01661f8",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/Settings.jsx": {
-    "mtime": 1789936780.7886567,
-    "seen": 1789940044.7368364,
-    "ast_hash": "3111f3d839a4ce497ad963e14a10530e",
+    "mtime": 1791207061.9416065,
+    "seen": 1791922526.9817731,
+    "ast_hash": "1e3e59bd03388118f76e892f1151b605",
     "semantic_hash": ""
   },
   "thamanicraft-client-ui/src/pages/auth/Login.jsx": {
-    "mtime": 1789939831.4019086,
-    "seen": 1789940044.7368402,
-    "ast_hash": "73eb6b5f0b7c633d0da7b2595e7726a6",
+    "mtime": 1791755581.34606,
+    "seen": 1791922526.9817748,
+    "ast_hash": "ae462fdef92d6e303a99ac6a91a6d598",
     "semantic_hash": ""
   },
   "craft-identity-service/src/main/resources/application.yml": {
-    "mtime": 1789939451.6979258,
-    "seen": 1789940044.7378824,
-    "ast_hash": "6427254382b6dd36a4741545f85d3beb",
+    "mtime": 1790451318.73426,
+    "seen": 1791922526.9821243,
+    "ast_hash": "93da27ad3dfb432f141658a1b7c77397",
     "semantic_hash": ""
   },
   "docs/ThamaniCraft_Accounting_Audit_Reports_Requirements.md": {
@@ -2022,15 +2004,9 @@
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/index.html": {
-    "mtime": 1789937132.409908,
-    "seen": 1789940044.738038,
-    "ast_hash": "7fe90af84b688fb8d6aa7551c78684bd",
-    "semantic_hash": ""
-  },
-  "thamanicraft-admin-ui/public/favicon.svg": {
-    "mtime": 1789937132.409948,
-    "seen": 1789940044.7380517,
-    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "mtime": 1791576115.577465,
+    "seen": 1791922526.9821632,
+    "ast_hash": "f9d53ce4f0b066f81789f2df9ebef7af",
     "semantic_hash": ""
   },
   "thamanicraft-admin-ui/public/icons.svg": {
@@ -2055,6 +2031,4086 @@
     "mtime": 1789937132.4104433,
     "seen": 1789940044.738085,
     "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/.ag-kit/manifest.json": {
+    "mtime": 1789942991.223821,
+    "seen": 1791922526.9813066,
+    "ast_hash": "8b91115f1eec99eb85eec2c2e150201b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/antigravity.json": {
+    "mtime": 1789942991.218431,
+    "seen": 1791922526.9813135,
+    "ast_hash": "86fec02527b0be93a9c8791f23645f05",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks.json": {
+    "mtime": 1789942991.2186549,
+    "seen": 1791922526.9813156,
+    "ast_hash": "ed3522095b2477eee23a87a9abe3f830",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/antigravity-contract.schema.json": {
+    "mtime": 1789942991.2226613,
+    "seen": 1791922526.9813306,
+    "ast_hash": "a8eef7b968196579c7edfa619b429819",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/antigravity-doctor.mjs": {
+    "mtime": 1789942991.2226205,
+    "seen": 1791922526.981332,
+    "ast_hash": "3d66e0a6705781d3dd27347867a29cb0",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/antigravity-hooks.schema.json": {
+    "mtime": 1789942991.2227302,
+    "seen": 1791922526.9813328,
+    "ast_hash": "ecbb2686c75b0d22c1633f90b1a14d67",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/build-plugin.mjs": {
+    "mtime": 1789942991.2227104,
+    "seen": 1791922526.981334,
+    "ast_hash": "26eb8c3bbd28a6e39ef846bca0c981b1",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/plugin/gemini-extension.template.json": {
+    "mtime": 1789942991.229091,
+    "seen": 1791922526.9813354,
+    "ast_hash": "706e33006a1c65ae417d96e570712321",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/sync-mcp.mjs": {
+    "mtime": 1789942991.2226205,
+    "seen": 1791922526.9813364,
+    "ast_hash": "539edeea1b4359340c1006325981b05e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/tests/antigravity.test.mjs": {
+    "mtime": 1789942991.229091,
+    "seen": 1791922526.9813373,
+    "ast_hash": "3aa5bfffd1cff4f94a78464246cd6e4e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/validate-tool-call.mjs": {
+    "mtime": 1789942991.2226613,
+    "seen": 1791922526.981338,
+    "ast_hash": "2ebe523e2a7d9e414c1bb096ad7c9e3a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/manifest.json": {
+    "mtime": 1789942991.2183907,
+    "seen": 1791922526.9813392,
+    "ast_hash": "e75e8abe8c65eab3e41b6613028b8b66",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/manifest.lock.json": {
+    "mtime": 1789942991.218642,
+    "seen": 1791922526.9813402,
+    "ast_hash": "e23fae08f7ec53801cb7dfe585cc3b84",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/mcp_config.json": {
+    "mtime": 1789942991.218459,
+    "seen": 1791922526.9813411,
+    "ast_hash": "6f9c84816733795c650ab90b6347187d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/schemas/component-frontmatter.schema.json": {
+    "mtime": 1789942991.223755,
+    "seen": 1791922526.9813423,
+    "ast_hash": "f71c8148b24ed01c3a8580e44d8464c9",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/schemas/manifest-lock.schema.json": {
+    "mtime": 1789942991.223821,
+    "seen": 1791922526.9813433,
+    "ast_hash": "7514460a9a69cc33247208c5258c72cb",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/schemas/manifest.schema.json": {
+    "mtime": 1789942991.223821,
+    "seen": 1791922526.981344,
+    "ast_hash": "5c9545574e3e963d99752ae3fe1aa46d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/schemas/memory.schema.json": {
+    "mtime": 1789942991.2237945,
+    "seen": 1791922526.981345,
+    "ast_hash": "dff1705825f38fe44b04abfa5422f334",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/auto_preview.py": {
+    "mtime": 1789942991.2239742,
+    "seen": 1791922526.9813461,
+    "ast_hash": "e48b22e42ab0352baac392efebffc0a3",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/checklist.py": {
+    "mtime": 1789942991.2240374,
+    "seen": 1791922526.9813473,
+    "ast_hash": "525d1ec58134da77c7577643bf25f892",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/component_registry.py": {
+    "mtime": 1789942991.2239742,
+    "seen": 1791922526.981348,
+    "ast_hash": "afb9e22e388f59df3c7e3400a9416351",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/dependency_graph.py": {
+    "mtime": 1789942991.2240617,
+    "seen": 1791922526.9813495,
+    "ast_hash": "78e55e003e18636a8da2e5f82fd86ab9",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/generate_manifest.py": {
+    "mtime": 1789942991.224015,
+    "seen": 1791922526.9813504,
+    "ast_hash": "c3d3836e974f9ea6b99b3c24cc0e1ca7",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/session_manager.py": {
+    "mtime": 1789942991.2240617,
+    "seen": 1791922526.9813514,
+    "ast_hash": "9d8e93b4d9db89f9b416529f7fe46ff4",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/tests/test_toolkit.py": {
+    "mtime": 1789942991.2311835,
+    "seen": 1791922526.981352,
+    "ast_hash": "6835189e4bbc2bab41216738ea520a70",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/validate_kit.py": {
+    "mtime": 1789942991.2241042,
+    "seen": 1791922526.981353,
+    "ast_hash": "636441c9d4020b0dc62976fff6756b85",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/validation_runner.py": {
+    "mtime": 1789942991.2239504,
+    "seen": 1791922526.981354,
+    "ast_hash": "9d7d4d687c8674b104ea4b0bb794c296",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/verify_all.py": {
+    "mtime": 1789942991.2239504,
+    "seen": 1791922526.9813547,
+    "ast_hash": "aa3f0687e0d3930c4ffc44a0c682d60e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/scripts/api_validator.py": {
+    "mtime": 1789942991.2341084,
+    "seen": 1791922526.9813557,
+    "ast_hash": "85d8ef631156c8df6092c40355d3818a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/database-design/scripts/schema_validator.py": {
+    "mtime": 1789942991.2340574,
+    "seen": 1791922526.9813569,
+    "ast_hash": "effd77357ea9635f93c69e097ef6afab",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/frontend-design/scripts/accessibility_checker.py": {
+    "mtime": 1789942991.2344756,
+    "seen": 1791922526.9813578,
+    "ast_hash": "89c9cba6a41b2841d8df65b398f95e1d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/frontend-design/scripts/ux_audit.py": {
+    "mtime": 1789942991.2344756,
+    "seen": 1791922526.9813588,
+    "ast_hash": "c1e599f170ead344cc15135c39363c39",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/geo-fundamentals/scripts/geo_checker.py": {
+    "mtime": 1789942991.2339835,
+    "seen": 1791922526.98136,
+    "ast_hash": "21999f05209294b4dc5bd4022f80f59e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/i18n-localization/scripts/i18n_checker.py": {
+    "mtime": 1789942991.234787,
+    "seen": 1791922526.9813607,
+    "ast_hash": "cd1354af75f06ad7cfded4a838737e29",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/lint-and-validate/scripts/lint_runner.py": {
+    "mtime": 1789942991.234806,
+    "seen": 1791922526.9813614,
+    "ast_hash": "5ae7450733955decbeedd1571764aac1",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/lint-and-validate/scripts/type_coverage.py": {
+    "mtime": 1789942991.2348216,
+    "seen": 1791922526.9813623,
+    "ast_hash": "de28dd69aa752ac47146908603a5a757",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/scripts/mobile_audit.py": {
+    "mtime": 1789942991.2342534,
+    "seen": 1791922526.9813635,
+    "ast_hash": "26fb01014110f0d00d75c5bb22bd5991",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/scripts/convert_rules.py": {
+    "mtime": 1789942991.234291,
+    "seen": 1791922526.9813647,
+    "ast_hash": "346a095046726d5159739d22025fa6ae",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/scripts/react_performance_checker.py": {
+    "mtime": 1789942991.234291,
+    "seen": 1791922526.9813657,
+    "ast_hash": "c08e42bf8b1fee972bd3e76235e6b80f",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/performance-profiling/scripts/bundle_analyzer.py": {
+    "mtime": 1789942991.2340019,
+    "seen": 1791922526.9813666,
+    "ast_hash": "260d419fda9ca89c0caefd63914d14f1",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/performance-profiling/scripts/lighthouse_audit.py": {
+    "mtime": 1789942991.2340019,
+    "seen": 1791922526.9813678,
+    "ast_hash": "1faf33ff0fe2af4fc13a20b236a4c851",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/seo-fundamentals/scripts/seo_checker.py": {
+    "mtime": 1789942991.2342534,
+    "seen": 1791922526.9813688,
+    "ast_hash": "af52d23019569e0628084a689274da3e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/testing-patterns/scripts/test_runner.py": {
+    "mtime": 1789942991.2340574,
+    "seen": 1791922526.9813695,
+    "ast_hash": "6115b867600a36618c339658d33cc74a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/vulnerability-scanner/scripts/dependency_analyzer.py": {
+    "mtime": 1789942991.2340574,
+    "seen": 1791922526.9813707,
+    "ast_hash": "b2be39408b6ecd81c8360a6de6cea00f",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/vulnerability-scanner/scripts/security_scan.py": {
+    "mtime": 1789942991.2340019,
+    "seen": 1791922526.9813714,
+    "ast_hash": "d4ff51e29aace64ab7b1fe47e517135f",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/webapp-testing/scripts/playwright_runner.py": {
+    "mtime": 1789942991.2344584,
+    "seen": 1791922526.981372,
+    "ast_hash": "3e3ce0210066fd5ee17a3c375681cdcf",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/backup.json": {
+    "mtime": 1789942991.236137,
+    "seen": 1791922526.981373,
+    "ast_hash": "d9f16e14b9320ad3e967a4f464e0e190",
+    "semantic_hash": ""
+  },
+  ".agents/.ag-kit/reports/update-20260920-222311-157.json": {
+    "mtime": 1789942991.236137,
+    "seen": 1791922526.9813774,
+    "ast_hash": "0ccb1709d9abdc686e942624f891e3f2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/asd-ste100/scripts/ste-lint.py": {
+    "mtime": 1791574949.1569333,
+    "seen": 1791922526.9814124,
+    "ast_hash": "610889b57c84fab5c3416cb1092cbfc9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/scripts/extract-colors.cjs": {
+    "mtime": 1789943103.3981621,
+    "seen": 1791922526.9814134,
+    "ast_hash": "267ef00a878b8c0cec252443796c6122",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/scripts/inject-brand-context.cjs": {
+    "mtime": 1789943103.3973289,
+    "seen": 1791922526.981414,
+    "ast_hash": "72ab4372fcdb90d68b5cb09b912e34f4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs": {
+    "mtime": 1789943103.3991375,
+    "seen": 1791922526.9814148,
+    "ast_hash": "0bd6e8f1cb486753d11da715a548650a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py": {
+    "mtime": 1789943103.4019964,
+    "seen": 1791922526.981416,
+    "ast_hash": "1cc075890cd68fa5c5f7463b9e1a4618",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/scripts/validate-asset.cjs": {
+    "mtime": 1789943103.3964791,
+    "seen": 1791922526.9814167,
+    "ast_hash": "8217a1364af59e1acfb95d71fd41df1e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/embed-tokens.cjs": {
+    "mtime": 1789943103.4929187,
+    "seen": 1791922526.9814186,
+    "ast_hash": "d50aed608ed2c44c64c006b1fd915663",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/fetch-background.py": {
+    "mtime": 1789943103.5019443,
+    "seen": 1791922526.9814198,
+    "ast_hash": "3269f2ebc8024e55b65008108910f3d4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/generate-slide.py": {
+    "mtime": 1789943103.4993615,
+    "seen": 1791922526.9814208,
+    "ast_hash": "622d80cd7d9696f269e2da6b063754f7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/generate-tokens.cjs": {
+    "mtime": 1789943103.5041592,
+    "seen": 1791922526.9814217,
+    "ast_hash": "a9a15066eeca1f70bd2edb90c645c9eb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/html-token-validator.py": {
+    "mtime": 1789943103.5006807,
+    "seen": 1791922526.981423,
+    "ast_hash": "1d18dae9d3d916137c50df5ec7e65039",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/search-slides.py": {
+    "mtime": 1789943103.5030787,
+    "seen": 1791922526.9814236,
+    "ast_hash": "bc70c45549014b579fb2a27f3acf3d2e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/slide-token-validator.py": {
+    "mtime": 1789943103.498058,
+    "seen": 1791922526.9814246,
+    "ast_hash": "ee5d76c06903f98a460a8661e150c5d3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/slide_search_core.py": {
+    "mtime": 1789943103.496974,
+    "seen": 1791922526.9814255,
+    "ast_hash": "994ab50455710fce437399e86df23286",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/tests/test_validate_tokens.py": {
+    "mtime": 1789943103.4952905,
+    "seen": 1791922526.9814262,
+    "ast_hash": "32a9d34bbfa0041852963c189ea0ee5c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/scripts/validate-tokens.cjs": {
+    "mtime": 1789943103.4918406,
+    "seen": 1791922526.981427,
+    "ast_hash": "ebb5e5897d942f59ecd76bf710d06dff",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/templates/design-tokens-starter.json": {
+    "mtime": 1789943103.4711573,
+    "seen": 1791922526.9814277,
+    "ast_hash": "a5771c378d6fea057242eeebe83a7747",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/scripts/cip/core.py": {
+    "mtime": 1789943103.4640658,
+    "seen": 1791922526.9814286,
+    "ast_hash": "9fcf192c150e285ab6176a9bbacd475b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/scripts/cip/generate.py": {
+    "mtime": 1789943103.4618511,
+    "seen": 1791922526.9814296,
+    "ast_hash": "5662ddd34b366544e6541686ec9c8d22",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/scripts/cip/render-html.py": {
+    "mtime": 1789943103.4649546,
+    "seen": 1791922526.98143,
+    "ast_hash": "6fe3ce567110811670f05f40d386b48f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/scripts/cip/search.py": {
+    "mtime": 1789943103.4631252,
+    "seen": 1791922526.981431,
+    "ast_hash": "21a63380316bd899c49302e1b9a59191",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/scripts/icon/generate.py": {
+    "mtime": 1789943103.4529557,
+    "seen": 1791922526.9814317,
+    "ast_hash": "b142cc490fdf8a45bcf95bfe972284df",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/scripts/logo/core.py": {
+    "mtime": 1789943103.4586267,
+    "seen": 1791922526.9814327,
+    "ast_hash": "b8ea226dde31603e5a5e790641334055",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/scripts/logo/generate.py": {
+    "mtime": 1789943103.4559069,
+    "seen": 1791922526.9814334,
+    "ast_hash": "6f973ff8ea948cb774340703c8b51b54",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/scripts/logo/search.py": {
+    "mtime": 1789943103.4572375,
+    "seen": 1791922526.981434,
+    "ast_hash": "56aa8e1e15479f304a7e4709a767c98b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/scripts/shadcn_add.py": {
+    "mtime": 1789943103.5383968,
+    "seen": 1791922526.9814484,
+    "ast_hash": "4eb5eb020e3b45a8f73f4a371abbdbe1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/scripts/tailwind_config_gen.py": {
+    "mtime": 1789943103.5300484,
+    "seen": 1791922526.9814491,
+    "ast_hash": "cafc602e66323d217188d319c9a0412e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/scripts/tests/coverage-ui.json": {
+    "mtime": 1789943103.5328898,
+    "seen": 1791922526.98145,
+    "ast_hash": "42c486def8b180c1e72b1e7b865b9607",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/scripts/tests/test_shadcn_add.py": {
+    "mtime": 1789943103.5320477,
+    "seen": 1791922526.981451,
+    "ast_hash": "51024123de02865d0c6dee29df6a887a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py": {
+    "mtime": 1789943103.5351088,
+    "seen": 1791922526.981452,
+    "ast_hash": "f5d99288827b293f4b6fdb86b8b56229",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/data/catalog-summary.json": {
+    "mtime": 1789943103.2982502,
+    "seen": 1791922526.9814527,
+    "ast_hash": "7e5ed9c8eb4042461e482907bb260618",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/data/data-provenance.json": {
+    "mtime": 1789943103.2506514,
+    "seen": 1791922526.9814541,
+    "ast_hash": "4f0fbe5f16c919f87170d6f493fad5e3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/data/google-font-licenses.json": {
+    "mtime": 1789943103.2912662,
+    "seen": 1791922526.9814553,
+    "ast_hash": "c6f70c775c4b6ac26441cf1b0022ad71",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json": {
+    "mtime": 1789943103.3082502,
+    "seen": 1791922526.9814563,
+    "ast_hash": "933217ce321daf2458d12c41e5f19cb1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/core.py": {
+    "mtime": 1789943103.359257,
+    "seen": 1791922526.9814572,
+    "ast_hash": "1e51ce8efaf151a95106f37dc49cf032",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/design_system.py": {
+    "mtime": 1789943103.358091,
+    "seen": 1791922526.981458,
+    "ast_hash": "f11c3d748dadf0f1d030d7c119818daa",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py": {
+    "mtime": 1789943103.360461,
+    "seen": 1791922526.9814587,
+    "ast_hash": "e03944fe11a921f4c13687774c97b09a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/search.py": {
+    "mtime": 1789943103.3568647,
+    "seen": 1791922526.9814594,
+    "ast_hash": "c7f298eae8d4f630a4fbe20c0d1d2c77",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json": {
+    "mtime": 1789943103.324989,
+    "seen": 1791922526.9814603,
+    "ast_hash": "a7237266e58d0d350d1b671a6c8cd5d3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json": {
+    "mtime": 1789943103.3273203,
+    "seen": 1791922526.981461,
+    "ast_hash": "02d80499488d2a6081061bc8e29c469e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json": {
+    "mtime": 1789943103.330998,
+    "seen": 1791922526.9814618,
+    "ast_hash": "10afdf3d0fe26e932bbb7ce6fe65a766",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json": {
+    "mtime": 1789943103.3283691,
+    "seen": 1791922526.9814622,
+    "ast_hash": "b690ec6f034bddc7902730d4cdeae73f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json": {
+    "mtime": 1789943103.326104,
+    "seen": 1791922526.9814632,
+    "ast_hash": "75b4d81152b32684a434ffd102341583",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json": {
+    "mtime": 1789943103.3359873,
+    "seen": 1791922526.9814641,
+    "ast_hash": "afc32a816bf0fa9b8c28b52a93becff0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json": {
+    "mtime": 1789943103.3323781,
+    "seen": 1791922526.9814646,
+    "ast_hash": "ef522a435f50260b089f0212f84ae35a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json": {
+    "mtime": 1789943103.3294475,
+    "seen": 1791922526.9814653,
+    "ast_hash": "5e4623083f8c525cbedd1f63b3352f8d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json": {
+    "mtime": 1789943103.339757,
+    "seen": 1791922526.981466,
+    "ast_hash": "823661c1f07780b42e647689db49f7d8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json": {
+    "mtime": 1789943103.3384576,
+    "seen": 1791922526.9814668,
+    "ast_hash": "4df077e7335abb225f9674b8986515cf",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json": {
+    "mtime": 1789943103.3374374,
+    "seen": 1791922526.9814675,
+    "ast_hash": "fc12a2a9ac3090d0342b231ca5dadbba",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py": {
+    "mtime": 1789943103.3522499,
+    "seen": 1791922526.9814682,
+    "ast_hash": "1068a876d6c669a8e8d3ac427c6d0dd0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py": {
+    "mtime": 1789943103.3452518,
+    "seen": 1791922526.981469,
+    "ast_hash": "2d94f15b1c12cf0b0e4993cacdb4f0ba",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py": {
+    "mtime": 1789943103.3428733,
+    "seen": 1791922526.9814696,
+    "ast_hash": "dd075aae5ec7d65b41d4e1fc730117ba",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py": {
+    "mtime": 1789943103.341834,
+    "seen": 1791922526.9814703,
+    "ast_hash": "d5d35046faca80fe1a48776ad385338d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py": {
+    "mtime": 1789943103.3483276,
+    "seen": 1791922526.9814713,
+    "ast_hash": "c23e05dfc7b1602ecc88866c37235c68",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py": {
+    "mtime": 1789943103.3440628,
+    "seen": 1791922526.981472,
+    "ast_hash": "a68849787265953911e32e3a93968f7c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py": {
+    "mtime": 1789943103.3509645,
+    "seen": 1791922526.9814725,
+    "ast_hash": "10a92a919a7780ebb6aada75eb7d0ed5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py": {
+    "mtime": 1789943103.353979,
+    "seen": 1791922526.9814732,
+    "ast_hash": "32c02df463685f41869a7bb9b8396574",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py": {
+    "mtime": 1789943103.3203015,
+    "seen": 1791922526.9814742,
+    "ast_hash": "d9ce97bf10c398e3ce0304334ba98bc2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py": {
+    "mtime": 1789943103.318995,
+    "seen": 1791922526.9814749,
+    "ast_hash": "e84ab0d880304d93dda6f06aac5bdaa3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/scripts/validate_data.py": {
+    "mtime": 1789943103.3557835,
+    "seen": 1791922526.9814754,
+    "ast_hash": "393c4f769b3fd434a0916d125f48b038",
+    "semantic_hash": ""
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1791918233.0655923,
+    "seen": 1791922526.981479,
+    "ast_hash": "a2c2cb03f42d5fc537325071b74b20a9",
+    "semantic_hash": ""
+  },
+  "SecretGenerator.java": {
+    "mtime": 1788295629.4681795,
+    "seen": 1791922526.9814806,
+    "ast_hash": "89da0b39b09fcc045ec555117bd8610e",
+    "semantic_hash": ""
+  },
+  "TestConverter.java": {
+    "mtime": 1791025145.8174295,
+    "seen": 1791922526.9814816,
+    "ast_hash": "656551a6eee00fd6603456527de6f0c1",
+    "semantic_hash": ""
+  },
+  "TestJDBC.java": {
+    "mtime": 1791040811.13358,
+    "seen": 1791922526.9814823,
+    "ast_hash": "48dcb0f1ab3c7d91dc4489530e85aa2a",
+    "semantic_hash": ""
+  },
+  "clear_data.sh": {
+    "mtime": 1790263627.4377437,
+    "seen": 1791922526.9814832,
+    "ast_hash": "87c4590e05eba93582a14971c74afdd5",
+    "semantic_hash": ""
+  },
+  "craft-common-security/src/main/java/com/thamanicraft/security/exception/GlobalExceptionHandler.java": {
+    "mtime": 1791202738.329503,
+    "seen": 1791922526.9814885,
+    "ast_hash": "d34d82b6a03df3752e9f32a10c41ea43",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/pom.xml": {
+    "mtime": 1790523229.5631118,
+    "seen": 1791922526.9814916,
+    "ast_hash": "9e7a893209d4fa1eee7aadf89487a44e",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/Expense.java": {
+    "mtime": 1791483641.0101228,
+    "seen": 1791922526.9814923,
+    "ast_hash": "2d8fa633a033daa584bbb6c7e3a0f711",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/ExpenseRepository.java": {
+    "mtime": 1791483643.0461185,
+    "seen": 1791922526.981493,
+    "ast_hash": "5db642e95bdf1baf968748942b48271a",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/FacilityLease.java": {
+    "mtime": 1791483645.0861142,
+    "seen": 1791922526.9814937,
+    "ast_hash": "c14089056653326f9ae2537f9e0513b0",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/FacilityLeaseRepository.java": {
+    "mtime": 1791483647.11211,
+    "seen": 1791922526.9814944,
+    "ast_hash": "0b0f3142f1d42e201fd3e212e14d8325",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/FinanceApplication.java": {
+    "mtime": 1790080716.9251122,
+    "seen": 1791922526.9814954,
+    "ast_hash": "98be74ed29608c7040ae7aa6b6b053b1",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/FinanceController.java": {
+    "mtime": 1791483685.3640418,
+    "seen": 1791922526.981496,
+    "ast_hash": "0165249f7f70f293b3fcc8bd78212ac3",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/FinanceRequests.java": {
+    "mtime": 1791395019.5950649,
+    "seen": 1791922526.9814968,
+    "ast_hash": "404471db025f0f2d827259ec5bde797c",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/FinanceService.java": {
+    "mtime": 1791486005.1052933,
+    "seen": 1791922526.9814975,
+    "ast_hash": "08b8812c87d3465258f7c758b39b8ebc",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/FixedAsset.java": {
+    "mtime": 1791483636.9231317,
+    "seen": 1791922526.981498,
+    "ast_hash": "028fdb31edb4d430a6c27fc674a44317",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/FixedAssetRepository.java": {
+    "mtime": 1791483638.970127,
+    "seen": 1791922526.981499,
+    "ast_hash": "be87a760d90a305f0cbf5693683badb9",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/ledger/Account.java": {
+    "mtime": 1790523128.1645367,
+    "seen": 1791922526.9815,
+    "ast_hash": "df9023723286a5311cfaa46aef634f54",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/ledger/AccountRepository.java": {
+    "mtime": 1790523150.235664,
+    "seen": 1791922526.9815006,
+    "ast_hash": "7cbeb7e8e23b6194b93667880f8e62f0",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/ledger/AccountType.java": {
+    "mtime": 1790523125.7645228,
+    "seen": 1791922526.9815013,
+    "ast_hash": "b38ceb297c870ce86a02b97167ee4b89",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/ledger/JournalEntry.java": {
+    "mtime": 1790523130.2215486,
+    "seen": 1791922526.981502,
+    "ast_hash": "121db555364af268a1c2afe6ad43990a",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/ledger/JournalEntryRepository.java": {
+    "mtime": 1790523153.8436847,
+    "seen": 1791922526.9815028,
+    "ast_hash": "5cd40394e64939efab0d321e81aed891",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/ledger/JournalLine.java": {
+    "mtime": 1790523132.5185618,
+    "seen": 1791922526.9815037,
+    "ast_hash": "c708270b7e1ddcfa25527dda3998bfdd",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/ledger/LedgerController.java": {
+    "mtime": 1790537851.4040263,
+    "seen": 1791922526.9815044,
+    "ast_hash": "c041d824532caaba7770b3fec53020e8",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/java/tz/co/thamanicraft/finance/ledger/LedgerService.java": {
+    "mtime": 1790670763.1674604,
+    "seen": 1791922526.981505,
+    "ast_hash": "c8f61ce04a092f049cda1e5da008bd8a",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/resources/db/migration/V1__Capex_Estimates.sql": {
+    "mtime": 1790080716.4741132,
+    "seen": 1791922526.981506,
+    "ast_hash": "70927dfa8ed831d9b8ad66bb64a4c31d",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/resources/db/migration/V2__Manual_Purchase_Expense_Register.sql": {
+    "mtime": 1790104234.261422,
+    "seen": 1791922526.9815066,
+    "ast_hash": "6f6c1f681b8f4e2d8068253719646565",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/resources/db/migration/V3__Ledger.sql": {
+    "mtime": 1790523123.3785088,
+    "seen": 1791922526.9815073,
+    "ast_hash": "b3cd767d04648bb11bb775e5f0d0a854",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/test/java/tz/co/thamanicraft/finance/FinanceSecurityTest.java": {
+    "mtime": 1790104075.530422,
+    "seen": 1791922526.981508,
+    "ast_hash": "c24b9481dcaa9fedfb9a5669e54f8eb6",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/controller/AdminAuthController.java": {
+    "mtime": 1791149472.5584044,
+    "seen": 1791922526.9815166,
+    "ast_hash": "3c18f9e1b8305cadf653bd9dac066192",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/controller/PlatformAdminController.java": {
+    "mtime": 1791572168.5080054,
+    "seen": 1791922526.9815183,
+    "ast_hash": "8a11dbdc1445202dd697a63ef7ff60b9",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/controller/PlatformConfigurationController.java": {
+    "mtime": 1791203688.668249,
+    "seen": 1791922526.9815192,
+    "ast_hash": "79854c02972afaf34f3a63ad402983b1",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/controller/SubscriptionController.java": {
+    "mtime": 1791907432.9009588,
+    "seen": 1791922526.98152,
+    "ast_hash": "99385c879f49b2be708cd3f527b59490",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/controller/SystemMonitoringController.java": {
+    "mtime": 1791918257.499572,
+    "seen": 1791922526.9815211,
+    "ast_hash": "10d12a0bdc71a6a0f0aae61279e1882d",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/controller/TenantController.java": {
+    "mtime": 1791918992.5169973,
+    "seen": 1791922526.9815218,
+    "ast_hash": "1c363d043a511361376288379e1c7b48",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/controller/UserController.java": {
+    "mtime": 1790522361.248732,
+    "seen": 1791922526.9815223,
+    "ast_hash": "21f4756e4e2c73c8c1b867f036198628",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/AdminDashboardStatsDto.java": {
+    "mtime": 1791917431.0603976,
+    "seen": 1791922526.9815233,
+    "ast_hash": "4c8a5de15c3076ef893a651322385b9c",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/ChangePasswordRequest.java": {
+    "mtime": 1790450793.70753,
+    "seen": 1791922526.9815257,
+    "ast_hash": "ae7c82c27a3b1a39817f6d4d6e761ee6",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/CreateRoleRequest.java": {
+    "mtime": 1790450417.910057,
+    "seen": 1791922526.9815266,
+    "ast_hash": "da9c721ceddb45d6a9f6bd1fd1463578",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/CreateUserRequest.java": {
+    "mtime": 1790449646.5671976,
+    "seen": 1791922526.9815273,
+    "ast_hash": "a793cec327409e2a8e2e0309ac9a2855",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/PermissionDto.java": {
+    "mtime": 1790450420.21608,
+    "seen": 1791922526.9815283,
+    "ast_hash": "290b023a70934513f06c440d0ef54c65",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/RoleDto.java": {
+    "mtime": 1790450437.364252,
+    "seen": 1791922526.9815288,
+    "ast_hash": "2b2830bd8f021479a556d81a66bb0333",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/SubscriptionInvoiceDto.java": {
+    "mtime": 1791629983.5236197,
+    "seen": 1791922526.9815297,
+    "ast_hash": "eee490e504f9255a68670b2cd2116e93",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/SubscriptionPlanDto.java": {
+    "mtime": 1791907312.9666383,
+    "seen": 1791922526.9815304,
+    "ast_hash": "2fb1133a45a2416050bb1af9982cca5a",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/TenantSubscriptionDto.java": {
+    "mtime": 1791627273.0032573,
+    "seen": 1791922526.981531,
+    "ast_hash": "5f70259959a7f97a96a002bcc9265a14",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/dto/UserDto.java": {
+    "mtime": 1790449636.3800006,
+    "seen": 1791922526.9815316,
+    "ast_hash": "956117d82dda2c90d63332b7249c6d09",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/entity/PlatformAdmin.java": {
+    "mtime": 1791149459.5952902,
+    "seen": 1791922526.9815338,
+    "ast_hash": "dc2b5af12f311f09ede5f75359740f9d",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/entity/PlatformAuditLog.java": {
+    "mtime": 1791486658.5468352,
+    "seen": 1791922526.9815345,
+    "ast_hash": "39461beb220a8d91543db53899e64f64",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/entity/PlatformConfiguration.java": {
+    "mtime": 1791203660.2052522,
+    "seen": 1791922526.9815352,
+    "ast_hash": "87294876563dad28ed6563798088289a",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/entity/PlatformPermission.java": {
+    "mtime": 1791149459.5852902,
+    "seen": 1791922526.981536,
+    "ast_hash": "a05610adcbbca1e891df63ffaf2e56c4",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/entity/PlatformRole.java": {
+    "mtime": 1791149459.57429,
+    "seen": 1791922526.9815369,
+    "ast_hash": "aa52af5862e67ea417ca169fd18d5c01",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/entity/SubscriptionInvoice.java": {
+    "mtime": 1791629957.5635197,
+    "seen": 1791922526.9815385,
+    "ast_hash": "6bf1172ac853a6eb80f2449174ba9d7d",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/entity/SubscriptionPlan.java": {
+    "mtime": 1791907277.3287256,
+    "seen": 1791922526.9815392,
+    "ast_hash": "7442e4f289118ea0db7727f652b6d7df",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/entity/Tenant.java": {
+    "mtime": 1791918887.2970765,
+    "seen": 1791922526.9815397,
+    "ast_hash": "f7455abc98007a44e563834e7c2546fb",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/entity/TenantSubscription.java": {
+    "mtime": 1791627218.0804534,
+    "seen": 1791922526.9815407,
+    "ast_hash": "f09f35a1b47e6bbbc5a2413c6b837181",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/exception/ResourceNotFoundException.java": {
+    "mtime": 1791627346.231329,
+    "seen": 1791922526.9815426,
+    "ast_hash": "d5b70f1e1457d7962bc57c3ae93fd623",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/PermissionRepository.java": {
+    "mtime": 1790450415.6130345,
+    "seen": 1791922526.9815435,
+    "ast_hash": "d6921cf86d401a5626c568f968d0479c",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/PlatformAdminRepository.java": {
+    "mtime": 1791149459.6052902,
+    "seen": 1791922526.9815443,
+    "ast_hash": "86ae7957170961c901d7230e6cfe53e2",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/PlatformAuditLogRepository.java": {
+    "mtime": 1791486656.7818172,
+    "seen": 1791922526.981545,
+    "ast_hash": "3f96b5ae4dcdf33b90951d07aba3b850",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/PlatformConfigurationRepository.java": {
+    "mtime": 1791203669.4892514,
+    "seen": 1791922526.9815457,
+    "ast_hash": "d67915f61e3f0e660b32094fd2bae109",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/PlatformPermissionRepository.java": {
+    "mtime": 1791149459.6242905,
+    "seen": 1791922526.9815464,
+    "ast_hash": "fc5aa126b28aaf29f7e11dfc850cfa83",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/PlatformRoleRepository.java": {
+    "mtime": 1791149459.6152904,
+    "seen": 1791922526.9815474,
+    "ast_hash": "948038aa807025865b17d591b8e63556",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/SubscriptionInvoiceRepository.java": {
+    "mtime": 1791917477.9933388,
+    "seen": 1791922526.9815488,
+    "ast_hash": "ae94d48ff8d73b3cbb8c5a6615047178",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/SubscriptionPlanRepository.java": {
+    "mtime": 1791907327.1468549,
+    "seen": 1791922526.9815495,
+    "ast_hash": "63415b8d3c0b6d5e50ab228e3920635c",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/TenantRepository.java": {
+    "mtime": 1791917446.0663786,
+    "seen": 1791922526.9815505,
+    "ast_hash": "8ea3f6c1f082825bd26fd4a607d7366a",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/repository/TenantSubscriptionRepository.java": {
+    "mtime": 1791917462.8833575,
+    "seen": 1791922526.9815512,
+    "ast_hash": "639c2da5125da4c2afbfe4680d5e0e35",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/service/AdminAuthService.java": {
+    "mtime": 1791149472.5444043,
+    "seen": 1791922526.9815526,
+    "ast_hash": "2c7759eb1ec0da1efd67b853662e8d6c",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/service/AdminAuthServiceImpl.java": {
+    "mtime": 1791202344.8796759,
+    "seen": 1791922526.9815533,
+    "ast_hash": "a91967ee49d1c5b629a37dab6807f0cb",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/service/AdminDashboardService.java": {
+    "mtime": 1791918236.1745899,
+    "seen": 1791922526.981554,
+    "ast_hash": "6f78fa3b173cc0aac06ec6ad4da8e458",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/service/PlatformConfigurationService.java": {
+    "mtime": 1791203678.8082502,
+    "seen": 1791922526.9815567,
+    "ast_hash": "ea853568e46d0564a490d6f9012e3dea",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/service/SubscriptionService.java": {
+    "mtime": 1791907341.5335789,
+    "seen": 1791922526.9815576,
+    "ast_hash": "f67b126ce2aa393a85058a6a9fa48aa8",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/service/SubscriptionServiceImpl.java": {
+    "mtime": 1791907406.0481422,
+    "seen": 1791922526.981558,
+    "ast_hash": "d199f09c5e76ded6f59084c27d6f77d7",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/java/com/thamanicraft/identity/service/TenantService.java": {
+    "mtime": 1791918973.6270115,
+    "seen": 1791922526.981559,
+    "ast_hash": "273e21584ef0ffcc8dd660af9cc6e159",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V10__create_subscription_invoices.sql": {
+    "mtime": 1791630024.0702386,
+    "seen": 1791922526.9815602,
+    "ast_hash": "1f9bfad8dda2f33839c53cac1361693e",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V11__add_visible_to_customers_to_subscription_plans.sql": {
+    "mtime": 1791907254.035867,
+    "seen": 1791922526.9815612,
+    "ast_hash": "63e8336d382e566e31144c12399f7b57",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V12__add_custom_modules_to_tenants.sql": {
+    "mtime": 1791918867.2740915,
+    "seen": 1791922526.981562,
+    "ast_hash": "ecf82679584e7711063ac726ffbd25e4",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V2__init_identity_schema.sql": {
+    "mtime": 1789941579.2591844,
+    "seen": 1791922526.9815626,
+    "ast_hash": "07bbc29cdf63dd9ec7a44b54a1ce7ca2",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V3__Finance_Permissions.sql": {
+    "mtime": 1790081145.7056231,
+    "seen": 1791922526.9815633,
+    "ast_hash": "747fe2816a77022047e60a604d03889e",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V4__Payment_Permissions.sql": {
+    "mtime": 1790187174.8506086,
+    "seen": 1791922526.981564,
+    "ast_hash": "17c73722fb41853ce108b769d1f0dc66",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V5__create_platform_admins.sql": {
+    "mtime": 1791150061.306422,
+    "seen": 1791922526.981565,
+    "ast_hash": "f7379af4d338f745782cad1eae0c15c2",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V6__create_platform_configurations.sql": {
+    "mtime": 1791203697.9302473,
+    "seen": 1791922526.9815655,
+    "ast_hash": "f83735a1086a7321e44e383839b78bee",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V7__create_platform_audit_logs.sql": {
+    "mtime": 1791206142.50723,
+    "seen": 1791922526.9815664,
+    "ast_hash": "2395223a6e10e2d16d0be0be4384a5b7",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V8__create_tenants_table.sql": {
+    "mtime": 1791490033.6614084,
+    "seen": 1791922526.981567,
+    "ast_hash": "c73dd690aa9d7d0daedd944076624968",
+    "semantic_hash": ""
+  },
+  "craft-identity-service/src/main/resources/db/migration/V9__create_subscriptions_tables.sql": {
+    "mtime": 1791627220.1454837,
+    "seen": 1791922526.9815679,
+    "ast_hash": "aab3a87bf2970498cea8808094072a13",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/FinanceClient.java": {
+    "mtime": 1790846211.5415735,
+    "seen": 1791922526.9815705,
+    "ast_hash": "7dad88addaafb45ac16a230ddb461b2d",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/InventoryPostingService.java": {
+    "mtime": 1790981285.396965,
+    "seen": 1791922526.9815722,
+    "ast_hash": "d10db9b6b0dee2da1ae2070679c6113a",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/amqp/InventoryOutboxPoller.java": {
+    "mtime": 1790256252.4795728,
+    "seen": 1791922526.981573,
+    "ast_hash": "951674ab4412c5588a3dc227c7181f3b",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/amqp/ProductionEventListener.java": {
+    "mtime": 1790256240.4763355,
+    "seen": 1791922526.9815738,
+    "ast_hash": "63821227c8388c609e88751776471e5e",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/CostCorrectionController.java": {
+    "mtime": 1790072152.1319776,
+    "seen": 1791922526.9815748,
+    "ast_hash": "0ba4204b4df58cc3a04196f0f17d4f3b",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/FinishedProductController.java": {
+    "mtime": 1790438556.351396,
+    "seen": 1791922526.9815755,
+    "ast_hash": "1b409812bc57bfedb797ace19ad40882",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/GoodsReceiptController.java": {
+    "mtime": 1791024845.81979,
+    "seen": 1791922526.9815762,
+    "ast_hash": "7d81b08ffc7055583ce2c580c5ceda62",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/ItemCategoryController.java": {
+    "mtime": 1789946271.489626,
+    "seen": 1791922526.981577,
+    "ast_hash": "11852024df8b25eaa62080b2bfa02ea4",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/PlatformAdminUOMController.java": {
+    "mtime": 1791203709.5502453,
+    "seen": 1791922526.9815776,
+    "ast_hash": "052687432cb1839471b361ddd91cad49",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/RawMaterialController.java": {
+    "mtime": 1789946086.0978024,
+    "seen": 1791922526.9815786,
+    "ast_hash": "05ffaf800c76a8d86abca7401ecd93a3",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/controller/UnitOfMeasureController.java": {
+    "mtime": 1789946077.7057686,
+    "seen": 1791922526.9815793,
+    "ast_hash": "5aa75cd453f514b2c4375fbce8a659e1",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/dto/CostCorrectionRequest.java": {
+    "mtime": 1790072002.795714,
+    "seen": 1791922526.98158,
+    "ast_hash": "ede8acb3b06f0dd5c431aa77f46a1e49",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/dto/GoodsReceiptRequest.java": {
+    "mtime": 1790009298.251545,
+    "seen": 1791922526.9815805,
+    "ast_hash": "e44668b8fc8d0646fe867fdb3c939456",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/entity/FinishedProduct.java": {
+    "mtime": 1790954670.5609388,
+    "seen": 1791922526.9815812,
+    "ast_hash": "4a599056eb188be544b8d1885c044285",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/entity/ItemCategory.java": {
+    "mtime": 1789946243.1444914,
+    "seen": 1791922526.9815822,
+    "ast_hash": "66d4d697b899189cae9267ad1b7b0da7",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/entity/RawMaterial.java": {
+    "mtime": 1790848907.18008,
+    "seen": 1791922526.9815829,
+    "ast_hash": "d2a35502a9faa5387fa8ffe2c2b5f97c",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/entity/UnitOfMeasure.java": {
+    "mtime": 1790850253.2164547,
+    "seen": 1791922526.9815836,
+    "ast_hash": "f57929285925531a30b087fcfe8246fa",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/repository/FinishedProductRepository.java": {
+    "mtime": 1790298266.477289,
+    "seen": 1791922526.9815843,
+    "ast_hash": "c6a0d132177631fc48445b0edd813e95",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/repository/ItemCategoryRepository.java": {
+    "mtime": 1789946251.8695326,
+    "seen": 1791922526.9815848,
+    "ast_hash": "1385d0928660917cabdd4b89e64aaef8",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/repository/RawMaterialRepository.java": {
+    "mtime": 1790072002.492718,
+    "seen": 1791922526.9815857,
+    "ast_hash": "b11e75907f2ecb8096d65a0a9de09e57",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/repository/UnitOfMeasureRepository.java": {
+    "mtime": 1791203739.5972385,
+    "seen": 1791922526.9815865,
+    "ast_hash": "40d78945bf3d74ff0d06ec73f7fa283b",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/CostCorrectionService.java": {
+    "mtime": 1790072003.1047096,
+    "seen": 1791922526.9815872,
+    "ast_hash": "5ef6e58c33f2a2b95cdc732f159f5495",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/FinishedProductService.java": {
+    "mtime": 1790953664.0737722,
+    "seen": 1791922526.9815876,
+    "ast_hash": "e0c672d5388709b0b2c1ca1a774549d0",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/GoodsReceiptService.java": {
+    "mtime": 1790848843.4980443,
+    "seen": 1791922526.9815884,
+    "ast_hash": "49c19a070b2956659bb12aea03263e25",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/ItemCategoryService.java": {
+    "mtime": 1789946261.460578,
+    "seen": 1791922526.9815893,
+    "ast_hash": "8c3f9f5bedf592348dcc32f7bdf7f092",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/PlatformAdminUOMService.java": {
+    "mtime": 1791203722.0742426,
+    "seen": 1791922526.98159,
+    "ast_hash": "6b2187519d46a1ea507f4c993651088d",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/RawMaterialService.java": {
+    "mtime": 1790848892.4808412,
+    "seen": 1791922526.9815907,
+    "ast_hash": "ac46b453f30010a1ff98b1a2391e7de8",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/SmartUOMConverter.java": {
+    "mtime": 1791025446.1525617,
+    "seen": 1791922526.9815915,
+    "ast_hash": "0c38ccf7e5f6c8242228c5971fd46276",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/java/tz/co/thamanicraft/inventory/service/UnitOfMeasureService.java": {
+    "mtime": 1790850132.7973633,
+    "seen": 1791922526.9815922,
+    "ast_hash": "c256d5647a34afd85ed88a0b2683738a",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V11__Add_Standard_Global_UOMs.sql": {
+    "mtime": 1790852940.7764368,
+    "seen": 1791922526.9815931,
+    "ast_hash": "992b0183ff823a5b372676dd593e3f96",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V12__Add_More_Standard_UOMs.sql": {
+    "mtime": 1790854419.1050336,
+    "seen": 1791922526.9815938,
+    "ast_hash": "974cec1bac848f20f7ae1f5fd450508b",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V13__Add_image_url_to_finished_products.sql": {
+    "mtime": 1790953611.511387,
+    "seen": 1791922526.9815946,
+    "ast_hash": "e3703363e26ebbbf003591686db8f9df",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V14__Alter_Finished_Product_Image_Url_To_Text.sql": {
+    "mtime": 1790954651.0171912,
+    "seen": 1791922526.981595,
+    "ast_hash": "e7736045d3f144520f87ccec03b09659",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V15__Add_Bpcakes_Standard_UOMs.sql": {
+    "mtime": 1791205938.7111108,
+    "seen": 1791922526.981596,
+    "ast_hash": "d90ee5d159327e5a19ad75f29c24a22a",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V16__Add_Bpcakes_Specific_UOMs.sql": {
+    "mtime": 1791206819.0964277,
+    "seen": 1791922526.981597,
+    "ast_hash": "c330f0310c1dfa802c9af69834503f83",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V17__Add_Cups_And_Spoons_UOMs.sql": {
+    "mtime": 1791208022.9862685,
+    "seen": 1791922526.9815977,
+    "ast_hash": "4e21a91d48a2a023870c0fe33e334fb1",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V18__Update_Base_Units_For_Global_UOMs.sql": {
+    "mtime": 1791208240.5492687,
+    "seen": 1791922526.9815984,
+    "ast_hash": "796f53d7b4e530973917ce22ee8bfa84",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V2__Init_Inventory_Schema.sql": {
+    "mtime": 1790852400.6336327,
+    "seen": 1791922526.9815993,
+    "ast_hash": "c1aa7f13ed7af240351fa3a3d513f6f9",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V3__Create_Item_Categories.sql": {
+    "mtime": 1789946226.111412,
+    "seen": 1791922526.9816,
+    "ast_hash": "0e2254c4cbd58de07029b380f578a4c6",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V4__Create_Goods_Receipts.sql": {
+    "mtime": 1790005629.7077205,
+    "seen": 1791922526.9816008,
+    "ast_hash": "acd543cf5695abf1a3ac223c27d62bd2",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V5__Track_Goods_Receipt_Units.sql": {
+    "mtime": 1790009300.5065582,
+    "seen": 1791922526.9816015,
+    "ast_hash": "4de4eb572957e64138099b72ba6430b4",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V6__Enforce_Unique_Raw_Material_SKU.sql": {
+    "mtime": 1790026619.9418764,
+    "seen": 1791922526.9816022,
+    "ast_hash": "c909e1f1292b7e2e8f125a011e7f8251",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V7__Material_Cost_Corrections.sql": {
+    "mtime": 1790072002.1507227,
+    "seen": 1791922526.9816031,
+    "ast_hash": "019cea0cd94864f5ac400b8275a2c878",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V8__Production_Stock_Posting.sql": {
+    "mtime": 1790256184.0722053,
+    "seen": 1791922526.9816036,
+    "ast_hash": "49298bab2a5436efe3e37dbb1e8ac691",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/main/resources/db/migration/V9__Add_selling_price_to_finished_products.sql": {
+    "mtime": 1790598302.7707138,
+    "seen": 1791922526.9816043,
+    "ast_hash": "973671c3350081499d36c78a9cd44120",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/test/java/tz/co/thamanicraft/inventory/entity/CostCorrectionControllerTest.java": {
+    "mtime": 1790072203.9795122,
+    "seen": 1791922526.981605,
+    "ast_hash": "7e7d40e83d7a9dad5e3ea9b843d5296a",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/test/java/tz/co/thamanicraft/inventory/entity/CostCorrectionTest.java": {
+    "mtime": 1790072108.6494186,
+    "seen": 1791922526.981606,
+    "ast_hash": "23f2b48fe80e1783b91f3aa7b630f393",
+    "semantic_hash": ""
+  },
+  "craft-inventory-service/src/test/java/tz/co/thamanicraft/inventory/entity/UnitOfMeasureSerializationTest.java": {
+    "mtime": 1790026500.4489436,
+    "seen": 1791922526.9816067,
+    "ast_hash": "07c4d2975ae3cf9739d57c0c5f3b70f5",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/RecipeController.java": {
+    "mtime": 1790248403.9256752,
+    "seen": 1791922526.9816103,
+    "ast_hash": "561d9f5877d9994635ba4bd260979106",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/RecipeCosting.java": {
+    "mtime": 1790248408.0470316,
+    "seen": 1791922526.981611,
+    "ast_hash": "b0eb7fb345f7115dd6f969c3afa7a3b1",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/RecipeErrors.java": {
+    "mtime": 1790248416.054756,
+    "seen": 1791922526.9816117,
+    "ast_hash": "2fe0b8b3f5bfcacb0c90e98561e9b1fe",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/RecipeRequest.java": {
+    "mtime": 1791030636.42922,
+    "seen": 1791922526.9816124,
+    "ast_hash": "569c962435516a259c7831f67f09603d",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/RecipeService.java": {
+    "mtime": 1791030654.9385736,
+    "seen": 1791922526.9816134,
+    "ast_hash": "f896d42476d07ef96294c62f3f3ba877",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/SmartUOMConverter.java": {
+    "mtime": 1791022933.0826538,
+    "seen": 1791922526.981614,
+    "ast_hash": "6acd705527567d9e2cd06a31ca81ade3",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/WorkOrderCompletionService.java": {
+    "mtime": 1790372777.5826626,
+    "seen": 1791922526.9816196,
+    "ast_hash": "49c0a172940cc19ac630213846801c8a",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/WorkOrderController.java": {
+    "mtime": 1790846331.1600823,
+    "seen": 1791922526.9816203,
+    "ast_hash": "12de1b5dc46cf47cafe877baf4d2e9c9",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/WorkOrderMath.java": {
+    "mtime": 1790248420.3481598,
+    "seen": 1791922526.981621,
+    "ast_hash": "8815cb46552cd83f41b92ccedb12c270",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/WorkOrderRequest.java": {
+    "mtime": 1790248447.0618753,
+    "seen": 1791922526.9816217,
+    "ast_hash": "41a98073ccf30badc4adb02501edb92c",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/WorkOrderService.java": {
+    "mtime": 1791042825.1838698,
+    "seen": 1791922526.9816225,
+    "ast_hash": "2f6d7e409d7a08f9a673e608bbe7ec90",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/amqp/InventoryEventListener.java": {
+    "mtime": 1790256328.4600508,
+    "seen": 1791922526.9816234,
+    "ast_hash": "9e5efc3ff57dea628838ae3a6ff07f51",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/amqp/OutboxPoller.java": {
+    "mtime": 1790248695.193901,
+    "seen": 1791922526.9816244,
+    "ast_hash": "6f3e33a2546b7f71411ac84773c853df",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/amqp/ProductionAmqpConfig.java": {
+    "mtime": 1790248693.115826,
+    "seen": 1791922526.981625,
+    "ast_hash": "c294fe986b3d2803791ae4b21bdc87f6",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/java/tz/co/thamanicraft/production/amqp/SalesEventListener.java": {
+    "mtime": 1791038499.8588731,
+    "seen": 1791922526.9816258,
+    "ast_hash": "f94de3b0ed05125eeb07387fbc753a2f",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V10__Recipe_Production_Mode.sql": {
+    "mtime": 1790845801.2603362,
+    "seen": 1791922526.9816265,
+    "ast_hash": "eec13b32fa937c5ae415b8c5aee2e041",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V11__Alter_Recipe_Target_Margin.sql": {
+    "mtime": 1790864535.2761896,
+    "seen": 1791922526.9816275,
+    "ast_hash": "c083559145b0195cfaa500bfaec30826",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V12__Increase_Margin_Precision.sql": {
+    "mtime": 1790865165.380508,
+    "seen": 1791922526.9816282,
+    "ast_hash": "7e6402c0da1aebfce1c3c744d4d61dfd",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V13__Revert_Margin_Precision.sql": {
+    "mtime": 1790865408.7071946,
+    "seen": 1791922526.981629,
+    "ast_hash": "c083559145b0195cfaa500bfaec30826",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V14__Replace_Target_Margin_With_Suggested_Price.sql": {
+    "mtime": 1790866138.128379,
+    "seen": 1791922526.9816296,
+    "ast_hash": "f8dbfa0a342f4cf0c81e705553dc2593",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V15__Add_image_url_to_recipes.sql": {
+    "mtime": 1790953611.5143871,
+    "seen": 1791922526.9816306,
+    "ast_hash": "0dbe4a6928f830ea5425b3bff13f886b",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V16__Alter_Recipe_Image_Url_To_Text.sql": {
+    "mtime": 1790954638.9573526,
+    "seen": 1791922526.9816315,
+    "ast_hash": "c19fdb2af62782b10b5aa8d7c25383bd",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V17__Recipe_Item_Confirm_At_Pos.sql": {
+    "mtime": 1791030618.672373,
+    "seen": 1791922526.9816322,
+    "ast_hash": "a2d524bcaaca8e461e8e9c96383d8187",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V2__Recipe_Builder.sql": {
+    "mtime": 1790011130.4125836,
+    "seen": 1791922526.9816341,
+    "ast_hash": "5b93eb047d11986675c39f54e0b6ff7e",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V3__Manual_Recipe_Overhead.sql": {
+    "mtime": 1790103902.3986435,
+    "seen": 1791922526.9816349,
+    "ast_hash": "4b644988d6a2e0fecd386749f680f523",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V4__Work_Order_Planning.sql": {
+    "mtime": 1790107441.7466953,
+    "seen": 1791922526.9816356,
+    "ast_hash": "4d910c9ae0c28e9855a41e7c3d9444cb",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V5__Order_Linkage.sql": {
+    "mtime": 1790248103.09708,
+    "seen": 1791922526.9816363,
+    "ast_hash": "701e1ef4d04ac8d854c7588ae79c9a0a",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V6__Batch_Actuals_And_Outbox.sql": {
+    "mtime": 1790248422.9894135,
+    "seen": 1791922526.981637,
+    "ast_hash": "90e477ff273bf69779b5cab8fa7fe284",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V7__Recipe_Finished_Product.sql": {
+    "mtime": 1790248530.1461203,
+    "seen": 1791922526.9816384,
+    "ast_hash": "a9e53bea7585ea000f4c2a2f53426597",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V8__Inventory_Callback_Inbox.sql": {
+    "mtime": 1790256262.2307646,
+    "seen": 1791922526.9816391,
+    "ast_hash": "af317c64c15e81e2e4cad29a904e52fa",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/main/resources/db/migration/V9__Recipe_Target_Margin.sql": {
+    "mtime": 1790774682.0558653,
+    "seen": 1791922526.9816399,
+    "ast_hash": "875486152d36619b09a811c8f6713455",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/test/java/tz/co/thamanicraft/production/RecipeCostingTest.java": {
+    "mtime": 1790011357.8017423,
+    "seen": 1791922526.9816408,
+    "ast_hash": "e66315b8d824795659679cf10ee90a86",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/test/java/tz/co/thamanicraft/production/RecipeServiceTest.java": {
+    "mtime": 1791030654.544084,
+    "seen": 1791922526.9816415,
+    "ast_hash": "17a69c511dc75f89f789e7b18a6da952",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/test/java/tz/co/thamanicraft/production/SmartUOMConverterTest.java": {
+    "mtime": 1790845851.7215374,
+    "seen": 1791922526.981642,
+    "ast_hash": "cf0e903329160402790b441166dba133",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/test/java/tz/co/thamanicraft/production/WorkOrderMathTest.java": {
+    "mtime": 1790163977.8938246,
+    "seen": 1791922526.9816427,
+    "ast_hash": "1baa1eda30a34e53ac1ef7e2b039dfe5",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/test/java/tz/co/thamanicraft/production/WorkOrderSecurityTest.java": {
+    "mtime": 1790164015.8447597,
+    "seen": 1791922526.9816437,
+    "ast_hash": "e57173bd62f295fecfce5b33182e0889",
+    "semantic_hash": ""
+  },
+  "craft-production-service/src/test/java/tz/co/thamanicraft/production/WorkOrderServiceTest.java": {
+    "mtime": 1790164058.5648043,
+    "seen": 1791922526.9816446,
+    "ast_hash": "65485cddc3cdd67d256272a642aa7f57",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/pom.xml": {
+    "mtime": 1790771039.7154143,
+    "seen": 1791922526.9816463,
+    "ast_hash": "75b9563d72a3492ae19e2a7d7af2abb9",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/FinanceClient.java": {
+    "mtime": 1790670792.866818,
+    "seen": 1791922526.981647,
+    "ast_hash": "fe25089e0514661ea89c3e16a594c192",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/InventoryDispatchClient.java": {
+    "mtime": 1790449392.36935,
+    "seen": 1791922526.981648,
+    "ast_hash": "7a10ed1c15086312bfdeae830c997cf2",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/OrderRecipeMappingController.java": {
+    "mtime": 1790249743.9464536,
+    "seen": 1791922526.9816487,
+    "ast_hash": "ff878cd9a835f1f66829933bdf2c4da0",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/OrderRecipeMappingService.java": {
+    "mtime": 1790254687.1043057,
+    "seen": 1791922526.9816494,
+    "ast_hash": "65ec8d58ac1eb536ed59a1fd3b4e2ae0",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/OrderTotals.java": {
+    "mtime": 1790165259.606366,
+    "seen": 1791922526.9816504,
+    "ast_hash": "bf01dc5c76c2b8ca8cfd1635fb3351c5",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/PaymentController.java": {
+    "mtime": 1790755343.3680022,
+    "seen": 1791922526.9816513,
+    "ast_hash": "d50c4e425fbbd8d067ae9b5578279004",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/PaymentService.java": {
+    "mtime": 1790755354.683173,
+    "seen": 1791922526.981652,
+    "ast_hash": "ffa4988f2e8d008d2c4ec2297dc885c4",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/ProductionRecipeClient.java": {
+    "mtime": 1790188340.978437,
+    "seen": 1791922526.9816527,
+    "ast_hash": "e45a77d15ba8ecf42cef05c0c0620ec6",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/ProductionWorkOrderClient.java": {
+    "mtime": 1790248177.239449,
+    "seen": 1791922526.9816535,
+    "ast_hash": "9dd7cb5d213833b7f2b083f63e267dec",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/SalesApplication.java": {
+    "mtime": 1790165255.7693155,
+    "seen": 1791922526.9816542,
+    "ast_hash": "af1bf812f67cae32733c5d9ef02dccd8",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/SalesController.java": {
+    "mtime": 1790846082.8821745,
+    "seen": 1791922526.9816551,
+    "ast_hash": "196c14a95ea95c6e5a6eb9d81a67b8d9",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/SalesRequests.java": {
+    "mtime": 1791030677.795683,
+    "seen": 1791922526.981656,
+    "ast_hash": "3c6a8cbeb22195599310bfe2148f9e11",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/SalesService.java": {
+    "mtime": 1791030688.1700778,
+    "seen": 1791922526.9816568,
+    "ast_hash": "4da10d2713648bb68b1a522c996aac36",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/amqp/ProductionEventListener.java": {
+    "mtime": 1790983210.561093,
+    "seen": 1791922526.9816575,
+    "ast_hash": "bd16e5f57c0668beba14d88787b59cd1",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/java/tz/co/thamanicraft/sales/amqp/SalesEventPublisher.java": {
+    "mtime": 1791030686.0572002,
+    "seen": 1791922526.9816582,
+    "ast_hash": "84b5c2f9baf7e512372bdda7a9cba302",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/db/migration/V1__Customer_Order_Intake.sql": {
+    "mtime": 1790165257.5423388,
+    "seen": 1791922526.981659,
+    "ast_hash": "a90bb42e11702f6d14fa3f824449c473",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/db/migration/V2__Order_Lifecycle.sql": {
+    "mtime": 1790185040.7406023,
+    "seen": 1791922526.9816597,
+    "ast_hash": "16fcb0d2a1ca8c346fca8608bb53cee9",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/db/migration/V3__Order_Payments.sql": {
+    "mtime": 1790187174.5526211,
+    "seen": 1791922526.9816604,
+    "ast_hash": "c7ac386db294ef274dbe2143626066ca",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/db/migration/V4__Order_Recipe_Mapping.sql": {
+    "mtime": 1790188340.386441,
+    "seen": 1791922526.981661,
+    "ast_hash": "a9f1a61de74cfe8e11bce6a76120f7cc",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/db/migration/V5__Work_Order_Linkage.sql": {
+    "mtime": 1790248105.1404533,
+    "seen": 1791922526.981662,
+    "ast_hash": "69df6bcb612a2d7d82c9e34ac0a46942",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/db/migration/V6__Order_Item_Finished_Product.sql": {
+    "mtime": 1790374637.19286,
+    "seen": 1791922526.9816628,
+    "ast_hash": "064594cdf841e94bf88e7806ce561370",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/db/migration/V7__Order_Fulfillment.sql": {
+    "mtime": 1790438572.9563518,
+    "seen": 1791922526.9816635,
+    "ast_hash": "df30d3d8ca5c4715285fb3074a3c28c4",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/db/migration/V8__Order_Cancellation_Settlement.sql": {
+    "mtime": 1790448929.5645745,
+    "seen": 1791922526.9816642,
+    "ast_hash": "1fab5e012136fd81b54cd86a9cec73fb",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/db/migration/V9__Add_unit_cost_to_order_items.sql": {
+    "mtime": 1790598313.520753,
+    "seen": 1791922526.9816651,
+    "ast_hash": "0ced27b38b2b729ad639e14ff6dcf21f",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/test/java/tz/co/thamanicraft/sales/OrderLifecycleTest.java": {
+    "mtime": 1790868550.5763166,
+    "seen": 1791922526.9816658,
+    "ast_hash": "f4023d14f44e0cc6cd1d4ce8f43b5a25",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/test/java/tz/co/thamanicraft/sales/OrderRecipeMappingTest.java": {
+    "mtime": 1790254322.9645514,
+    "seen": 1791922526.9816663,
+    "ast_hash": "916e804a55750a9ba36095144696db14",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/test/java/tz/co/thamanicraft/sales/PaymentSecurityTest.java": {
+    "mtime": 1790755412.728091,
+    "seen": 1791922526.981667,
+    "ast_hash": "de7b8d779e938ce9fe68dcf707e186b9",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/test/java/tz/co/thamanicraft/sales/PaymentTest.java": {
+    "mtime": 1790755423.5712698,
+    "seen": 1791922526.981668,
+    "ast_hash": "286aba5fd77466f86aa5e3f2fd092372",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/test/java/tz/co/thamanicraft/sales/SalesSecurityTest.java": {
+    "mtime": 1790761458.458894,
+    "seen": 1791922526.981669,
+    "ast_hash": "312761bf4bfe191be2888554a68006a6",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/test/java/tz/co/thamanicraft/sales/SalesTest.java": {
+    "mtime": 1790868439.5447147,
+    "seen": 1791922526.9816697,
+    "ast_hash": "ea7c2ae3abaaa4755f6c85de5a48c9e2",
+    "semantic_hash": ""
+  },
+  "docs/clear_test_data.sql": {
+    "mtime": 1790793471.4425147,
+    "seen": 1791922526.9816735,
+    "ast_hash": "2e98cf75bdddf16367fe3edd78ab1c78",
+    "semantic_hash": ""
+  },
+  "docs/seed_finance_accounts.sql": {
+    "mtime": 1790794022.7719052,
+    "seen": 1791922526.9816742,
+    "ast_hash": "02578f790d925b3e82d1ffd7f7ff50ea",
+    "semantic_hash": ""
+  },
+  "docs/thamanicraft-architecture.visual-check.json": {
+    "mtime": 1790435331.5009322,
+    "seen": 1791922526.981675,
+    "ast_hash": "019785d6a7cad37644c8511d91cc0f22",
+    "semantic_hash": ""
+  },
+  "docs/thamanicraft.architecture.json": {
+    "mtime": 1790437019.8223517,
+    "seen": 1791922526.9816759,
+    "ast_hash": "78ebf11085d53fa2b791d3b6a7cdd9a9",
+    "semantic_hash": ""
+  },
+  "fix_bpcakes.sql": {
+    "mtime": 1791490693.2407913,
+    "seen": 1791922526.9816766,
+    "ast_hash": "069b23751feb7b634dcd23c3a233102f",
+    "semantic_hash": ""
+  },
+  "get_token.js": {
+    "mtime": 1791208927.87789,
+    "seen": 1791922526.9816773,
+    "ast_hash": "5cfb082f273403db5cf5b8a0633d38f8",
+    "semantic_hash": ""
+  },
+  "insert_cake_data.sql": {
+    "mtime": 1791577388.1218274,
+    "seen": 1791922526.981678,
+    "ast_hash": "ab590f845f70ebc873aa25e9b4f62631",
+    "semantic_hash": ""
+  },
+  "insert_cake_data_bob_tenant.sql": {
+    "mtime": 1791577609.0534177,
+    "seen": 1791922526.981679,
+    "ast_hash": "6ab51be56951c7828534b95f2f8985cf",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1791024352.9491408,
+    "seen": 1791922526.9816809,
+    "ast_hash": "9a7c68b5f38109ea4386e53559c0e8d8",
+    "semantic_hash": ""
+  },
+  "patch_inventory_api.js": {
+    "mtime": 1791026262.0233166,
+    "seen": 1791922526.9816816,
+    "ast_hash": "efabcb3eb8e9fe2e51b679b283aa1981",
+    "semantic_hash": ""
+  },
+  "push_git.sh": {
+    "mtime": 1788295629.4569342,
+    "seen": 1791922526.9816828,
+    "ast_hash": "8188922ffbf3951c7c1c542b903ef1bb",
+    "semantic_hash": ""
+  },
+  "scratch/create_full_order.py": {
+    "mtime": 1790682369.84255,
+    "seen": 1791922526.9816852,
+    "ast_hash": "c149f0bf62ec8c065e2f58cb4bcd64f7",
+    "semantic_hash": ""
+  },
+  "scratch/decode_jwt.py": {
+    "mtime": 1790853700.0616724,
+    "seen": 1791922526.9816866,
+    "ast_hash": "08d6147792479f1b39f90406ca641833",
+    "semantic_hash": ""
+  },
+  "scratch/e2e_test.py": {
+    "mtime": 1790854679.6842833,
+    "seen": 1791922526.9816873,
+    "ast_hash": "ad65eac04f84c6b4901f225a1d996597",
+    "semantic_hash": ""
+  },
+  "scratch/e2e_test2.py": {
+    "mtime": 1790853932.608616,
+    "seen": 1791922526.9816883,
+    "ast_hash": "6b3ca4aeef1bf3e310df480b82fffc97",
+    "semantic_hash": ""
+  },
+  "scratch/extract_sales_order.py": {
+    "mtime": 1790756900.4775097,
+    "seen": 1791922526.9816887,
+    "ast_hash": "ac1f49b32acb77a9ce50da1f56b66391",
+    "semantic_hash": ""
+  },
+  "scratch/extract_sales_order2.py": {
+    "mtime": 1790756910.950069,
+    "seen": 1791922526.98169,
+    "ast_hash": "228e8c2ee8e7655bf0f2270349a944f6",
+    "semantic_hash": ""
+  },
+  "scratch/fetch_trial_balance.py": {
+    "mtime": 1790793859.5061991,
+    "seen": 1791922526.9816906,
+    "ast_hash": "3a907cdd97b3db1f12091a8fe056f818",
+    "semantic_hash": ""
+  },
+  "scratch/fix_prices.js": {
+    "mtime": 1790757388.8982754,
+    "seen": 1791922526.9816914,
+    "ast_hash": "cba752145d221ca1afa43b3194400eeb",
+    "semantic_hash": ""
+  },
+  "scratch/fix_recipe_details.js": {
+    "mtime": 1790757739.976814,
+    "seen": 1791922526.9816918,
+    "ast_hash": "0bbe5b3a416ca23470fbff02a7560740",
+    "semantic_hash": ""
+  },
+  "scratch/fix_sales.js": {
+    "mtime": 1790759119.9614267,
+    "seen": 1791922526.9816933,
+    "ast_hash": "af209523f5aafe554c13af27ef9931c4",
+    "semantic_hash": ""
+  },
+  "scratch/get_token_hs256.py": {
+    "mtime": 1791023751.7420752,
+    "seen": 1791922526.981694,
+    "ast_hash": "fe05479159b44845cb525aa255829df5",
+    "semantic_hash": ""
+  },
+  "scratch/rewrite_costing_summary.js": {
+    "mtime": 1790756942.0418205,
+    "seen": 1791922526.9816947,
+    "ast_hash": "b4d15372ec05a815cd2ecc67459a9651",
+    "semantic_hash": ""
+  },
+  "scratch/rewrite_order_entry.js": {
+    "mtime": 1790756805.8789985,
+    "seen": 1791922526.9816957,
+    "ast_hash": "00883bb859e74143d17d202e45229580",
+    "semantic_hash": ""
+  },
+  "scratch/seed_accounts.sql": {
+    "mtime": 1790793984.9177415,
+    "seen": 1791922526.9816966,
+    "ast_hash": "4c0fd76ac21ed093910f450e33b9ce95",
+    "semantic_hash": ""
+  },
+  "scratch/test_recipe.js": {
+    "mtime": 1790757478.3103194,
+    "seen": 1791922526.9816973,
+    "ast_hash": "2f88ac1c35f1f380176fab410b5e36cd",
+    "semantic_hash": ""
+  },
+  "scratch/test_recipe.py": {
+    "mtime": 1790868864.4614558,
+    "seen": 1791922526.981698,
+    "ast_hash": "6174b1179a4f3c235babde98c4dedb7a",
+    "semantic_hash": ""
+  },
+  "scratch/test_reports.js": {
+    "mtime": 1790597978.251608,
+    "seen": 1791922526.9816988,
+    "ast_hash": "125cc48029d26e9ab4f9a33df8359cd7",
+    "semantic_hash": ""
+  },
+  "scratch/update_sales_margins.js": {
+    "mtime": 1790759412.45091,
+    "seen": 1791922526.9816995,
+    "ast_hash": "8968ff4d5de88378bf4fcf365eaf7fa2",
+    "semantic_hash": ""
+  },
+  "scratch/view_images.py": {
+    "mtime": 1790868619.029496,
+    "seen": 1791922526.981701,
+    "ast_hash": "99980015329511a55031a5e0d373d7bf",
+    "semantic_hash": ""
+  },
+  "scratch_LedgerController.java": {
+    "mtime": 1790522997.3972886,
+    "seen": 1791922526.9817016,
+    "ast_hash": "47e07747c1234b4b62ebea26224e75a7",
+    "semantic_hash": ""
+  },
+  "scratch_LedgerService.java": {
+    "mtime": 1790522997.398737,
+    "seen": 1791922526.9817026,
+    "ast_hash": "0dcce38e9d86712d5bda6cfc40d2b397",
+    "semantic_hash": ""
+  },
+  "scripts/fix-eggs-base-uom.sql": {
+    "mtime": 1790025826.2714446,
+    "seen": 1791922526.9817035,
+    "ast_hash": "e4b0ba7419981f434e1eeb1d99c17b44",
+    "semantic_hash": ""
+  },
+  "skills-lock.json": {
+    "mtime": 1791574949.1628773,
+    "seen": 1791922526.9817042,
+    "ast_hash": "9b86713442ffea5bd3b0bc36fb85cb60",
+    "semantic_hash": ""
+  },
+  "test-convert.js": {
+    "mtime": 1791025360.6396348,
+    "seen": 1791922526.981705,
+    "ast_hash": "b5b37f8221d58b5095d58fcb830925f2",
+    "semantic_hash": ""
+  },
+  "test-recipe.sh": {
+    "mtime": 1790770931.3192022,
+    "seen": 1791922526.9817057,
+    "ast_hash": "b015b1fdfb82ad546f8f1eced89608b0",
+    "semantic_hash": ""
+  },
+  "test.js": {
+    "mtime": 1790762658.756797,
+    "seen": 1791922526.9817111,
+    "ast_hash": "394b64b0fd9cab3020c832445614df2a",
+    "semantic_hash": ""
+  },
+  "test_debug.java": {
+    "mtime": 1791026367.1946118,
+    "seen": 1791922526.9817119,
+    "ast_hash": "e73f0deaf4427c00c7bf5256dff5a7e8",
+    "semantic_hash": ""
+  },
+  "test_fetch.js": {
+    "mtime": 1791209315.1925135,
+    "seen": 1791922526.9817126,
+    "ast_hash": "37f97cd43ebbda3d951f812bc1d818d1",
+    "semantic_hash": ""
+  },
+  "test_fix.java": {
+    "mtime": 1791024188.3565893,
+    "seen": 1791922526.9817133,
+    "ast_hash": "0bcc719e3c89e00af4e3fb4ca03f57ca",
+    "semantic_hash": ""
+  },
+  "test_payload.json": {
+    "mtime": 1791024118.6734786,
+    "seen": 1791922526.9817142,
+    "ast_hash": "f80ec4c1c341701a339c6725f472be21",
+    "semantic_hash": ""
+  },
+  "test_uom.java": {
+    "mtime": 1791026305.195397,
+    "seen": 1791922526.981715,
+    "ast_hash": "0052f111372aaaab869aee03b20d2e50",
+    "semantic_hash": ""
+  },
+  "test_validation.js": {
+    "mtime": 1791024311.9337976,
+    "seen": 1791922526.9817157,
+    "ast_hash": "614e104fc9afb40366ec65ff075eda8c",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/components/SearchableTable.jsx": {
+    "mtime": 1791147892.9282835,
+    "seen": 1791922526.9817245,
+    "ast_hash": "93424080afe136560b6f161b7306a5cd",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/components/tenants/ModulesTab.jsx": {
+    "mtime": 1791919430.9980683,
+    "seen": 1791922526.9817252,
+    "ast_hash": "c0aa1f818aba553049305b1913b9e0b4",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/components/tenants/SubscriptionTab.jsx": {
+    "mtime": 1791908323.1880217,
+    "seen": 1791922526.981726,
+    "ast_hash": "b75cd7e31593b8a816a78a0c080121b5",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/pages/Login.jsx": {
+    "mtime": 1791755621.2506855,
+    "seen": 1791922526.9817297,
+    "ast_hash": "822d88bdf07f95538bddf2e078ca29d9",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/pages/Profile.jsx": {
+    "mtime": 1791205131.030793,
+    "seen": 1791922526.9817314,
+    "ast_hash": "20c7e4dfbd6ec83e26d8cd7b00e3ba36",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/pages/TenantDetails.jsx": {
+    "mtime": 1791919462.5849347,
+    "seen": 1791922526.9817338,
+    "ast_hash": "18c7046031b624e2e6a9529051edf440",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/store/authStore.js": {
+    "mtime": 1791145908.156711,
+    "seen": 1791922526.9817355,
+    "ast_hash": "18b204400be231d53cf04f9b108c03d5",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/utils/api.js": {
+    "mtime": 1791146006.2135804,
+    "seen": 1791922526.9817364,
+    "ast_hash": "5aad4b7827c485614bbc65c0d2f01c0b",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/utils/identityApi.js": {
+    "mtime": 1791919358.9229243,
+    "seen": 1791922526.9817371,
+    "ast_hash": "2788bd59d218b0202694aa409444fc7d",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/utils/inventoryApi.js": {
+    "mtime": 1791203829.3842092,
+    "seen": 1791922526.9817376,
+    "ast_hash": "03fe3d9e6cbf46d426e2522446ba5e02",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/utils/moduleHelpers.js": {
+    "mtime": 1791919338.4272685,
+    "seen": 1791922526.9817388,
+    "ast_hash": "f5e737bf5ca1d7e3f2f5abb693d84a5d",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/utils/subscriptionApi.js": {
+    "mtime": 1791907455.268556,
+    "seen": 1791922526.9817395,
+    "ast_hash": "8cf564b96e618df40fa98f9acb6907da",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/src/utils/tableUtils.js": {
+    "mtime": 1791147892.91397,
+    "seen": 1791922526.98174,
+    "ast_hash": "61aeeecce84b3b90899ff9fdaa45967b",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/scratch_layout.js": {
+    "mtime": 1790956707.404772,
+    "seen": 1791922526.9817472,
+    "ast_hash": "3817f4bc44d68437e2b21cd6842d4254",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/scratch_replace.py": {
+    "mtime": 1790956675.6641855,
+    "seen": 1791922526.9817479,
+    "ast_hash": "247234677249cce02b7816457ad8de1c",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/components/CostCorrectionModal.jsx": {
+    "mtime": 1790952663.1135468,
+    "seen": 1791922526.981752,
+    "ast_hash": "0574b354f5de100f277dfc4bdd3f2b9e",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/components/CustomerEditor.jsx": {
+    "mtime": 1790952663.1140683,
+    "seen": 1791922526.9817526,
+    "ast_hash": "f0061ebfdd192784eee4ac421b51c19f",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/components/ImageUpload.jsx": {
+    "mtime": 1790954424.9321015,
+    "seen": 1791922526.9817533,
+    "ast_hash": "b7edacb4e65470d5f946835791357d5c",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/components/OrderCostingSummary.jsx": {
+    "mtime": 1790981417.198252,
+    "seen": 1791922526.9817538,
+    "ast_hash": "2d886bb38cdb49c476e8fbfc90f3168e",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/components/OrderPayments.jsx": {
+    "mtime": 1790981394.7632031,
+    "seen": 1791922526.9817545,
+    "ast_hash": "e186ebdf902226e8677a0faab6c1c885",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/components/QuickMakeModal.jsx": {
+    "mtime": 1790952663.1137242,
+    "seen": 1791922526.9817555,
+    "ast_hash": "b1b2d85d8cf33b5ec9a067cf37c8c210",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/components/QuickRefillModal.jsx": {
+    "mtime": 1791045918.483609,
+    "seen": 1791922526.9817564,
+    "ast_hash": "a7ba1149112e062f300e30cccfe9535c",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/components/SearchableTable.jsx": {
+    "mtime": 1791026445.4855924,
+    "seen": 1791922526.9817572,
+    "ast_hash": "93424080afe136560b6f161b7306a5cd",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/pages/Billing.jsx": {
+    "mtime": 1791908275.2617087,
+    "seen": 1791922526.9817605,
+    "ast_hash": "31b560141aef158fe68eb417064a58bf",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/pages/Expenses.jsx": {
+    "mtime": 1790956685.8960383,
+    "seen": 1791922526.9817636,
+    "ast_hash": "d3f54dd7324dc08a77fe1dc6cccddb1d",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/pages/OrderEntry.jsx": {
+    "mtime": 1790956685.895557,
+    "seen": 1791922526.9817653,
+    "ast_hash": "077b55e01456de20d7af99c8e362a0e9",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/pages/OrderHistory.jsx": {
+    "mtime": 1790956685.895069,
+    "seen": 1791922526.9817662,
+    "ast_hash": "3b4cae64cf855718811681fff68204e3",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/pages/PointOfSale.jsx": {
+    "mtime": 1791042335.0009027,
+    "seen": 1791922526.981767,
+    "ast_hash": "984276dd207085bfd2edd508b8853c3d",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/pages/Profile.jsx": {
+    "mtime": 1790952663.1116185,
+    "seen": 1791922526.9817693,
+    "ast_hash": "c2f90263eeb4b8d3df4f080884fa7e33",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/pages/RecipeEditor.jsx": {
+    "mtime": 1791040374.5009089,
+    "seen": 1791922526.9817703,
+    "ast_hash": "661a9ba7940348cf85d127935e43eff8",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/pages/WorkOrder.jsx": {
+    "mtime": 1790956685.8944585,
+    "seen": 1791922526.981774,
+    "ast_hash": "01db7e2ff6da8b71a830ec1f57a53558",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/costingSimulation.js": {
+    "mtime": 1790081224.7835872,
+    "seen": 1791922526.9817755,
+    "ast_hash": "adcb9a12fb235051bb245407c2ffac97",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/costingSimulation.test.js": {
+    "mtime": 1790081225.1255872,
+    "seen": 1791922526.9817762,
+    "ast_hash": "a37013624a1bdc797a8fb843de8bea7e",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/financeApi.js": {
+    "mtime": 1790847040.7369628,
+    "seen": 1791922526.9817772,
+    "ast_hash": "ca160eda872c623e1216bb9ba73aaefe",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/identityApi.js": {
+    "mtime": 1790537760.656187,
+    "seen": 1791922526.981778,
+    "ast_hash": "b4ad8dda1883f953a2d2bcdd7ecbd909",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/inventoryApi.js": {
+    "mtime": 1791026262.0403166,
+    "seen": 1791922526.9817786,
+    "ast_hash": "708c8be1b0974219bb7bf7eab7d5ca49",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/orderMappingPolicy.js": {
+    "mtime": 1790247381.4729807,
+    "seen": 1791922526.9817793,
+    "ast_hash": "72f73eb361fca7ca3ecb85bc81080f58",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/orderMappingPolicy.test.js": {
+    "mtime": 1790247381.890982,
+    "seen": 1791922526.9817803,
+    "ast_hash": "267fcec4b75b4bd070733c340ff75ad1",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/productionApi.js": {
+    "mtime": 1790846935.301312,
+    "seen": 1791922526.981781,
+    "ast_hash": "09764e0657654876303952eedb286473",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/recipeApi.js": {
+    "mtime": 1790011356.9987469,
+    "seen": 1791922526.9817817,
+    "ast_hash": "2cc26323da3d5248b1de328563821bbe",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/salesApi.js": {
+    "mtime": 1790846741.4237695,
+    "seen": 1791922526.9817824,
+    "ast_hash": "3c5f65fe779cc018b795d97dbecaf855",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/services/subscriptionApi.js": {
+    "mtime": 1791639117.735782,
+    "seen": 1791922526.9817834,
+    "ast_hash": "da68b8d9b896c70762655675ddc17875",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/utils/moduleHelpers.js": {
+    "mtime": 1791745887.5833752,
+    "seen": 1791922526.981784,
+    "ast_hash": "d755de4cbaff2cb5ce0d35311eea9997",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/src/utils/tableUtils.js": {
+    "mtime": 1790953167.6224723,
+    "seen": 1791922526.9817846,
+    "ast_hash": "61aeeecce84b3b90899ff9fdaa45967b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/ARCHITECTURE.md": {
+    "mtime": 1789942991.2183275,
+    "seen": 1791922526.981787,
+    "ast_hash": "667e0310d3ef23b829a7c7fbe4405c36",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/CHANGELOG.md": {
+    "mtime": 1789942991.2185347,
+    "seen": 1791922526.9817877,
+    "ast_hash": "4b5df420e4f8b823a6ecfe8f794ea8e1",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/DEPENDENCY_GRAPH.md": {
+    "mtime": 1789942991.218431,
+    "seen": 1791922526.981794,
+    "ast_hash": "669539045b7e996c933dc0f66f504b90",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/README.md": {
+    "mtime": 1789942991.2186549,
+    "seen": 1791922526.9817948,
+    "ast_hash": "8ed2607e54e60413730781b8c9f05ad5",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/backend-specialist.md": {
+    "mtime": 1789942991.2235892,
+    "seen": 1791922526.9817986,
+    "ast_hash": "9ba9f4b319fe2298c102fbd8de27a4f4",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/code-archaeologist.md": {
+    "mtime": 1789942991.223511,
+    "seen": 1791922526.9817991,
+    "ast_hash": "6e709462e1c52543aed9c08269d98eae",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/database-architect.md": {
+    "mtime": 1789942991.223755,
+    "seen": 1791922526.9817998,
+    "ast_hash": "3de17ec23522eab2f2e4d0fab3edcdf8",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/debugger.md": {
+    "mtime": 1789942991.2233908,
+    "seen": 1791922526.9818008,
+    "ast_hash": "64ca0dcc6761d228da6cb9907e2909f8",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/devops-engineer.md": {
+    "mtime": 1789942991.2235892,
+    "seen": 1791922526.9818015,
+    "ast_hash": "80a56d4af22d2c867a8c83d8f8d595f0",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/documentation-writer.md": {
+    "mtime": 1789942991.2235892,
+    "seen": 1791922526.9818022,
+    "ast_hash": "1adb8b1e496d36aafc4a10673e4c776c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/explorer-agent.md": {
+    "mtime": 1789942991.223511,
+    "seen": 1791922526.9818027,
+    "ast_hash": "e38148e456cfac53474ce0cf10d02eeb",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/frontend-specialist.md": {
+    "mtime": 1789942991.223476,
+    "seen": 1791922526.981804,
+    "ast_hash": "05480c9f3a67f5dc2f21facc18fa0a9d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/game-developer.md": {
+    "mtime": 1789942991.2234592,
+    "seen": 1791922526.9818046,
+    "ast_hash": "3762eb930ca4696ffb81a3768b4e018b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/mobile-developer.md": {
+    "mtime": 1789942991.2236662,
+    "seen": 1791922526.9818053,
+    "ast_hash": "3297d34a401ad2ca0bb66005bc0adbec",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/orchestrator.md": {
+    "mtime": 1789942991.2233908,
+    "seen": 1791922526.9818058,
+    "ast_hash": "a3536f56b825f555cd94c1e8c25ca559",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/penetration-tester.md": {
+    "mtime": 1789942991.2235892,
+    "seen": 1791922526.9818065,
+    "ast_hash": "8499dbedd82ffaeb3c5691ee7c145674",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/performance-optimizer.md": {
+    "mtime": 1789942991.2234333,
+    "seen": 1791922526.981807,
+    "ast_hash": "75b1d0b2a0ffdaf913c611dddeed7800",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/product-manager.md": {
+    "mtime": 1789942991.223755,
+    "seen": 1791922526.981808,
+    "ast_hash": "b47cf9f7446cdfdb0d00f6e30ece325c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/product-owner.md": {
+    "mtime": 1789942991.223476,
+    "seen": 1791922526.9818087,
+    "ast_hash": "fd5377a236c87c28179724d832087f5c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/project-planner.md": {
+    "mtime": 1789942991.2236662,
+    "seen": 1791922526.9818091,
+    "ast_hash": "df264b61cb7474e1a8000eb5bafae0cb",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/qa-automation-engineer.md": {
+    "mtime": 1789942991.2236662,
+    "seen": 1791922526.9818099,
+    "ast_hash": "6be1ba8f37fc344151c3cc9e747a6ea6",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/security-auditor.md": {
+    "mtime": 1789942991.2236428,
+    "seen": 1791922526.9818103,
+    "ast_hash": "ec66f23b48d0e021d8768d3299ffb744",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/seo-specialist.md": {
+    "mtime": 1789942991.2236946,
+    "seen": 1791922526.9818113,
+    "ast_hash": "bc33abc311c3a56d4cc73b68163a0f34",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/agent/test-engineer.md": {
+    "mtime": 1789942991.2237332,
+    "seen": 1791922526.9818118,
+    "ast_hash": "3f3317552d856c389e38e168e66f4f96",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/README.md": {
+    "mtime": 1789942991.2227104,
+    "seen": 1791922526.9818125,
+    "ast_hash": "8e1866b3d2adf3465e0bdfe38a386502",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/hooks/plugin/GEMINI.md": {
+    "mtime": 1789942991.229091,
+    "seen": 1791922526.9818132,
+    "ast_hash": "5584cc7d3cdf26314537e9c77064e88b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/memory/MEMORY.md": {
+    "mtime": 1789942991.22334,
+    "seen": 1791922526.981814,
+    "ast_hash": "5d4c06b3ae32ed4fcf4087218e27b33e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/memory/feedback-history.md": {
+    "mtime": 1789942991.22334,
+    "seen": 1791922526.9818146,
+    "ast_hash": "62db8a31134ea0ac830d012b6c190077",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/memory/project-conventions.md": {
+    "mtime": 1789942991.2233157,
+    "seen": 1791922526.9818153,
+    "ast_hash": "2c096f9a51411e55caf10cf4469498f1",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/memory/tech-decisions.md": {
+    "mtime": 1789942991.2233908,
+    "seen": 1791922526.981816,
+    "ast_hash": "4cd0cfe31234ddd1ad1ddd5535325dc3",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/memory/user-preferences.md": {
+    "mtime": 1789942991.2233615,
+    "seen": 1791922526.9818165,
+    "ast_hash": "1e09782a4c1dc925b05732fd34256029",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/rules/code-rules.md": {
+    "mtime": 1789942991.222242,
+    "seen": 1791922526.9818172,
+    "ast_hash": "193dd933605e3f151c36fc3137bc6891",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/rules/core-protocol.md": {
+    "mtime": 1789942991.222369,
+    "seen": 1791922526.9818182,
+    "ast_hash": "e27b9706e475f51d1e96afa8862e2b5d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/rules/design-rules.md": {
+    "mtime": 1789942991.222242,
+    "seen": 1791922526.981819,
+    "ast_hash": "dc443176c693dfca0afe3e1bab2524b8",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/rules/quick-reference.md": {
+    "mtime": 1789942991.222338,
+    "seen": 1791922526.9818194,
+    "ast_hash": "b4f787e4fd457f1bc1d9079d5c17bded",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/rules/request-routing.md": {
+    "mtime": 1789942991.2222097,
+    "seen": 1791922526.98182,
+    "ast_hash": "a3e617a532fe1ef552a517e0f74af1af",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/rules/sudo.md": {
+    "mtime": 1789942991.222305,
+    "seen": 1791922526.9818208,
+    "ast_hash": "d21b6f9b91f5414ac1f903d8c9d84a81",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/rules/timezon-rule.md": {
+    "mtime": 1789942991.222369,
+    "seen": 1791922526.981822,
+    "ast_hash": "26c218c1a764c753929e9b24517f065d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/rules/timezone.md": {
+    "mtime": 1789942991.222242,
+    "seen": 1791922526.9818227,
+    "ast_hash": "03ebac09a4137c7aa73f15b206046ef2",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/rules/universal-rules.md": {
+    "mtime": 1789942991.222305,
+    "seen": 1791922526.9818234,
+    "ast_hash": "fe6b1c610904f5512c9025ebd860feb9",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/scripts/README.md": {
+    "mtime": 1789942991.2240617,
+    "seen": 1791922526.981824,
+    "ast_hash": "d66d54f574e097b2eab5ffe7971cad69",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/SKILL.md": {
+    "mtime": 1789942991.23013,
+    "seen": 1791922526.9818249,
+    "ast_hash": "547178e6ff3414b976fd998a7b0fdbab",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/api-style.md": {
+    "mtime": 1789942991.2300274,
+    "seen": 1791922526.9818256,
+    "ast_hash": "04a343af30c2826dcbb3096ad5c204e4",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/auth.md": {
+    "mtime": 1789942991.230074,
+    "seen": 1791922526.981826,
+    "ast_hash": "f2bdb6ba9b7aa62320013f8da4479f7d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/documentation.md": {
+    "mtime": 1789942991.2301643,
+    "seen": 1791922526.9818268,
+    "ast_hash": "7481785b96c1daf7980edf4b232d6d52",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/graphql.md": {
+    "mtime": 1789942991.2300274,
+    "seen": 1791922526.9818275,
+    "ast_hash": "1171306974034c812f8a4dc59e34030b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/rate-limiting.md": {
+    "mtime": 1789942991.2300932,
+    "seen": 1791922526.9818282,
+    "ast_hash": "fe69e2f9fb398a5b3aeb664d5abbf572",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/response.md": {
+    "mtime": 1789942991.2300274,
+    "seen": 1791922526.981829,
+    "ast_hash": "622fa0423c2799c1ee93e103881abf1f",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/rest.md": {
+    "mtime": 1789942991.2301643,
+    "seen": 1791922526.9818294,
+    "ast_hash": "bd231463002ae143f44b796073bb335b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/security-testing.md": {
+    "mtime": 1789942991.2300932,
+    "seen": 1791922526.9818301,
+    "ast_hash": "471897ed209b89dad6c9542ae5e22a62",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/trpc.md": {
+    "mtime": 1789942991.23013,
+    "seen": 1791922526.9818306,
+    "ast_hash": "905cac48b9beb48a379e49145678a4a7",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/api-patterns/versioning.md": {
+    "mtime": 1789942991.230074,
+    "seen": 1791922526.9818313,
+    "ast_hash": "9dd90b88ab6e4337fcea6e3a11b430fe",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/SKILL.md": {
+    "mtime": 1789942991.2315755,
+    "seen": 1791922526.9818323,
+    "ast_hash": "7550c6f9b56abe35d8e5f9a34697eb8c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/agent-coordination.md": {
+    "mtime": 1789942991.2315912,
+    "seen": 1791922526.9818327,
+    "ast_hash": "c397e2b4c1ee4849d18a027ba9076833",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/feature-building.md": {
+    "mtime": 1789942991.2315912,
+    "seen": 1791922526.9818335,
+    "ast_hash": "56daa011010d116336c4ba91f83ea583",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/project-detection.md": {
+    "mtime": 1789942991.2314575,
+    "seen": 1791922526.981834,
+    "ast_hash": "12a1eb96861b362d9572c425332bb6d3",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/scaffolding.md": {
+    "mtime": 1789942991.2315385,
+    "seen": 1791922526.9818347,
+    "ast_hash": "79b000b99c4263dd72c689b0c1ed443b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/tech-stack.md": {
+    "mtime": 1789942991.2315385,
+    "seen": 1791922526.9818354,
+    "ast_hash": "214a278989fb773ef3b9562070c4c2d3",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/SKILL.md": {
+    "mtime": 1789942991.234749,
+    "seen": 1791922526.981836,
+    "ast_hash": "68243292bb521e97d22448aec8040568",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/astro-static/TEMPLATE.md": {
+    "mtime": 1789942991.236124,
+    "seen": 1791922526.9818368,
+    "ast_hash": "5a356b92d9310ca9de9935fcd5e63e88",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/chrome-extension/TEMPLATE.md": {
+    "mtime": 1789942991.2359893,
+    "seen": 1791922526.9818377,
+    "ast_hash": "9d7639b5fb946cc9a65432a9a900b6b7",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/cli-tool/TEMPLATE.md": {
+    "mtime": 1789942991.2359438,
+    "seen": 1791922526.9818387,
+    "ast_hash": "fbc13563a5d448f8251f4c60a156993b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/electron-desktop/TEMPLATE.md": {
+    "mtime": 1789942991.236073,
+    "seen": 1791922526.9818392,
+    "ast_hash": "474748017186d7976c7745064c5688b1",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/express-api/TEMPLATE.md": {
+    "mtime": 1789942991.236124,
+    "seen": 1791922526.98184,
+    "ast_hash": "5d8fc18d9401bdb8a462c2e1f6df7951",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/flutter-app/TEMPLATE.md": {
+    "mtime": 1789942991.2359278,
+    "seen": 1791922526.9818406,
+    "ast_hash": "b7c80f35545f5e70c83d12d34e7cc4eb",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/monorepo-turborepo/TEMPLATE.md": {
+    "mtime": 1789942991.236124,
+    "seen": 1791922526.9818416,
+    "ast_hash": "87482f7b2e5e31cc189b46fba909f62d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/nextjs-fullstack/TEMPLATE.md": {
+    "mtime": 1789942991.2360575,
+    "seen": 1791922526.9818425,
+    "ast_hash": "5f8ebb255bec98168c430d515a6c22f8",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/nextjs-saas/TEMPLATE.md": {
+    "mtime": 1789942991.2360144,
+    "seen": 1791922526.9818432,
+    "ast_hash": "1cee0cd1e3b4b14babb119ddecce240b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/nextjs-static/TEMPLATE.md": {
+    "mtime": 1789942991.2360575,
+    "seen": 1791922526.9818437,
+    "ast_hash": "dbb128e9a4a7a018cd25f9923b7c802a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/nuxt-app/TEMPLATE.md": {
+    "mtime": 1789942991.2359636,
+    "seen": 1791922526.9818444,
+    "ast_hash": "9982aa0d19347dc56d492c9c3d83fc9a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/python-fastapi/TEMPLATE.md": {
+    "mtime": 1789942991.236042,
+    "seen": 1791922526.9818456,
+    "ast_hash": "d8744ddc9e47bbcb813299c11130d87e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/app-builder/templates/react-native-app/TEMPLATE.md": {
+    "mtime": 1789942991.2359636,
+    "seen": 1791922526.9818463,
+    "ast_hash": "70af2cfc0e300b65073f5c63f1895846",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/architecture/SKILL.md": {
+    "mtime": 1789942991.230293,
+    "seen": 1791922526.9818468,
+    "ast_hash": "8ee390b45efe5cf84cb6578d04dadafd",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/architecture/context-discovery.md": {
+    "mtime": 1789942991.230229,
+    "seen": 1791922526.9818475,
+    "ast_hash": "639c14983f8d539428d88d0723d1bc7f",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/architecture/examples.md": {
+    "mtime": 1789942991.2302482,
+    "seen": 1791922526.981848,
+    "ast_hash": "57731f1ba92d434772fcf7eecb361823",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/architecture/pattern-selection.md": {
+    "mtime": 1789942991.2302022,
+    "seen": 1791922526.9818487,
+    "ast_hash": "990f7e72fb306ed29254c40ec318f39f",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/architecture/patterns-reference.md": {
+    "mtime": 1789942991.2302482,
+    "seen": 1791922526.98185,
+    "ast_hash": "78cc84e74395755ba36ea39787fbf0e8",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/architecture/trade-off-analysis.md": {
+    "mtime": 1789942991.230267,
+    "seen": 1791922526.9818504,
+    "ast_hash": "8516898261585fd349b28bb56993c858",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/bash-linux/SKILL.md": {
+    "mtime": 1789942991.2292879,
+    "seen": 1791922526.981851,
+    "ast_hash": "8b5c2c1f97eb17fc413f5aaeb064505b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/batch-operations/SKILL.md": {
+    "mtime": 1789942991.2307844,
+    "seen": 1791922526.9818518,
+    "ast_hash": "93ff24f4cff8c2dd8aecaacbfcbae595",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/behavioral-modes/SKILL.md": {
+    "mtime": 1789942991.2310524,
+    "seen": 1791922526.9818528,
+    "ast_hash": "f7d536f545f510eadceb70e67de867a2",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/brainstorming/SKILL.md": {
+    "mtime": 1789942991.229185,
+    "seen": 1791922526.9818535,
+    "ast_hash": "0b022ebb3db477128d14c01c789ba78e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/brainstorming/dynamic-questioning.md": {
+    "mtime": 1789942991.2291608,
+    "seen": 1791922526.9818542,
+    "ast_hash": "f5ab6241084a57eee88a93413d89fb12",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/clean-code/SKILL.md": {
+    "mtime": 1789942991.229315,
+    "seen": 1791922526.981855,
+    "ast_hash": "a96af5e296005355db8326160cfb48bc",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/code-review-checklist/SKILL.md": {
+    "mtime": 1789942991.2299728,
+    "seen": 1791922526.981856,
+    "ast_hash": "800e7bc73404537f4e92cfccbda20e7d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/code-review-graph/SKILL.md": {
+    "mtime": 1789942991.2300096,
+    "seen": 1791922526.9818566,
+    "ast_hash": "1e6be131d7e3b1fb7f4888fcf6fc6ac6",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/context-compression/SKILL.md": {
+    "mtime": 1789942991.2297623,
+    "seen": 1791922526.9818573,
+    "ast_hash": "44ef29c25828ffa2f3b7993df5e660cd",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/coordinator-mode/SKILL.md": {
+    "mtime": 1789942991.2316344,
+    "seen": 1791922526.981858,
+    "ast_hash": "a573b17df68f11a3ea7cdd74cf5389d6",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/database-design/SKILL.md": {
+    "mtime": 1789942991.2299027,
+    "seen": 1791922526.9818587,
+    "ast_hash": "8fea89642436604b35f9cc939866ce64",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/database-design/database-selection.md": {
+    "mtime": 1789942991.229846,
+    "seen": 1791922526.9818597,
+    "ast_hash": "b7ceec000a37a59b8c23a2dcf275508a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/database-design/indexing.md": {
+    "mtime": 1789942991.2298717,
+    "seen": 1791922526.9818604,
+    "ast_hash": "017226ff26ba90ce7bd0e6cd20e1eb2e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/database-design/migrations.md": {
+    "mtime": 1789942991.229793,
+    "seen": 1791922526.9818609,
+    "ast_hash": "0941c8ccb7e6a5cd91fa8c89d0d101af",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/database-design/optimization.md": {
+    "mtime": 1789942991.2298717,
+    "seen": 1791922526.9818616,
+    "ast_hash": "a498843587f266546659895db033a966",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/database-design/orm-selection.md": {
+    "mtime": 1789942991.2298717,
+    "seen": 1791922526.981862,
+    "ast_hash": "539594d221c65c7b3f05d23475c02333",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/database-design/schema-design.md": {
+    "mtime": 1789942991.2299619,
+    "seen": 1791922526.981863,
+    "ast_hash": "1d746f15dbf7358aa296b9527c245ddf",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/deployment-procedures/SKILL.md": {
+    "mtime": 1789942991.231362,
+    "seen": 1791922526.9818635,
+    "ast_hash": "676866a5ad3cf0dc8363c0211dd368d7",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/design-spec/SKILL.md": {
+    "mtime": 1789942991.229793,
+    "seen": 1791922526.9818642,
+    "ast_hash": "faf5cc79ce641ac9d7d086b749289f45",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/design-spec/collection.md": {
+    "mtime": 1789942991.2297623,
+    "seen": 1791922526.9818647,
+    "ast_hash": "d8b5abc58954507a08489dc2d5fa6c34",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/documentation-templates/SKILL.md": {
+    "mtime": 1789942991.2316175,
+    "seen": 1791922526.9818654,
+    "ast_hash": "2d3a0c306cfd9a39b900c49b7fbc8416",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/frontend-architecture/SKILL.md": {
+    "mtime": 1789942991.2292345,
+    "seen": 1791922526.981866,
+    "ast_hash": "701fd1c3523a09b04beb2e1e2c3a126c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/frontend-design/SKILL.md": {
+    "mtime": 1789942991.2311313,
+    "seen": 1791922526.9818668,
+    "ast_hash": "c66579b6744fed8e93058340696cd8f5",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/frontend-design/redesign.md": {
+    "mtime": 1789942991.2310715,
+    "seen": 1791922526.9818676,
+    "ast_hash": "9fe3eb5f521c1e7c08caf081d738157c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/frontend-design/style-brutalist.md": {
+    "mtime": 1789942991.2311313,
+    "seen": 1791922526.9818683,
+    "ast_hash": "a59bd356b3b56e04c1787eb6690b7ed5",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/frontend-design/style-minimalist.md": {
+    "mtime": 1789942991.231113,
+    "seen": 1791922526.9818687,
+    "ast_hash": "901934e127f769e3aceb8d2139e2d4e6",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/2d-games/SKILL.md": {
+    "mtime": 1789942991.234191,
+    "seen": 1791922526.9818695,
+    "ast_hash": "68f101a036141b8bc846a7505d919dea",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/3d-games/SKILL.md": {
+    "mtime": 1789942991.2341301,
+    "seen": 1791922526.9818704,
+    "ast_hash": "71d9f39780542dfdee589774e2996ad8",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/SKILL.md": {
+    "mtime": 1789942991.2304628,
+    "seen": 1791922526.9818711,
+    "ast_hash": "6fe7c41858105d14f965f0860a7e1205",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/game-art/SKILL.md": {
+    "mtime": 1789942991.234191,
+    "seen": 1791922526.9818716,
+    "ast_hash": "c1c39e0908abc202414da889cf7e0e35",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/game-audio/SKILL.md": {
+    "mtime": 1789942991.2341301,
+    "seen": 1791922526.9818723,
+    "ast_hash": "a00c0bf7efdc174c7645c03a1ee45b81",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/game-design/SKILL.md": {
+    "mtime": 1789942991.234191,
+    "seen": 1791922526.981873,
+    "ast_hash": "68e4964de714f7c499f0097945d0802c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/mobile-games/SKILL.md": {
+    "mtime": 1789942991.2341518,
+    "seen": 1791922526.9818738,
+    "ast_hash": "3cdf47646b828282a1e2e849ffcb56ed",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/multiplayer/SKILL.md": {
+    "mtime": 1789942991.2342534,
+    "seen": 1791922526.9818745,
+    "ast_hash": "e1b4002933e56373e84f0d6c971a130e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/pc-games/SKILL.md": {
+    "mtime": 1789942991.2341518,
+    "seen": 1791922526.981875,
+    "ast_hash": "c1c121c4cb338a451830f183a6fedc43",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/vr-ar/SKILL.md": {
+    "mtime": 1789942991.2342277,
+    "seen": 1791922526.9818754,
+    "ast_hash": "2321afc32058091c04b4d1a8689826b2",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/game-development/web-games/SKILL.md": {
+    "mtime": 1789942991.2341084,
+    "seen": 1791922526.9818761,
+    "ast_hash": "b21a561c82c03638007521a3fc3a8814",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/geo-fundamentals/SKILL.md": {
+    "mtime": 1789942991.229091,
+    "seen": 1791922526.981877,
+    "ast_hash": "ed2af9d509218822937bfd5cdeef40c3",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/i18n-localization/SKILL.md": {
+    "mtime": 1789942991.2316816,
+    "seen": 1791922526.9818776,
+    "ast_hash": "2c8ad400f06df134d2f6195678f91f4d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/intelligent-routing/SKILL.md": {
+    "mtime": 1789942991.2316499,
+    "seen": 1791922526.9818783,
+    "ast_hash": "69d982b276ead0cfc0e70aa1644ebbda",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/lint-and-validate/SKILL.md": {
+    "mtime": 1789942991.2317083,
+    "seen": 1791922526.9818788,
+    "ast_hash": "634a568902dca6129dfb5540f3318069",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mcp-builder/SKILL.md": {
+    "mtime": 1789942991.2314575,
+    "seen": 1791922526.9818795,
+    "ast_hash": "cd761c9f00352af44b5df975af1debf9",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/memory-system/SKILL.md": {
+    "mtime": 1789942991.2292879,
+    "seen": 1791922526.981881,
+    "ast_hash": "f70a981111fbe32df624c0f620159de9",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/SKILL.md": {
+    "mtime": 1789942991.2307363,
+    "seen": 1791922526.9818816,
+    "ast_hash": "4bd39fc3e85ffc1f8c651567413f89b7",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/decision-trees.md": {
+    "mtime": 1789942991.23056,
+    "seen": 1791922526.9818823,
+    "ast_hash": "979a18448a1529fb77266583262e412d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/mobile-backend.md": {
+    "mtime": 1789942991.2307363,
+    "seen": 1791922526.981883,
+    "ast_hash": "cb47ed2fd2a064204b0ab90047128060",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/mobile-color-system.md": {
+    "mtime": 1789942991.2305768,
+    "seen": 1791922526.981884,
+    "ast_hash": "3bc7a2f6a2483a22a33529846aa4fbbf",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/mobile-debugging.md": {
+    "mtime": 1789942991.2306483,
+    "seen": 1791922526.9818847,
+    "ast_hash": "191cf7f7d36e650b3f6911b583484a44",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/mobile-design-thinking.md": {
+    "mtime": 1789942991.230714,
+    "seen": 1791922526.9818854,
+    "ast_hash": "466ee0e0551696347c9ae5a46779bbbb",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/mobile-navigation.md": {
+    "mtime": 1789942991.2307363,
+    "seen": 1791922526.9818861,
+    "ast_hash": "3b968a2dca730e84730c556224dce43a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/mobile-performance.md": {
+    "mtime": 1789942991.2306833,
+    "seen": 1791922526.9818869,
+    "ast_hash": "6729298619a8d79fe2ef87f155fc84d5",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/mobile-testing.md": {
+    "mtime": 1789942991.2306259,
+    "seen": 1791922526.9818878,
+    "ast_hash": "cee887cbe1df018a41fcc3b43782c8d7",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/mobile-typography.md": {
+    "mtime": 1789942991.2307844,
+    "seen": 1791922526.9818888,
+    "ast_hash": "ae6ff61427e0a5c8e3f0f6e3b0f7150c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/platform-android.md": {
+    "mtime": 1789942991.2306483,
+    "seen": 1791922526.9818895,
+    "ast_hash": "c60abbe2d11c972d56b478e22adf590c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/platform-ios.md": {
+    "mtime": 1789942991.2306259,
+    "seen": 1791922526.98189,
+    "ast_hash": "ae0e7eb67620fca68e70fdf7bc9b0b98",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/mobile-design/touch-psychology.md": {
+    "mtime": 1789942991.2305768,
+    "seen": 1791922526.981891,
+    "ast_hash": "6a51ed169617ab2c2572d3ab1d33b277",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/1-async-eliminating-waterfalls.md": {
+    "mtime": 1789942991.2308624,
+    "seen": 1791922526.9818916,
+    "ast_hash": "e37700cdfea717354c39b039f1e34f0a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/2-bundle-bundle-size-optimization.md": {
+    "mtime": 1789942991.2309184,
+    "seen": 1791922526.9818928,
+    "ast_hash": "7b241353802e628a70f84833455483ce",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/3-server-server-side-performance.md": {
+    "mtime": 1789942991.2308624,
+    "seen": 1791922526.9818935,
+    "ast_hash": "cee16c102dc8f7529627d3577030c302",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/4-client-client-side-data-fetching.md": {
+    "mtime": 1789942991.2309184,
+    "seen": 1791922526.9818945,
+    "ast_hash": "3bfbcc47bb3c8bc2617f56da0f2bf162",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/5-rerender-re-render-optimization.md": {
+    "mtime": 1789942991.2309976,
+    "seen": 1791922526.9818952,
+    "ast_hash": "0a5d91bb62b95925163fce4ef91e9475",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/6-rendering-rendering-performance.md": {
+    "mtime": 1789942991.2308383,
+    "seen": 1791922526.981896,
+    "ast_hash": "ebf2f27ff0c231f3081524400e4c1e44",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/7-js-javascript-performance.md": {
+    "mtime": 1789942991.2309394,
+    "seen": 1791922526.9818964,
+    "ast_hash": "2e03a3209256c1abf3661c2144f7a06a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/8-advanced-advanced-patterns.md": {
+    "mtime": 1789942991.230886,
+    "seen": 1791922526.981897,
+    "ast_hash": "601380531f721e9c54e3c05f1610601d",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/9-cache-components.md": {
+    "mtime": 1789942991.2308624,
+    "seen": 1791922526.981898,
+    "ast_hash": "834c2b2bfe06f6c85daabfd93a964b79",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nextjs-react-expert/SKILL.md": {
+    "mtime": 1789942991.2309394,
+    "seen": 1791922526.9818985,
+    "ast_hash": "009b1612ebcf7cdcc30a4154097653ed",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/nodejs-best-practices/SKILL.md": {
+    "mtime": 1789942991.2292051,
+    "seen": 1791922526.9818993,
+    "ast_hash": "a0183c0cb25d21d4db0f5c6b045878fb",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/parallel-agents/SKILL.md": {
+    "mtime": 1789942991.2292345,
+    "seen": 1791922526.9818997,
+    "ast_hash": "e15702b2ffddc0bcf8321d54900ea59a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/performance-profiling/SKILL.md": {
+    "mtime": 1789942991.229315,
+    "seen": 1791922526.9819005,
+    "ast_hash": "6cc8b7936dc497981d419ed2f015be91",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/plan-writing/SKILL.md": {
+    "mtime": 1789942991.2314575,
+    "seen": 1791922526.9819012,
+    "ast_hash": "25ce836cf32feb4ec1755a6c9f1ba71a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/powershell-windows/SKILL.md": {
+    "mtime": 1789942991.2316499,
+    "seen": 1791922526.9819016,
+    "ast_hash": "610a4da9873d5f093d3c0e80d384aa8c",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/python-patterns/SKILL.md": {
+    "mtime": 1789942991.2292345,
+    "seen": 1791922526.9819024,
+    "ast_hash": "acf8c60aa6c74b7066641ad1c4471e95",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/red-team-tactics/SKILL.md": {
+    "mtime": 1789942991.2317083,
+    "seen": 1791922526.981903,
+    "ast_hash": "b47e059a2f0b75632de195364b945aa3",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/rust-pro/SKILL.md": {
+    "mtime": 1789942991.2317321,
+    "seen": 1791922526.9819036,
+    "ast_hash": "f28b0a8e90fed2d0cfb1afbcb30a5248",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/seo-fundamentals/SKILL.md": {
+    "mtime": 1789942991.2308035,
+    "seen": 1791922526.9819043,
+    "ast_hash": "fdc664fbb2d7cef7ebda5a2cec4215af",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/server-management/SKILL.md": {
+    "mtime": 1789942991.2310524,
+    "seen": 1791922526.9819052,
+    "ast_hash": "8b78704eaf6699824417df05a88e5805",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/simplify-code/SKILL.md": {
+    "mtime": 1789942991.2302022,
+    "seen": 1791922526.9819057,
+    "ast_hash": "f1c42eebf1e0119efb51bce17ab4ba27",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/skillify/SKILL.md": {
+    "mtime": 1789942991.2317703,
+    "seen": 1791922526.9819064,
+    "ast_hash": "a3cf799560d513163fae9ec0b30a82af",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/systematic-debugging/SKILL.md": {
+    "mtime": 1789942991.2317703,
+    "seen": 1791922526.9819071,
+    "ast_hash": "150b570e7882697ba7cd530d629c27f3",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/tailwind-patterns/SKILL.md": {
+    "mtime": 1789942991.2305264,
+    "seen": 1791922526.9819083,
+    "ast_hash": "4b377dcbf9894e1499b8b792c1da0412",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/tdd-workflow/SKILL.md": {
+    "mtime": 1789942991.2314408,
+    "seen": 1791922526.981909,
+    "ast_hash": "d9e8dc40b654b74cb96565f74b97de7b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/testing-patterns/SKILL.md": {
+    "mtime": 1789942991.2299619,
+    "seen": 1791922526.9819098,
+    "ast_hash": "901c4a50b5be1124057aa32432aedb21",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/verify-changes/SKILL.md": {
+    "mtime": 1789942991.229185,
+    "seen": 1791922526.9819105,
+    "ast_hash": "0954b44332c6f586d697ec78801272a2",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/vulnerability-scanner/SKILL.md": {
+    "mtime": 1789942991.229357,
+    "seen": 1791922526.9819112,
+    "ast_hash": "89bb60233c8f73395c85595fdf0d4cee",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/vulnerability-scanner/checklists.md": {
+    "mtime": 1789942991.229357,
+    "seen": 1791922526.981912,
+    "ast_hash": "c41c28f95c897d2c302309d7dbbc8bc9",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/web-design-guidelines/SKILL.md": {
+    "mtime": 1789942991.2299728,
+    "seen": 1791922526.9819129,
+    "ast_hash": "e318139bea3720181f243910a37cb3fa",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/skills/webapp-testing/SKILL.md": {
+    "mtime": 1789942991.2310715,
+    "seen": 1791922526.9819133,
+    "ast_hash": "8892a38c9b4e5595e194aae992b30a38",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/brainstorm.md": {
+    "mtime": 1789942991.2225065,
+    "seen": 1791922526.981914,
+    "ast_hash": "1528cd2fe6d31c32af4eb9c599048295",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/coordinate.md": {
+    "mtime": 1789942991.222579,
+    "seen": 1791922526.981915,
+    "ast_hash": "e6ac4079b102ffdce642a9ba97fc9362",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/create.md": {
+    "mtime": 1789942991.2225533,
+    "seen": 1791922526.9819155,
+    "ast_hash": "d0651d1281d56a246fa883a1151bc618",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/debug.md": {
+    "mtime": 1789942991.2224593,
+    "seen": 1791922526.9819162,
+    "ast_hash": "06c1b52f2f3003931990a6c0213ffe4f",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/deploy.md": {
+    "mtime": 1789942991.222475,
+    "seen": 1791922526.9819167,
+    "ast_hash": "53b6d2d832a835334b045aeceab26817",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/enhance.md": {
+    "mtime": 1789942991.2225323,
+    "seen": 1791922526.9819174,
+    "ast_hash": "a77948f1e357a362ea638e2f13f08f1e",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/orchestrate.md": {
+    "mtime": 1789942991.222579,
+    "seen": 1791922526.9819179,
+    "ast_hash": "070b3ac529394e51e8e1c64f324e706b",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/plan.md": {
+    "mtime": 1789942991.2223892,
+    "seen": 1791922526.9819188,
+    "ast_hash": "2763be9ca5ee7ac598f000b95b68a16a",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/preview.md": {
+    "mtime": 1789942991.222423,
+    "seen": 1791922526.9819193,
+    "ast_hash": "e70fe7de0af74f933b94bd7aa325de47",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/remember.md": {
+    "mtime": 1789942991.2223892,
+    "seen": 1791922526.98192,
+    "ast_hash": "f0e219f85d87896cfa749e3b99675b8f",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/status.md": {
+    "mtime": 1789942991.222475,
+    "seen": 1791922526.9819207,
+    "ast_hash": "31ecb053e2c2008ca8344d36797b9e93",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/test.md": {
+    "mtime": 1789942991.2225323,
+    "seen": 1791922526.9819212,
+    "ast_hash": "b892ac4fcbfc884fbf0f325d24ffe788",
+    "semantic_hash": ""
+  },
+  ".ag-kit-backups/20260920-222311-157/.agents/workflows/verify.md": {
+    "mtime": 1789942991.2224407,
+    "seen": 1791922526.9819221,
+    "ast_hash": "146a87489be95a44c1620c53eca75465",
+    "semantic_hash": ""
+  },
+  ".agents/rules/handover-progress.md": {
+    "mtime": 1790246980.5059233,
+    "seen": 1791922526.9819527,
+    "ast_hash": "acb9cef0b2c49a554aecf3e8e23b65bd",
+    "semantic_hash": ""
+  },
+  ".agents/rules/ui-ux-rules.md": {
+    "mtime": 1789947275.7952113,
+    "seen": 1791922526.9819577,
+    "ast_hash": "f072b7af34fc63b6749db97001987922",
+    "semantic_hash": ""
+  },
+  ".agents/skills/asd-ste100/README.md": {
+    "mtime": 1791574949.1568098,
+    "seen": 1791922526.9819896,
+    "ast_hash": "461413a9a8e2b8f0b317a76d1e7daafc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/asd-ste100/SKILL.md": {
+    "mtime": 1791574949.1568098,
+    "seen": 1791922526.9819906,
+    "ast_hash": "20c9c80f1c6b6d01495f3ae878d1fe59",
+    "semantic_hash": ""
+  },
+  ".agents/skills/asd-ste100/examples/before-after.md": {
+    "mtime": 1791574949.1569035,
+    "seen": 1791922526.981991,
+    "ast_hash": "a6a30cd62ecee2826f9576cf518195e6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/asd-ste100/examples/linter-edge-cases.md": {
+    "mtime": 1791574949.1569183,
+    "seen": 1791922526.981992,
+    "ast_hash": "f0fe44ea8ba4a21b289e393c1e93c0b5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/asd-ste100/references/writing-rules.md": {
+    "mtime": 1791574949.1569183,
+    "seen": 1791922526.9819927,
+    "ast_hash": "897765508c86a91c888a34f97b3bf918",
+    "semantic_hash": ""
+  },
+  ".agents/skills/banner-design/SKILL.md": {
+    "mtime": 1789943103.3704019,
+    "seen": 1791922526.9819932,
+    "ast_hash": "aaf11854e0f8233bb53282699334164e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/banner-design/references/banner-sizes-and-styles.md": {
+    "mtime": 1789943103.3682876,
+    "seen": 1791922526.981994,
+    "ast_hash": "2581cbdf098909b898471bea6adabff6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/SKILL.md": {
+    "mtime": 1789943103.393942,
+    "seen": 1791922526.981999,
+    "ast_hash": "7d771c480a628d8abdd2749d1893c7ab",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/approval-checklist.md": {
+    "mtime": 1789943103.3832083,
+    "seen": 1791922526.9819996,
+    "ast_hash": "8cedb5a9d3ddff0d5f7d98affd1fadfc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/asset-organization.md": {
+    "mtime": 1789943103.3924205,
+    "seen": 1791922526.9820004,
+    "ast_hash": "8c359aaccb0d5f5a9c0daed9128fd9e9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/brand-guideline-template.md": {
+    "mtime": 1789943103.3881488,
+    "seen": 1791922526.982001,
+    "ast_hash": "40aadbb3eb6b82efb9c933951cdfe632",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/color-palette-management.md": {
+    "mtime": 1789943103.3793452,
+    "seen": 1791922526.982002,
+    "ast_hash": "b7e3dc308cfc2e65bd94ecf85fb580e7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/consistency-checklist.md": {
+    "mtime": 1789943103.3914893,
+    "seen": 1791922526.9820027,
+    "ast_hash": "e0be65fe750959b397a96d72ee939ebc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/logo-usage-rules.md": {
+    "mtime": 1789943103.3852496,
+    "seen": 1791922526.9820032,
+    "ast_hash": "03cb4cb2d302a9e827fceeff93b4186a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/messaging-framework.md": {
+    "mtime": 1789943103.3904846,
+    "seen": 1791922526.982004,
+    "ast_hash": "9390c33e1c7ddb04a39528aa5872f85f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/typography-specifications.md": {
+    "mtime": 1789943103.3893971,
+    "seen": 1791922526.9820044,
+    "ast_hash": "bc5d6e2d497b8aa2d3110de1d8463276",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/update.md": {
+    "mtime": 1789943103.3843606,
+    "seen": 1791922526.9820054,
+    "ast_hash": "14b943f767980c2675e19008209d9eac",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/visual-identity.md": {
+    "mtime": 1789943103.381903,
+    "seen": 1791922526.9820058,
+    "ast_hash": "0ada28b9a2e03da7fe50b95f3318f4de",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/references/voice-framework.md": {
+    "mtime": 1789943103.3869884,
+    "seen": 1791922526.9820065,
+    "ast_hash": "05b79e16c373850ea5e94e0977856dbc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/brand/templates/brand-guidelines-starter.md": {
+    "mtime": 1789943103.376402,
+    "seen": 1791922526.9820073,
+    "ast_hash": "f7a5da16b17f9792a93270626d97a978",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/SKILL.md": {
+    "mtime": 1789943103.4897342,
+    "seen": 1791922526.9820206,
+    "ast_hash": "399b2e5ffbeac0bc777882e340245be9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/references/component-specs.md": {
+    "mtime": 1789943103.4822989,
+    "seen": 1791922526.982021,
+    "ast_hash": "4b96207671408be2dac5b13c9e31f5bd",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/references/component-tokens.md": {
+    "mtime": 1789943103.4850419,
+    "seen": 1791922526.9820218,
+    "ast_hash": "c66d6ccb3240d4eba923891a2fdb3b58",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/references/primitive-tokens.md": {
+    "mtime": 1789943103.4816484,
+    "seen": 1791922526.9820228,
+    "ast_hash": "7ebd68b0dfab8c9df2f22d85a3022e09",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/references/semantic-tokens.md": {
+    "mtime": 1789943103.4882019,
+    "seen": 1791922526.9820232,
+    "ast_hash": "c7078e566f78cb07696a158fa6746f54",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/references/states-and-variants.md": {
+    "mtime": 1789943103.4860358,
+    "seen": 1791922526.982024,
+    "ast_hash": "ff0c751bff96625c6780ae076ed4558d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/references/tailwind-integration.md": {
+    "mtime": 1789943103.4838471,
+    "seen": 1791922526.9820244,
+    "ast_hash": "d111e6c9b42fc6c83e353be65f1e7380",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design-system/references/token-architecture.md": {
+    "mtime": 1789943103.4870915,
+    "seen": 1791922526.9820251,
+    "ast_hash": "b63bc63526a343c95a7401aa17ec24fb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/SKILL.md": {
+    "mtime": 1789943103.4486792,
+    "seen": 1791922526.9820256,
+    "ast_hash": "d61b2326528cef1f0a8802c473840aa7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/banner-sizes-and-styles.md": {
+    "mtime": 1789943103.4439323,
+    "seen": 1791922526.9820266,
+    "ast_hash": "2581cbdf098909b898471bea6adabff6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/cip-deliverable-guide.md": {
+    "mtime": 1789943103.4409463,
+    "seen": 1791922526.9820273,
+    "ast_hash": "529d95a6ced350448cff5c2c994adaf6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/cip-design.md": {
+    "mtime": 1789943103.4461792,
+    "seen": 1791922526.982028,
+    "ast_hash": "0c7a987fa779a7058a26b92aba5c1e8c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/cip-prompt-engineering.md": {
+    "mtime": 1789943103.4304872,
+    "seen": 1791922526.9820285,
+    "ast_hash": "71a93064bf55486c3d3bbbfa512db516",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/cip-style-guide.md": {
+    "mtime": 1789943103.4274564,
+    "seen": 1791922526.9820292,
+    "ast_hash": "45ddddcc2633526b10d3936407a37fdb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/design-routing.md": {
+    "mtime": 1789943103.4332492,
+    "seen": 1791922526.9820302,
+    "ast_hash": "fb2836b233f4a1a538fcf515d7746d6d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/icon-design.md": {
+    "mtime": 1789943103.4428737,
+    "seen": 1791922526.9820306,
+    "ast_hash": "629ff5002717b909f53363f5cb1cfd28",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/logo-color-psychology.md": {
+    "mtime": 1789943103.438226,
+    "seen": 1791922526.9820313,
+    "ast_hash": "c16a5c2f71bca6dffe5be145fb8e1cb4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/logo-design.md": {
+    "mtime": 1789943103.4419456,
+    "seen": 1791922526.9820318,
+    "ast_hash": "ddf37c8f5fb996f86e11052bbe55e2c5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/logo-prompt-engineering.md": {
+    "mtime": 1789943103.432409,
+    "seen": 1791922526.9820325,
+    "ast_hash": "f2efe3315b1b88e32e3a46f76f00e975",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/logo-style-guide.md": {
+    "mtime": 1789943103.4397438,
+    "seen": 1791922526.9820335,
+    "ast_hash": "87c13758b7b6ee686d46dd1ad444a3d0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/slides-copywriting-formulas.md": {
+    "mtime": 1789943103.4282494,
+    "seen": 1791922526.9820342,
+    "ast_hash": "cc6e52e1363e4df1bb56365444dc0f64",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/slides-create.md": {
+    "mtime": 1789943103.444956,
+    "seen": 1791922526.9820347,
+    "ast_hash": "0c134b4ddc19a2be22f8e378e954cf29",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/slides-html-template.md": {
+    "mtime": 1789943103.4263396,
+    "seen": 1791922526.9820352,
+    "ast_hash": "8240be541e1fa33ed5a1e6f3a6f56525",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/slides-layout-patterns.md": {
+    "mtime": 1789943103.4351246,
+    "seen": 1791922526.9820359,
+    "ast_hash": "1fc25584d384bb44ca077016a7481109",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/slides-strategies.md": {
+    "mtime": 1789943103.4314158,
+    "seen": 1791922526.9820368,
+    "ast_hash": "1fb116496c22dc3e9ca8a44f86b219bb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/slides.md": {
+    "mtime": 1789943103.4296188,
+    "seen": 1791922526.9820373,
+    "ast_hash": "6c72659c3af2cdb7df76827cdfff8c2c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/design/references/social-photos-design.md": {
+    "mtime": 1789943103.4470139,
+    "seen": 1791922526.982038,
+    "ast_hash": "e4df69abcf5c9d57a219b0e264b699be",
+    "semantic_hash": ""
+  },
+  ".agents/skills/slides/SKILL.md": {
+    "mtime": 1789943103.515155,
+    "seen": 1791922526.982087,
+    "ast_hash": "1d017fa64446b147cb7c84f05562520f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/slides/references/copywriting-formulas.md": {
+    "mtime": 1789943103.5136826,
+    "seen": 1791922526.9820876,
+    "ast_hash": "cc6e52e1363e4df1bb56365444dc0f64",
+    "semantic_hash": ""
+  },
+  ".agents/skills/slides/references/create.md": {
+    "mtime": 1789943103.5108252,
+    "seen": 1791922526.9820886,
+    "ast_hash": "0c134b4ddc19a2be22f8e378e954cf29",
+    "semantic_hash": ""
+  },
+  ".agents/skills/slides/references/html-template.md": {
+    "mtime": 1789943103.5126941,
+    "seen": 1791922526.9820893,
+    "ast_hash": "8240be541e1fa33ed5a1e6f3a6f56525",
+    "semantic_hash": ""
+  },
+  ".agents/skills/slides/references/layout-patterns.md": {
+    "mtime": 1789943103.5090632,
+    "seen": 1791922526.98209,
+    "ast_hash": "1fc25584d384bb44ca077016a7481109",
+    "semantic_hash": ""
+  },
+  ".agents/skills/slides/references/slide-strategies.md": {
+    "mtime": 1789943103.5100312,
+    "seen": 1791922526.9820905,
+    "ast_hash": "1fb116496c22dc3e9ca8a44f86b219bb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/LICENSE.txt": {
+    "mtime": 1789943103.5267572,
+    "seen": 1791922526.9820943,
+    "ast_hash": "175792518e4ac015ab6696d16c4f607e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/SKILL.md": {
+    "mtime": 1789943103.5276477,
+    "seen": 1791922526.9820948,
+    "ast_hash": "28a3c5ed8e63a04595cc398a355a3b63",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/references/canvas-design-system.md": {
+    "mtime": 1789943103.5252488,
+    "seen": 1791922526.9820957,
+    "ast_hash": "af9125f586c5909737dab10874f0c1e2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/references/shadcn-accessibility.md": {
+    "mtime": 1789943103.5219975,
+    "seen": 1791922526.9820964,
+    "ast_hash": "942f36327bb6ada5ce9a7f3d0e1877ce",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/references/shadcn-components.md": {
+    "mtime": 1789943103.524719,
+    "seen": 1791922526.982097,
+    "ast_hash": "e6c281ca23ac2a97aefae71f6190f915",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/references/shadcn-theming.md": {
+    "mtime": 1789943103.521128,
+    "seen": 1791922526.9820976,
+    "ast_hash": "1c3f2a49a346f7e22e364f94c3b1d99c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/references/tailwind-customization.md": {
+    "mtime": 1789943103.5202627,
+    "seen": 1791922526.9820983,
+    "ast_hash": "214b07281279c73713262edc92cba5c4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/references/tailwind-responsive.md": {
+    "mtime": 1789943103.5237331,
+    "seen": 1791922526.9820993,
+    "ast_hash": "0404b2ca094826682d24226231ff2fef",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/references/tailwind-utilities.md": {
+    "mtime": 1789943103.5228734,
+    "seen": 1791922526.9820998,
+    "ast_hash": "cc42c158e59165c86fc826c83862c97e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/scripts/requirements.txt": {
+    "mtime": 1789943103.5397303,
+    "seen": 1791922526.9821005,
+    "ast_hash": "56d0657c2d53f4edf30689d0c217efbb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-styling/scripts/tests/requirements.txt": {
+    "mtime": 1789943103.5362487,
+    "seen": 1791922526.9821012,
+    "ast_hash": "d7fb3d2ea85706944ec8609949c3a851",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max/SKILL.md": {
+    "mtime": 1789943103.2362504,
+    "seen": 1791922526.9821017,
+    "ast_hash": "9403b4970ce10bcfe5e3965761ae22f8",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1791917750.4490345,
+    "seen": 1791922526.9821174,
+    "ast_hash": "0edd5309ba90d1af4fbc40b6b4087aba",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1791580520.7241182,
+    "seen": 1791922526.9821181,
+    "ast_hash": "a1f17939ce9bf47495306fbc46226f1d",
+    "semantic_hash": ""
+  },
+  "PLAN.md": {
+    "mtime": 1791922431.1267002,
+    "seen": 1791922526.9821205,
+    "ast_hash": "d136e13b53fe1f05b711f582856661b4",
+    "semantic_hash": ""
+  },
+  "capex-costing.md": {
+    "mtime": 1790104300.412031,
+    "seen": 1791922526.982122,
+    "ast_hash": "ba3e8577463b5f009ad6ca0614ec71d1",
+    "semantic_hash": ""
+  },
+  "craft-finance-service/src/main/resources/application.yml": {
+    "mtime": 1790525426.8901234,
+    "seen": 1791922526.9821224,
+    "ast_hash": "6b5d5cdb6dd6356982fda40ee13917f5",
+    "semantic_hash": ""
+  },
+  "craft-sales-service/src/main/resources/application.yml": {
+    "mtime": 1790771072.1468542,
+    "seen": 1791922526.9821262,
+    "ast_hash": "66ea14f8f91968fb230729bb30d88e71",
+    "semantic_hash": ""
+  },
+  "docs/HANDOVER.md": {
+    "mtime": 1791922482.0544913,
+    "seen": 1791922526.982128,
+    "ast_hash": "4ee4422baf2caa847f8853511b9eb0b6",
+    "semantic_hash": ""
+  },
+  "docs/RABBITMQ_TRACING.md": {
+    "mtime": 1791142286.65746,
+    "seen": 1791922526.9821303,
+    "ast_hash": "c1c5c4c8372b5042f1e912f334b33cc3",
+    "semantic_hash": ""
+  },
+  "docs/admin-portal-plan.md": {
+    "mtime": 1791490202.1517055,
+    "seen": 1791922526.9821465,
+    "ast_hash": "3037e5cef99ef6dd4ba81da84994a59f",
+    "semantic_hash": ""
+  },
+  "docs/admin-tenant-dashboard-plan.md": {
+    "mtime": 1791917382.1314616,
+    "seen": 1791922526.9821472,
+    "ast_hash": "5c7ecd6efdea92e3a98833ed12fca367",
+    "semantic_hash": ""
+  },
+  "docs/architecture/adr-001-capex-costing.md": {
+    "mtime": 1790104299.9440336,
+    "seen": 1791922526.9821482,
+    "ast_hash": "42225e21d7f28c5607002760f8303a6c",
+    "semantic_hash": ""
+  },
+  "docs/customer-orders-implementation-plan.md": {
+    "mtime": 1790247426.9741042,
+    "seen": 1791922526.9821486,
+    "ast_hash": "74c1fda03fb0c1a2199d75e5d56353c0",
+    "semantic_hash": ""
+  },
+  "docs/dashboard-reports-settings-plan.md": {
+    "mtime": 1790449350.3595686,
+    "seen": 1791922526.9821494,
+    "ast_hash": "7a342077b7b6df72e4dfc96c55a4a923",
+    "semantic_hash": ""
+  },
+  "docs/fulfillment-and-costing-plan.md": {
+    "mtime": 1790438474.4935799,
+    "seen": 1791922526.9821498,
+    "ast_hash": "83458d35beeba71079b35943da53e112",
+    "semantic_hash": ""
+  },
+  "docs/implement-ledgers.md": {
+    "mtime": 1790523435.3362145,
+    "seen": 1791922526.9821506,
+    "ast_hash": "90ea7b60e6aa54fb059bd18e3fe0b073",
+    "semantic_hash": ""
+  },
+  "docs/order-payments-implementation-plan.md": {
+    "mtime": 1790187568.5447996,
+    "seen": 1791922526.9821513,
+    "ast_hash": "1e53e8e367c99b1f89aab0a5d4f43ed3",
+    "semantic_hash": ""
+  },
+  "docs/order-production-linkage-plan.md": {
+    "mtime": 1790247426.5411031,
+    "seen": 1791922526.982152,
+    "ast_hash": "d8d6520d121e8318d68aba4519b16a77",
+    "semantic_hash": ""
+  },
+  "docs/order-recipe-mapping-plan.md": {
+    "mtime": 1790247478.3952444,
+    "seen": 1791922526.9821527,
+    "ast_hash": "8b6a3ca78b63d85b7b36e949d5039b91",
+    "semantic_hash": ""
+  },
+  "docs/payment-independent-production-plan.md": {
+    "mtime": 1790247492.7182834,
+    "seen": 1791922526.9821534,
+    "ast_hash": "3c3c5833534c062c79504effdce172d1",
+    "semantic_hash": ""
+  },
+  "docs/post-preparation-cancellation-plan.md": {
+    "mtime": 1790448854.6096478,
+    "seen": 1791922526.9821541,
+    "ast_hash": "b9a4a151927f140de731a233fbfeb447",
+    "semantic_hash": ""
+  },
+  "docs/production-implementation-plan.md": {
+    "mtime": 1790185287.1845982,
+    "seen": 1791922526.9821548,
+    "ast_hash": "02146c17d62cbab101ea852a00694815",
+    "semantic_hash": ""
+  },
+  "docs/simplification-handover.md": {
+    "mtime": 1791038737.1326535,
+    "seen": 1791922526.9821556,
+    "ast_hash": "0d22b201ff380b420ceefdbcaf2a3c11",
+    "semantic_hash": ""
+  },
+  "docs/simplification-plan.md": {
+    "mtime": 1791029606.0973892,
+    "seen": 1791922526.9821563,
+    "ast_hash": "579100a77d6f137900bc1d57bd977dc8",
+    "semantic_hash": ""
+  },
+  "docs/simplification-progress.md": {
+    "mtime": 1791038715.6118991,
+    "seen": 1791922526.9821568,
+    "ast_hash": "e64e13208e8d4355cf4c2ea3e92faa5a",
+    "semantic_hash": ""
+  },
+  "docs/simplification-proposal.md": {
+    "mtime": 1791029515.979397,
+    "seen": 1791922526.9821575,
+    "ast_hash": "d19bc1b2783f6593da3f26ba46b9f9ab",
+    "semantic_hash": ""
+  },
+  "docs/thamanicraft-architecture.html": {
+    "mtime": 1790437036.589996,
+    "seen": 1791922526.9821584,
+    "ast_hash": "4a22f59bbba5787e627a16d50391d3bd",
+    "semantic_hash": ""
+  },
+  "docs/thamanicraft-architecture.visual-check.html": {
+    "mtime": 1790435331.499925,
+    "seen": 1791922526.982159,
+    "ast_hash": "03415f68ecae51142874efc9d356dceb",
+    "semantic_hash": ""
+  },
+  "grn-implementation.md": {
+    "mtime": 1790005597.5267313,
+    "seen": 1791922526.9821596,
+    "ast_hash": "d24ff8dc53fee4412a0c0aa0f4851c55",
+    "semantic_hash": ""
+  },
+  "inventory-cost-correction.md": {
+    "mtime": 1790072386.3343146,
+    "seen": 1791922526.98216,
+    "ast_hash": "7ce46c6c03c75971eb7965f76d242703",
+    "semantic_hash": ""
+  },
+  "manual-cost-register.md": {
+    "mtime": 1790104455.5050066,
+    "seen": 1791922526.9821608,
+    "ast_hash": "4158f824ed221b49516f9df611d7f614",
+    "semantic_hash": ""
+  },
+  "recipes-implementation.md": {
+    "mtime": 1790011129.1425974,
+    "seen": 1791922526.9821618,
+    "ast_hash": "b836ace62c5818f675350733f9b694ed",
+    "semantic_hash": ""
+  },
+  "docs/thamanicraft-architecture.visual-check.1440x900.dark.png": {
+    "mtime": 1790435330.8903623,
+    "seen": 1791922526.9821656,
+    "ast_hash": "91c84aca1067638d651d27828f3c95a4",
+    "semantic_hash": ""
+  },
+  "docs/thamanicraft-architecture.visual-check.1440x900.light.png": {
+    "mtime": 1790435328.9409888,
+    "seen": 1791922526.982166,
+    "ast_hash": "660cd751acc1b9026fe38511277ba014",
+    "semantic_hash": ""
+  },
+  "docs/thamanicraft-architecture.visual-check.2048x1320.dark.png": {
+    "mtime": 1790435331.49791,
+    "seen": 1791922526.9821668,
+    "ast_hash": "2ef68af8f2b7261e1f308ff5d98a2d19",
+    "semantic_hash": ""
+  },
+  "docs/thamanicraft-architecture.visual-check.2048x1320.light.png": {
+    "mtime": 1790435330.385182,
+    "seen": 1791922526.9821672,
+    "ast_hash": "84b81f2b6f1ea9e93e6311a5daa5caf2",
+    "semantic_hash": ""
+  },
+  "errors.png": {
+    "mtime": 1790622176.43213,
+    "seen": 1791922526.982168,
+    "ast_hash": "2e8dc492df1f79bc4dccc56942c965e9",
+    "semantic_hash": ""
+  },
+  "images/thamaniCraft_icon.png": {
+    "mtime": 1791575980.7793932,
+    "seen": 1791922526.982169,
+    "ast_hash": "c60cd310a21d97e4201c1c6f52a7d73f",
+    "semantic_hash": ""
+  },
+  "images/thamaniCraft_logo.png": {
+    "mtime": 1791575712.2941914,
+    "seen": 1791922526.9821694,
+    "ast_hash": "d3833b9bd396ccf82d6fd6ae5e7d8877",
+    "semantic_hash": ""
+  },
+  "thamanicraft-admin-ui/public/assets/logo.png": {
+    "mtime": 1791575994.1908967,
+    "seen": 1791922526.98217,
+    "ast_hash": "c60cd310a21d97e4201c1c6f52a7d73f",
+    "semantic_hash": ""
+  },
+  "thamanicraft-client-ui/public/assets/logo.png": {
+    "mtime": 1791575994.1917546,
+    "seen": 1791922526.982174,
+    "ast_hash": "c60cd310a21d97e4201c1c6f52a7d73f",
     "semantic_hash": ""
   }
 }

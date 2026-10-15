@@ -39,6 +39,26 @@ needs: [identity-service]
 - [x] Format module list as structured tags and multiselect across admin and client UIs {#module-display-fix}
   tech: `Subscriptions.jsx`, `SubscriptionTab.jsx`, `Billing.jsx`
   by: gemini
+- [x] Add plan customer visibility toggle and direct tenant assignment {#plan-visibility-and-assignment}
+  tech: `SubscriptionPlan.java`, `SubscriptionServiceImpl.java`, `Subscriptions.jsx`, `SubscriptionTab.jsx`
+  by: gemini
+  from: agent
+- [x] Implement Admin Tenant Platform Dashboard {#admin-tenant-dashboard}
+  tech: `AdminDashboardService.java`, `Dashboard.jsx`
+  by: gemini
+  from: agent
+- [x] Implement live microservices socket health probes for Admin Dashboard {#live-microservices-health}
+  tech: `AdminDashboardService.java`, `SystemMonitoringController.java`, `Dashboard.jsx`
+  by: gemini
+  from: agent
+- [x] Implement module entitlements tab in tenant details and protect admin tenant suspension {#tenant-modules-tab}
+  tech: `Tenant.java`, `TenantController.java`, `TenantService.java`, `ModulesTab.jsx`, `Tenants.jsx`, `TenantDetails.jsx`
+  by: gemini
+  from: agent
+- [x] Deep link admin quick actions to target tabs via URL search params {#admin-quick-actions-tab-deeplink}
+  tech: `Dashboard.jsx`, `Subscriptions.jsx`, `Settings.jsx`, `PlatformLogs.jsx`
+  by: gemini
+  from: agent
 
 ## Client Tenant UI {#client-ui}
 tech: React, Ant Design, Vite
@@ -49,6 +69,18 @@ needs: [identity-service, erp-backend]
   tech: `Billing.jsx`, `subscriptionApi.js`
 - [x] Add Invoices tab and Paybill payment instructions to Tenant Billing page
   by: agent
+- [x] Restrict tenant UI sidebar and routes by subscription plan module entitlements {#module-entitlement-enforcement}
+  tech: `AuthServiceImpl.java`, `usePermissions.js`, `MainLayout.jsx`, `Dashboard.jsx`
+  by: gemini
+  from: agent
+- [x] Align pricing plan cards and subscribe buttons to bottom baseline {#plan-card-button-alignment}
+  tech: `Billing.jsx`
+  by: gemini
+  from: agent
+- [x] Format subscription prices and invoice amounts with thousand separators {#currency-thousand-separators}
+  tech: `Billing.jsx`, `Subscriptions.jsx`, `SubscriptionTab.jsx`
+  by: gemini
+  from: agent
 
 ## decisions
 - Rewrote the PLAN.md from scratch to reflect the true microservice and UI architecture of the ThamaniCraft repository, mapping all existing codebases into 5 high-level components. Checked off completed features backed by explicit evidence in the code (e.g. `Login.jsx`, `LedgerService.java`), marked `insert_cake_data_bob_tenant.sql` as currently in progress `[~]`, and maintained the future intent for Subscription/Billing scaffolding.

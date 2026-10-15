@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Typography, Spin, message, Descriptions, Tag, Button, Select, Form, Modal, Table, Space, Image, Popconfirm, Input, Divider } from 'antd';
+import { Card, Typography, Spin, message, Descriptions, Tag, Button, Select, Form, Modal, Table, Space, Image, Popconfirm, Input, Divider, Switch } from 'antd';
 import { CheckCircleOutlined, CloseCircleOutlined, EyeOutlined } from '@ant-design/icons';
 import { 
   fetchTenantSubscription, 
@@ -59,12 +59,12 @@ export default function SubscriptionTab({ tenantId }) {
 
   const handleAssignPlan = async (values) => {
     try {
-      await assignPlanToTenant(tenantId, values.planCode);
+      await assignPlanToTenant(tenantId, values.planCode, values.autoActivate !== false);
       message.success("Plan assigned successfully");
       setModalVisible(false);
       loadData();
     } catch (error) {
-      message.error("Failed to assign plan");
+      message.error(error.message || "Failed to assign plan");
     }
   };
 
@@ -305,18 +305,39 @@ export default function SubscriptionTab({ tenantId }) {
         open={modalVisible}
         onCancel={() => setModalVisible(false)}
         footer={null}
+        width={480}
       >
-        <Form form={form} layout="vertical" onFinish={handleAssignPlan}>
-          <Form.Item name="planCode" label="Select Plan" rules={[{ required: true }]}>
+        <Form 
+          form={form} 
+          layout="vertical" 
+          onFinish={handleAssignPlan}
+          initialValues={{ autoActivate: true }}
+        >
+          <Form.Item name="planCode" label="Select Plan" rules={[{ required: true, message: 'Please select a plan' }]}>
             <Select placeholder="Choose a new plan">
               {plans.map(p => (
                 <Option key={p.code} value={p.code}>
-                  {p.name} - TZS {Number(p.monthlyPrice).toLocaleString()}/mo
+                  <Space style={{ width: '100%', justifyContent: 'space-between' }}>
+                    <span>{p.name} - TZS {Number(p.monthlyPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/mo</span>
+                    {p.visibleToCustomers === false && (
+                      <Tag color="orange" style={{ marginLeft: 8 }}>Hidden</Tag>
+                    )}
+                  </Space>
                 </Option>
               ))}
             </Select>
           </Form.Item>
-          <Form.Item style={{ textAlign: 'right', marginBottom: 0 }}>
+
+          <Form.Item 
+            name="autoActivate" 
+            label="Immediate Activation" 
+            valuePropName="checked"
+            help="If checked, immediately marks subscription ACTIVE and invoice PAID without requiring manual payment."
+          >
+            <Switch checkedChildren="Active Immediately" unCheckedChildren="Create Unpaid Invoice" defaultChecked />
+          </Form.Item>
+
+          <Form.Item style={{ textAlign: 'right', marginBottom: 0, marginTop: 24 }}>
             <Button onClick={() => setModalVisible(false)} style={{ marginRight: 8 }}>Cancel</Button>
             <Button type="primary" htmlType="submit">Assign Plan</Button>
           </Form.Item>

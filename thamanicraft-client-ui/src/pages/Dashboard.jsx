@@ -17,6 +17,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { useTheme } from "../ThemeContext";
 import QuickRefillModal from "../components/QuickRefillModal";
 import QuickMakeModal from "../components/QuickMakeModal";
+import usePermissions from "../hooks/usePermissions";
 
 const { Title, Text } = Typography;
 
@@ -31,6 +32,7 @@ const formatCompactNumber = (value) => {
 
 export default function Dashboard() {
   const { theme } = useTheme();
+  const { hasModule } = usePermissions();
   const isDark = theme === "dark";
   const navigate = useNavigate();
   const [refillVisible, setRefillVisible] = useState(false);
@@ -142,6 +144,7 @@ export default function Dashboard() {
       description: "Quickly checkout customers",
       icon: <ShoppingCartOutlined style={{ fontSize: 24, color: colors.blue }} />,
       bg: isDark ? "rgba(96, 165, 250, 0.15)" : "rgba(24, 144, 255, 0.1)",
+      module: "sales",
       onClick: () => navigate("/sales")
     },
     {
@@ -149,6 +152,7 @@ export default function Dashboard() {
       description: "Add raw materials to inventory",
       icon: <AppstoreAddOutlined style={{ fontSize: 24, color: colors.green }} />,
       bg: isDark ? "rgba(52, 211, 153, 0.15)" : "rgba(16, 185, 129, 0.1)",
+      module: "inventory",
       onClick: () => setRefillVisible(true)
     },
     {
@@ -156,6 +160,7 @@ export default function Dashboard() {
       description: "Produce finished goods instantly",
       icon: <ExperimentOutlined style={{ fontSize: 24, color: colors.orange }} />,
       bg: isDark ? "rgba(251, 191, 36, 0.15)" : "rgba(250, 173, 20, 0.1)",
+      module: "production",
       onClick: () => setMakeVisible(true)
     },
     {
@@ -163,9 +168,10 @@ export default function Dashboard() {
       description: "Record petty cash and bills",
       icon: <DollarCircleOutlined style={{ fontSize: 24, color: colors.red }} />,
       bg: isDark ? "rgba(239, 68, 68, 0.15)" : "rgba(255, 77, 79, 0.1)",
+      module: "finance",
       onClick: () => navigate("/reports")
     }
-  ];
+  ].filter(action => !action.module || hasModule(action.module));
 
   return (
     <div style={{ animation: "fadeIn 0.5s ease-out" }}>

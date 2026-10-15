@@ -16,10 +16,12 @@
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/IdentityApplication.java
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/service/SubscriptionServiceImpl.java
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/dto/AuthRequest.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/dto/AdminDashboardStatsDto.java
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/controller/AdminAuthController.java
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/entity/Tenant.java
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/repository/TenantRepository.java
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/dto/SubscriptionInvoiceDto.java
+/home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/service/AdminDashboardService.java
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/dto/CreateRoleRequest.java
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/entity/PlatformAuditLog.java
 /home/bob2609/Projects/ThamaniCraft/craft-identity-service/src/main/java/com/thamanicraft/identity/repository/PlatformAuditLogRepository.java

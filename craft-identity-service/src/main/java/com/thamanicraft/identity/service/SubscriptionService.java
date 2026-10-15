@@ -9,12 +9,14 @@ import java.util.UUID;
 
 public interface SubscriptionService {
     List<SubscriptionPlanDto> getAllPlans();
+    List<SubscriptionPlanDto> getAllPlans(boolean publicOnly);
     SubscriptionPlanDto getPlanByCode(String code);
     SubscriptionPlanDto createPlan(SubscriptionPlanDto planDto);
     SubscriptionPlanDto updatePlan(UUID id, SubscriptionPlanDto planDto);
     
     TenantSubscriptionDto getTenantSubscription(UUID tenantId);
     TenantSubscriptionDto assignPlanToTenant(UUID tenantId, String planCode);
+    TenantSubscriptionDto assignPlanToTenant(UUID tenantId, String planCode, boolean autoActivate, boolean isSuperAdmin);
     
     List<SubscriptionInvoiceDto> getTenantInvoices(UUID tenantId);
     List<SubscriptionInvoiceDto> getPendingInvoices();

@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Typography, Tabs, Table, Card, Tag, Descriptions, Row, Col, Spin, Alert } from 'antd';
 import api from '../utils/api';
 
 const { Title } = Typography;
 
 export default function PlatformLogs() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tabParam = searchParams.get('tab');
+  const activeKey = (tabParam === 'audit' || tabParam === '1') ? '1' : '1';
+
   const [logs, setLogs] = useState([]);
   const [loadingLogs, setLoadingLogs] = useState(false);
   const [error, setError] = useState(null);
@@ -41,7 +46,10 @@ export default function PlatformLogs() {
       <Title level={2}>Audit & Monitoring</Title>
       {error && <Alert type="error" message={error} style={{ marginBottom: 16 }} />}
       
-      <Tabs defaultActiveKey="1">
+      <Tabs 
+        activeKey={activeKey} 
+        onChange={(key) => setSearchParams({ tab: key === '1' ? 'audit' : key }, { replace: true })}
+      >
         <Tabs.TabPane tab="Audit Logs" key="1">
           <Table 
             columns={logColumns} 

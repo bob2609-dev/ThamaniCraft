@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Card, Table, Button, Space, message, Tag, Modal, Form, Input, InputNumber, Switch, Tabs, Image, Select } from 'antd';
-import { PlusOutlined, EditOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
-import { fetchPlans, createPlan, updatePlan, fetchPendingInvoices, approveInvoice, rejectInvoice } from '../utils/subscriptionApi';
+import { useSearchParams } from 'react-router-dom';
+import { Typography, Card, Table, Button, Space, message, Tag, Modal, Form, Input, InputNumber, Switch, Tabs, Image, Select, Alert } from 'antd';
+import { PlusOutlined, EditOutlined, CheckCircleOutlined, CloseCircleOutlined, UserSwitchOutlined } from '@ant-design/icons';
+import { fetchPlans, createPlan, updatePlan, assignPlanToTenant, fetchPendingInvoices, approveInvoice, rejectInvoice } from '../utils/subscriptionApi';
+import { fetchTenants } from '../utils/identityApi';
 import { parseModules, formatModuleName, AVAILABLE_MODULES } from '../utils/moduleHelpers';
 
 const { Title, Paragraph, Text } = Typography;
 const { TabPane } = Tabs;
+const { Option } = Select;
 
 export default function Subscriptions() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentTab = searchParams.get('tab') === 'plans' ? 'plans' : 'verifications';
+
   const [plans, setPlans] = useState([]);
   const [pendingInvoices, setPendingInvoices] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,6 +22,13 @@ export default function Subscriptions() {
   const [modalVisible, setModalVisible] = useState(false);
   const [editingPlan, setEditingPlan] = useState(null);
   const [form] = Form.useForm();
+
+  // Assign Plan to Tenant Modal
+  const [assignModalVisible, setAssignModalVisible] = useState(false);
+  const [assigningPlan, setAssigningPlan] = useState(null);
+  const [tenants, setTenants] = useState([]);
+  const [assignLoading, setAssignLoading] = useState(false);
+  const [assignForm] = Form.useForm();
 
   // Rejection Modal
   const [rejectModalVisible, setRejectModalVisible] = useState(false);
@@ -49,10 +62,17 @@ export default function Subscriptions() {
       form.setFieldsValue({
         ...plan,
         includedModules: parseModules(plan.includedModules),
+        visibleToCustomers: plan.visibleToCustomers !== false,
       });
     } else {
       form.resetFields();
-      form.setFieldsValue({ active: true, monthlyPrice: 0, maxUsers: 10, includedModules: [] });
+      form.setFieldsValue({ 
+        active: true, 
+        visibleToCustomers: true,
+        monthlyPrice: 0, 
+        maxUsers: 10, 
+        includedModules: [] 
+      });
     }
     setModalVisible(true);
   };
@@ -62,6 +82,7 @@ export default function Subscriptions() {
       const payload = {
         ...values,
         includedModules: JSON.stringify(values.includedModules || []),
+        visibleToCustomers: values.visibleToCustomers !== false,
       };
       if (editingPlan) {
         await updatePlan(editingPlan.id, payload);
@@ -75,6 +96,53 @@ export default function Subscriptions() {
     } catch (error) {
       console.error(error);
       message.error(error.message || "Failed to save plan");
+    }
+  };
+
+  const handleToggleVisibility = async (record, isVisible) => {
+    try {
+      const payload = {
+        ...record,
+        visibleToCustomers: isVisible,
+        includedModules: typeof record.includedModules === 'string' && record.includedModules.startsWith('[')
+          ? record.includedModules
+          : JSON.stringify(parseModules(record.includedModules)),
+      };
+      await updatePlan(record.id, payload);
+      message.success(`Plan "${record.name}" is now ${isVisible ? 'visible to customers' : 'hidden from customers'}`);
+      loadData();
+    } catch (error) {
+      console.error(error);
+      message.error("Failed to update visibility");
+    }
+  };
+
+  const handleOpenAssignModal = async (plan) => {
+    setAssigningPlan(plan);
+    assignForm.resetFields();
+    assignForm.setFieldsValue({ autoActivate: true });
+    setAssignModalVisible(true);
+    try {
+      const tenantList = await fetchTenants().catch(() => []);
+      setTenants(tenantList);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleConfirmAssign = async (values) => {
+    setAssignLoading(true);
+    try {
+      await assignPlanToTenant(values.tenantId, assigningPlan.code, values.autoActivate !== false);
+      const matched = tenants.find(t => t.id === values.tenantId);
+      message.success(`Assigned ${assigningPlan.name} to ${matched?.displayName || 'tenant'} successfully!`);
+      setAssignModalVisible(false);
+      loadData();
+    } catch (error) {
+      console.error(error);
+      message.error(error.message || "Failed to assign plan");
+    } finally {
+      setAssignLoading(false);
     }
   };
 
@@ -124,7 +192,7 @@ export default function Subscriptions() {
       title: 'Monthly Price',
       dataIndex: 'monthlyPrice',
       key: 'monthlyPrice',
-      render: (price) => `TZS ${Number(price).toFixed(2)}`,
+      render: (price) => `TZS ${Number(price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
     },
     {
       title: 'Max Users',
@@ -159,16 +227,41 @@ export default function Subscriptions() {
       ),
     },
     {
+      title: 'Visible to Customers',
+      dataIndex: 'visibleToCustomers',
+      key: 'visibleToCustomers',
+      render: (visible, record) => (
+        <Switch 
+          size="small"
+          checked={visible !== false}
+          checkedChildren="Visible"
+          unCheckedChildren="Hidden"
+          onChange={(checked) => handleToggleVisibility(record, checked)}
+        />
+      ),
+    },
+    {
       title: 'Actions',
       key: 'actions',
       render: (_, record) => (
-        <Button 
-          type="text" 
-          icon={<EditOutlined />} 
-          onClick={() => handleOpenPlanModal(record)}
-        >
-          Edit
-        </Button>
+        <Space size="small">
+          <Button 
+            type="text" 
+            icon={<EditOutlined />} 
+            onClick={() => handleOpenPlanModal(record)}
+          >
+            Edit
+          </Button>
+          <Button 
+            type="primary"
+            ghost
+            size="small"
+            icon={<UserSwitchOutlined />} 
+            onClick={() => handleOpenAssignModal(record)}
+          >
+            Assign
+          </Button>
+        </Space>
       ),
     },
   ];
@@ -190,7 +283,7 @@ export default function Subscriptions() {
       title: 'Amount',
       dataIndex: 'amount',
       key: 'amount',
-      render: (price) => `TZS ${Number(price).toFixed(2)}`,
+      render: (price) => `TZS ${Number(price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
     },
     {
       title: 'Reference No.',
@@ -246,11 +339,14 @@ export default function Subscriptions() {
     <div>
       <div style={{ marginBottom: 24 }}>
         <Title level={2} style={{ margin: 0 }}>Subscriptions & Billing</Title>
-        <Paragraph type="secondary" style={{ margin: 0 }}>Manage SaaS subscription plans and verify payments.</Paragraph>
+        <Paragraph type="secondary" style={{ margin: 0 }}>Manage SaaS subscription plans, customer visibility, and verify payments.</Paragraph>
       </div>
 
       <Card>
-        <Tabs defaultActiveKey="verifications">
+        <Tabs 
+          activeKey={currentTab} 
+          onChange={(key) => setSearchParams({ tab: key }, { replace: true })}
+        >
           <TabPane tab={`Pending Verifications (${pendingInvoices.length})`} key="verifications">
             <Table
               dataSource={pendingInvoices}
@@ -277,6 +373,7 @@ export default function Subscriptions() {
         </Tabs>
       </Card>
 
+      {/* Create / Edit Plan Modal */}
       <Modal
         title={editingPlan ? "Edit Subscription Plan" : "Create New Plan"}
         open={modalVisible}
@@ -284,7 +381,7 @@ export default function Subscriptions() {
         footer={null}
       >
         <Form form={form} layout="vertical" onFinish={handleSavePlan}>
-          <Form.Item name="code" label="Plan Code" rules={[{ required: true }]} help="e.g. FREE, PRO, ENTERPRISE (immutable ideally)">
+          <Form.Item name="code" label="Plan Code" rules={[{ required: true }]} help="e.g. FREE, PRO, ENTERPRISE, CUSTOM_A (unique identifier)">
             <Input disabled={!!editingPlan} />
           </Form.Item>
           <Form.Item name="name" label="Display Name" rules={[{ required: true }]}>
@@ -307,10 +404,23 @@ export default function Subscriptions() {
               style={{ width: '100%' }}
             />
           </Form.Item>
-          <Form.Item name="active" label="Status" valuePropName="checked">
-            <Switch checkedChildren="Active" unCheckedChildren="Inactive" />
-          </Form.Item>
-          <Form.Item style={{ textAlign: 'right', marginBottom: 0 }}>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <Form.Item name="active" label="Status" valuePropName="checked">
+              <Switch checkedChildren="Active" unCheckedChildren="Inactive" />
+            </Form.Item>
+            
+            <Form.Item 
+              name="visibleToCustomers" 
+              label="Visible to Customers" 
+              valuePropName="checked"
+              help="Whether visible on tenant billing portal"
+            >
+              <Switch checkedChildren="Visible" unCheckedChildren="Hidden" />
+            </Form.Item>
+          </div>
+
+          <Form.Item style={{ textAlign: 'right', marginBottom: 0, marginTop: 12 }}>
             <Space>
               <Button onClick={() => setModalVisible(false)}>Cancel</Button>
               <Button type="primary" htmlType="submit">Save Plan</Button>
@@ -319,6 +429,72 @@ export default function Subscriptions() {
         </Form>
       </Modal>
 
+      {/* Assign Plan to Tenant Modal */}
+      <Modal
+        title={assigningPlan ? `Assign "${assigningPlan.name}" to Tenant` : "Assign Plan to Tenant"}
+        open={assignModalVisible}
+        onCancel={() => setAssignModalVisible(false)}
+        footer={null}
+        width={500}
+      >
+        {assigningPlan && (
+          <Form form={assignForm} layout="vertical" onFinish={handleConfirmAssign}>
+            <Alert
+              message={
+                <Space direction="vertical" size={2}>
+                  <div><strong>Plan Code:</strong> <Tag color="blue">{assigningPlan.code}</Tag> | <strong>Price:</strong> TZS {Number(assigningPlan.monthlyPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/mo</div>
+                  <div><strong>Modules:</strong> {parseModules(assigningPlan.includedModules).map(m => formatModuleName(m)).join(', ') || 'None'}</div>
+                  {assigningPlan.visibleToCustomers === false && (
+                    <Text type="warning" style={{ fontSize: 12 }}>Note: This plan is hidden from self-service customers.</Text>
+                  )}
+                </Space>
+              }
+              type="info"
+              style={{ marginBottom: 20 }}
+            />
+
+            <Form.Item 
+              name="tenantId" 
+              label="Target Tenant" 
+              rules={[{ required: true, message: 'Please select a tenant' }]}
+            >
+              <Select 
+                showSearch 
+                placeholder="Search and select tenant..." 
+                optionFilterProp="children"
+                style={{ width: '100%' }}
+              >
+                {tenants.map(t => (
+                  <Option key={t.id} value={t.id}>
+                    {t.displayName} ({t.name})
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+
+            <Form.Item 
+              name="autoActivate" 
+              label="Immediate Activation" 
+              valuePropName="checked"
+              initialValue={true}
+              help="If enabled, the subscription is activated immediately and marked as settled. Otherwise, an unpaid invoice is created."
+            >
+              <Switch checkedChildren="Activate Immediately" unCheckedChildren="Create Unpaid Invoice" defaultChecked />
+            </Form.Item>
+
+            <Form.Item style={{ textAlign: 'right', marginBottom: 0, marginTop: 24 }}>
+              <Space>
+                <Button onClick={() => setAssignModalVisible(false)}>Cancel</Button>
+                <Button type="primary" htmlType="submit" loading={assignLoading}>
+                  Assign Plan to Tenant
+                </Button>
+              </Space>
+            </Form.Item>
+          </Form>
+        )}
+      </Modal>
+
+      {/* Reject Payment Modal */}
       <Modal
         title="Reject Payment"
         open={rejectModalVisible}

@@ -41,6 +41,9 @@ public class SubscriptionPlan {
     @Column(name = "is_active", nullable = false)
     private boolean isActive = true;
 
+    @Column(name = "is_visible_to_customers", nullable = false)
+    private boolean isVisibleToCustomers = true;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

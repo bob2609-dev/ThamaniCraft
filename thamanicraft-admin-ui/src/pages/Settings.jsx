@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Typography, Tabs, Card, Form, Input, Button, Table, Modal, Select, message, Space, Tag, Row, Col, Checkbox, Spin, InputNumber, Popconfirm } from 'antd';
 import { UserOutlined, SettingOutlined, LockOutlined, NodeIndexOutlined } from '@ant-design/icons';
 import { fetchUsers, fetchRoles, fetchPermissions, createUser, updateUser, createRole, updateRole, toggleUserStatus, fetchConfigs, updateConfig } from '../utils/identityApi';
@@ -10,7 +11,36 @@ const { Title, Text } = Typography;
 const { TabPane } = Tabs;
 const { Option } = Select;
 
+const TAB_MAP = {
+  configs: '2',
+  config: '2',
+  system: '2',
+  '2': '2',
+  uoms: 'uoms',
+  uom: 'uoms',
+  admins: '3',
+  admin: '3',
+  users: '3',
+  '3': '3',
+  roles: '4',
+  role: '4',
+  rbac: '4',
+  security: '4',
+  '4': '4',
+};
+
+const TAB_REVERSE_MAP = {
+  '2': 'configs',
+  uoms: 'uoms',
+  '3': 'admins',
+  '4': 'roles',
+};
+
 export default function Settings() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tabParam = searchParams.get('tab');
+  const activeTab = TAB_MAP[tabParam] || '2';
+
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [permissions, setPermissions] = useState([]);
@@ -227,7 +257,10 @@ export default function Settings() {
     <div>
       <Title level={2}>Settings</Title>
 
-      <Tabs defaultActiveKey="2">
+      <Tabs 
+        activeKey={activeTab} 
+        onChange={(key) => setSearchParams({ tab: TAB_REVERSE_MAP[key] || key }, { replace: true })}
+      >
         <TabPane tab={<span><SettingOutlined /> System Configs</span>} key="2">
           <Card style={{ maxWidth: 600 }}>
             {generalSettings === null ? <Spin /> : (

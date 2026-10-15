@@ -28,6 +28,9 @@ public class Tenant {
     @Column(name = "is_active", nullable = false)
     private boolean isActive = true;
 
+    @Column(name = "custom_modules", columnDefinition = "TEXT")
+    private String customModules;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

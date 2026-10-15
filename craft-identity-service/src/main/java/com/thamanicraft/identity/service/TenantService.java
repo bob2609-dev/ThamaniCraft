@@ -20,6 +20,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 
+import com.thamanicraft.identity.repository.TenantSubscriptionRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Service
 public class TenantService {
 
@@ -28,15 +31,20 @@ public class TenantService {
     private final PermissionRepository permissionRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final TenantSubscriptionRepository tenantSubRepository;
+    private final ObjectMapper objectMapper;
 
     public TenantService(TenantRepository tenantRepository, RoleRepository roleRepository,
                          PermissionRepository permissionRepository, UserRepository userRepository,
-                         PasswordEncoder passwordEncoder) {
+                         PasswordEncoder passwordEncoder, TenantSubscriptionRepository tenantSubRepository,
+                         ObjectMapper objectMapper) {
         this.tenantRepository = tenantRepository;
         this.roleRepository = roleRepository;
         this.permissionRepository = permissionRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.tenantSubRepository = tenantSubRepository;
+        this.objectMapper = objectMapper;
     }
 
     @Transactional
@@ -92,6 +100,7 @@ public class TenantService {
             map.put("name", t.getName());
             map.put("displayName", t.getDisplayName());
             map.put("active", t.isActive());
+            map.put("customModules", t.getCustomModules());
             
             User admin = userRepository.findByTenantId(t.getId()).stream()
                     .filter(u -> u.getRole() != null && "OWNER".equals(u.getRole().getName()))
@@ -114,6 +123,7 @@ public class TenantService {
         map.put("name", t.getName());
         map.put("displayName", t.getDisplayName());
         map.put("active", t.isActive());
+        map.put("customModules", t.getCustomModules());
         
         User admin = userRepository.findByTenantId(t.getId()).stream()
                 .filter(u -> u.getRole() != null && "OWNER".equals(u.getRole().getName()))
@@ -125,6 +135,73 @@ public class TenantService {
             map.put("adminEmail", admin.getEmail());
         }
         return map;
+    }
+
+    public Map<String, Object> getTenantModuleDetails(UUID tenantId) {
+        Tenant tenant = tenantRepository.findById(tenantId).orElseThrow(() -> new RuntimeException("Tenant not found"));
+
+        com.thamanicraft.identity.entity.TenantSubscription sub = 
+            tenantSubRepository.findByTenantIdAndStatus(tenantId, "ACTIVE").orElse(null);
+        if (sub == null) {
+            sub = tenantSubRepository.findByTenantIdAndStatus(tenantId, "PENDING_PAYMENT").orElse(null);
+        }
+
+        List<String> planModules = new ArrayList<>();
+        Map<String, Object> planInfo = new HashMap<>();
+        if (sub != null && sub.getPlan() != null) {
+            planInfo.put("code", sub.getPlan().getCode());
+            planInfo.put("name", sub.getPlan().getName());
+            String raw = sub.getPlan().getIncludedModules();
+            if (raw != null) {
+                String clean = raw.replaceAll("[\\[\\]\" ]", "");
+                for (String m : clean.split(",")) {
+                    if (!m.isBlank()) planModules.add(m.trim().toLowerCase());
+                }
+            }
+        } else {
+            planInfo.put("code", "FREE");
+            planInfo.put("name", "Free Tier");
+            planModules.addAll(List.of("inventory", "recipes"));
+        }
+        planInfo.put("includedModules", planModules);
+
+        boolean hasCustomOverrides = tenant.getCustomModules() != null && !tenant.getCustomModules().isBlank();
+        List<String> customModulesList = new ArrayList<>();
+        if (hasCustomOverrides) {
+            String raw = tenant.getCustomModules();
+            String clean = raw.replaceAll("[\\[\\]\" ]", "");
+            for (String m : clean.split(",")) {
+                if (!m.isBlank()) customModulesList.add(m.trim().toLowerCase());
+            }
+        }
+
+        List<String> effectiveModules = hasCustomOverrides ? new ArrayList<>(customModulesList) : new ArrayList<>(planModules);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("tenantId", tenant.getId());
+        result.put("tenantName", tenant.getName());
+        result.put("displayName", tenant.getDisplayName());
+        result.put("hasCustomOverrides", hasCustomOverrides);
+        result.put("plan", planInfo);
+        result.put("customModules", hasCustomOverrides ? customModulesList : null);
+        result.put("effectiveModules", effectiveModules);
+        return result;
+    }
+
+    @Transactional
+    public Map<String, Object> updateTenantModules(UUID tenantId, List<String> modules) {
+        Tenant tenant = tenantRepository.findById(tenantId).orElseThrow(() -> new RuntimeException("Tenant not found"));
+        if (modules == null || modules.isEmpty()) {
+            tenant.setCustomModules(null);
+        } else {
+            try {
+                tenant.setCustomModules(objectMapper.writeValueAsString(modules));
+            } catch (Exception e) {
+                tenant.setCustomModules("[\"" + String.join("\",\"", modules) + "\"]");
+            }
+        }
+        tenantRepository.save(tenant);
+        return getTenantModuleDetails(tenantId);
     }
 
     @Transactional

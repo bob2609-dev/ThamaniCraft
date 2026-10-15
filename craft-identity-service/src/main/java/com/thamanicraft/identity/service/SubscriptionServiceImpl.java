@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -33,7 +34,15 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     public List<SubscriptionPlanDto> getAllPlans() {
-        return planRepository.findAll().stream()
+        return getAllPlans(false);
+    }
+
+    @Override
+    public List<SubscriptionPlanDto> getAllPlans(boolean publicOnly) {
+        List<SubscriptionPlan> plans = publicOnly 
+                ? planRepository.findAllPublicPlans() 
+                : planRepository.findAll();
+        return plans.stream()
                 .map(this::mapToPlanDto)
                 .collect(Collectors.toList());
     }
@@ -56,6 +65,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         plan.setMaxUsers(planDto.getMaxUsers());
         plan.setIncludedModules(planDto.getIncludedModules());
         plan.setActive(planDto.isActive());
+        plan.setVisibleToCustomers(planDto.isVisibleToCustomers());
         
         return mapToPlanDto(planRepository.save(plan));
     }
@@ -71,6 +81,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         plan.setMaxUsers(planDto.getMaxUsers());
         plan.setIncludedModules(planDto.getIncludedModules());
         plan.setActive(planDto.isActive());
+        plan.setVisibleToCustomers(planDto.isVisibleToCustomers());
         
         return mapToPlanDto(planRepository.save(plan));
     }
@@ -87,10 +98,20 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     @Transactional
     public TenantSubscriptionDto assignPlanToTenant(UUID tenantId, String planCode) {
+        return assignPlanToTenant(tenantId, planCode, false, false);
+    }
+
+    @Override
+    @Transactional
+    public TenantSubscriptionDto assignPlanToTenant(UUID tenantId, String planCode, boolean autoActivate, boolean isSuperAdmin) {
         Tenant tenant = tenantRepository.findById(tenantId)
                 .orElseThrow(() -> new ResourceNotFoundException("Tenant not found"));
         SubscriptionPlan plan = planRepository.findByCode(planCode)
                 .orElseThrow(() -> new ResourceNotFoundException("Plan not found: " + planCode));
+
+        if (!isSuperAdmin && (!plan.isActive() || !plan.isVisibleToCustomers())) {
+            throw new IllegalArgumentException("Plan is not available for customer subscription");
+        }
                 
         tenantSubRepository.findByTenantIdAndStatus(tenantId, "ACTIVE").ifPresent(existing -> {
             existing.setStatus("CANCELLED");
@@ -103,12 +124,14 @@ public class SubscriptionServiceImpl implements SubscriptionService {
             tenantSubRepository.save(existing);
         });
         
+        boolean shouldActivate = autoActivate || (plan.getMonthlyPrice() != null && plan.getMonthlyPrice().compareTo(BigDecimal.ZERO) == 0);
+
         TenantSubscription newSub = new TenantSubscription();
         newSub.setTenant(tenant);
         newSub.setPlan(plan);
-        newSub.setStatus("PENDING_PAYMENT");
+        newSub.setStatus(shouldActivate ? "ACTIVE" : "PENDING_PAYMENT");
         newSub.setStartDate(LocalDate.now());
-        newSub.setNextBillingDate(LocalDate.now());
+        newSub.setNextBillingDate(shouldActivate ? LocalDate.now().plusMonths(1) : LocalDate.now());
         newSub.setAutoRenew(true);
         TenantSubscription savedSub = tenantSubRepository.save(newSub);
         
@@ -119,7 +142,13 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         invoice.setAmount(plan.getMonthlyPrice());
         invoice.setBillingPeriodStart(LocalDateTime.now());
         invoice.setBillingPeriodEnd(LocalDateTime.now().plusMonths(1));
-        invoice.setStatus("UNPAID");
+        if (shouldActivate) {
+            invoice.setStatus("PAID");
+            invoice.setPaidAt(LocalDateTime.now());
+            invoice.setPaymentReference("ADMIN-ASSIGNED");
+        } else {
+            invoice.setStatus("UNPAID");
+        }
         invoiceRepository.save(invoice);
         
         return mapToTenantSubDto(savedSub);
@@ -214,6 +243,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         dto.setMaxUsers(plan.getMaxUsers());
         dto.setIncludedModules(plan.getIncludedModules());
         dto.setActive(plan.isActive());
+        dto.setVisibleToCustomers(plan.isVisibleToCustomers());
         return dto;
     }
     

@@ -3,6 +3,7 @@ import { Typography, Card, Form, Input, Button, Space, message, Tabs, Spin, Tag,
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchTenantById, updateTenant, toggleTenantStatus } from '../utils/identityApi';
 import SubscriptionTab from '../components/tenants/SubscriptionTab';
+import ModulesTab from '../components/tenants/ModulesTab';
 
 const { Title, Text } = Typography;
 const { TabPane } = Tabs;
@@ -13,6 +14,8 @@ export default function TenantDetails() {
   const [tenant, setTenant] = useState(null);
   const [loading, setLoading] = useState(true);
   const [form] = Form.useForm();
+
+  const isAdminTenant = tenant?.name === 'admin' || tenant?.id === '00000000-0000-0000-0000-000000000000';
 
   useEffect(() => {
     loadTenant();
@@ -49,6 +52,10 @@ export default function TenantDetails() {
   };
 
   const handleToggleStatus = async () => {
+    if (isAdminTenant) {
+      message.warning("System admin tenant cannot be suspended");
+      return;
+    }
     try {
       await toggleTenantStatus(id);
       message.success("Tenant status toggled successfully!");
@@ -76,12 +83,22 @@ export default function TenantDetails() {
           <Tag color={tenant?.active ? 'green' : 'red'} style={{ marginLeft: 12 }}>
             {tenant?.active ? 'Active' : 'Suspended'}
           </Tag>
+          {isAdminTenant && (
+            <Tag color="purple" style={{ marginLeft: 6 }}>
+              System Admin Tenant
+            </Tag>
+          )}
         </div>
         <Popconfirm 
           title={`Are you sure you want to ${tenant?.active ? 'suspend' : 'activate'} this tenant?`} 
           onConfirm={handleToggleStatus}
+          disabled={isAdminTenant}
         >
-          <Button danger={tenant?.active}>
+          <Button 
+            danger={!isAdminTenant && tenant?.active} 
+            disabled={isAdminTenant}
+            title={isAdminTenant ? "System admin tenant cannot be suspended" : undefined}
+          >
             {tenant?.active ? 'Suspend Tenant' : 'Activate Tenant'}
           </Button>
         </Popconfirm>
@@ -120,10 +137,7 @@ export default function TenantDetails() {
           <SubscriptionTab tenantId={id} />
         </TabPane>
         <TabPane tab="Modules" key="modules">
-          <Card>
-            <Title level={4}>Enabled Modules</Title>
-            <Text>Feature flagging and module entitlements (e.g. Manufacturing, Loyalty) will be configured here.</Text>
-          </Card>
+          <ModulesTab tenantId={id} />
         </TabPane>
       </Tabs>
     </div>

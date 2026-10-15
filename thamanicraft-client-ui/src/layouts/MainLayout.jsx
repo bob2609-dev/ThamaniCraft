@@ -21,9 +21,10 @@ import {
 } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
 import usePermissions from '../hooks/usePermissions';
+import { formatModuleName } from '../utils/moduleHelpers';
 
 const { Header, Sider, Content } = Layout;
-const { Title, Text } = Typography;
+const { Title, Text, Paragraph } = Typography;
 
 export default function MainLayout() {
   const [collapsed, setCollapsed] = useState(false);
@@ -31,7 +32,7 @@ export default function MainLayout() {
   const isDarkMode = theme === 'dark';
   const navigate = useNavigate();
   const location = useLocation();
-  const { permissions, role, userName, hasPermission, tenantActive } = usePermissions();
+  const { permissions, role, userName, hasPermission, hasModule, tenantActive } = usePermissions();
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -66,72 +67,99 @@ export default function MainLayout() {
       key: '/',
       icon: <LayoutDashboard size={18} />,
       label: 'Dashboard',
+      module: null,
       permission: null // Everyone can see dashboard
     },
     {
       key: '/inventory',
       icon: <Package size={18} />,
       label: 'Inventory',
+      module: 'inventory',
       permission: 'VIEW_INVENTORY'
     },
     {
       key: '/recipes',
       icon: <BookOpen size={18} />,
       label: 'Recipes & BOM',
+      module: 'recipes',
       permission: 'VIEW_RECIPES'
     },
     {
       key: '/production',
       icon: <Factory size={18} />,
       label: 'Production',
+      module: 'production',
       permission: 'VIEW_PRODUCTION'
     },
     {
       key: '/sales',
       icon: <ShoppingCart size={18} />,
       label: 'Sales & Dispatch',
+      module: 'sales',
       permission: 'VIEW_SALES'
     },
     {
       key: '/procurement',
       icon: <Truck size={18} />,
       label: 'Procurement',
-      permission: 'VIEW_PURCHASES' // Assume VIEW_PURCHASES mapped for procurement
+      module: 'procurement',
+      permission: 'VIEW_PURCHASES'
     },
     {
       key: '/expenses',
       icon: <Factory size={18} />,
       label: 'Expenses',
+      module: 'expenses',
       permission: 'VIEW_FINANCE'
     },
     {
       key: '/customers',
       icon: <Users size={18} />,
       label: 'Customers',
-      permission: 'VIEW_SALES' // Typically tied to sales
+      module: 'customers',
+      permission: 'VIEW_SALES'
     },
     {
       key: '/reports',
       icon: <LayoutDashboard size={18} />,
       label: 'Reports',
+      module: 'reports',
       permission: 'VIEW_REPORTS'
     },
     {
       key: '/billing',
       icon: <CreditCard size={18} />,
       label: 'Billing',
+      module: null,
       permission: 'MANAGE_USERS'
     },
     {
       key: '/settings',
       icon: <Settings size={18} />,
       label: 'Settings',
+      module: null,
       permission: 'MANAGE_USERS'
     },
   ].filter(item => {
     if (!tenantActive && item.key !== '/billing') return false;
+    if (item.module && !hasModule(item.module)) return false;
     return !item.permission || hasPermission(item.permission);
   });
+
+  const getRequiredModuleForPath = (pathname) => {
+    if (pathname.startsWith('/inventory')) return 'inventory';
+    if (pathname.startsWith('/recipes')) return 'recipes';
+    if (pathname.startsWith('/production')) return 'production';
+    if (pathname.startsWith('/sales')) return 'sales';
+    if (pathname.startsWith('/procurement')) return 'procurement';
+    if (pathname.startsWith('/expenses')) return 'expenses';
+    if (pathname.startsWith('/customers')) return 'customers';
+    if (pathname.startsWith('/reports')) return 'reports';
+    return null;
+  };
+
+  const requiredModule = getRequiredModuleForPath(location.pathname);
+  const isModuleAllowed = !requiredModule || hasModule(requiredModule);
 
   return (
     <Layout className="min-h-screen" hasSider>
@@ -205,6 +233,16 @@ export default function MainLayout() {
             <div className="text-center mt-12">
               <Title level={3} type="danger">Account Suspended</Title>
               <Text>Your tenant account has been suspended. Please navigate to the Billing section or contact support.</Text>
+            </div>
+          ) : !isModuleAllowed ? (
+            <div className="text-center mt-12 p-8" style={{ maxWidth: 500, margin: '48px auto' }}>
+              <Title level={3}>Upgrade Plan to Access Module</Title>
+              <Paragraph type="secondary" style={{ fontSize: 16, marginTop: 12 }}>
+                The <strong>{formatModuleName(requiredModule)}</strong> module is not included in your current subscription plan.
+              </Paragraph>
+              <Button type="primary" size="large" onClick={() => navigate('/billing')} style={{ marginTop: 16 }}>
+                Upgrade Subscription
+              </Button>
             </div>
           ) : (
             <Outlet />

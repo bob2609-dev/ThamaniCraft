@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.security.core.Authentication;
+
 @RestController
 @RequestMapping("/api/subscriptions")
 @RequiredArgsConstructor
@@ -21,8 +23,13 @@ public class SubscriptionController {
     private final SubscriptionService subscriptionService;
 
     @GetMapping("/plans")
-    public ResponseEntity<List<SubscriptionPlanDto>> getAllPlans() {
-        return ResponseEntity.ok(subscriptionService.getAllPlans());
+    public ResponseEntity<List<SubscriptionPlanDto>> getAllPlans(
+            @RequestParam(required = false) Boolean publicOnly,
+            Authentication authentication) {
+        boolean isSuperAdmin = authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(a -> "ROLE_SUPER_ADMIN".equals(a.getAuthority()));
+        boolean filterPublic = Boolean.TRUE.equals(publicOnly) || (!isSuperAdmin && publicOnly == null);
+        return ResponseEntity.ok(subscriptionService.getAllPlans(filterPublic));
     }
 
     @GetMapping("/plans/{code}")
@@ -51,8 +58,12 @@ public class SubscriptionController {
     @PreAuthorize("hasRole('SUPER_ADMIN') or hasRole('TENANT_ADMIN') or hasRole('OWNER')")
     public ResponseEntity<TenantSubscriptionDto> assignPlanToTenant(
             @PathVariable UUID tenantId, 
-            @PathVariable String planCode) {
-        return ResponseEntity.ok(subscriptionService.assignPlanToTenant(tenantId, planCode));
+            @PathVariable String planCode,
+            @RequestParam(required = false, defaultValue = "false") boolean autoActivate,
+            Authentication authentication) {
+        boolean isSuperAdmin = authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(a -> "ROLE_SUPER_ADMIN".equals(a.getAuthority()));
+        return ResponseEntity.ok(subscriptionService.assignPlanToTenant(tenantId, planCode, autoActivate, isSuperAdmin));
     }
 
     @GetMapping("/tenant/{tenantId}/invoices")

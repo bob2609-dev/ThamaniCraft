@@ -82,3 +82,25 @@ export const toggleTenantStatus = async (tenantId) => {
   const response = await api.put(`/admin/tenants/${tenantId}/toggle-status`);
   return response.data;
 };
+
+export const fetchTenantModules = async (tenantId) => {
+  const response = await api.get(`/admin/tenants/${tenantId}/modules`);
+  return response.data;
+};
+
+export const updateTenantModules = async (tenantId, customModules) => {
+  const response = await api.put(`/admin/tenants/${tenantId}/modules`, { customModules });
+  return response.data;
+};
+
+export const fetchAdminDashboardStats = async () => {
+  const response = await api.get('/admin/metrics/dashboard');
+  return response.data;
+};
+
+export const fetchSystemHealth = async () => {
+  const response = await api.get('/admin/metrics/health');
+  return response.data;
+};
+
+

@@ -59,16 +59,25 @@ export default function Tenants() {
     { title: 'Status', dataIndex: 'active', render: active => (
       <Tag color={active ? 'green' : 'red'}>{active ? 'Active' : 'Suspended'}</Tag>
     )},
-    { title: 'Action', key: 'action', render: (_, record) => (
-      <Space>
-        <Button type="primary" onClick={() => navigate(`/tenants/${record.id}`)}>
-          Manage
-        </Button>
-        <Button type="link" danger={record.active} onClick={() => handleToggleStatus(record.id)}>
-          {record.active ? 'Suspend' : 'Activate'}
-        </Button>
-      </Space>
-    )}
+    { title: 'Action', key: 'action', render: (_, record) => {
+      const isAdminTenant = record.name === 'admin' || record.id === '00000000-0000-0000-0000-000000000000';
+      return (
+        <Space>
+          <Button type="primary" onClick={() => navigate(`/tenants/${record.id}`)}>
+            Manage
+          </Button>
+          <Button 
+            type="link" 
+            danger={!isAdminTenant && record.active} 
+            disabled={isAdminTenant}
+            title={isAdminTenant ? "System admin tenant cannot be suspended" : undefined}
+            onClick={() => !isAdminTenant && handleToggleStatus(record.id)}
+          >
+            {record.active ? 'Suspend' : 'Activate'}
+          </Button>
+        </Space>
+      );
+    }}
   ];
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Typography, Spin, message, Row, Col, Tag, Button, Alert, Divider, Table, Modal, Form, Input, Upload, Space } from 'antd';
+import { Card, Typography, Spin, message, Row, Col, Tag, Button, Alert, Divider, Table, Modal, Form, Input, Upload, Space, theme } from 'antd';
 import { CheckCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import { fetchMySubscription, fetchPlans, assignPlan, fetchInvoices, submitProofOfPayment } from '../services/subscriptionApi';
 import { parseModules, formatModuleName } from '../utils/moduleHelpers';
@@ -14,7 +14,13 @@ const getBase64 = (file) =>
     reader.onerror = (error) => reject(error);
   });
 
+const formatCurrency = (val) => {
+  if (val === null || val === undefined || isNaN(Number(val))) return '0.00';
+  return Number(val).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+};
+
 export default function Billing() {
+  const { token } = theme.useToken();
   const [subscription, setSubscription] = useState(null);
   const [plans, setPlans] = useState([]);
   const [invoices, setInvoices] = useState([]);
@@ -113,7 +119,7 @@ export default function Billing() {
       title: 'Amount (TZS)',
       dataIndex: 'amount',
       key: 'amount',
-      render: (val) => Number(val).toFixed(2)
+      render: (val) => formatCurrency(val)
     },
     {
       title: 'Billing Period',
@@ -174,7 +180,7 @@ export default function Billing() {
             <Col span={6}>
               <Text type="secondary">Billing Cycle</Text>
               <br/>
-              <Text strong>TZS {Number(subscription.plan.monthlyPrice).toFixed(2)} / month</Text>
+              <Text strong>TZS {formatCurrency(subscription.plan.monthlyPrice)} / month</Text>
             </Col>
             <Col span={6}>
               <Text type="secondary">Current Period Ends</Text>
@@ -213,30 +219,42 @@ export default function Billing() {
       </Card>
 
       <Title level={3} style={{ marginTop: 24 }}>Available Plans</Title>
-      <Row gutter={[24, 24]}>
-        {plans.map(plan => {
+      <Row gutter={[24, 24]} style={{ display: 'flex', alignItems: 'stretch' }}>
+        {plans.filter(p => p.visibleToCustomers !== false && p.active !== false).map(plan => {
           const isActive = plan.code === activePlanCode;
           return (
-            <Col xs={24} md={8} key={plan.id}>
+            <Col xs={24} md={8} key={plan.id} style={{ display: 'flex' }}>
               <Card 
                 hoverable 
                 style={{ 
-                  height: '100%', 
+                  width: '100%', 
                   display: 'flex', 
                   flexDirection: 'column',
-                  border: isActive ? '2px solid #1890ff' : '1px solid #f0f0f0' 
+                  border: isActive ? `2px solid ${token.colorPrimary}` : `1px solid ${token.colorBorderSecondary}` 
+                }}
+                styles={{
+                  body: {
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flex: 1,
+                  }
+                }}
+                bodyStyle={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  flex: 1,
                 }}
               >
                 {isActive && <div style={{ position: 'absolute', top: 12, right: 12 }}><Tag color="blue">Current Plan</Tag></div>}
                 <Title level={4}>{plan.name}</Title>
-                <Title level={2} style={{ marginTop: 0, color: '#1890ff' }}>
-                  TZS {Number(plan.monthlyPrice).toFixed(2)}<span style={{ fontSize: '14px', color: '#888' }}>/mo</span>
+                <Title level={2} style={{ marginTop: 0, color: token.colorPrimary }}>
+                  TZS {formatCurrency(plan.monthlyPrice)}<span style={{ fontSize: '14px', color: '#888' }}>/mo</span>
                 </Title>
-                <Paragraph type="secondary" style={{ minHeight: '44px' }}>{plan.description}</Paragraph>
+                <Paragraph type="secondary" style={{ minHeight: '44px', marginBottom: 16 }}>{plan.description}</Paragraph>
                 
-                <Divider />
+                <Divider style={{ margin: '16px 0' }} />
                 
-                <div style={{ flexGrow: 1 }}>
+                <div style={{ flex: 1, marginBottom: 24 }}>
                   <div style={{ marginBottom: 12 }}>
                     <CheckCircleOutlined style={{ color: '#52c41a', marginRight: 8 }} />
                     <Text>Up to {plan.maxUsers === -1 ? 'Unlimited' : plan.maxUsers} Users</Text>
@@ -258,7 +276,7 @@ export default function Billing() {
                   disabled={isActive}
                   block 
                   size="large"
-                  style={{ marginTop: 24 }}
+                  style={{ marginTop: 'auto' }}
                   onClick={() => handleSubscribe(plan.code)}
                   loading={loading && !isActive}
                 >
@@ -280,7 +298,7 @@ export default function Billing() {
           message="Payment Instructions"
           description={
             <div>
-              Please pay <b>TZS {selectedInvoice ? Number(selectedInvoice.amount).toFixed(2) : '0.00'}</b> via mobile money or bank transfer to:
+              Please pay <b>TZS {formatCurrency(selectedInvoice?.amount)}</b> via mobile money or bank transfer to:
               <br/><br/>
               <b>M-Pesa:</b> +255 123 456 789<br/>
               <b>Bank:</b> CRDB, Account 01J2345678900

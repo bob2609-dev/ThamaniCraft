@@ -13,6 +13,8 @@ export default function usePermissions() {
             role: payload.role || null,
             userName: payload.user_name || 'User',
             tenantActive: payload.tenant_active !== false,
+            modules: payload.modules || [],
+            planCode: payload.plan_code || 'FREE',
             isAuthenticated: true
           };
         } else {
@@ -28,12 +30,14 @@ export default function usePermissions() {
       role: null,
       userName: 'User',
       tenantActive: false,
+      modules: [],
+      planCode: 'FREE',
       isAuthenticated: false
     };
   });
 
   const hasPermission = (permission) => {
-    if (authState.role === 'OWNER') return true; // Super-admin bypass
+    if (authState.role === 'OWNER') return true; // Super-admin bypass for company-level permissions
     return authState.permissions.includes(permission);
   };
 
@@ -42,5 +46,23 @@ export default function usePermissions() {
     return permissionList.some(p => authState.permissions.includes(p));
   };
 
-  return { ...authState, hasPermission, hasAnyPermission };
+  const hasModule = (moduleKey) => {
+    if (!moduleKey) return true;
+    if (authState.role === 'SUPER_ADMIN') return true;
+    const normalized = moduleKey.toLowerCase();
+    
+    // If no modules array is present in an older token, default to allowing
+    if (!authState.modules || authState.modules.length === 0) return true;
+
+    // Derived module mappings
+    if (normalized === 'procurement' && authState.modules.includes('inventory')) return true;
+    if (normalized === 'customers' && authState.modules.includes('sales')) return true;
+    if (normalized === 'expenses' && (authState.modules.includes('finance') || authState.modules.includes('expenses'))) return true;
+
+    return authState.modules.includes(normalized);
+  };
+
+  return { ...authState, hasPermission, hasAnyPermission, hasModule };
 }
+
+export { usePermissions };

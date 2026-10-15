@@ -20,8 +20,8 @@ export const fetchTenantSubscription = async (tenantId) => {
   return response.data;
 };
 
-export const assignPlanToTenant = async (tenantId, planCode) => {
-  const response = await api.post(`/subscriptions/tenant/${tenantId}/assign/${planCode}`);
+export const assignPlanToTenant = async (tenantId, planCode, autoActivate = true) => {
+  const response = await api.post(`/subscriptions/tenant/${tenantId}/assign/${planCode}?autoActivate=${autoActivate}`);
   return response.data;
 };
 
